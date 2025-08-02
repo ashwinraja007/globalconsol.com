@@ -1,8 +1,10 @@
+
 import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Box } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const ThirdPartyLogistics = () => {
   useEffect(() => {
@@ -24,17 +26,14 @@ const ThirdPartyLogistics = () => {
           >
             <div className="inline-flex items-center gap-3 bg-red-600/20 px-6 py-3 rounded-full mb-6">
               <Box className="w-6 h-6 text-red-500" />
-              <span className="text-red-500 font-semibold">3PL</span>
+              <span className="text-red-500 font-semibold">3PL Services</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Third-Party <span className="text-red-500">Logistics</span>
+              <span className="text-red-500">3PL</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Flexible and scalable logistics support through professional third-party logistics (3PL) services.
-            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
@@ -43,6 +42,9 @@ const ThirdPartyLogistics = () => {
             >
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img src="/3pl.png" alt="3PL" className="w-full h-96 object-cover" />
+                <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-lg font-bold">
+                  7584
+                </div>
               </div>
             </motion.div>
 
@@ -52,12 +54,28 @@ const ThirdPartyLogistics = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="space-y-6"
             >
-              <h2 className="text-3xl font-bold text-red-500">Third-Party Logistics (3PL)</h2>
+              <h2 className="text-3xl font-bold text-red-500">3PL</h2>
               <p className="text-gray-700 text-lg leading-relaxed">
-                OECL offers 3PL services tailored to your supply chain. We manage storage, fulfillment, transportation, and reverse logistics so you can focus on your core business.
+                With our cutting-edge 3PL warehouse management system, you can optimize your business operations and implement advanced fulfillment strategies for enhanced customer satisfaction, while simultaneously minimizing expenses and delivery durations.
               </p>
             </motion.div>
           </div>
+
+          {/* CTA Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center bg-gradient-to-r from-red-600 to-red-700 text-white p-12 rounded-2xl"
+          >
+            <h3 className="text-2xl font-bold mb-4">Get a quick consultation and our experts are here to help you out</h3>
+            <Link to="/contact">
+              <button className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+                Reach Us
+              </button>
+            </Link>
+          </motion.div>
         </div>
       </section>
 

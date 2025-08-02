@@ -3,10 +3,10 @@ import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
-import { Plane, Clock, Globe, Shield } from "lucide-react";
+import { Droplets } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const AirFreight = () => {
+const LiquidTransportation = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -25,11 +25,11 @@ const AirFreight = () => {
             className="text-center mb-16"
           >
             <div className="inline-flex items-center gap-3 bg-red-600/20 px-6 py-3 rounded-full mb-6">
-              <Plane className="w-6 h-6 text-red-500" />
-              <span className="text-red-500 font-semibold">Air Freight Services</span>
+              <Droplets className="w-6 h-6 text-red-500" />
+              <span className="text-red-500 font-semibold">Liquid Transportation</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Air <span className="text-red-500">Freight</span>
+              Liquid <span className="text-red-500">Transportation</span>
             </h1>
           </motion.div>
 
@@ -41,11 +41,7 @@ const AirFreight = () => {
               className="relative"
             >
               <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <img
-                  src="/airfreight.png"
-                  alt="Air Freight Services"
-                  className="w-full h-96 object-cover"
-                />
+                <img src="/liquidtransportation.png" alt="Liquid Transportation" className="w-full h-96 object-cover" />
                 <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-lg font-bold">
                   7584
                 </div>
@@ -58,12 +54,9 @@ const AirFreight = () => {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="space-y-6"
             >
-              <h2 className="text-3xl font-bold text-red-500">Air Freight Services</h2>
+              <h2 className="text-3xl font-bold text-red-500">Liquid Transportation</h2>
               <p className="text-gray-700 text-lg leading-relaxed">
-                As a leading air freight company, we excel in offering enhanced flexibility and global choice by collaborating with a diverse range of specialized carriers. These partners provide tailored schedules and solutions, ensuring our clients have more options to meet their specific needs. Our Directors and Managers actively engage with our team members, fostering a hands-on approach to deliver a seamlessly integrated and highly professional service. Through our extensive worldwide network, we have established a swift and efficient airfreight solution that enables the expedited and cost-effective movement of cargo to and from international markets.
-              </p>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                GC specializes in providing customized sea-air and air-sea options, tailored to meet our customers' deadlines while achieving significant cost savings. Leveraging our efficient global network, we efficiently handle air freight consolidation on numerous major routes.
+                GC specializes in delivering comprehensive expertise and services for the transportation of liquid cargoes through ISO Tanks, Flexi Tanks, and IBCs (Inter Bulk Containers). Our priority at GC is to offer professional, cost-effective, and secure transportation solutions for liquid cargo. With a highly experienced and dedicated team, we ensure efficient logistics management for seamless door-to-door movements, providing complete visibility throughout the process.
               </p>
             </motion.div>
           </div>
@@ -91,4 +84,4 @@ const AirFreight = () => {
   );
 };
 
-export default AirFreight;
+export default LiquidTransportation;

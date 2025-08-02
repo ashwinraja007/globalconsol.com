@@ -5,6 +5,8 @@ import HeroSection from "@/components/HeroSection";
 import TrackOrder from "@/components/TrackOrder";
 import ServicesCards from "@/components/ServicesCards";
 import AboutSection from "@/components/AboutSection";
+import VisionMissionSection from "@/components/VisionMissionSection";
+import WhatMakesUsUniqueSection from "@/components/WhatMakesUsUniqueSection";
 import GlobalPresence from "@/components/GlobalPresence";
 import ServicesSection from "@/components/ServicesSection";
 import WorkflowSection from "@/components/WorkflowSection";
@@ -16,9 +18,7 @@ import Footer from "@/components/Footer";
 import { useLocation, Link } from 'react-router-dom';
 
 const ScrollToTop = () => {
-  const {
-    pathname
-  } = useLocation();
+  const { pathname } = useLocation();
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -62,6 +62,8 @@ const Index = () => {
       <TrackOrder />
       <ServicesCards />
       <AboutSection />
+      <VisionMissionSection />
+      <WhatMakesUsUniqueSection />
       <ServicesSection />
       <WorkflowSection />
       <GlobalPresence />
