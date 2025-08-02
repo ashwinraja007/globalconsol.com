@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -50,15 +51,15 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
       </div>
-      <div className="p-6 flex flex-col justify-center bg-gray-200">
-        <div className="bg-red-600/10 text-red-600 p-2 rounded-full inline-block mb-2 w-fit">
+      <div className="p-6 flex flex-col justify-center bg-gradient-to-br from-gc-light-gold/10 to-gc-gold/5">
+        <div className="bg-gc-gold/20 text-gc-dark-blue p-2 rounded-full inline-block mb-2 w-fit">
           <Icon className="w-5 h-5" />
         </div>
-        <h3 className="text-xl font-semibold text-black mb-3">{title}</h3>
+        <h3 className="text-xl font-semibold text-gc-dark-blue mb-3">{title}</h3>
         <p className="text-gray-600 text-sm mb-4 line-clamp-4">{description}</p>
         <Link
           to={url}
-          className="text-red-600 font-medium hover:text-red-800 inline-flex items-center text-sm"
+          className="text-gc-blue font-medium hover:text-gc-dark-blue inline-flex items-center text-sm transition-colors duration-300"
         >
           Learn More
           <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,7 +102,7 @@ const Services: React.FC = () => {
     {
       id: 1,
       title: "Air Freight",
-      description: "Fast and efficient air cargo services for time-sensitive shipments.",
+      description: "Fast and efficient air cargo services for time-sensitive shipments with global reach and reliability.",
       icon: Plane,
       image: "/airfreight.png",
       slug: "air-freight"
@@ -109,7 +110,7 @@ const Services: React.FC = () => {
     {
       id: 2,
       title: "Ocean Freight",
-      description: "Reliable sea freight for bulk and large-volume cargo.",
+      description: "Reliable sea freight for bulk and large-volume cargo with competitive rates and comprehensive coverage.",
       icon: Ship,
       image: "/oceanfreight.png",
       slug: "ocean-freight"
@@ -117,7 +118,7 @@ const Services: React.FC = () => {
     {
       id: 3,
       title: "Warehousing",
-      description: "Secure storage and order fulfillment services.",
+      description: "Secure storage and order fulfillment services with advanced inventory management systems.",
       icon: Box,
       image: "/warehousing.png",
       slug: "warehousing"
@@ -125,7 +126,7 @@ const Services: React.FC = () => {
     {
       id: 4,
       title: "Customs Clearance",
-      description: "Hassle-free customs handling and documentation support.",
+      description: "Hassle-free customs handling and documentation support with expert regulatory compliance.",
       icon: UserCheck,
       image: "/customclearance.png",
       slug: "customs-clearance"
@@ -133,7 +134,7 @@ const Services: React.FC = () => {
     {
       id: 5,
       title: "Liner Agency",
-      description: "Comprehensive support for liner shipping operations.",
+      description: "Comprehensive support for liner shipping operations with dedicated port services.",
       icon: Container,
       image: "/linearagency.png",
       slug: "liner-agency"
@@ -141,7 +142,7 @@ const Services: React.FC = () => {
     {
       id: 6,
       title: "Liquid Cargo Transportation",
-      description: "Safe transport of chemicals, oils, and liquids.",
+      description: "Safe transport of chemicals, oils, and liquids with specialized handling equipment.",
       icon: Truck,
       image: "/liquidtransportation.png",
       slug: "liquid-cargo"
@@ -149,7 +150,7 @@ const Services: React.FC = () => {
     {
       id: 7,
       title: "Consolidation",
-      description: "Optimize your logistics by combining multiple shipments.",
+      description: "Optimize your logistics by combining multiple shipments for cost-effective solutions.",
       icon: Cuboid,
       image: "/consolidation.png",
       slug: "consolidation"
@@ -157,7 +158,7 @@ const Services: React.FC = () => {
     {
       id: 8,
       title: "Project Cargo",
-      description: "Handling of oversized and complex project shipments.",
+      description: "Handling of oversized and complex project shipments with specialized expertise.",
       icon: Container,
       image: "/projectcargo.png",
       slug: "project-cargo"
@@ -165,7 +166,7 @@ const Services: React.FC = () => {
     {
       id: 9,
       title: "3PL",
-      description: "Third-party logistics for flexible supply chain solutions.",
+      description: "Third-party logistics for flexible supply chain solutions and operational efficiency.",
       icon: Cuboid,
       image: "/3pl.png",
       slug: "3pl"
@@ -178,51 +179,51 @@ const Services: React.FC = () => {
       <Navigation />
       <main className="flex-grow pt-20">
         {/* Hero Section */}
-        <section className="bg-gradient-to-r from-black via-gray-900 to-black text-white relative overflow-hidden">
+        <section className="bg-gradient-to-r from-gc-dark-blue via-gc-blue to-gc-dark-blue text-white relative overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img
               src="/lovable-uploads/gp.jpg"
               alt="Services"
               className="w-full h-full object-cover opacity-20"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black to-gray-900 opacity-90" />
+            <div className="absolute inset-0 bg-gradient-to-r from-gc-dark-blue/90 to-gc-blue/90" />
           </div>
-          <div className="container mx-auto px-4 py-12 relative z-10">
+          <div className="container mx-auto px-4 py-16 relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-center max-w-3xl mx-auto"
+              className="text-center max-w-4xl mx-auto"
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-2 text-white">
+              <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
                 Our Logistics Services
               </h1>
-              <div className="w-16 h-1 bg-red-600 mx-auto mb-4"></div>
-              <p className="text-lg text-white/90">
-                Explore our full suite of end-to-end global logistics services.
+              <div className="w-20 h-1 bg-gc-gold mx-auto mb-6"></div>
+              <p className="text-xl text-white/90 leading-relaxed">
+                Comprehensive end-to-end global logistics solutions tailored to your business needs
               </p>
             </motion.div>
           </div>
         </section>
 
         {/* Services Grid */}
-        <section className="py-16 bg-white">
+        <section className="py-20 bg-gradient-to-b from-white to-gc-light-gold/10">
           <div className="container mx-auto px-4">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
+              className="text-center mb-16"
             >
-              <h2 className="text-3xl font-bold text-black mb-3">All Services</h2>
-              <div className="w-20 h-1 bg-red-600 mx-auto mb-4"></div>
-              <p className="text-gray-600 max-w-2xl mx-auto">
-                From freight forwarding to specialized cargo handling, we’ve got it all covered.
+              <h2 className="text-4xl md:text-5xl font-bold text-gc-dark-blue mb-4">Complete Service Portfolio</h2>
+              <div className="w-24 h-1 bg-gc-gold mx-auto mb-6"></div>
+              <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
+                From freight forwarding to specialized cargo handling, we deliver excellence across all logistics segments with our trusted global network.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {allServices.map(service => (
                 <ServiceCard
                   key={service.id}
