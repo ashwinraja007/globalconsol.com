@@ -19,7 +19,7 @@ const Navigation = () => {
         <div className="flex justify-between items-center">
           {/* Logo Section */}
           <div className="flex items-center gap-4">
-            <img alt="GGL Logo" src="/lovable-uploads/20993204-fabd-4185-9d91-56a1fde324dc.png" className="h-16 w-auto cursor-pointer object-fill transition-all duration-300" />
+            <img alt="GGL Logo" src="/lovable-uploads/20993204-fabd-4185-9d91-56a1fde324dc.png" className="h-20 w-auto cursor-pointer object-fill transition-all duration-300" />
             <div className="h-8 w-px bg-gray-500 hidden md:block"></div>
             <img alt="1 Global Enterprises Logo" src="/lovable-uploads/a2513c1d-2708-4143-a69b-fa65a1d4d1f2.png" className="hidden md:block h-11 w-auto object-contain transition-all duration-300" />
           </div>
