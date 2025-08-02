@@ -1,189 +1,145 @@
 
-import React, { useState, useEffect } from "react";
-import { 
-  Table, 
-  TableBody, 
-  TableCell, 
-  TableHead, 
-  TableHeader, 
-  TableRow 
-} from "@/components/ui/table";
-import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { Search, Filter, Package, Eye, Pencil } from "lucide-react";
-import { supabase } from "@/integrations/supabase/client";
+import { Search, Plus, Eye, Edit, Trash2 } from "lucide-react";
 
 interface Shipment {
   id: string;
   tracking_number: string;
+  status: string;
   origin: string;
   destination: string;
-  status: string;
+  customer: string;
   created_at: string;
-  profiles: {
-    email: string;
-    first_name: string | null;
-    last_name: string | null;
-  } | null;
 }
 
 const ShipmentsManagement = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [shipments, setShipments] = useState<Shipment[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchShipments = async () => {
-      setIsLoading(true);
-      setError(null);
-      
-      try {
-        const { data, error } = await supabase
-          .from('shipments')
-          .select(`
-            id,
-            tracking_number,
-            origin,
-            destination,
-            status,
-            created_at,
-            profiles:user_id (
-              email,
-              first_name,
-              last_name
-            )
-          `)
-          .order('created_at', { ascending: false });
-        
-        if (error) throw error;
-        
-        setShipments(data || []);
-      } catch (err: any) {
-        console.error('Error fetching shipments:', err.message);
-        setError(err.message);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    
-    fetchShipments();
-  }, []);
   
-  const filteredShipments = shipments.filter(shipment => 
-    shipment.tracking_number.toLowerCase().includes(searchTerm.toLowerCase()) || 
-    (shipment.profiles?.email && shipment.profiles.email.toLowerCase().includes(searchTerm.toLowerCase()))
+  // Mock data since database tables don't exist yet
+  const mockShipments: Shipment[] = [
+    {
+      id: "1",
+      tracking_number: "GC001234",
+      status: "In Transit",
+      origin: "Singapore",
+      destination: "Malaysia",
+      customer: "ABC Corp",
+      created_at: "2024-01-15"
+    },
+    {
+      id: "2",
+      tracking_number: "GC001235",
+      status: "Delivered",
+      origin: "India",
+      destination: "Singapore",
+      customer: "XYZ Ltd",
+      created_at: "2024-01-14"
+    },
+    {
+      id: "3",
+      tracking_number: "GC001236",
+      status: "Processing",
+      origin: "Thailand",
+      destination: "Indonesia",
+      customer: "Global Trade Co",
+      created_at: "2024-01-16"
+    },
+  ];
+
+  const filteredShipments = mockShipments.filter(shipment =>
+    shipment.tracking_number.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    shipment.customer.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const getStatusVariant = (status: string) => {
+  const getStatusColor = (status: string) => {
     switch (status) {
-      case "Delivered": return "default";
-      case "In Transit": return "secondary";
-      case "Processing": return "secondary";
-      case "Delayed": return "destructive";
-      default: return "outline";
+      case 'Delivered':
+        return 'bg-green-100 text-green-800';
+      case 'In Transit':
+        return 'bg-blue-100 text-blue-800';
+      case 'Processing':
+        return 'bg-yellow-100 text-yellow-800';
+      default:
+        return 'bg-gray-100 text-gray-800';
     }
-  };
-
-  const getCustomerName = (shipment: Shipment) => {
-    if (!shipment.profiles) return "Unknown";
-    
-    const firstName = shipment.profiles.first_name || "";
-    const lastName = shipment.profiles.last_name || "";
-    
-    if (firstName || lastName) {
-      return `${firstName} ${lastName}`.trim();
-    }
-    
-    return shipment.profiles.email;
   };
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-bold tracking-tight">Shipments Management</h1>
-        <p className="text-muted-foreground">Monitor and manage all shipments in the system</p>
+      <div className="flex justify-between items-center">
+        <h1 className="text-3xl font-bold text-gray-900">Shipments Management</h1>
+        <Button className="bg-blue-600 hover:bg-blue-700">
+          <Plus className="w-4 h-4 mr-2" />
+          Add New Shipment
+        </Button>
       </div>
-      
-      <div className="flex flex-col md:flex-row justify-between gap-4">
-        <div className="relative w-full md:w-64">
-          <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-          <Input
-            type="search"
-            placeholder="Search shipments..."
-            className="pl-8"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </div>
-        <div className="flex gap-2">
-          <Button variant="outline" size="sm">
-            <Filter className="mr-2 h-4 w-4" />
-            Filter
-          </Button>
-          <Button size="sm">
-            <Package className="mr-2 h-4 w-4" />
-            New Shipment
-          </Button>
-        </div>
-      </div>
-      
-      <div className="border rounded-md">
-        {isLoading ? (
-          <div className="p-8 text-center">Loading shipments...</div>
-        ) : error ? (
-          <div className="p-8 text-center text-red-500">Error: {error}</div>
-        ) : (
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Tracking ID</TableHead>
-                <TableHead>Customer</TableHead>
-                <TableHead>Origin</TableHead>
-                <TableHead>Destination</TableHead>
-                <TableHead>Date</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead className="text-right">Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {filteredShipments.length > 0 ? (
-                filteredShipments.map((shipment) => (
-                  <TableRow key={shipment.id}>
-                    <TableCell className="font-medium">{shipment.tracking_number}</TableCell>
-                    <TableCell>{getCustomerName(shipment)}</TableCell>
-                    <TableCell>{shipment.origin}</TableCell>
-                    <TableCell>{shipment.destination}</TableCell>
-                    <TableCell>{new Date(shipment.created_at).toLocaleDateString()}</TableCell>
-                    <TableCell>
-                      <Badge variant={getStatusVariant(shipment.status)}>
+
+      <Card>
+        <CardHeader>
+          <div className="flex justify-between items-center">
+            <CardTitle>All Shipments</CardTitle>
+            <div className="relative w-64">
+              <Search className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+              <Input
+                placeholder="Search shipments..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10"
+              />
+            </div>
+          </div>
+        </CardHeader>
+        <CardContent>
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse">
+              <thead>
+                <tr className="border-b">
+                  <th className="text-left p-3 font-medium">Tracking Number</th>
+                  <th className="text-left p-3 font-medium">Customer</th>
+                  <th className="text-left p-3 font-medium">Origin</th>
+                  <th className="text-left p-3 font-medium">Destination</th>
+                  <th className="text-left p-3 font-medium">Status</th>
+                  <th className="text-left p-3 font-medium">Date Created</th>
+                  <th className="text-left p-3 font-medium">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredShipments.map((shipment) => (
+                  <tr key={shipment.id} className="border-b hover:bg-gray-50">
+                    <td className="p-3 font-medium">{shipment.tracking_number}</td>
+                    <td className="p-3">{shipment.customer}</td>
+                    <td className="p-3">{shipment.origin}</td>
+                    <td className="p-3">{shipment.destination}</td>
+                    <td className="p-3">
+                      <Badge className={getStatusColor(shipment.status)}>
                         {shipment.status}
                       </Badge>
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <div className="flex justify-end gap-2">
-                        <Button variant="ghost" size="icon">
-                          <Eye className="h-4 w-4" />
+                    </td>
+                    <td className="p-3">{shipment.created_at}</td>
+                    <td className="p-3">
+                      <div className="flex gap-2">
+                        <Button variant="outline" size="sm">
+                          <Eye className="w-4 h-4" />
                         </Button>
-                        <Button variant="ghost" size="icon">
-                          <Pencil className="h-4 w-4" />
+                        <Button variant="outline" size="sm">
+                          <Edit className="w-4 h-4" />
+                        </Button>
+                        <Button variant="outline" size="sm">
+                          <Trash2 className="w-4 h-4" />
                         </Button>
                       </div>
-                    </TableCell>
-                  </TableRow>
-                ))
-              ) : (
-                <TableRow>
-                  <TableCell colSpan={7} className="text-center">
-                    No shipments found
-                  </TableCell>
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        )}
-      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </CardContent>
+      </Card>
     </div>
   );
 };

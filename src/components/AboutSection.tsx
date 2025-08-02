@@ -12,10 +12,10 @@ const AboutSection = () => {
           <div className="order-2 lg:order-1">
             <ScrollAnimation>
               <h2 className="text-3xl md:text-4xl font-bold mb-2 text-gray-900">About Us</h2>
-              <div className="w-16 h-1 bg-red-600 mb-6"></div>
+              <div className="w-16 h-1 bg-gc-gold mb-6"></div>
               <div className="space-y-6 mb-8">
                 <div className="flex items-start">
-                  <CheckCircle className="text-red-600 shrink-0 mr-3 mt-1" size={20} />
+                  <CheckCircle className="text-gc-gold shrink-0 mr-3 mt-1" size={20} />
                   <div>
                     <h3 className="font-semibold text-xl mb-3 text-gray-900">15 Years Excellence in Logistics Industry</h3>
                     <p className="text-gray-700 leading-relaxed">
@@ -26,12 +26,12 @@ const AboutSection = () => {
               </div>
               <div className="flex flex-wrap gap-4">
                 <Link to="/about">
-                  <Button className="bg-red-600 hover:bg-red-700 text-white rounded-md px-6 py-3">
+                  <Button className="bg-gc-gold hover:bg-gc-bronze text-white rounded-md px-6 py-3">
                     Know More
                   </Button>
                 </Link>
                 <Link to="/contact">
-                  <Button variant="outline" className="border-red-600 text-red-600 hover:bg-red-50 rounded-md px-6 py-3">
+                  <Button variant="outline" className="border-gc-gold text-gc-gold hover:bg-gc-gold hover:text-white rounded-md px-6 py-3">
                     Reach Us
                   </Button>
                 </Link>

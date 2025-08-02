@@ -29,7 +29,7 @@ const Navigation = () => {
             <img
               alt="GGL Logo"
               className="h-10 w-auto cursor-pointer object-fill transition-all duration-300"
-              src="/lovable-uploads/80ac017b-3e55-468b-9c72-9730b97cdcb0.png"
+              src="/lovable-uploads/20993204-fabd-4185-9d91-56a1fde324dc.png"
             />
             <div className="h-8 w-px bg-gray-500 hidden md:block"></div>
             <img
@@ -43,10 +43,10 @@ const Navigation = () => {
           <nav className="hidden md:flex items-center gap-6">
             <Link
               to={getNavLink("/home")}
-              className={`nav-link font-medium text-black hover:text-kargon-red ${
+              className={`nav-link font-medium text-black hover:text-gc-gold ${
                 isActive(getNavLink("/home")) ||
                 (currentCountry.code === "SG" && isActive("/"))
-                  ? "text-kargon-red"
+                  ? "text-gc-gold"
                   : ""
               }`}
             >
@@ -54,32 +54,32 @@ const Navigation = () => {
             </Link>
             <Link
               to={getNavLink("/about-us")}
-              className={`nav-link font-medium text-black hover:text-kargon-red ${
-                isActive(getNavLink("/about-us")) ? "text-kargon-red" : ""
+              className={`nav-link font-medium text-black hover:text-gc-gold ${
+                isActive(getNavLink("/about-us")) ? "text-gc-gold" : ""
               }`}
             >
               ABOUT US
             </Link>
             <Link
               to={getNavLink("/services")}
-              className={`nav-link font-medium text-black hover:text-kargon-red ${
-                isActive(getNavLink("/services")) ? "text-kargon-red" : ""
+              className={`nav-link font-medium text-black hover:text-gc-gold ${
+                isActive(getNavLink("/services")) ? "text-gc-gold" : ""
               }`}
             >
               SERVICES
             </Link>
             <Link
               to={getNavLink("/blogs")}
-              className={`nav-link font-medium text-black hover:text-kargon-red ${
-                isActive("/blog") ? "text-kargon-red" : ""
+              className={`nav-link font-medium text-black hover:text-gc-gold ${
+                isActive("/blog") ? "text-gc-gold" : ""
               }`}
             >
               BLOGS
             </Link>
             <Link
               to={getNavLink("/contact")}
-              className={`nav-link font-medium text-black hover:text-kargon-red ${
-                isActive(getNavLink("/contact")) ? "text-kargon-red" : ""
+              className={`nav-link font-medium text-black hover:text-gc-gold ${
+                isActive(getNavLink("/contact")) ? "text-gc-gold" : ""
               }`}
             >
               CONTACT
@@ -90,7 +90,7 @@ const Navigation = () => {
           <div className="hidden md:flex items-center gap-4">
             <CountrySelector />
             <Link to={`${getNavLink("/contact")}#contact-form`}>
-              <Button className="bg-kargon-red hover:bg-kargon-red/90 text-white rounded-md">
+              <Button className="bg-gc-gold hover:bg-gc-bronze text-white rounded-md">
                 GET QUOTE
               </Button>
             </Link>
@@ -117,10 +117,10 @@ const Navigation = () => {
             <nav className="flex flex-col space-y-4">
               <Link
                 to={getNavLink("/home")}
-                className={`font-medium text-black hover:text-kargon-red ${
+                className={`font-medium text-black hover:text-gc-gold ${
                   isActive(getNavLink("/home")) ||
                   (currentCountry.code === "SG" && isActive("/"))
-                    ? "text-kargon-red"
+                    ? "text-gc-gold"
                     : ""
                 }`}
                 onClick={() => setIsMenuOpen(false)}
@@ -129,8 +129,8 @@ const Navigation = () => {
               </Link>
               <Link
                 to={getNavLink("/about-us")}
-                className={`font-medium text-black hover:text-kargon-red ${
-                  isActive(getNavLink("/about-us")) ? "text-kargon-red" : ""
+                className={`font-medium text-black hover:text-gc-gold ${
+                  isActive(getNavLink("/about-us")) ? "text-gc-gold" : ""
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -138,8 +138,8 @@ const Navigation = () => {
               </Link>
               <Link
                 to={getNavLink("/services")}
-                className={`font-medium text-black hover:text-kargon-red ${
-                  isActive(getNavLink("/services")) ? "text-kargon-red" : ""
+                className={`font-medium text-black hover:text-gc-gold ${
+                  isActive(getNavLink("/services")) ? "text-gc-gold" : ""
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -147,8 +147,8 @@ const Navigation = () => {
               </Link>
               <Link
                 to="/blog"
-                className={`font-medium text-black hover:text-kargon-red ${
-                  isActive("/blog") ? "text-kargon-red" : ""
+                className={`font-medium text-black hover:text-gc-gold ${
+                  isActive("/blog") ? "text-gc-gold" : ""
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -156,8 +156,8 @@ const Navigation = () => {
               </Link>
               <Link
                 to={getNavLink("/contact")}
-                className={`font-medium text-black hover:text-kargon-red ${
-                  isActive(getNavLink("/contact")) ? "text-kargon-red" : ""
+                className={`font-medium text-black hover:text-gc-gold ${
+                  isActive(getNavLink("/contact")) ? "text-gc-gold" : ""
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
@@ -172,7 +172,7 @@ const Navigation = () => {
                 to={`${getNavLink("/contact")}#contact-form`}
                 onClick={() => setIsMenuOpen(false)}
               >
-                <Button className="bg-kargon-red hover:bg-kargon-red/90 text-white w-full rounded-md mt-4">
+                <Button className="bg-gc-gold hover:bg-gc-bronze text-white w-full rounded-md mt-4">
                   GET QUOTE
                 </Button>
               </Link>

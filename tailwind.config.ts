@@ -53,10 +53,17 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// GC Brand Colors from logo
+				'gc-gold': '#B8860B',
+				'gc-bronze': '#CD7F32',
+				'gc-blue': '#1E90FF',
+				'gc-dark-blue': '#104C8F',
+				'gc-light-gold': '#FFD700',
+				// Legacy colors for compatibility
 				kargon: {
-					red: '#e94335',
+					red: '#B8860B', // Changed to gold
 					dark: '#1b2129',
-					blue: '#104c8f',
+					blue: '#1E90FF',
 				},
 				'milk-texture': '#F7F7F7',
 				sidebar: {
