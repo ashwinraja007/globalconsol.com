@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -50,7 +49,7 @@ const Users = () => {
     email: "",
     first_name: "",
     last_name: "",
-    role: "user" as const,
+    role: "user" as 'admin' | 'user' | 'moderator',
   });
 
   // Mock data
