@@ -1,4 +1,4 @@
-redimport { Truck, Plane, Ship, Box, Container, Droplets } from "lucide-react";
+import { Truck, Plane, Ship, Box, Container, Droplets } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import ScrollAnimation from "./ScrollAnimation";
 const getCurrentCountryFromPath = pathname => {
