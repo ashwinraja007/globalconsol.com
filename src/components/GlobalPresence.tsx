@@ -30,7 +30,7 @@ const GlobalPresence = () => {
       viewport={{ once: true, amount: 0.2 }}
       variants={containerVariants}
       className="py-8 px-0"
-      style={{ background: "#fff" }} // White background like your logo
+      style={{ background: GOLD }}
     >
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
@@ -51,7 +51,7 @@ const GlobalPresence = () => {
               Global Presence
             </h2>
           </motion.div>
-          <div className="w-24 h-1 mx-auto mb-4" style={{ background: GOLD }}></div>
+          <div className="w-24 h-1 mx-auto mb-4" style={{ background: BLUE }}></div>
           <p className="max-w-2xl mx-auto text-lg md:text-xl" style={{ color: BLUE }}>
             Our logistics network spans across continents, enabling seamless global shipping solutions.
           </p>
