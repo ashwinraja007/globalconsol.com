@@ -102,7 +102,7 @@ const ServicesSection = () => {
                   <p className="text-gray-600 mb-4 leading-relaxed">
                     {service.description}
                   </p>
-                  <Link to={`/${currentCountry.slug}/services/${service.slug}`} className="inline-flex items-center text-red-600 font-semibold hover:text-red-700 transition-colors duration-300">
+                  <Link to={`/${currentCountry.slug}/services/${service.slug}`} className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors duration-300">
                     Read More
                     <span className="ml-2">→</span>
                   </Link>
