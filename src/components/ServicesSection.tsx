@@ -96,7 +96,7 @@ const ServicesSection = () => {
                   
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-kargon-blue transition-colors duration-300">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue transition-colors duration-300">
                     {service.title}
                   </h3>
                   <p className="text-gray-600 mb-4 leading-relaxed">
