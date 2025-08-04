@@ -121,7 +121,7 @@ const GlobalPresence = () => {
             </motion.div>
             <h2 style={{
             color: BLUE
-          }} className="text-3xl md:text-4xl font-bold text-gray-950">
+          }} className="text-3xl md:text-4xl font-bold text-slate-950">
               Global Presence
             </h2>
           </motion.div>
