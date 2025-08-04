@@ -1,4 +1,4 @@
-import { Truck, Plane, Ship, Box, Container, Droplets } from "lucide-react";
+redimport { Truck, Plane, Ship, Box, Container, Droplets } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import ScrollAnimation from "./ScrollAnimation";
 const getCurrentCountryFromPath = pathname => {
@@ -96,7 +96,7 @@ const ServicesSection = () => {
                   
                 </div>
                 <div className="p-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors duration-300">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-kargon-blue transition-colors duration-300">
                     {service.title}
                   </h3>
                   <p className="text-gray-600 mb-4 leading-relaxed">
@@ -112,7 +112,7 @@ const ServicesSection = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Link to={getServicesLink()} className="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300">
+          <Link to={getServicesLink()} className="inline-block bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-colors duration-300">
             View All Services
           </Link>
         </div>
