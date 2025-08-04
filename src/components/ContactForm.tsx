@@ -230,7 +230,7 @@ const ContactForm = () => {
             className="p-8 rounded-2xl shadow-xl border"
             style={{
               borderColor: BRAND.gold,
-              background: "#fff",
+              background: "#fff", // pure white
             }}
           >
             <h3
@@ -276,7 +276,7 @@ const ContactForm = () => {
                 <Input name="Organization" placeholder="Enter your company name" />
               </div>
 
-              <div className="space-y-2 max-w-md mx-auto p-4 rounded-lg shadow" style={{ background: BRAND.gold + "22" }}>
+              <div className="space-y-2 max-w-md mx-auto p-4 rounded-lg shadow" style={{ background: "#fff" }}>
                 <label className="text-sm font-medium" style={{ color: BRAND.black }}>Preferred Office Location</label>
                 <Select value={selectedLocation} onValueChange={setSelectedLocation}>
                   <SelectTrigger>
@@ -321,7 +321,7 @@ const ContactForm = () => {
                   exit={{ opacity: 0, y: -10 }}
                   className="mt-6 p-4 rounded-xl shadow flex items-center gap-3"
                   style={{
-                    background: BRAND.gold + "11",
+                    background: "#fff",
                     border: `1px solid ${BRAND.gold}`,
                     color: BRAND.black,
                   }}
