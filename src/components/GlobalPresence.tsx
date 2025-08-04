@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
-import { MapPin, Globe, ExternalLink } from 'lucide-react';
+import { Globe, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { AspectRatio } from "@/components/ui/aspect-ratio";
+
+const GOLD = "#cfae4c";   // Sampled from your logo
+const BLUE = "#2172c9";   // Sampled from your logo
 
 const GlobalPresence = () => {
   const locations = [
@@ -27,7 +29,8 @@ const GlobalPresence = () => {
       whileInView="visible"
       viewport={{ once: true, amount: 0.2 }}
       variants={containerVariants}
-      className="bg-black text-white py-8 px-0"
+      className="py-8 px-0"
+      style={{ background: "#fff" }} // White background like your logo
     >
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
@@ -42,12 +45,14 @@ const GlobalPresence = () => {
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
             >
-              <Globe className="h-10 w-10 text-red-600" />
+              <Globe className="h-10 w-10" style={{ color: BLUE }} />
             </motion.div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white">Global Presence</h2>
+            <h2 className="text-3xl md:text-4xl font-bold" style={{ color: BLUE }}>
+              Global Presence
+            </h2>
           </motion.div>
-          <div className="w-24 h-1 bg-red-600 mx-auto mb-4"></div>
-          <p className="text-white/80 max-w-2xl mx-auto text-lg md:text-xl">
+          <div className="w-24 h-1 mx-auto mb-4" style={{ background: GOLD }}></div>
+          <p className="max-w-2xl mx-auto text-lg md:text-xl" style={{ color: BLUE }}>
             Our logistics network spans across continents, enabling seamless global shipping solutions.
           </p>
         </div>
@@ -65,9 +70,15 @@ const GlobalPresence = () => {
               whileTap={{ scale: 0.98 }}
               animate={{ opacity: [1, 0.5, 1] }}
               transition={{ repeat: Infinity, duration: 1.5 }}
-              className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white text-lg font-bold rounded-lg shadow-lg transition-all duration-300 px-6 py-3"
+              className="inline-flex items-center gap-2 font-bold rounded-lg shadow-lg transition-all duration-300 px-6 py-3"
+              style={{
+                background: BLUE,
+                color: "#fff",
+                border: `2px solid ${GOLD}`,
+                fontSize: "1.25rem",
+              }}
             >
-              Explore Our Global Network <ExternalLink size={20} />
+              Explore Our Global Network <ExternalLink size={20} style={{ color: GOLD }} />
             </motion.button>
           </Link>
         </motion.div>
