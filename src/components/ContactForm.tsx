@@ -15,11 +15,8 @@ import { useLocation } from "react-router-dom";
 
 // BRAND COLORS
 const BRAND = {
-  blue: "#588cc6",        // Primary
-  grayBlue: "#5b7c81",    // Secondary
-  cream: "#d3d9bf",       // Accent / background
-  lightBlueGray: "#a0b0ad",
-  mutedGray: "#8b9692",
+  gold: "#c0a064",
+  blue: "#588cc6",
 };
 
 const allOffices = {
@@ -132,7 +129,7 @@ const ContactForm = () => {
     <section
       className="py-16"
       style={{
-        background: `linear-gradient(to bottom, ${BRAND.cream} 0%, #fff 100%)`,
+        background: `linear-gradient(to bottom, ${BRAND.gold}0A 0%, #fff 100%)`,
       }}
       id="contact"
     >
@@ -152,9 +149,9 @@ const ContactForm = () => {
           </h2>
           <div
             className="w-24 h-1 mx-auto mb-4"
-            style={{ background: BRAND.blue }}
+            style={{ background: BRAND.gold }}
           />
-          <p className="max-w-2xl mx-auto text-lg" style={{ color: BRAND.grayBlue }}>
+          <p className="max-w-2xl mx-auto text-lg" style={{ color: BRAND.blue }}>
             Ready to streamline your logistics? Contact us today for a customized solution.
           </p>
         </motion.div>
@@ -166,7 +163,7 @@ const ContactForm = () => {
               className="text-2xl font-bold mb-4 flex items-center gap-2"
               style={{ color: BRAND.blue }}
             >
-              <Building2 className="w-6 h-6" style={{ color: BRAND.grayBlue }} /> Our Offices
+              <Building2 className="w-6 h-6" style={{ color: BRAND.gold }} /> Our Offices
             </h3>
             {(currentOffices.length > 0 ? currentOffices : []).map((office, idx) => (
               <motion.div
@@ -177,8 +174,8 @@ const ContactForm = () => {
                 viewport={{ once: true }}
                 className="p-6 rounded-xl shadow-lg"
                 style={{
-                  border: `2px solid ${BRAND.blue}`,
-                  background: BRAND.cream,
+                  border: `2px solid ${BRAND.gold}`,
+                  background: "#fff",
                 }}
               >
                 <h4
@@ -187,25 +184,25 @@ const ContactForm = () => {
                 >
                   <span
                     className="w-3 h-3 rounded-full"
-                    style={{ background: BRAND.grayBlue }}
+                    style={{ background: BRAND.gold }}
                   />
                   {office.name}
                 </h4>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5" style={{ color: BRAND.blue }} />
-                    <p className="text-sm" style={{ color: BRAND.grayBlue }}>
+                    <MapPin className="w-5 h-5" style={{ color: BRAND.gold }} />
+                    <p className="text-sm" style={{ color: BRAND.blue }}>
                       {office.address}
                     </p>
                   </div>
                   {office.phones &&
                     office.phones.map((phone, i) => (
                       <div key={i} className="flex items-center gap-3">
-                        <Phone className="w-5 h-5" style={{ color: BRAND.blue }} />
+                        <Phone className="w-5 h-5" style={{ color: BRAND.gold }} />
                         <a
                           href={`tel:${phone.replace(/[^+\d]/g, "")}`}
                           className="text-sm hover:underline"
-                          style={{ color: BRAND.grayBlue }}
+                          style={{ color: BRAND.blue }}
                         >
                           {phone}
                         </a>
@@ -214,11 +211,11 @@ const ContactForm = () => {
                   {office.emails &&
                     office.emails.map((email, i) => (
                       <div key={i} className="flex items-center gap-3">
-                        <Mail className="w-5 h-5" style={{ color: BRAND.blue }} />
+                        <Mail className="w-5 h-5" style={{ color: BRAND.gold }} />
                         <a
                           href={`mailto:${email}`}
                           className="text-sm hover:underline"
-                          style={{ color: BRAND.grayBlue }}
+                          style={{ color: BRAND.blue }}
                         >
                           {email}
                         </a>
@@ -237,7 +234,7 @@ const ContactForm = () => {
             viewport={{ once: true }}
             className="p-8 rounded-2xl shadow-xl border"
             style={{
-              borderColor: BRAND.cream,
+              borderColor: BRAND.gold,
               background: "#fff",
             }}
           >
@@ -247,7 +244,7 @@ const ContactForm = () => {
             >
               Send us a Message
             </h3>
-            <p className="mb-6" style={{ color: BRAND.grayBlue }}>
+            <p className="mb-6" style={{ color: BRAND.blue }}>
               Fill out the form below and we'll get back to you within 24 hours.
             </p>
 
@@ -259,33 +256,33 @@ const ContactForm = () => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium" style={{ color: BRAND.grayBlue }}>First Name *</label>
+                  <label className="text-sm font-medium" style={{ color: BRAND.blue }}>First Name *</label>
                   <Input placeholder="Enter your first name" name="First Name" required />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium" style={{ color: BRAND.grayBlue }}>Last Name *</label>
+                  <label className="text-sm font-medium" style={{ color: BRAND.blue }}>Last Name *</label>
                   <Input placeholder="Enter your last name" name="Last Name" required />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-sm font-medium" style={{ color: BRAND.grayBlue }}>Email Address *</label>
+                  <label className="text-sm font-medium" style={{ color: BRAND.blue }}>Email Address *</label>
                   <Input type="email" name="Email" placeholder="Enter your email" required />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-sm font-medium" style={{ color: BRAND.grayBlue }}>Phone Number</label>
+                  <label className="text-sm font-medium" style={{ color: BRAND.blue }}>Phone Number</label>
                   <Input name="Phone" placeholder="Enter your phone number" />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium" style={{ color: BRAND.grayBlue }}>Company/Organization</label>
+                <label className="text-sm font-medium" style={{ color: BRAND.blue }}>Company/Organization</label>
                 <Input name="Organization" placeholder="Enter your company name" />
               </div>
 
-              <div className="space-y-2 max-w-md mx-auto p-4 rounded-lg shadow" style={{ background: BRAND.cream }}>
-                <label className="text-sm font-medium" style={{ color: BRAND.grayBlue }}>Preferred Office Location</label>
+              <div className="space-y-2 max-w-md mx-auto p-4 rounded-lg shadow" style={{ background: BRAND.gold + "22" }}>
+                <label className="text-sm font-medium" style={{ color: BRAND.blue }}>Preferred Office Location</label>
                 <Select value={selectedLocation} onValueChange={setSelectedLocation}>
                   <SelectTrigger>
                     <SelectValue placeholder="Select office location" />
@@ -299,7 +296,7 @@ const ContactForm = () => {
               </div>
 
               <div className="space-y-2">
-                <label className="text-sm font-medium" style={{ color: BRAND.grayBlue }}>Message *</label>
+                <label className="text-sm font-medium" style={{ color: BRAND.blue }}>Message *</label>
                 <Textarea name="Message" placeholder="Tell us about your logistics needs..." required rows={5} />
               </div>
 
@@ -308,13 +305,13 @@ const ContactForm = () => {
                   type="submit"
                   style={{
                     width: "100%",
-                    background: `linear-gradient(90deg, ${BRAND.blue} 0%, ${BRAND.grayBlue} 100%)`,
+                    background: `linear-gradient(90deg, ${BRAND.gold} 0%, ${BRAND.blue} 100%)`,
                     color: "#fff",
                     padding: "1.5rem 0",
                     fontSize: "1.125rem",
                     fontWeight: 600,
                     borderRadius: "1rem",
-                    boxShadow: `0 4px 14px 0 ${BRAND.cream}`,
+                    boxShadow: `0 4px 14px 0 ${BRAND.gold}44`,
                   }}
                 >
                   <Send className="w-5 h-5 mr-2" />
@@ -329,12 +326,12 @@ const ContactForm = () => {
                   exit={{ opacity: 0, y: -10 }}
                   className="mt-6 p-4 rounded-xl shadow flex items-center gap-3"
                   style={{
-                    background: BRAND.cream,
-                    border: `1px solid ${BRAND.grayBlue}`,
-                    color: BRAND.grayBlue,
+                    background: BRAND.gold + "11",
+                    border: `1px solid ${BRAND.gold}`,
+                    color: BRAND.blue,
                   }}
                 >
-                  <CheckCircle2 className="w-5 h-5" style={{ color: BRAND.blue }} />
+                  <CheckCircle2 className="w-5 h-5" style={{ color: BRAND.gold }} />
                   <p className="text-sm md:text-base font-medium">
                     Your message has been sent successfully. We’ll get back to you soon!
                   </p>
