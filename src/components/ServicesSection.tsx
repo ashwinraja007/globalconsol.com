@@ -90,7 +90,7 @@ const ServicesSection = () => {
                 <div className="relative w-full h-56 overflow-hidden">
                   <img src={service.image} alt={service.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                  <div className="absolute top-4 right-4 kargon-blue p-2 rounded-full shadow-md">
+                  <div className="absolute top-4 right-4 blue p-2 rounded-full shadow-md">
                     <service.icon className="text-white w-5 h-5" />
                   </div>
                   
