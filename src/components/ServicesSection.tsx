@@ -93,9 +93,7 @@ const ServicesSection = () => {
                   <div className="absolute top-4 right-4 bg-red-600 p-2 rounded-full shadow-md">
                     <service.icon className="text-white w-5 h-5" />
                   </div>
-                  <div className="absolute top-4 left-4 bg-black/80 text-white px-3 py-1 rounded-full text-sm font-bold">
-                    7584
-                  </div>
+                  
                 </div>
                 <div className="p-6">
                   <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-red-600 transition-colors duration-300">
