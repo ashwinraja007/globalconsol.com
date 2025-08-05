@@ -27,7 +27,7 @@ const AirFreight = () => {
   }];
   const services = ["Express Air Freight", "Consolidated Air Cargo", "Charter Flight Services", "Door-to-Door Delivery", "Customs Clearance", "Temperature-Controlled Transport", "Hazardous Goods Handling", "Real-time Tracking"];
   return <div className="bg-white text-black min-h-screen">
-      <Navigation />
+      <Navigation className="text-slate-50" />
 
       {/* Hero Section */}
       <section className="pt-28 pb-16 relative overflow-hidden bg-gradient-to-r from-gc-dark-blue to-gc-blue">
@@ -42,12 +42,12 @@ const AirFreight = () => {
         }} transition={{
           duration: 0.8
         }} className="text-center mb-16">
-            <div className="inline-flex items-center gap-3 bg-gc-gold/20 px-6 py-3 rounded-full mb-6">
+            <div className="inline-flex items-center gap-3 bg-gc-gold/20 px-6 py-3 mb-5 mt-3 rounded-lg">
               <Plane className="w-6 h-6 text-gc-gold" />
               <span className="text-white font-semibold">Air Freight Services</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
-              Air <span className="text-gc-gold">Freight</span>
+              Air <span className="text-gc-gold text-slate-50">Freight</span>
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
               Swift and reliable air cargo solutions connecting your business to global markets
@@ -72,7 +72,9 @@ const AirFreight = () => {
           }} className="relative">
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img src="/airfreight.png" alt="Air Freight Services" className="w-full h-96 object-cover" />
-                <div className="absolute top-6 left-6 bg-gc-gold text-white px-4 py-2 rounded-full text-lg font-bold shadow-lg">As a leading air freight company, we excels in offering enhanced flexibility and global choice by collaborating with a diverse range of specialized carriers. These partners provide tailored schedules and solutions, ensuring our clients have more options to meet their specific needs.</div>
+                <div className="absolute top-6 left-6 bg-gc-gold text-white px-4 py-2 rounded-full text-lg font-bold shadow-lg">
+                  OECL Air Services
+                </div>
               </div>
             </motion.div>
 
