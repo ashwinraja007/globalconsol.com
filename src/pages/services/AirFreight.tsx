@@ -102,28 +102,7 @@ const AirFreight = () => {
           </div>
 
           {/* Features Section */}
-          <motion.div initial={{
-          opacity: 0,
-          y: 30
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          duration: 0.8
-        }} viewport={{
-          once: true
-        }} className="mb-20">
-            <h3 className="text-3xl font-bold text-gc-dark-blue text-center mb-12">Why Choose Our Air Freight Services</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {features.map((feature, index) => <div key={index} className="text-center p-6 bg-gradient-to-b from-gc-light-gold/10 to-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
-                  <div className="bg-gc-gold/20 p-4 rounded-full inline-block mb-4">
-                    <feature.icon className="w-8 h-8 text-gc-dark-blue" />
-                  </div>
-                  <h4 className="text-xl font-semibold text-gc-dark-blue mb-3">{feature.title}</h4>
-                  <p className="text-gray-600">{feature.description}</p>
-                </div>)}
-            </div>
-          </motion.div>
+          
 
           {/* Services List */}
           <motion.div initial={{
@@ -137,15 +116,7 @@ const AirFreight = () => {
         }} viewport={{
           once: true
         }} className="mb-20">
-            <div className="bg-gradient-to-br from-gc-dark-blue to-gc-blue text-white rounded-2xl p-12">
-              <h3 className="text-3xl font-bold mb-8 text-center">Our Air Freight Services Include</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {services.map((service, index) => <div key={index} className="flex items-center gap-3">
-                    <CheckCircle className="w-6 h-6 text-gc-gold flex-shrink-0" />
-                    <span className="text-lg">{service}</span>
-                  </div>)}
-              </div>
-            </div>
+            
           </motion.div>
 
           {/* CTA Section */}
@@ -160,8 +131,8 @@ const AirFreight = () => {
         }} viewport={{
           once: true
         }} className="text-center bg-gradient-to-r from-gc-gold to-gc-light-gold text-white p-12 rounded-2xl">
-            <h3 className="text-3xl font-bold mb-6">Ready to Ship Your Cargo?</h3>
-            <p className="text-xl mb-8 opacity-90">Get a quick consultation and our experts are here to help you out</p>
+            <h3 className="text-3xl font-bold mb-6 text-slate-950">Ready to Ship Your Cargo?</h3>
+            <p className="text-xl mb-8 opacity-90 text-slate-950">Get a quick consultation and our experts are here to help you out</p>
             <Link to="/contact">
               <button className="bg-white text-gc-dark-blue px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 text-lg">
                 Get Quote Now
