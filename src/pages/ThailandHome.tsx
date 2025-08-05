@@ -48,7 +48,6 @@ const ThailandHome = () => {
       <StatsSection />
       <TestimonialsSection />
       <GlobalPresence />
-      <UpdatesSection />
       <ContactForm />
       <Footer />
     </div>
