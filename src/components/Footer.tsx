@@ -136,8 +136,8 @@ const Footer = () => {
             className="flex flex-col items-start"
           >
             <div className="mb-4">
-              <img src="/lovable-uploads/20993204-fabd-4185-9d91-56a1fde324dc.png" alt="GC Logo" className="h-16 w-auto object-contain mb-2" loading="lazy" />
-              <img src="/oecl.png" alt="OECL Logo" className="h-12 w-auto object-contain" loading="lazy" />
+              <img src="/logo.png" alt="GC Logo" className="h-16 w-auto object-contain mb-2" loading="lazy" />
+              <img src="/lovable-uploads/a2513c1d-2708-4143-a69b-fa65a1d4d1f2.png" alt="OECL Logo" className="h-12 w-auto object-contain" loading="lazy" />
             </div>
             <p className="text-sm md:text-base text-white/80 max-w-xs text-left leading-relaxed">
               At OECL, we are proud to be one of Singapore's leading logistics companies. We offer specialized divisions in warehousing, forwarding (air and ocean), and transportation. Our mission is to deliver comprehensive end-to-end solutions in global freight forwarding.
