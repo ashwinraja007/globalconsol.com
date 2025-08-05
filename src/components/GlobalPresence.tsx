@@ -127,7 +127,6 @@ const GlobalPresence = () => {
           background: BLUE
         }}></div>
           <p style={{
-          color: BLUE
         }} className="max-w-2xl mx-auto text-lg md:text-xl text-gray-950">
             Our logistics network spans across continents, enabling seamless global shipping solutions.
           </p>
