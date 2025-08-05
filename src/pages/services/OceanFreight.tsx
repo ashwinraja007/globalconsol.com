@@ -13,7 +13,7 @@ const OceanFreight = () => {
 
       {/* Hero Section */}
       <section className="pt-28 pb-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-transparent"></div>
         <div className="container mx-auto px-4 relative">
           <motion.div initial={{
           opacity: 0,
@@ -29,7 +29,7 @@ const OceanFreight = () => {
               <span className="font-semibold text-slate-50">Ocean Freight Services</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              Ocean Freight <span className="text-red-500">Solutions</span>
+              Ocean Freight <span className="text-blue-500">Solutions</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Cost-effective sea cargo services for your bulk shipments with reliable scheduling
@@ -63,7 +63,7 @@ const OceanFreight = () => {
             duration: 0.8,
             delay: 0.4
           }} className="space-y-6">
-              <h2 className="text-3xl font-bold text-red-500">Comprehensive Ocean Freight</h2>
+              <h2 className="text-3xl font-bold text-blue-500">Comprehensive Ocean Freight</h2>
               <p className="text-gray-700 text-lg leading-relaxed mb-4">
                 OECL has own fleet of containers including special equipment's to accommodate special requirements of customers and specializes in many trade lanes. 
                 Being sea freight professionals with vast experience in the field helps to match frequent sailing and flexible service options.
@@ -92,8 +92,8 @@ const OceanFreight = () => {
           delay: 0.4
         }} viewport={{
           once: true
-        }} className="p-6 md:p-8 rounded-2xl shadow-lg border-l-4 border-red-500 bg-slate-200">
-            <h3 className="text-xl md:text-2xl font-bold text-red-500 mb-4 text-center">FCL Services</h3>
+        }} className="p-6 md:p-8 rounded-2xl shadow-lg border-l-4 border-blue-500 bg-slate-200">
+            <h3 className="text-xl md:text-2xl font-bold text-blue-500 mb-4 text-center">FCL Services</h3>
             <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4">
               FCL is the most optimized container shipping way regarding cost, volume and weight of the cargo.
               We take special care at each step of the process which involves fixing contract pricing with carriers, reserving space, make booking, picking up empty container at the container depot,
@@ -116,8 +116,8 @@ const OceanFreight = () => {
           delay: 0.4
         }} viewport={{
           once: true
-        }} className="p-6 md:p-8 rounded-2xl shadow-lg border-l-4 border-red-500 bg-slate-200">
-            <h3 className="text-xl md:text-2xl font-bold text-red-500 mb-4 text-center">LCL Services</h3>
+        }} className="p-6 md:p-8 rounded-2xl shadow-lg border-l-4 border-blue-500 bg-slate-200">
+            <h3 className="text-xl md:text-2xl font-bold text-blue-500 mb-4 text-center">LCL Services</h3>
             <p className="text-gray-700 text-base md:text-lg leading-relaxed">
               OECL operate own consolidation service on many trade routes.
               With its vast network of consolidators, the company is able to provide competitive price with multiple options of sailing.
@@ -140,8 +140,8 @@ const OceanFreight = () => {
       delay: 0.6
     }} viewport={{
       once: true
-    }} className="text-center bg-gradient-to-r from-red-50 to-red-100 p-6 md:p-8 rounded-2xl border border-red-200 shadow-md mx-4 md:mx-auto max-w-4xl mb-12">
-        <p className="text-red-700 text-base md:text-lg font-semibold">
+    }} className="text-center bg-gradient-to-r from-blue-50 to-blue-100 p-6 md:p-8 rounded-2xl border border-blue-200 shadow-md mx-4 md:mx-auto max-w-4xl mb-12">
+        <p className="text-blue-700 text-base md:text-lg font-semibold">
           OECL Provide complete transparency of all the pricing at the origin, destination and ocean freight charges.
         </p>
       </motion.div>
