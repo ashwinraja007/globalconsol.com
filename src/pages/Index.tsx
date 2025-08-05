@@ -63,11 +63,9 @@ const Index = () => {
       <ServicesCards />
       <AboutSection />
       <VisionMissionSection />
-      <WhatMakesUsUniqueSection />
       <ServicesSection />
       <WorkflowSection />
       <GlobalPresence />
-      <UpdatesSection />
       <ContactForm />
       <Footer />
     </div>
