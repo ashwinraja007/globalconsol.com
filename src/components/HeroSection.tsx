@@ -27,36 +27,36 @@ const HeroSection = () => {
   }, {
     url: "/h4.png",
     title: "MULTIPLE CARRIER OPTION",
-    description: "Assured space with contracted rates to major trade routes .",
+    description: "Assublue space with contracted rates to major trade routes .",
     gradient: ""
   }];
   const portalLinks = [{
     icon: <Users className="w-4 h-4" />,
     title: "Customer Portal",
     onClick: () => setIsCustomerPortalOpen(true),
-    color: "from-red-500 to-red-700",
-    hoverColor: "from-red-600 to-red-800"
+    color: "from-blue-500 to-blue-700",
+    hoverColor: "from-blue-600 to-blue-800"
   }, {
     icon: <UserCircle className="w-4 h-4" />,
     title: "Partner Portal",
     url: "https://pp.onlinetracking.co/auth/login/2",
     external: true,
-    color: "from-red-500 to-red-700",
-    hoverColor: "from-red-600 to-red-800"
+    color: "from-blue-500 to-blue-700",
+    hoverColor: "from-blue-600 to-blue-800"
   }, {
     icon: <SearchCode className="w-4 h-4" />,
     title: "Tracking",
     url: "http://ec2-13-229-38-56.ap-southeast-1.compute.amazonaws.com:8081/ords/f?p=107:102:::::P0_GROUP_RID:55",
     external: true,
-    color: "from-red-500 to-red-700",
-    hoverColor: "from-red-600 to-red-800"
+    color: "from-blue-500 to-blue-700",
+    hoverColor: "from-blue-600 to-blue-800"
   }, {
     icon: <Ship className="w-4 h-4" />,
     title: "Sailing Schedule",
     url: "http://ec2-13-229-38-56.ap-southeast-1.compute.amazonaws.com:8081/ords/f?p=107:104:::::P0_GROUP_RID:55",
     external: true,
-    color: "from-red-500 to-red-700",
-    hoverColor: "from-red-600 to-red-800"
+    color: "from-blue-500 to-blue-700",
+    hoverColor: "from-blue-600 to-blue-800"
   }];
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 300);
@@ -121,7 +121,7 @@ const HeroSection = () => {
           {/* CTA Button */}
           <div className={`flex flex-col sm:flex-row gap-4 transform transition-all duration-1000 delay-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
             <Link to="/contact" className="group hidden md:block">
-              <button className="relative overflow-hidden bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-xl px-8 py-4 text-lg font-semibold flex items-center gap-3 shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-red-500/30 border border-red-500/30">
+              <button className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl px-8 py-4 text-lg font-semibold flex items-center gap-3 shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-blue-500/30 border border-blue-500/30">
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 <Zap className="w-5 h-5" />
                 <span>GET STARTED</span>
@@ -132,7 +132,7 @@ const HeroSection = () => {
 
           {/* Slide Indicators */}
           <div className="flex space-x-2 pt-4">
-            {sliderImages.map((_, i) => <button key={i} onClick={() => setActiveSlide(i)} className={`w-3 h-3 rounded-full transition-all duration-300 ${activeSlide === i ? "bg-red-500 scale-125 shadow-lg shadow-red-500/50" : "bg-white/30 hover:bg-white/50"}`} />)}
+            {sliderImages.map((_, i) => <button key={i} onClick={() => setActiveSlide(i)} className={`w-3 h-3 rounded-full transition-all duration-300 ${activeSlide === i ? "bg-blue-500 scale-125 shadow-lg shadow-blue-500/50" : "bg-white/30 hover:bg-white/50"}`} />)}
           </div>
         </div>
       </div>
@@ -176,7 +176,7 @@ const HeroSection = () => {
       {/* Enhanced Modal - Fixed z-index issue */}
       {isCustomerPortalOpen && <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-300">
           <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl border border-gray-200 animate-in slide-in-from-bottom duration-500">
-            <div className="bg-gradient-to-r from-red-600 to-red-700 p-6">
+            <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-6">
               <div className="flex justify-between items-center">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-white/20 rounded-lg">
@@ -193,7 +193,7 @@ const HeroSection = () => {
             <div className="p-6 overflow-y-auto">
               <div className="space-y-6">
                 <div className="flex items-center gap-2 mb-4">
-                  <Play className="w-5 h-5 text-red-600" />
+                  <Play className="w-5 h-5 text-blue-600" />
                   <h3 className="text-xl font-semibold text-gray-800">Tutorial Videos</h3>
                 </div>
                 
@@ -206,7 +206,7 @@ const HeroSection = () => {
                 src: "/OECL_ad.mp4",
                 label: "Advanced Features",
                 duration: "7:45"
-              }].map((video, i) => <div key={i} className="group border-2 border-gray-200 rounded-xl overflow-hidden bg-gray-50 hover:border-red-300 transition-all duration-300 hover:shadow-lg">
+              }].map((video, i) => <div key={i} className="group border-2 border-gray-200 rounded-xl overflow-hidden bg-gray-50 hover:border-blue-300 transition-all duration-300 hover:shadow-lg">
                       <div className="aspect-video relative">
                         <video controls className="w-full h-full object-cover" poster={`/video-thumbnail-${i + 1}.jpg`}>
                           <source src={video.src} type="video/mp4" />
@@ -217,7 +217,7 @@ const HeroSection = () => {
                         </div>
                       </div>
                       <div className="p-4">
-                        <h4 className="font-semibold text-gray-800 group-hover:text-red-600 transition-colors">
+                        <h4 className="font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
                           {video.label}
                         </h4>
                         <p className="text-sm text-gray-600 mt-1">
@@ -233,7 +233,7 @@ const HeroSection = () => {
                   Close
                 </button>
                 <a href="https://consolmate.com/auth/login/1" target="_blank" rel="noopener noreferrer">
-                  <button className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-lg font-medium flex items-center gap-2 justify-center transition-all duration-300 shadow-lg hover:shadow-xl">
+                  <button className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg font-medium flex items-center gap-2 justify-center transition-all duration-300 shadow-lg hover:shadow-xl">
                     <span>Login to Portal</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
