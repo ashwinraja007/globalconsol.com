@@ -27,7 +27,7 @@ const AirFreight = () => {
   }];
   const services = ["Express Air Freight", "Consolidated Air Cargo", "Charter Flight Services", "Door-to-Door Delivery", "Customs Clearance", "Temperature-Controlled Transport", "Hazardous Goods Handling", "Real-time Tracking"];
   return <div className="bg-white text-black min-h-screen">
-      <Navigation />
+      <Navigation className="text-slate-50" />
 
       {/* Hero Section */}
       <section className="pt-28 pb-16 relative overflow-hidden bg-gradient-to-r from-gc-dark-blue to-gc-blue">
@@ -42,12 +42,12 @@ const AirFreight = () => {
         }} transition={{
           duration: 0.8
         }} className="text-center mb-16">
-            <div className="inline-flex items-center gap-3 bg-gc-gold/20 px-6 py-3 rounded-full mb-6">
+            <div className="inline-flex items-center gap-3 bg-gc-gold/20 px-6 py-3 mb-5 mt-3 rounded-lg">
               <Plane className="w-6 h-6 text-gc-gold" />
               <span className="text-white font-semibold">Air Freight Services</span>
             </div>
             <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white">
-              Air <span className="text-gc-gold">Freight</span>
+              Air <span className="text-gc-gold text-slate-50">Freight</span>
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
               Swift and reliable air cargo solutions connecting your business to global markets
@@ -72,7 +72,9 @@ const AirFreight = () => {
           }} className="relative">
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img src="/airfreight.png" alt="Air Freight Services" className="w-full h-96 object-cover" />
-                <div className="absolute top-6 left-6 bg-gc-gold text-white px-4 py-2 rounded-full text-lg font-bold shadow-lg">As a leading air freight company, We excels in offering enhanced flexibility and global choice by collaborating with a diverse range of specialized carriers. These partners provide tailored schedules and solutions, ensuring our clients have more options to meet their specific needs.</div>
+                <div className="absolute top-6 left-6 bg-gc-gold text-white px-4 py-2 rounded-full text-lg font-bold shadow-lg">
+                  OECL Air Services
+                </div>
               </div>
             </motion.div>
 
@@ -87,7 +89,9 @@ const AirFreight = () => {
             delay: 0.4
           }} className="space-y-6">
               <h2 className="text-4xl font-bold text-gc-dark-blue">Leading Air Freight Solutions</h2>
-              
+              <p className="text-gray-700 text-lg leading-relaxed">
+                As a leading air freight company, OECL excels in offering enhanced flexibility and global choice by collaborating with a diverse range of specialized carriers. These partners provide tailored schedules and solutions, ensuring our clients have more options to meet their specific needs.
+              </p>
               <p className="text-gray-700 text-lg leading-relaxed">
                 Our Directors and Managers actively engage with our team members, fostering a hands-on approach to deliver a seamlessly integrated and highly professional service. Through our extensive worldwide network, we have established a swift and efficient airfreight solution that enables the expedited and cost-effective movement of cargo to and from international markets.
               </p>
@@ -122,7 +126,27 @@ const AirFreight = () => {
           </motion.div>
 
           {/* Services List */}
-          
+          <motion.div initial={{
+          opacity: 0,
+          y: 30
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.8
+        }} viewport={{
+          once: true
+        }} className="mb-20">
+            <div className="bg-gradient-to-br from-gc-dark-blue to-gc-blue text-white rounded-2xl p-12">
+              <h3 className="text-3xl font-bold mb-8 text-center">Our Air Freight Services Include</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {services.map((service, index) => <div key={index} className="flex items-center gap-3">
+                    <CheckCircle className="w-6 h-6 text-gc-gold flex-shrink-0" />
+                    <span className="text-lg">{service}</span>
+                  </div>)}
+              </div>
+            </div>
+          </motion.div>
 
           {/* CTA Section */}
           <motion.div initial={{
