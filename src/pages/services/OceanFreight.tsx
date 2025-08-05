@@ -121,20 +121,7 @@ const OceanFreight = () => {
       </section>
 
       {/* Transparency Message */}
-      <motion.div initial={{
-      opacity: 0,
-      y: 30
-    }} whileInView={{
-      opacity: 1,
-      y: 0
-    }} transition={{
-      duration: 0.8,
-      delay: 0.6
-    }} viewport={{
-      once: true
-    }} className="text-center bg-gradient-to-r from-blue-50 to-blue-100 p-6 md:p-8 rounded-2xl border border-blue-200 shadow-md mx-4 md:mx-auto max-w-4xl mb-12">
       
-      </motion.div>
 
       {/* Footer */}
       <Footer />
