@@ -94,6 +94,7 @@ function App() {
             <Routes>
               {/* Home routes */}
               <Route path="/" element={<Index />} />
+              <Route path="/home" element={<Index />} />
               <Route path="/sri-lanka/home" element={<SriLankaHome />} />
               <Route path="/myanmar/home" element={<MyanmarHome />} />
               <Route path="/bangladesh/home" element={<BangladeshHome />} />
@@ -105,6 +106,7 @@ function App() {
               <Route path="/global-presence" element={<GlobalPresence />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/blog" element={<Blog />} />
+              <Route path="/blogs" element={<Blog />} />
               <Route path="/blog/:slug" element={<NewsDetailPage />} />
               <Route path="/news" element={<NewsOverviewPage />} />
               <Route path="/projects" element={<Projects />} />
@@ -116,8 +118,12 @@ function App() {
                 <React.Fragment key={country}>
                   <Route path={`/${country}/contact`} element={<Contact />} />
                   <Route path={`/${country}/about-us`} element={<AboutUs />} />
+                  <Route path={`/${country}/services`} element={<Services />} />
                   <Route path={`/${country}/blog`} element={<Blog />} />
+                  <Route path={`/${country}/blogs`} element={<Blog />} />
                   <Route path={`/${country}/blog/:slug`} element={<NewsDetailPage />} />
+                  <Route path={`/${country}/global-presence`} element={<GlobalPresence />} />
+                  <Route path={`/${country}/projects`} element={<Projects />} />
                 </React.Fragment>
               ))}
 

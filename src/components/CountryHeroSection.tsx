@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Users, UserCircle, SearchCode, Ship, Calendar, ArrowRight, Play, Zap } from "lucide-react";
+import { useLocation } from "react-router-dom";
+
 interface HeroSectionProps {
   country?: 'sri-lanka' | 'myanmar' | 'bangladesh' | 'pakistan';
 }
-const HeroSection = ({
-  country
-}: HeroSectionProps) => {
+
+const HeroSection = ({ country }: HeroSectionProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [activeSlide, setActiveSlide] = useState(0);
   const [isCustomerPortalOpen, setIsCustomerPortalOpen] = useState(false);
-  const [mousePosition, setMousePosition] = useState({
-    x: 0,
-    y: 0
-  });
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const location = useLocation();
 
   // Country-specific content
   const countryContent = {
@@ -109,6 +108,7 @@ const HeroSection = ({
       }]
     }
   };
+
   const defaultImages = [{
     url: "/h1.png",
     title: "OECL",
@@ -130,7 +130,9 @@ const HeroSection = ({
     description: "Assublue space with contracted rates to major trade routes .",
     gradient: ""
   }];
+
   const sliderImages = country ? countryContent[country].images : defaultImages;
+  
   const portalLinks = [{
     icon: <Users className="w-4 h-4" />,
     title: "Customer Portal",
@@ -159,69 +161,105 @@ const HeroSection = ({
     color: "from-blue-500 to-blue-700",
     hoverColor: "from-blue-600 to-blue-800"
   }];
+
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 300);
     return () => clearTimeout(timer);
   }, []);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveSlide(prev => (prev + 1) % sliderImages.length);
     }, 6000);
     return () => clearInterval(interval);
   }, [sliderImages.length]);
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: e.clientX,
-        y: e.clientY
-      });
+      setMousePosition({ x: e.clientX, y: e.clientY });
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
+
   const currentSlide = sliderImages[activeSlide];
-  return <section className="relative min-h-screen overflow-hidden bg-black text-white">
+
+  // Get the contact URL based on country
+  const getContactUrl = () => {
+    if (country) {
+      return `/${country}/contact`;
+    }
+    return "/contact";
+  };
+
+  return (
+    <section className="relative min-h-screen overflow-hidden bg-black text-white">
       {/* Animated Background Particles */}
       <div className="absolute inset-0 z-0">
-        {[...Array(50)].map((_, i) => <div key={i} className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse" style={{
-        left: `${Math.random() * 100}%`,
-        top: `${Math.random() * 100}%`,
-        animationDelay: `${Math.random() * 3}s`,
-        animationDuration: `${2 + Math.random() * 3}s`
-      }} />)}
+        {[...Array(50)].map((_, i) => (
+          <div 
+            key={i} 
+            className="absolute w-1 h-1 bg-white/20 rounded-full animate-pulse" 
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${2 + Math.random() * 3}s`
+            }} 
+          />
+        ))}
       </div>
 
       {/* Background Slider */}
       <div className="absolute inset-0 z-10 overflow-hidden">
-        {sliderImages.map((slide, i) => <div key={i} className={`absolute inset-0 transition-all duration-2000 ease-in-out ${activeSlide === i ? "opacity-100 scale-100" : "opacity-0 scale-105"}`} style={{
-        zIndex: activeSlide === i ? 1 : 0
-      }}>
-            <img src={slide.url} alt={`Slide ${i}`} className="w-full h-full object-cover transition-transform duration-2000" loading={i === 0 ? "eager" : "lazy"} />
+        {sliderImages.map((slide, i) => (
+          <div 
+            key={i} 
+            className={`absolute inset-0 transition-all duration-2000 ease-in-out ${
+              activeSlide === i ? "opacity-100 scale-100" : "opacity-0 scale-105"
+            }`} 
+            style={{ zIndex: activeSlide === i ? 1 : 0 }}
+          >
+            <img 
+              src={slide.url} 
+              alt={`Slide ${i}`} 
+              className="w-full h-full object-cover transition-transform duration-2000" 
+              loading={i === 0 ? "eager" : "lazy"} 
+            />
             <div className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} z-[1]`} />
-          </div>)}
+          </div>
+        ))}
         <div className="absolute inset-0 bg-black/40 z-[2]" />
       </div>
 
       {/* Main Content */}
       <div className="relative z-20 flex items-center min-h-screen px-6 lg:px-12">
-  <div className="max-w-4xl space-y-8 px-0 py-0 mx-auto lg:mx-0 lg:ml-20 lg:text-left text-center w-full">
+        <div className="max-w-4xl space-y-8 px-0 py-0 mx-auto lg:mx-0 lg:ml-20 lg:text-left text-center w-full">
           {/* Title */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
-            {currentSlide.title.split(" ").map((word, i) => <span key={i} style={{
-            animationDelay: `${i * 0.1}s`
-          }} className="text-slate-50 font-bold text-4xl">
+            {currentSlide.title.split(" ").map((word, i) => (
+              <span 
+                key={i} 
+                style={{ animationDelay: `${i * 0.1}s` }} 
+                className="text-slate-50 font-bold text-4xl"
+              >
                 {word}{" "}
-              </span>)}
+              </span>
+            ))}
           </h1>
 
           {/* Description */}
-          <p className={`text-xl md:text-2xl text-gray-200 max-w-2xl leading-relaxed transform transition-all duration-1000 delay-500 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
+          <p className={`text-xl md:text-2xl text-gray-200 max-w-2xl leading-relaxed transform transition-all duration-1000 delay-500 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}>
             {currentSlide.description}
           </p>
 
           {/* CTA Button */}
-          <div className={`flex flex-col sm:flex-row gap-4 transform transition-all duration-1000 delay-700 ${isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"}`}>
-            <a href="/contact" className="group hidden md:block">
+          <div className={`flex flex-col sm:flex-row gap-4 transform transition-all duration-1000 delay-700 ${
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+          }`}>
+            <a href={getContactUrl()} className="group hidden md:block">
               <button className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl px-8 py-4 text-lg font-semibold flex items-center gap-3 shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-blue-500/30 border border-blue-500/30 bg-kargon-blue">
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                 <Zap className="w-5 h-5" />
@@ -233,17 +271,30 @@ const HeroSection = ({
 
           {/* Slide Indicators */}
           <div className="flex space-x-2 pt-4">
-            {sliderImages.map((_, i) => <button key={i} onClick={() => setActiveSlide(i)} className={`w-3 h-3 rounded-full transition-all duration-300 ${activeSlide === i ? "bg-blue-500 scale-125 shadow-lg shadow-blue-500/50" : "bg-white/30 hover:bg-white/50"}`} />)}
+            {sliderImages.map((_, i) => (
+              <button 
+                key={i} 
+                onClick={() => setActiveSlide(i)} 
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  activeSlide === i 
+                    ? "bg-blue-500 scale-125 shadow-lg shadow-blue-500/50" 
+                    : "bg-white/30 hover:bg-white/50"
+                }`} 
+              />
+            ))}
           </div>
         </div>
       </div>
 
       {/* Enhanced Portal Buttons - Made smaller and responsive */}
       <div className="absolute bottom-6 left-0 right-0 z-30 px-4">
-        <div className={`max-w-7xl mx-auto transition-all duration-1000 delay-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}>
+        <div className={`max-w-7xl mx-auto transition-all duration-1000 delay-1000 ${
+          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+        }`}>
           <div className="grid grid-cols-4 gap-1 sm:gap-2">
             {portalLinks.map((link, index) => {
-            const ButtonContent = <div className="group relative overflow-hidden w-full h-14 sm:h-16 md:h-18 flex flex-col gap-1 items-center justify-center text-xs transition-all duration-300 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 hover:-translate-y-1">
+              const ButtonContent = (
+                <div className="group relative overflow-hidden w-full h-14 sm:h-16 md:h-18 flex flex-col gap-1 items-center justify-center text-xs transition-all duration-300 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 hover:-translate-y-1">
                   <div className={`absolute inset-0 bg-gradient-to-br ${link.color} opacity-90 group-hover:opacity-100 transition-opacity`} />
                   <div className={`absolute inset-0 bg-gradient-to-br ${link.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                   <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
@@ -255,27 +306,36 @@ const HeroSection = ({
                       <div className="font-medium text-white leading-tight text-xs">{link.title}</div>
                     </div>
                   </div>
-                </div>;
-            if (link.external) {
-              return <a href={link.url} key={index} target="_blank" rel="noopener noreferrer" className="w-full">
+                </div>
+              );
+
+              if (link.external) {
+                return (
+                  <a href={link.url} key={index} target="_blank" rel="noopener noreferrer" className="w-full">
                     {ButtonContent}
-                  </a>;
-            } else if (link.onClick) {
-              return <button key={index} onClick={link.onClick} className="w-full">
+                  </a>
+                );
+              } else if (link.onClick) {
+                return (
+                  <button key={index} onClick={link.onClick} className="w-full">
                     {ButtonContent}
-                  </button>;
-            } else {
-              return <a href={link.url} key={index} className="w-full">
+                  </button>
+                );
+              } else {
+                return (
+                  <a href={link.url} key={index} className="w-full">
                     {ButtonContent}
-                  </a>;
-            }
-          })}
+                  </a>
+                );
+              }
+            })}
           </div>
         </div>
       </div>
 
       {/* Enhanced Modal - Fixed z-index issue */}
-      {isCustomerPortalOpen && <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-300">
+      {isCustomerPortalOpen && (
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-300">
           <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl border border-gray-200 animate-in slide-in-from-bottom duration-500">
             <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-6">
               <div className="flex justify-between items-center">
@@ -285,7 +345,10 @@ const HeroSection = ({
                   </div>
                   <h2 className="text-2xl font-bold text-white">Customer Portal</h2>
                 </div>
-                <button onClick={() => setIsCustomerPortalOpen(false)} className="text-white/80 hover:text-white hover:bg-white/20 rounded-full p-2 transition-all duration-200">
+                <button 
+                  onClick={() => setIsCustomerPortalOpen(false)} 
+                  className="text-white/80 hover:text-white hover:bg-white/20 rounded-full p-2 transition-all duration-200"
+                >
                   <span className="text-2xl">×</span>
                 </button>
               </div>
@@ -300,16 +363,21 @@ const HeroSection = ({
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {[{
-                src: "//OECl_Customer_Portal_Explainer.mp4",
-                label: "Getting Started",
-                duration: "5:32"
-              }, {
-                src: "/OECL_ad.mp4",
-                label: "Advanced Features",
-                duration: "7:45"
-              }].map((video, i) => <div key={i} className="group border-2 border-gray-200 rounded-xl overflow-hidden bg-gray-50 hover:border-blue-300 transition-all duration-300 hover:shadow-lg">
+                    src: "//OECl_Customer_Portal_Explainer.mp4",
+                    label: "Getting Started",
+                    duration: "5:32"
+                  }, {
+                    src: "/OECL_ad.mp4",
+                    label: "Advanced Features",
+                    duration: "7:45"
+                  }].map((video, i) => (
+                    <div key={i} className="group border-2 border-gray-200 rounded-xl overflow-hidden bg-gray-50 hover:border-blue-300 transition-all duration-300 hover:shadow-lg">
                       <div className="aspect-video relative">
-                        <video controls className="w-full h-full object-cover" poster={`/video-thumbnail-${i + 1}.jpg`}>
+                        <video 
+                          controls 
+                          className="w-full h-full object-cover" 
+                          poster={`/video-thumbnail-${i + 1}.jpg`}
+                        >
                           <source src={video.src} type="video/mp4" />
                           Your browser does not support the video tag.
                         </video>
@@ -325,12 +393,16 @@ const HeroSection = ({
                           Learn how to use the portal effectively
                         </p>
                       </div>
-                    </div>)}
+                    </div>
+                  ))}
                 </div>
               </div>
               
               <div className="mt-8 flex flex-col sm:flex-row justify-end gap-3 pt-6 border-t">
-                <button onClick={() => setIsCustomerPortalOpen(false)} className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors font-medium">
+                <button 
+                  onClick={() => setIsCustomerPortalOpen(false)} 
+                  className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors font-medium"
+                >
                   Close
                 </button>
                 <a href="https://consolmate.com/auth/login/1" target="_blank" rel="noopener noreferrer">
@@ -342,7 +414,10 @@ const HeroSection = ({
               </div>
             </div>
           </div>
-        </div>}
-    </section>;
+        </div>
+      )}
+    </section>
+  );
 };
+
 export default HeroSection;
