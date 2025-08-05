@@ -27,7 +27,7 @@ const AirFreight = () => {
   }];
   const services = ["Express Air Freight", "Consolidated Air Cargo", "Charter Flight Services", "Door-to-Door Delivery", "Customs Clearance", "Temperature-Controlled Transport", "Hazardous Goods Handling", "Real-time Tracking"];
   return <div className="bg-white text-black min-h-screen">
-      <Navigation />
+      <Navigation className="text-slate-50" />
 
       {/* Hero Section */}
       <section className="pt-28 pb-16 relative overflow-hidden bg-gradient-to-r from-gc-dark-blue to-gc-blue">
