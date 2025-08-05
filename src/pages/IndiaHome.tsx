@@ -42,7 +42,6 @@ const IndiaHome = () => {
       <Navigation />
       <CountryHeroSection country="india" />
       <TrackOrder />
-      <CountryServicesCards country="india" />
       <AboutSection />
       <ServicesSection />
       <WorkflowSection />
