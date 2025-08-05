@@ -103,7 +103,7 @@ const Services: React.FC = () => {
     slug: "air-freight"
   }, {
     id: 2,
-    title: "Ocean Freight",
+    title: "SEA Freight",
     description: "Reliable sea freight for bulk and large-volume cargo with competitive rates and comprehensive coverage.",
     icon: Ship,
     image: "/oceanfreight.png",
@@ -117,41 +117,20 @@ const Services: React.FC = () => {
     slug: "warehousing"
   }, {
     id: 4,
-    title: "Customs Clearance",
-    description: "Hassle-free customs handling and documentation support with expert regulatory compliance.",
-    icon: UserCheck,
-    image: "/customclearance.png",
-    slug: "customs-clearance"
-  }, {
-    id: 5,
-    title: "Liner Agency",
-    description: "Comprehensive support for liner shipping operations with dedicated port services.",
-    icon: Container,
-    image: "/linearagency.png",
-    slug: "liner-agency"
-  }, {
-    id: 6,
     title: "Liquid Cargo Transportation",
     description: "Safe transport of chemicals, oils, and liquids with specialized handling equipment.",
     icon: Truck,
     image: "/liquidtransportation.png",
     slug: "liquid-cargo"
   }, {
-    id: 7,
-    title: "Consolidation",
-    description: "Optimize your logistics by combining multiple shipments for cost-effective solutions.",
-    icon: Cuboid,
-    image: "/consolidation.png",
-    slug: "consolidation"
-  }, {
-    id: 8,
+    id: 5,
     title: "Project Cargo",
     description: "Handling of oversized and complex project shipments with specialized expertise.",
     icon: Container,
     image: "/projectcargo.png",
     slug: "project-cargo"
   }, {
-    id: 9,
+    id: 6,
     title: "3PL",
     description: "Third-party logistics for flexible supply chain solutions and operational efficiency.",
     icon: Cuboid,
