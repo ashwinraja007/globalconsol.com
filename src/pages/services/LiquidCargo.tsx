@@ -63,9 +63,7 @@ const LiquidCargo = () => {
             delay: 0.4
           }} className="space-y-6">
               <h2 className="text-3xl font-bold text-red-500">Liquid Cargo Transportation</h2>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                OECL provides expertise and services for carriage of liquid cargoes in ISO Tanks, Flexi Tanks and IBCs (Inter Bulk Containers).OECL provide professional, cost effective and safe transportation of liquid cargo . A well experienced dedicated team provides complete logistics management for door to door movements with complete visibility.
-              </p>
+              <p className="text-gray-700 text-lg leading-relaxed">GC specializes in delivering comprehensive expertise and services for the transportation of liquid cargoes through ISO Tanks, Flexi Tanks, and IBCs (Inter Bulk Containers). Our priority at GC is to offer professional, cost-effective, and secure transportation solutions for liquid cargo. With a highly experienced and dedicated team, we ensure efficient logistics management for seamless door-to-door movements, providing complete visibility throughout the process</p>
             </motion.div>
           </div>
         </div>
