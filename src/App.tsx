@@ -87,8 +87,8 @@ const countries = ['sri-lanka', 'myanmar', 'bangladesh', 'pakistan'];
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <Router>
+      <Router>
+        <AuthProvider>
           <CountryRedirect />
           <div className="App">
             <Routes>
@@ -175,8 +175,8 @@ function App() {
             </Routes>
           </div>
           <Toaster />
-        </Router>
-      </AuthProvider>
+        </AuthProvider>
+      </Router>
     </QueryClientProvider>
   );
 }
