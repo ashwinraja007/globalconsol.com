@@ -12,7 +12,7 @@ const ThirdPartyLogistics = () => {
       <Navigation />
 
       <section className="pt-28 pb-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-transparent"></div>
         <div className="container mx-auto px-4 relative">
           <motion.div initial={{
           opacity: 0,
@@ -23,12 +23,12 @@ const ThirdPartyLogistics = () => {
         }} transition={{
           duration: 0.8
         }} className="text-center mb-16">
-            <div className="inline-flex items-center gap-3 bg-red-600/20 px-6 py-3 rounded-full mb-6 mt-3">
-              <Box className="w-6 h-6 text-red-500" />
-              <span className="text-red-500 font-semibold">3PL Services</span>
+            <div className="inline-flex items-center gap-3 bg-blue-600/20 px-6 py-3 rounded-full mb-6 mt-3">
+              <Box className="w-6 h-6 text-blue-500" />
+              <span className="text-blue-500 font-semibold">3PL Services</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              <span className="text-red-500">3PL</span>
+              <span className="text-blue-500">3PL</span>
             </h1>
           </motion.div>
 
@@ -45,7 +45,7 @@ const ThirdPartyLogistics = () => {
           }} className="relative">
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img src="/3pl.png" alt="3PL" className="w-full h-96 object-cover" />
-                <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-lg font-bold">
+                <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-lg font-bold">
                   7584
                 </div>
               </div>
@@ -61,7 +61,7 @@ const ThirdPartyLogistics = () => {
             duration: 0.8,
             delay: 0.4
           }} className="space-y-6">
-              <h2 className="text-3xl font-bold text-red-500">3PL</h2>
+              <h2 className="text-3xl font-bold text-blue-500">3PL</h2>
               <p className="text-gray-700 text-lg leading-relaxed">
                 With our cutting-edge 3PL warehouse management system, you can optimize your business operations and implement advanced fulfillment strategies for enhanced customer satisfaction, while simultaneously minimizing expenses and delivery durations.
               </p>
@@ -79,10 +79,10 @@ const ThirdPartyLogistics = () => {
           duration: 0.8
         }} viewport={{
           once: true
-        }} className="text-center bg-gradient-to-r from-red-600 to-red-700 text-white p-12 rounded-2xl">
+        }} className="text-center bg-gradient-to-r from-blue-600 to-blue-700 text-white p-12 rounded-2xl">
             <h3 className="text-2xl font-bold mb-4">Get a quick consultation and our experts are here to help you out</h3>
             <Link to="/contact">
-              <button className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+              <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
                 Reach Us
               </button>
             </Link>
