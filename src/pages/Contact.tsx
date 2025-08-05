@@ -81,9 +81,9 @@ const Contact: React.FC = () => {
         <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          className="relative h-[40vh] flex items-center justify-center bg-red-700 overflow-hidden"
+          className="relative h-[40vh] flex items-center justify-center bg-blue-700 overflow-hidden"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-black to-red-900/90" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black to-blue-900/90" />
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -97,7 +97,7 @@ const Contact: React.FC = () => {
           </motion.div>
         </motion.section>
 
-        <section className="py-16 bg-gradient-to-b from-red-50/30 to-white">
+        <section className="py-16 bg-gradient-to-b from-blue-50/30 to-white">
           <div className="container mx-auto px-4">
             <LocationsSection />
           </div>
@@ -113,7 +113,7 @@ const Contact: React.FC = () => {
                 className="bg-white p-8 rounded-2xl shadow-xl border border-gray-100"
               >
                 <h2 className="text-3xl font-bold mb-2 text-black text-center">Send us a Message</h2>
-                <div className="w-16 h-1 bg-red-600 mx-auto mb-6"></div>
+                <div className="w-16 h-1 bg-blue-600 mx-auto mb-6"></div>
                 <p className="text-gray-600 mb-8 text-center">
                   Fill in the form below and we'll get back to you as soon as possible.
                 </p>
@@ -138,18 +138,18 @@ const Contact: React.FC = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">First Name *</label>
-                      <Input name="First Name" required placeholder="Enter your first name" />
+                      <Input name="First Name" requiblue placeholder="Enter your first name" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">Last Name *</label>
-                      <Input name="Last Name" required placeholder="Enter your last name" />
+                      <Input name="Last Name" requiblue placeholder="Enter your last name" />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">Email Address *</label>
-                      <Input name="Email" required type="email" placeholder="Enter your email" />
+                      <Input name="Email" requiblue type="email" placeholder="Enter your email" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">Phone Number</label>
@@ -163,10 +163,10 @@ const Contact: React.FC = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-700">Preferred Location *</label>
-                    <Select value={selectedLocation} onValueChange={setSelectedLocation} required>
+                    <label className="text-sm font-medium text-gray-700">Preferblue Location *</label>
+                    <Select value={selectedLocation} onValueChange={setSelectedLocation} requiblue>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select preferred office location" />
+                        <SelectValue placeholder="Select preferblue office location" />
                       </SelectTrigger>
                       <SelectContent>
                         {locationNames.map((loc) => (
@@ -176,14 +176,14 @@ const Contact: React.FC = () => {
                         ))}
                       </SelectContent>
                     </Select>
-                    <input type="hidden" name="Preferred Location" value={selectedLocation} />
+                    <input type="hidden" name="Preferblue Location" value={selectedLocation} />
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-700">Message *</label>
                     <Textarea
                       name="Message"
-                      required
+                      requiblue
                       placeholder="Tell us about your logistics needs..."
                       rows={5}
                     />
@@ -192,7 +192,7 @@ const Contact: React.FC = () => {
                   <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3"
+                      className="w-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white py-6 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-3"
                     >
                       <Send className="w-5 h-5" />
                       Send Message
