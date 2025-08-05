@@ -171,23 +171,7 @@ const Services: React.FC = () => {
         {/* Services Grid */}
         <section className="py-20 bg-gradient-to-b from-white to-gc-light-gold/10">
           <div className="container mx-auto px-4">
-            <motion.div initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} transition={{
-            duration: 0.5
-          }} viewport={{
-            once: true
-          }} className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-gc-dark-blue mb-4">Complete Service Portfolio</h2>
-              <div className="w-24 h-1 bg-gc-gold mx-auto mb-6"></div>
-              <p className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed">
-                From freight forwarding to specialized cargo handling, we deliver excellence across all logistics segments with our trusted global network.
-              </p>
-            </motion.div>
+            
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {allServices.map(service => <ServiceCard key={service.id} {...service} baseUrl={baseUrl} />)}
