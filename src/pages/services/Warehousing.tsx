@@ -1,30 +1,29 @@
-
 import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Box, Package, Database, BarChart3 } from "lucide-react";
 import { Link } from "react-router-dom";
-
 const Warehousing = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  return (
-    <div className="bg-white text-black min-h-screen">
+  return <div className="bg-white text-black min-h-screen">
       <Navigation />
 
       <section className="pt-28 pb-16 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-transparent"></div>
         <div className="container mx-auto px-4 relative">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <div className="inline-flex items-center gap-3 bg-red-600/20 px-6 py-3 rounded-full mb-6">
+          <motion.div initial={{
+          opacity: 0,
+          y: 30
+        }} animate={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.8
+        }} className="text-center mb-16">
+            <div className="inline-flex items-center gap-3 bg-red-600/20 px-6 py-3 rounded-full mb-6 mt-3">
               <Box className="w-6 h-6 text-red-500" />
               <span className="text-red-500 font-semibold">Warehousing Services</span>
             </div>
@@ -34,12 +33,16 @@ const Warehousing = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            x: -50
+          }} animate={{
+            opacity: 1,
+            x: 0
+          }} transition={{
+            duration: 0.8,
+            delay: 0.2
+          }} className="relative">
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img src="/warehousing.png" alt="Warehousing Services" className="w-full h-96 object-cover" />
                 <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-lg font-bold">
@@ -48,12 +51,16 @@ const Warehousing = () => {
               </div>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="space-y-6"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            x: 50
+          }} animate={{
+            opacity: 1,
+            x: 0
+          }} transition={{
+            duration: 0.8,
+            delay: 0.4
+          }} className="space-y-6">
               <h2 className="text-3xl font-bold text-red-500">Warehousing Solutions</h2>
               <p className="text-gray-700 text-lg leading-relaxed">
                 GC possesses the necessary resources and expertise to effectively manage the warehousing of diverse commodities, including cold storage facilities.
@@ -69,13 +76,17 @@ const Warehousing = () => {
 
           {/* Additional Content Section */}
           <div className="bg-gray-50 rounded-2xl p-8 mb-12">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="space-y-6"
-            >
+            <motion.div initial={{
+            opacity: 0,
+            y: 30
+          }} whileInView={{
+            opacity: 1,
+            y: 0
+          }} transition={{
+            duration: 0.8
+          }} viewport={{
+            once: true
+          }} className="space-y-6">
               <p className="text-gray-700 text-lg leading-relaxed">
                 An effective warehouse management system provides a competitive advantage in retail chain distribution. GC strives to understand customer needs and assists in handling their requirements in the most optimal manner. We specialize in handling the vanning and devanning of consolidated cargo, ensuring timely distribution and delivery to the respective parties, thereby ensuring complete customer satisfaction.
               </p>
@@ -86,13 +97,17 @@ const Warehousing = () => {
           </div>
 
           {/* CTA Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center bg-gradient-to-r from-red-600 to-red-700 text-white p-12 rounded-2xl"
-          >
+          <motion.div initial={{
+          opacity: 0,
+          y: 30
+        }} whileInView={{
+          opacity: 1,
+          y: 0
+        }} transition={{
+          duration: 0.8
+        }} viewport={{
+          once: true
+        }} className="text-center bg-gradient-to-r from-red-600 to-red-700 text-white p-12 rounded-2xl">
             <h3 className="text-2xl font-bold mb-4">Get a quick consultation and our experts are here to help you out</h3>
             <Link to="/contact">
               <button className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
@@ -104,8 +119,6 @@ const Warehousing = () => {
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Warehousing;
