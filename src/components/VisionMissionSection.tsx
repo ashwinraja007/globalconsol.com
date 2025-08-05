@@ -13,7 +13,7 @@ const VisionMissionSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Vision */}
           <ScrollAnimation delay={100}>
-            <div className="p-8 rounded-2xl shadow-lg border-l-4 border-gc-gold hover:shadow-xl transition-shadow duration-300 bg-kargon-blue">
+            <div className="p-8 rounded-2xl shadow-lg border-l-4 border-kargon-blue hover:shadow-xl transition-shadow duration-300 bg-kargon-blue">
               <div className="flex items-center mb-6">
                 <div className="p-3 bg-gc-gold/10 rounded-full mr-4">
                   <Eye className="w-8 h-8 text-white" />
@@ -28,7 +28,7 @@ const VisionMissionSection = () => {
 
           {/* Mission */}
           <ScrollAnimation delay={200}>
-            <div className="p-8 rounded-2xl shadow-lg border-l-4 border-gc-blue hover:shadow-xl transition-shadow duration-300 bg-kargon-red">
+            <div className="p-8 rounded-2xl shadow-lg border-l-4 border-kargon-red hover:shadow-xl transition-shadow duration-300 bg-kargon-red">
               <div className="flex items-center mb-6">
                 <div className="p-3 bg-gc-blue/10 rounded-full mr-4">
                   <Target className="w-8 h-8 text-white bg-transparent" />
