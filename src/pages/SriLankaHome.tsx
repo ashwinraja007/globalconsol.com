@@ -1,46 +1,44 @@
+
 import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import CountryHeroSection from "@/components/CountryHeroSection";
 import TrackOrder from "@/components/TrackOrder";
-import CountryServicesCards from "@/components/CountryServicesCards";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
-import WorkflowSection from "@/components/WorkflowSection";
 import StatsSection from "@/components/StatsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import UpdatesSection from "@/components/UpdatesSection";
-import ContactForm from "@/components/ContactForm";
 import GlobalPresence from "@/components/GlobalPresence";
+import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
-import { useScrollToTop } from "@/hooks/useScrollToTop"; // ✅ Import the hook
+import { useScrollToTop } from "@/hooks/useScrollToTop";
 
-const IndonesiaHome = () => {
-  useScrollToTop(); // ✅ Call the hook at the top of the component
+const SriLankaHome = () => {
+  useScrollToTop();
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollAnimElements = document.querySelectorAll(".scroll-animate");
-      scrollAnimElements.forEach((element) => {
+      const scrollAnimElements = document.querySelectorAll('.scroll-animate');
+      scrollAnimElements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
         if (elementTop < windowHeight * 0.9) {
-          element.classList.add("appear");
+          element.classList.add('appear');
         }
       });
     };
 
     setTimeout(handleScroll, 100);
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   return (
     <div className="bg-white">
       <Navigation />
-      <CountryHeroSection country="indonesia" />
+      <CountryHeroSection country="sri-lanka" />
       <TrackOrder />
       <AboutSection />
       <ServicesSection />
@@ -51,4 +49,4 @@ const IndonesiaHome = () => {
   );
 };
 
-export default IndonesiaHome;
+export default SriLankaHome;

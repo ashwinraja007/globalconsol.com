@@ -7,18 +7,18 @@ export interface CountryInfo {
 }
 
 const countryMappings: Record<string, CountryInfo> = {
-  'IN': { code: 'IN', name: 'India', route: '/india/home' },
-  'MY': { code: 'MY', name: 'Malaysia', route: '/malaysia/home' },
-  'ID': { code: 'ID', name: 'Indonesia', route: '/indonesia/home' },
-  'TH': { code: 'TH', name: 'Thailand', route: '/thailand/home' },
+  'LK': { code: 'LK', name: 'Sri Lanka', route: '/sri-lanka/home' },
+  'MM': { code: 'MM', name: 'Myanmar', route: '/myanmar/home' },
+  'BD': { code: 'BD', name: 'Bangladesh', route: '/bangladesh/home' },
+  'PK': { code: 'PK', name: 'Pakistan', route: '/pakistan/home' },
   'SG': { code: 'SG', name: 'Singapore', route: '/' },
 };
 
 const timezoneToCountry: Record<string, string> = {
-  'Asia/Kolkata': 'IN',
-  'Asia/Kuala_Lumpur': 'MY',
-  'Asia/Jakarta': 'ID',
-  'Asia/Bangkok': 'TH',
+  'Asia/Colombo': 'LK',
+  'Asia/Yangon': 'MM',
+  'Asia/Dhaka': 'BD',
+  'Asia/Karachi': 'PK',
   'Asia/Singapore': 'SG',
 };
 
@@ -52,9 +52,9 @@ export const detectCountryByIP = async (): Promise<CountryInfo> => {
 };
 
 export const getCurrentCountryFromPath = (pathname: string): CountryInfo => {
-  if (pathname.includes('/india')) return countryMappings['IN'];
-  if (pathname.includes('/malaysia')) return countryMappings['MY'];
-  if (pathname.includes('/indonesia')) return countryMappings['ID'];
-  if (pathname.includes('/thailand')) return countryMappings['TH'];
+  if (pathname.includes('/sri-lanka')) return countryMappings['LK'];
+  if (pathname.includes('/myanmar')) return countryMappings['MM'];
+  if (pathname.includes('/bangladesh')) return countryMappings['BD'];
+  if (pathname.includes('/pakistan')) return countryMappings['PK'];
   return countryMappings['SG'];
 };

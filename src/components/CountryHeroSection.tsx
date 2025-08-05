@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Users, UserCircle, SearchCode, Ship, Calendar, ArrowRight, Play, Zap } from "lucide-react";
 interface HeroSectionProps {
-  country?: 'india' | 'indonesia' | 'malaysia' | 'thailand';
+  country?: 'sri-lanka' | 'myanmar' | 'bangladesh' | 'pakistan';
 }
 const HeroSection = ({
   country
@@ -16,11 +16,11 @@ const HeroSection = ({
 
   // Country-specific content
   const countryContent = {
-    india: {
+    'sri-lanka': {
       images: [{
         url: "/14.png",
-        title: "OECL",
-        description: "Vital Link to Enhance Your Supply Chain",
+        title: "GLOBAL CONSOL",
+        description: "Your Trusted Logistics Partner in Sri Lanka",
         gradient: ""
       }, {
         url: "/air1.png",
@@ -39,11 +39,11 @@ const HeroSection = ({
         gradient: ""
       }]
     },
-    indonesia: {
+    myanmar: {
       images: [{
         url: "/12.png",
-        title: "OECL",
-        description: "Vital Link to Enhance Your Supply Chain",
+        title: "GLOBAL CONSOL",
+        description: "Your Trusted Logistics Partner in Myanmar",
         gradient: ""
       }, {
         url: "/4.png",
@@ -62,11 +62,11 @@ const HeroSection = ({
         gradient: ""
       }]
     },
-    malaysia: {
+    bangladesh: {
       images: [{
         url: "/15.png",
-        title: "OECL",
-        description: "Vital Link to Enhance Your Supply Chain",
+        title: "GLOBAL CONSOL",
+        description: "Your Trusted Logistics Partner in Bangladesh",
         gradient: ""
       }, {
         url: "/20.png",
@@ -85,11 +85,11 @@ const HeroSection = ({
         gradient: ""
       }]
     },
-    thailand: {
+    pakistan: {
       images: [{
         url: "/13.png",
-        title: "OECL",
-        description: "Vital Link to Enhance Your Supply Chain",
+        title: "GLOBAL CONSOL",
+        description: "Your Trusted Logistics Partner in Pakistan",
         gradient: ""
       }, {
         url: "/17.png",

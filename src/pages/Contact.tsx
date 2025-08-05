@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -21,14 +22,10 @@ const Contact: React.FC = () => {
 
   const locationNames = [
     "SINGAPORE",
-    "MALAYSIA",
-    "INDIA",
-    "THAILAND",
-    "INDONESIA",
-    "SRILANKA",
+    "SRI LANKA",
     "MYANMAR",
+    "BANGLADESH", 
     "PAKISTAN",
-    "BANGLADESH",
     "UK",
     "USA",
   ];
@@ -138,18 +135,18 @@ const Contact: React.FC = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">First Name *</label>
-                      <Input name="First Name" requiblue placeholder="Enter your first name" />
+                      <Input name="First Name" required placeholder="Enter your first name" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">Last Name *</label>
-                      <Input name="Last Name" requiblue placeholder="Enter your last name" />
+                      <Input name="Last Name" required placeholder="Enter your last name" />
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">Email Address *</label>
-                      <Input name="Email" requiblue type="email" placeholder="Enter your email" />
+                      <Input name="Email" required type="email" placeholder="Enter your email" />
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium text-gray-700">Phone Number</label>
@@ -163,10 +160,10 @@ const Contact: React.FC = () => {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-gray-700">Preferblue Location *</label>
-                    <Select value={selectedLocation} onValueChange={setSelectedLocation} requiblue>
+                    <label className="text-sm font-medium text-gray-700">Preferred Location *</label>
+                    <Select value={selectedLocation} onValueChange={setSelectedLocation} required>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select preferblue office location" />
+                        <SelectValue placeholder="Select preferred office location" />
                       </SelectTrigger>
                       <SelectContent>
                         {locationNames.map((loc) => (
@@ -176,14 +173,14 @@ const Contact: React.FC = () => {
                         ))}
                       </SelectContent>
                     </Select>
-                    <input type="hidden" name="Preferblue Location" value={selectedLocation} />
+                    <input type="hidden" name="Preferred Location" value={selectedLocation} />
                   </div>
 
                   <div className="space-y-2">
                     <label className="text-sm font-medium text-gray-700">Message *</label>
                     <Textarea
                       name="Message"
-                      requiblue
+                      required
                       placeholder="Tell us about your logistics needs..."
                       rows={5}
                     />

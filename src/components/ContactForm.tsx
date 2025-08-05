@@ -11,9 +11,9 @@ import { useLocation } from "react-router-dom";
 const BRAND = {
   gold: "#c0a064",
   blue: "#2172c9",
-  // Vibrant blue from the improved logo
-  black: "#111" // Text color
+  black: "#111"
 };
+
 const allOffices = {
   Singapore: [{
     name: "Headquarters",
@@ -51,12 +51,15 @@ const allOffices = {
     emails: ["info@globalconsol.com"]
   }]
 };
+
 const locationOptions = Object.keys(allOffices);
+
 const ContactForm = () => {
   const location = useLocation();
   const [selectedLocation, setSelectedLocation] = useState(locationOptions[0]);
   const [showSuccess, setShowSuccess] = useState(false);
   const formRef = useRef(null);
+  
   const getCurrentCountry = () => {
     const path = location.pathname.toLowerCase();
     if (path.includes("/singapore")) return "Singapore";
@@ -66,11 +69,13 @@ const ContactForm = () => {
     if (path.includes("/pakistan")) return "Pakistan";
     return "Singapore";
   };
+  
   useEffect(() => {
     setSelectedLocation(getCurrentCountry());
-    // eslint-disable-next-line
   }, [location.pathname]);
+  
   const currentOffices = allOffices[selectedLocation] || [];
+  
   const handleSubmit = async e => {
     e.preventDefault();
     const form = e.target;
@@ -93,6 +98,7 @@ const ContactForm = () => {
       alert("Something went wrong: " + err.message);
     }
   };
+  
   return <section id="contact" className="py-16 bg-slate-200">
       <div className="container mx-auto px-4">
         <motion.div initial={{
@@ -320,7 +326,7 @@ const ContactForm = () => {
                 color: BRAND.blue
               }} />
                   <p className="text-sm md:text-base font-medium">
-                    Your message has been sent successfully. We’ll get back to you soon!
+                    Your message has been sent successfully. We'll get back to you soon!
                   </p>
                 </motion.div>}
             </form>
@@ -329,4 +335,5 @@ const ContactForm = () => {
       </div>
     </section>;
 };
+
 export default ContactForm;

@@ -1,21 +1,19 @@
+
 import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import CountryHeroSection from "@/components/CountryHeroSection";
 import TrackOrder from "@/components/TrackOrder";
-import CountryServicesCards from "@/components/CountryServicesCards";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
-import WorkflowSection from "@/components/WorkflowSection";
 import StatsSection from "@/components/StatsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import UpdatesSection from "@/components/UpdatesSection";
 import GlobalPresence from "@/components/GlobalPresence";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
-import { useScrollToTop } from "@/hooks/useScrollToTop"; // ✅ Import hook
+import { useScrollToTop } from "@/hooks/useScrollToTop";
 
-const ThailandHome = () => {
-  useScrollToTop(); // ✅ Call the scroll-to-top hook
+const MyanmarHome = () => {
+  useScrollToTop();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,12 +38,10 @@ const ThailandHome = () => {
   return (
     <div className="bg-white">
       <Navigation />
-      <CountryHeroSection country="thailand" />
+      <CountryHeroSection country="myanmar" />
       <TrackOrder />
       <AboutSection />
       <ServicesSection />
-      <StatsSection />
-      <TestimonialsSection />
       <GlobalPresence />
       <ContactForm />
       <Footer />
@@ -53,4 +49,4 @@ const ThailandHome = () => {
   );
 };
 
-export default ThailandHome;
+export default MyanmarHome;

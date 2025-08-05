@@ -1,21 +1,19 @@
+
 import { useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import CountryHeroSection from "@/components/CountryHeroSection";
 import TrackOrder from "@/components/TrackOrder";
-import CountryServicesCards from "@/components/CountryServicesCards";
 import AboutSection from "@/components/AboutSection";
 import ServicesSection from "@/components/ServicesSection";
-import WorkflowSection from "@/components/WorkflowSection";
 import StatsSection from "@/components/StatsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import GlobalPresence from "@/components/GlobalPresence";
-import UpdatesSection from "@/components/UpdatesSection";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
-import { useScrollToTop } from "@/hooks/useScrollToTop"; // ✅ correct usage
+import { useScrollToTop } from "@/hooks/useScrollToTop";
 
-const IndiaHome = () => {
-  useScrollToTop(); // ✅ hook should be called, not rendered
+const PakistanHome = () => {
+  useScrollToTop();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +38,7 @@ const IndiaHome = () => {
   return (
     <div className="bg-white">
       <Navigation />
-      <CountryHeroSection country="india" />
+      <CountryHeroSection country="pakistan" />
       <TrackOrder />
       <AboutSection />
       <ServicesSection />
@@ -51,4 +49,4 @@ const IndiaHome = () => {
   );
 };
 
-export default IndiaHome;
+export default PakistanHome;

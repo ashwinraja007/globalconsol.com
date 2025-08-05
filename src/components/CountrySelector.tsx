@@ -10,7 +10,7 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-import { getCurrentCountryFromPath, detectCountryByIP } from '@/services/countryDetection'; // <-- import detectCountryByIP
+import { getCurrentCountryFromPath, detectCountryByIP } from '@/services/countryDetection';
 
 interface CountryData {
   country: string;
@@ -22,21 +22,18 @@ interface CountryData {
 }
 
 const countries: CountryData[] = [
-  { country: "SINGAPORE", company: "OECL", website: "https://www.oecl.sg/home", priority: 1, flag: "/sg.svg" },
-  { country: "MALAYSIA", company: "OECL", website: "https://www.oecl.sg/malaysia/home", priority: 2, flag: "/my.svg" },
-  { country: "INDONESIA", company: "OECL", website: "https://www.oecl.sg/indonesia/home", priority: 3, flag: "/id.svg" },
-  { country: "THAILAND", company: "OECL", website: "https://www.oecl.sg/thailand/home", priority: 4, flag: "/th.svg" },
-  { country: "MYANMAR", company: "GC", website: "https://www.globalconsol.com", priority: 5, flag: "/mm.svg" },
+  { country: "SINGAPORE", company: "OECL", website: "https://www.oecl.sg/home", priority: 1, flag: "/sg.svg", route: "/" },
+  { country: "SRI LANKA", company: "GC", website: "https://www.globalconsol.com", priority: 2, flag: "/lk.svg", route: "/sri-lanka/home" },
+  { country: "MYANMAR", company: "GC", website: "https://www.globalconsol.com", priority: 3, flag: "/mm.svg", route: "/myanmar/home" },
+  { country: "BANGLADESH", company: "GC", website: "https://www.globalconsol.com", priority: 4, flag: "/bd.svg", route: "/bangladesh/home" },
+  { country: "PAKISTAN", company: "GC", website: "https://www.globalconsol.com", priority: 5, flag: "/pk.svg", route: "/pakistan/home" },
   { country: "CHINA", company: "Haixun", website: "https://www.haixun.co/", priority: 6, flag: "/cn.svg" },
   { country: "AUSTRALIA", company: "GGL", website: "https://www.gglaustralia.com/", priority: 7, flag: "/au.svg" },
-  { country: "INDIA", company: "OECL", website: "https://www.oecl.sg/india/home", priority: 8, flag: "/in.svg" },
-  { country: "SRI LANKA", company: "GC", website: "https://www.globalconsol.com", priority: 9, flag: "/lk.svg" },
-  { country: "PAKISTAN", company: "GC", website: "https://www.globalconsol.com", priority: 10, flag: "/pk.svg" },
-  { country: "QATAR", company: "ONE GLOBAL", website: "https://oneglobalqatar.com/", priority: 11, flag: "/qa.svg" },
-  { country: "SAUDI ARABIA", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 12, flag: "/sa.svg" },
-  { country: "UAE", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 13, flag: "/ae.svg" },
-  { country: "USA", company: "GGL", website: "https://gglusa.us/", priority: 14, flag: "/us.svg" },
-  { country: "UK", company: "Moltech", website: "https://moltech.uk/", priority: 15, flag: "/gb.svg" }
+  { country: "QATAR", company: "ONE GLOBAL", website: "https://oneglobalqatar.com/", priority: 8, flag: "/qa.svg" },
+  { country: "SAUDI ARABIA", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 9, flag: "/sa.svg" },
+  { country: "UAE", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 10, flag: "/ae.svg" },
+  { country: "USA", company: "GGL", website: "https://gglusa.us/", priority: 11, flag: "/us.svg" },
+  { country: "UK", company: "Moltech", website: "https://moltech.uk/", priority: 12, flag: "/gb.svg" }
 ];
 
 const CountrySelector = () => {
@@ -73,7 +70,6 @@ const CountrySelector = () => {
 
   const availableCountries = countries.filter((country) => {
     const current = currentCountry.name.toUpperCase();
-    if (current === "INDIA" && country.country === "PAKISTAN") return false;
     return country.country !== current;
   });
 
@@ -84,10 +80,10 @@ const CountrySelector = () => {
     let targetRoute = country.route;
 
     if (currentPath.includes('/about-us')) {
-      const prefix = country.country === 'SINGAPORE' ? '' : `/${country.country.toLowerCase()}`;
+      const prefix = country.country === 'SINGAPORE' ? '' : `/${country.country.toLowerCase().replace(' ', '-')}`;
       targetRoute = `${prefix}/about-us`;
     } else if (currentPath.includes('/contact')) {
-      const prefix = country.country === 'SINGAPORE' ? '' : `/${country.country.toLowerCase()}`;
+      const prefix = country.country === 'SINGAPORE' ? '' : `/${country.country.toLowerCase().replace(' ', '-')}`;
       targetRoute = `${prefix}/contact`;
     }
 

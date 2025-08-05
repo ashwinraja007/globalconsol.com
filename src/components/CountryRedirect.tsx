@@ -10,10 +10,10 @@ const CountryRedirect = () => {
   useEffect(() => {
     const handleCountryRedirect = async () => {
       // Skip redirect if already on a country-specific page
-      if (location.pathname.includes('/india') || 
-          location.pathname.includes('/malaysia') || 
-          location.pathname.includes('/indonesia') || 
-          location.pathname.includes('/thailand')) {
+      if (location.pathname.includes('/sri-lanka') || 
+          location.pathname.includes('/myanmar') || 
+          location.pathname.includes('/bangladesh') || 
+          location.pathname.includes('/pakistan')) {
         return;
       }
 
