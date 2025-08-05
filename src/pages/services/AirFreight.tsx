@@ -72,9 +72,6 @@ const AirFreight = () => {
           }} className="relative">
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 <img src="/airfreight.png" alt="Air Freight Services" className="w-full h-96 object-cover" />
-                <div className="absolute top-6 left-6 bg-gc-gold text-white px-4 py-2 rounded-full text-lg font-bold shadow-lg">
-                  OECL Air Services
-                </div>
               </div>
             </motion.div>
 
