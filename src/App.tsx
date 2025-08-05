@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -27,10 +28,10 @@ import AdminDashboard from "./pages/AdminDashboard";
 import BlogAdmin from "./pages/BlogAdmin";
 import BlogEditor from "./pages/BlogEditor";
 import NotFound from "./pages/NotFound";
-import IndiaHome from "./pages/IndiaHome";
-import IndonesiaHome from "./pages/IndonesiaHome";
-import MalaysiaHome from "./pages/MalaysiaHome";
-import ThailandHome from "./pages/ThailandHome";
+import SriLankaHome from "./pages/SriLankaHome";
+import MyanmarHome from "./pages/MyanmarHome";
+import BangladeshHome from "./pages/BangladeshHome";
+import PakistanHome from "./pages/PakistanHome";
 import { AuthProvider } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import AdminRoute from "./components/AdminRoute";
@@ -82,8 +83,8 @@ const App = () => {
               <Route path="/blog/:slug" element={<BlogDetail />} />
               <Route path="/global-presence" element={<GlobalPresence />} />
 
-              {["india", "indonesia", "malaysia", "home", "thailand", "singapore"].map(country => (
-                <>
+              {["sri-lanka", "myanmar", "bangladesh", "pakistan"].map(country => (
+                <React.Fragment key={country}>
                   <Route path={`/${country}/services`} element={<Services />} />
                   <Route path={`/${country}/about-us`} element={<AboutUs />} />
                   <Route path={`/${country}/contact`} element={<Contact />} />
@@ -98,19 +99,17 @@ const App = () => {
                   <Route path={`/${country}/services/3pl`} element={<ThirdPartyLogistics />} />
                   <Route path={`/${country}/services/consolidation`} element={<Consolidation />} />
                   <Route path={`/${country}/services/liner-agency`} element={<LinerAgency />} />
-                </>
+                </React.Fragment>
               ))}
 
-                  <Route path="/india/home" element={<IndiaHome />} />
-                 <Route path="/india" element={<IndiaHome />} />                                
-                 <Route path="/indonesia/home" element={<IndonesiaHome />} />
-                 <Route path="/indonesia" element={<IndonesiaHome />} />                              
-                 <Route path="/malaysia/home" element={<MalaysiaHome />} />
-                 <Route path="/malaysia" element={<MalaysiaHome />} />                                
-                <Route path="/thailand/home" element={<ThailandHome />} />
-                <Route path="/thailand" element={<ThailandHome />} />
-                <Route path="/Singapore/home" element={<ThailandHome />} />
-                <Route path="/Singapore" element={<ThailandHome />} />
+              <Route path="/sri-lanka/home" element={<SriLankaHome />} />
+              <Route path="/sri-lanka" element={<SriLankaHome />} />                                
+              <Route path="/myanmar/home" element={<MyanmarHome />} />
+              <Route path="/myanmar" element={<MyanmarHome />} />                              
+              <Route path="/bangladesh/home" element={<BangladeshHome />} />
+              <Route path="/bangladesh" element={<BangladeshHome />} />                                
+              <Route path="/pakistan/home" element={<PakistanHome />} />
+              <Route path="/pakistan" element={<PakistanHome />} />
 
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
