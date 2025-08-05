@@ -44,7 +44,6 @@ const ThailandHome = () => {
       <TrackOrder />
       <AboutSection />
       <ServicesSection />
-      <WorkflowSection />
       <StatsSection />
       <TestimonialsSection />
       <GlobalPresence />
