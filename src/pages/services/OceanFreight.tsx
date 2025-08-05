@@ -65,11 +65,7 @@ const OceanFreight = () => {
           }} className="space-y-6">
               <h2 className="text-3xl font-bold text-blue-500">Comprehensive Ocean Freight</h2>
               <p className="text-gray-700 text-lg leading-relaxed mb-4">
-                OECL has own fleet of containers including special equipment's to accommodate special requirements of customers and specializes in many trade lanes. 
-                Being sea freight professionals with vast experience in the field helps to match frequent sailing and flexible service options.
-              </p>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                Multiple carrier options on any trade route with contracted rates helps to secure the space, allocation, timing, pricing and frequency of your shipments.
+               At GC, we possess our own fleet of containers, which includes specialized equipment designed to cater to the unique requirements of our customers. With our extensive expertise in sea freight operations, we excel in various trade lanes. Our professionals ensure frequent departures and offer flexible service options. By partnering with multiple carriers on all trade routes, we secure favorable rates and guarantee space, allocation, timing, pricing, and shipment frequency
               </p>
             </motion.div>
           </div>
@@ -95,12 +91,10 @@ const OceanFreight = () => {
         }} className="p-6 md:p-8 rounded-2xl shadow-lg border-l-4 border-blue-500 bg-slate-200">
             <h3 className="text-xl md:text-2xl font-bold text-blue-500 mb-4 text-center">FCL Services</h3>
             <p className="text-gray-700 text-base md:text-lg leading-relaxed mb-4">
-              FCL is the most optimized container shipping way regarding cost, volume and weight of the cargo.
-              We take special care at each step of the process which involves fixing contract pricing with carriers, reserving space, make booking, picking up empty container at the container depot,
-              loading at shipper facility, transporting by truck / rail to the port and vessel loading, monitor vessel schedule till final delivery to consignee.
+              When it comes to container shipping, FCL (Full Container Load) is the most cost-effective and efficient option, considering the cargo's volume and weight. Throughout the entire process, we take meticulous care at every stage. This includes negotiating contract prices with carriers, reserving space, making bookings, retrieving empty containers from the depot, loading at the shipper's facility, transportation via truck or rail to the port, vessel loading, and closely monitoring the vessel schedule until the final delivery to the consignee.
             </p>
             <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-              For import bookings we engage our overseas partners in the absence of our own network and monitor each step and keep our customers / consignees informed at all stages.
+              In the case of import bookings, we collaborate with our overseas partners in the absence of our own network. We diligently oversee each step of the process, keeping our customers and consignees well-informed at every stage.
             </p>
           </motion.div>
 
@@ -119,9 +113,7 @@ const OceanFreight = () => {
         }} className="p-6 md:p-8 rounded-2xl shadow-lg border-l-4 border-blue-500 bg-slate-200">
             <h3 className="text-xl md:text-2xl font-bold text-blue-500 mb-4 text-center">LCL Services</h3>
             <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-              OECL operate own consolidation service on many trade routes.
-              With its vast network of consolidators, the company is able to provide competitive price with multiple options of sailing.
-              With regular consolidation boxes to important trade lanes, the company has the advantage of accommodating cargo which requires timely deliveries.
+             GC offers its own consolidation service on numerous trade routes, leveraging an extensive network of consolidators. This enables the company to deliver competitive pricing and a range of sailing options. By regularly providing consolidation boxes to key trade lanes, GC can effectively handle cargo that requires timely deliveries. In addition, GC ensures complete transparency in pricing, including origin, destination, and sea freight charges.
             </p>
           </motion.div>
 
@@ -141,9 +133,7 @@ const OceanFreight = () => {
     }} viewport={{
       once: true
     }} className="text-center bg-gradient-to-r from-blue-50 to-blue-100 p-6 md:p-8 rounded-2xl border border-blue-200 shadow-md mx-4 md:mx-auto max-w-4xl mb-12">
-        <p className="text-blue-700 text-base md:text-lg font-semibold">
-          OECL Provide complete transparency of all the pricing at the origin, destination and ocean freight charges.
-        </p>
+      
       </motion.div>
 
       {/* Footer */}
