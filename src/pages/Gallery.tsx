@@ -42,20 +42,20 @@ const Gallery = () => {
   const currentCountry = getCurrentCountry();
   
   const countryFlags: Record<string, string> = {
-    singapore: "🇸🇬",
-    india: "🇮🇳",
-    malaysia: "🇲🇾",
-    thailand: "🇹🇭",
-    indonesia: "🇮🇩",
-  };
+  myanmar: "🇲🇲",
+  singapore: "🇸🇬",
+  bangladesh: "🇧🇩",
+  pakistan: "🇵🇰",
+  srilanka: "🇱🇰",
+};
 
-  const countryNames: Record<string, string> = {
-    singapore: "Singapore",
-    india: "India",
-    malaysia: "Malaysia",
-    thailand: "Thailand",
-    indonesia: "Indonesia",
-  };
+const countryNames: Record<string, string> = {
+  myanmar: "Myanmar",
+  singapore: "Singapore",
+  bangladesh: "Bangladesh",
+  pakistan: "Pakistan",
+  srilanka: "Sri Lanka",
+};
 
   useEffect(() => {
     fetchGalleryImages();
