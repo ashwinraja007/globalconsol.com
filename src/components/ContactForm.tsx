@@ -13,7 +13,6 @@ const BRAND = {
   blue: "#2172c9",
   black: "#111"
 };
-
 const allOffices = {
   Singapore: [{
     name: "Headquarters",
@@ -51,15 +50,12 @@ const allOffices = {
     emails: ["info@globalconsol.com"]
   }]
 };
-
 const locationOptions = Object.keys(allOffices);
-
 const ContactForm = () => {
   const location = useLocation();
   const [selectedLocation, setSelectedLocation] = useState(locationOptions[0]);
   const [showSuccess, setShowSuccess] = useState(false);
   const formRef = useRef(null);
-  
   const getCurrentCountry = () => {
     const path = location.pathname.toLowerCase();
     if (path.includes("/singapore")) return "Singapore";
@@ -69,13 +65,10 @@ const ContactForm = () => {
     if (path.includes("/pakistan")) return "Pakistan";
     return "Singapore";
   };
-  
   useEffect(() => {
     setSelectedLocation(getCurrentCountry());
   }, [location.pathname]);
-  
   const currentOffices = allOffices[selectedLocation] || [];
-  
   const handleSubmit = async e => {
     e.preventDefault();
     const form = e.target;
@@ -98,7 +91,6 @@ const ContactForm = () => {
       alert("Something went wrong: " + err.message);
     }
   };
-  
   return <section id="contact" className="py-16 bg-slate-200">
       <div className="container mx-auto px-4">
         <motion.div initial={{
@@ -335,5 +327,4 @@ const ContactForm = () => {
       </div>
     </section>;
 };
-
 export default ContactForm;
