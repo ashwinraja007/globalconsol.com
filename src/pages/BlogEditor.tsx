@@ -8,9 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Trash2, Upload, FileText, Edit, X, Bold, Link, Italic, Underline, List, AlignLeft, AlignCenter, AlignRight, Image } from "lucide-react";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
+import { Trash2, Upload, FileText, Edit, X, Bold, Link, Italic, Underline, List, Image } from "lucide-react";
 
 interface Article {
   id: string;
@@ -1086,39 +1084,31 @@ const BlogEditor = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navigation />
-      
-      <div className="pt-24 pb-16">
-        <div className="container mx-auto px-4">
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-4">Content Management</h1>
-            
-            <div className="flex gap-4 mb-6">
-              <Button
-                variant={activeView === "blog" ? "default" : "outline"}
-                onClick={() => handleViewChange("blog")}
-                className="flex items-center gap-2"
-              >
-                <FileText className="h-4 w-4" />
-                Blog Editor
-              </Button>
-              <Button
-                variant={activeView === "gallery" ? "default" : "outline"}
-                onClick={() => handleViewChange("gallery")}
-                className="flex items-center gap-2"
-              >
-                <Image className="h-4 w-4" />
-                Gallery Editor
-              </Button>
-            </div>
-          </div>
-
-          {activeView === "blog" ? renderBlogEditor() : renderGalleryEditor()}
+    <div className="space-y-6">
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold mb-4">Content Management</h2>
+        
+        <div className="flex gap-4 mb-6">
+          <Button
+            variant={activeView === "blog" ? "default" : "outline"}
+            onClick={() => handleViewChange("blog")}
+            className="flex items-center gap-2"
+          >
+            <FileText className="h-4 w-4" />
+            Blog Editor
+          </Button>
+          <Button
+            variant={activeView === "gallery" ? "default" : "outline"}
+            onClick={() => handleViewChange("gallery")}
+            className="flex items-center gap-2"
+          >
+            <Image className="h-4 w-4" />
+            Gallery Editor
+          </Button>
         </div>
       </div>
-      
-      <Footer />
+
+      {activeView === "blog" ? renderBlogEditor() : renderGalleryEditor()}
     </div>
   );
 };
