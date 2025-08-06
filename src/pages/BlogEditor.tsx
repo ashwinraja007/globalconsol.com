@@ -9,6 +9,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { Trash2, Upload, FileText, Edit, X, Bold, Link, Italic, Underline, List, Image } from "lucide-react";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
 
 interface Article {
   id: string;
@@ -109,14 +111,20 @@ const BlogEditor = () => {
   const fetchArticles = async () => {
     setLoading(true);
     try {
+      console.log('Fetching articles...');
       const { data, error } = await supabase
         .from('articles')
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Error fetching articles:', error);
+        throw error;
+      }
+      console.log('Articles fetched:', data);
       setArticles(data || []);
     } catch (error: any) {
+      console.error('Fetch articles error:', error);
       toast({
         variant: "destructive",
         title: "Error",
@@ -130,15 +138,21 @@ const BlogEditor = () => {
   const fetchGalleryImages = async () => {
     setLoading(true);
     try {
+      console.log('Fetching gallery images for:', selectedCountry);
       const { data, error } = await supabase
         .from('gallery')
         .select('*')
         .eq('country', selectedCountry)
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Error fetching gallery images:', error);
+        throw error;
+      }
+      console.log('Gallery images fetched:', data);
       setGalleryImages(data || []);
     } catch (error: any) {
+      console.error('Fetch gallery images error:', error);
       toast({
         variant: "destructive",
         title: "Error fetching images",
@@ -202,7 +216,6 @@ const BlogEditor = () => {
     }
   };
 
-  // Rich text formatting functions
   const insertTextAtCursor = (beforeText: string, afterText: string = '') => {
     const textarea = contentRef.current;
     if (!textarea) return;
@@ -216,7 +229,6 @@ const BlogEditor = () => {
     
     setContent(newContent);
     
-    // Set cursor position after insertion
     setTimeout(() => {
       textarea.focus();
       const newCursorPos = start + beforeText.length + selectedText.length;
@@ -281,21 +293,10 @@ const BlogEditor = () => {
   };
 
   const handleBulletList = () => {
-    const textarea = contentRef.current;
-    if (!textarea) return;
-
-    const start = textarea.selectionStart;
-    const lines = content.substring(0, start).split('\n');
-    const currentLineStart = lines.length > 1 ? 
-      content.substring(0, start).lastIndexOf('\n') + 1 : 0;
-    
     insertTextAtCursor('\n- ');
   };
 
   const handleNumberedList = () => {
-    const textarea = contentRef.current;
-    if (!textarea) return;
-
     insertTextAtCursor('\n1. ');
   };
 
@@ -304,18 +305,22 @@ const BlogEditor = () => {
     const fileName = `${Math.random()}.${fileExt}`;
     const filePath = `${fileName}`;
 
+    console.log('Uploading image to blog-images bucket:', filePath);
+
     const { error: uploadError } = await supabase.storage
-      .from('gallery-singapore')
+      .from('blog-images')
       .upload(filePath, file);
 
     if (uploadError) {
+      console.error('Upload error:', uploadError);
       throw uploadError;
     }
 
     const { data: { publicUrl } } = supabase.storage
-      .from('gallery-singapore')
+      .from('blog-images')
       .getPublicUrl(filePath);
 
+    console.log('Image uploaded successfully:', publicUrl);
     return publicUrl;
   };
 
@@ -332,9 +337,11 @@ const BlogEditor = () => {
 
     setLoading(true);
     try {
+      console.log('Submitting article...');
       let featuredImage = null;
       
       if (selectedFile) {
+        console.log('Uploading featured image...');
         featuredImage = await uploadImage(selectedFile);
       }
 
@@ -351,24 +358,34 @@ const BlogEditor = () => {
         published_at: new Date().toISOString(),
       };
 
+      console.log('Article data:', articleData);
+
       if (editingId) {
+        console.log('Updating article:', editingId);
         const { error } = await supabase
           .from('articles')
           .update(articleData)
           .eq('id', editingId);
 
-        if (error) throw error;
+        if (error) {
+          console.error('Update error:', error);
+          throw error;
+        }
         
         toast({
           title: "Success",
           description: "Article updated successfully",
         });
       } else {
+        console.log('Creating new article...');
         const { error } = await supabase
           .from('articles')
           .insert([articleData]);
 
-        if (error) throw error;
+        if (error) {
+          console.error('Insert error:', error);
+          throw error;
+        }
         
         toast({
           title: "Success",
@@ -379,6 +396,7 @@ const BlogEditor = () => {
       resetForm();
       fetchArticles();
     } catch (error: any) {
+      console.error('Submit error:', error);
       toast({
         variant: "destructive",
         title: "Error",
@@ -408,12 +426,16 @@ const BlogEditor = () => {
     if (!confirm('Are you sure you want to delete this article?')) return;
 
     try {
+      console.log('Deleting article:', id);
       const { error } = await supabase
         .from('articles')
         .delete()
         .eq('id', id);
 
-      if (error) throw error;
+      if (error) {
+        console.error('Delete error:', error);
+        throw error;
+      }
       
       toast({
         title: "Success",
@@ -422,6 +444,7 @@ const BlogEditor = () => {
       
       fetchArticles();
     } catch (error: any) {
+      console.error('Delete error:', error);
       toast({
         variant: "destructive",
         title: "Error",
@@ -460,19 +483,24 @@ const BlogEditor = () => {
     try {
       const fileExt = galleryUploadForm.file.name.split('.').pop();
       const fileName = `${Date.now()}.${fileExt}`;
-      const filePath = `${galleryUploadForm.country}/${fileName}`;
+      const filePath = `${fileName}`;
+
+      console.log(`Uploading to gallery-${galleryUploadForm.country} bucket:`, filePath);
 
       const { error: uploadError } = await supabase.storage
         .from(`gallery-${galleryUploadForm.country}`)
         .upload(filePath, galleryUploadForm.file);
 
       if (uploadError) {
+        console.error('Gallery upload error:', uploadError);
         throw uploadError;
       }
 
       const { data: { publicUrl } } = supabase.storage
         .from(`gallery-${galleryUploadForm.country}`)
         .getPublicUrl(filePath);
+
+      console.log('Gallery image uploaded:', publicUrl);
 
       const { error: dbError } = await supabase
         .from('gallery')
@@ -486,6 +514,7 @@ const BlogEditor = () => {
         });
 
       if (dbError) {
+        console.error('Gallery DB error:', dbError);
         throw dbError;
       }
 
@@ -499,6 +528,7 @@ const BlogEditor = () => {
         fetchGalleryImages();
       }
     } catch (error: any) {
+      console.error('Gallery upload error:', error);
       toast({
         variant: "destructive",
         title: "Upload failed",
@@ -510,20 +540,106 @@ const BlogEditor = () => {
   };
 
   const handleGalleryEdit = (image: GalleryImage) => {
-    // Gallery edit logic (unchanged from original)
+    setEditingImage(image);
+    setGalleryEditForm({
+      title: image.title,
+      description: image.description || "",
+      label: image.label || "",
+    });
   };
 
   const handleUpdateGalleryImage = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Gallery update logic (unchanged from original)
+    if (!editingImage) return;
+
+    try {
+      const { error } = await supabase
+        .from('gallery')
+        .update({
+          title: galleryEditForm.title,
+          description: galleryEditForm.description || null,
+          label: galleryEditForm.label || null,
+        })
+        .eq('id', editingImage.id);
+
+      if (error) throw error;
+
+      toast({
+        title: "Image updated successfully",
+        description: "The image details have been updated",
+      });
+
+      setEditingImage(null);
+      fetchGalleryImages();
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Update failed",
+        description: error.message,
+      });
+    }
   };
 
   const handleGalleryDelete = async (image: GalleryImage) => {
-    // Gallery delete logic (unchanged from original)
+    if (!confirm('Are you sure you want to delete this image?')) return;
+
+    try {
+      // Delete from storage
+      const { error: storageError } = await supabase.storage
+        .from(`gallery-${image.country}`)
+        .remove([image.image_path]);
+
+      if (storageError) {
+        console.error('Storage delete error:', storageError);
+      }
+
+      // Delete from database
+      const { error: dbError } = await supabase
+        .from('gallery')
+        .delete()
+        .eq('id', image.id);
+
+      if (dbError) throw dbError;
+
+      toast({
+        title: "Image deleted successfully",
+        description: "The image has been removed from the gallery",
+      });
+
+      fetchGalleryImages();
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Delete failed",
+        description: error.message,
+      });
+    }
   };
 
   const toggleGalleryVisibility = async (image: GalleryImage) => {
-    // Gallery visibility toggle logic (unchanged from original)
+    try {
+      const newLabel = image.label === 'private' ? null : 'private';
+      
+      const { error } = await supabase
+        .from('gallery')
+        .update({ label: newLabel })
+        .eq('id', image.id);
+
+      if (error) throw error;
+
+      toast({
+        title: "Visibility updated",
+        description: `Image is now ${newLabel === 'private' ? 'hidden from' : 'visible to'} the public`,
+      });
+
+      fetchGalleryImages();
+    } catch (error: any) {
+      toast({
+        variant: "destructive",
+        title: "Update failed",
+        description: error.message,
+      });
+    }
   };
 
   const handleViewChange = (view: ActiveView) => {
@@ -991,7 +1107,7 @@ const BlogEditor = () => {
                   <img
                     src={image.image_url}
                     alt={image.title}
-                    className="w-full h-48 object-fill"
+                    className="w-full h-48 object-cover"
                   />
                   <div className="p-4">
                     <h3 className="font-semibold truncate">{image.title}</h3>
@@ -1084,31 +1200,35 @@ const BlogEditor = () => {
   );
 
   return (
-    <div className="space-y-6">
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">Content Management</h2>
-        
-        <div className="flex gap-4 mb-6">
-          <Button
-            variant={activeView === "blog" ? "default" : "outline"}
-            onClick={() => handleViewChange("blog")}
-            className="flex items-center gap-2"
-          >
-            <FileText className="h-4 w-4" />
-            Blog Editor
-          </Button>
-          <Button
-            variant={activeView === "gallery" ? "default" : "outline"}
-            onClick={() => handleViewChange("gallery")}
-            className="flex items-center gap-2"
-          >
-            <Image className="h-4 w-4" />
-            Gallery Editor
-          </Button>
+    <div className="min-h-screen bg-gray-50">
+      <Navigation />
+      <div className="container mx-auto px-4 py-8">
+        <div className="mb-8">
+          <h2 className="text-2xl font-bold mb-4">Content Management</h2>
+          
+          <div className="flex gap-4 mb-6">
+            <Button
+              variant={activeView === "blog" ? "default" : "outline"}
+              onClick={() => handleViewChange("blog")}
+              className="flex items-center gap-2"
+            >
+              <FileText className="h-4 w-4" />
+              Blog Editor
+            </Button>
+            <Button
+              variant={activeView === "gallery" ? "default" : "outline"}
+              onClick={() => handleViewChange("gallery")}
+              className="flex items-center gap-2"
+            >
+              <Image className="h-4 w-4" />
+              Gallery Editor
+            </Button>
+          </div>
         </div>
-      </div>
 
-      {activeView === "blog" ? renderBlogEditor() : renderGalleryEditor()}
+        {activeView === "blog" ? renderBlogEditor() : renderGalleryEditor()}
+      </div>
+      <Footer />
     </div>
   );
 };
