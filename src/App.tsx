@@ -117,6 +117,7 @@ const App: React.FC = () => {
               <Route path="/projects" element={<Projects />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+              <Route path="/blog-editor" element={<BlogEditor />} />
 
               {/* Country-specific pages */}
               {countries.map((country) => (
@@ -188,7 +189,6 @@ const App: React.FC = () => {
                 <Route path="settings" element={<AdminSystemSettings />} />
                 <Route path="blog" element={<BlogAdmin />} />
                 <Route path="blog/edit/:id?" element={<BlogEditor />} />
-                <Route path="blog-editor" element={<BlogEditor />} />
               </Route>
 
               {/* 404 Not Found */}
