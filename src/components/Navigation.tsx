@@ -75,7 +75,7 @@ const Navigation = () => {
                   : "text-black"
               }`}
             >
-              HOME
+              Home
             </Link>
             <Link
               to={getNavLink("/about-us")}
@@ -83,7 +83,7 @@ const Navigation = () => {
                 isActive(getNavLink("/about-us")) ? "text-gc-gold" : "text-black"
               }`}
             >
-              ABOUT US
+              About Us
             </Link>
             <Link
               to={getNavLink("/services")}
@@ -91,7 +91,7 @@ const Navigation = () => {
                 isActive(getNavLink("/services")) ? "text-gc-gold" : "text-black"
               }`}
             >
-              SERVICES
+              Services
             </Link>
             <Link
               to={getNavLink("/blog")}
@@ -101,16 +101,8 @@ const Navigation = () => {
                   : "text-black"
               }`}
             >
-              BLOGS
-            </Link>
-            <Link
-              to={getNavLink("/contact")}
-              className={`nav-link font-medium hover:text-gc-gold text-sm xl:text-base ${
-                isActive(getNavLink("/contact")) ? "text-gc-gold" : "text-black"
-              }`}
-            >
-              CONTACT
-            </Link>
+              Blogs
+           
           </nav>
 
           {/* Right section - Responsive */}
@@ -118,7 +110,7 @@ const Navigation = () => {
             <CountrySelector />
             <Link to={`${getNavLink("/contact")}#contact-form`}>
               <Button className="bg-gc-gold hover:bg-gc-bronze text-white rounded-md text-xs sm:text-sm px-3 sm:px-4 py-2">
-                GET QUOTE
+                Contact / Quote
               </Button>
             </Link>
           </div>
