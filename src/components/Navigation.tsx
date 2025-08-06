@@ -35,7 +35,7 @@ const Navigation = () => {
 
   const isCompanyLinkActive = () => {
     return isActive(getNavLink("/about-us")) || 
-           isActive("/gallery") || 
+           isActive(getNavLink("/gallery") || 
            isActive(getNavLink("/career"));
   };
 
@@ -96,7 +96,7 @@ const Navigation = () => {
               <DropdownMenuTrigger className={`nav-link font-medium hover:text-gc-gold text-sm xl:text-base flex items-center gap-1 ${
                 isCompanyLinkActive() ? "text-gc-gold" : "text-black"
               }`}>
-                Company
+                Info
                 <ChevronDown className="w-4 h-4" />
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-white shadow-lg border rounded-md p-2 z-50">
@@ -110,7 +110,7 @@ const Navigation = () => {
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link 
-                    to="/gallery"
+                    to={getNavLink("/gallery")}
                     className="w-full px-3 py-2 text-sm hover:bg-gray-100 rounded-md block"
                   >
                     Gallery
