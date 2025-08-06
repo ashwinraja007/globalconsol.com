@@ -43,39 +43,54 @@ const CountrySelector = () => {
   const location = useLocation();
   const currentCountry = getCurrentCountryFromPath(location.pathname);
 
-  // Detect country by IP on mount
+  // Detect country by IP on mount or load from localStorage
   useEffect(() => {
     const detect = async () => {
       try {
+        const saved = localStorage.getItem("preferredCountry");
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          setIpCountry(parsed);
+          console.log("Loaded preferred country from storage:", parsed);
+          return;
+        }
+
         const c = await detectCountryByIP();
+        console.log("Detected IP Country:", c);
         setIpCountry(c);
-      } catch {
+      } catch (error) {
+        console.warn("Could not detect country from IP.");
         setIpCountry(null);
       }
     };
     detect();
   }, []);
 
-  // Which country should be shown? Prefer IP if found, else currentCountry from path.
+  // Country to display in the dropdown button
   const displayCountry =
-    (ipCountry &&
-      countries.find(
-        c =>
-          c.country.toUpperCase() === ipCountry.name.toUpperCase() ||
-          c.flag?.toLowerCase().includes(ipCountry.code.toLowerCase())
-      )) ||
+    countries.find(c =>
+      ipCountry &&
+      (
+        c.country.toUpperCase() === ipCountry.name?.toUpperCase() ||
+        c.flag?.toLowerCase().includes(ipCountry.code?.toLowerCase())
+      )
+    ) ||
     countries.find(
       c => c.country.toUpperCase() === currentCountry.name.toUpperCase()
     );
 
-  const availableCountries = countries.filter((country) => {
-    const current = currentCountry.name.toUpperCase();
-    return country.country !== current;
-  });
+  const availableCountries = countries.filter(
+    country => country.country.toUpperCase() !== currentCountry.name.toUpperCase()
+  );
 
   const sortedCountries = [...availableCountries].sort((a, b) => a.priority - b.priority);
 
   const handleCountrySelect = (country: CountryData) => {
+    localStorage.setItem("preferredCountry", JSON.stringify({
+      name: country.country,
+      code: country.flag?.split('/')[1]?.split('.')[0] || ''
+    }));
+
     const currentPath = location.pathname;
     let targetRoute = country.route;
 
@@ -102,16 +117,12 @@ const CountrySelector = () => {
         setIsOpen(false);
       }
     };
-
     document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
+    return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   return (
     <div ref={dropdownRef} className="relative z-50 flex items-center gap-2">
-      {/* Show flag before selector */}
       {displayCountry?.flag && (
         <img
           src={displayCountry.flag}
