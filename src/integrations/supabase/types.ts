@@ -14,6 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
+      articles: {
+        Row: {
+          content: string
+          created_at: string
+          excerpt: string | null
+          id: string
+          image: string | null
+          is_published: boolean | null
+          published_at: string | null
+          slug: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          image?: string | null
+          is_published?: boolean | null
+          published_at?: string | null
+          slug: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          excerpt?: string | null
+          id?: string
+          image?: string | null
+          is_published?: boolean | null
+          published_at?: string | null
+          slug?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       breaking_news: {
         Row: {
           content: string
@@ -44,6 +83,39 @@ export type Database = {
           is_active?: boolean | null
           title?: string
           updated_at?: string | null
+        }
+        Relationships: []
+      }
+      gallery: {
+        Row: {
+          alt_text: string | null
+          created_at: string
+          description: string | null
+          id: string
+          image_url: string
+          is_visible: boolean | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          alt_text?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url: string
+          is_visible?: boolean | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          alt_text?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_url?: string
+          is_visible?: boolean | null
+          title?: string
+          updated_at?: string
         }
         Relationships: []
       }

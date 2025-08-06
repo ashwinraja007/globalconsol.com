@@ -1,6 +1,5 @@
 
 import { useState, useEffect } from "react";
-import { useParams, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -13,70 +12,35 @@ interface GalleryImage {
   title: string;
   description: string | null;
   image_url: string;
+  alt_text: string | null;
   created_at: string;
 }
 
 const Gallery = () => {
-  const { country } = useParams<{ country: string }>();
-  const location = useLocation();
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const { toast } = useToast();
 
-  // Improved country detection from URL
-  const getCurrentCountry = () => {
-    if (country) {
-      return country.toLowerCase();
-    }
-    
-    const path = location.pathname.toLowerCase();
-    if (path.includes('/india')) return 'india';
-    if (path.includes('/malaysia')) return 'malaysia';
-    if (path.includes('/thailand')) return 'thailand';
-    if (path.includes('/indonesia')) return 'indonesia';
-    
-    // Default to singapore
-    return 'singapore';
-  };
-
-  const currentCountry = getCurrentCountry();
-  
-  const countryNames: Record<string, string> = {
-    singapore: "Singapore",
-    india: "India",
-    malaysia: "Malaysia",
-    thailand: "Thailand",
-    indonesia: "Indonesia",
-  };
-
   useEffect(() => {
     fetchGalleryImages();
-  }, [currentCountry]);
+  }, []);
 
   const fetchGalleryImages = async () => {
     setLoading(true);
     try {
-      console.log('Fetching images for country:', currentCountry);
-      
       const { data, error } = await supabase
-        .from('gallery')
-        .select('id, title, description, image_url, created_at')
-        .eq('country', currentCountry)
-        .or('label.is.null,label.neq.private')
-        .order('created_at', { ascending: false });
+        .from("gallery")
+        .select("id, title, description, image_url, alt_text, created_at")
+        .eq("is_visible", true)
+        .order("created_at", { ascending: false });
 
       if (error) {
-        console.error('Error fetching gallery images:', error);
         throw error;
       }
-      
-      console.log('Raw data from Supabase:', data);
-      console.log('Number of images found:', data?.length || 0);
-      
+
       setImages(data || []);
     } catch (error: any) {
-      console.error('Gallery fetch error:', error);
       toast({
         variant: "destructive",
         title: "Error loading gallery",
@@ -95,13 +59,11 @@ const Gallery = () => {
         <div className="container mx-auto px-4">
           {/* Header */}
           <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <h1 className="text-4xl font-bold text-gray-900">
-                {countryNames[currentCountry]} Gallery
-              </h1>
-            </div>
+            <h1 className="text-4xl font-bold text-gray-900 mb-4">
+              Gallery
+            </h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Explore our collection of images showcasing our operations and projects in {countryNames[currentCountry]}
+              Explore our collection of images showcasing our operations and projects
             </p>
           </div>
 
@@ -118,7 +80,7 @@ const Gallery = () => {
               <ImageIcon className="h-24 w-24 mx-auto mb-6 text-gray-300" />
               <h3 className="text-xl font-medium text-gray-900 mb-2">No Images Yet</h3>
               <p className="text-gray-600">
-                Gallery images for {countryNames[currentCountry]} will appear here once they're uploaded.
+                Gallery images will appear here once they're uploaded.
               </p>
             </div>
           )}
@@ -138,12 +100,11 @@ const Gallery = () => {
                   <div className="aspect-square overflow-hidden">
                     <motion.img
                       src={image.image_url}
-                      alt={image.title}
+                      alt={image.alt_text || image.title}
                       className="w-full h-full object-cover"
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.3 }}
                       onError={(e) => {
-                        console.error('Image load error:', e);
                         const target = e.target as HTMLImageElement;
                         target.style.display = 'none';
                       }}
@@ -181,7 +142,7 @@ const Gallery = () => {
             </button>
             <img
               src={selectedImage.image_url}
-              alt={selectedImage.title}
+              alt={selectedImage.alt_text || selectedImage.title}
               className="w-full h-full object-contain"
             />
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-6">
