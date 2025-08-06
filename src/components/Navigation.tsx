@@ -2,10 +2,16 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import CountrySelector from "@/components/CountrySelector";
 import { getCurrentCountryFromPath } from "@/services/countryDetection";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import {
   FaFacebookF,
   FaTwitter,
@@ -15,6 +21,7 @@ import {
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCompanyDropdownOpen, setIsCompanyDropdownOpen] = useState(false);
   const location = useLocation();
   const { user } = useAuth();
   const currentCountry = getCurrentCountryFromPath(location.pathname);
@@ -24,6 +31,12 @@ const Navigation = () => {
   const getNavLink = (basePath: string) => {
     if (currentCountry.code === "SG") return basePath;
     return `/${currentCountry.name.toLowerCase().replace(" ", "-")}${basePath}`;
+  };
+
+  const isCompanyLinkActive = () => {
+    return isActive(getNavLink("/about-us")) || 
+           isActive("/gallery") || 
+           isActive(getNavLink("/career"));
   };
 
   return (
@@ -77,14 +90,43 @@ const Navigation = () => {
             >
               Home
             </Link>
-            <Link
-              to={getNavLink("/about-us")}
-              className={`nav-link font-medium hover:text-gc-gold text-sm xl:text-base ${
-                isActive(getNavLink("/about-us")) ? "text-gc-gold" : "text-black"
-              }`}
-            >
-              About Us
-            </Link>
+
+            {/* Company Dropdown */}
+            <DropdownMenu open={isCompanyDropdownOpen} onOpenChange={setIsCompanyDropdownOpen}>
+              <DropdownMenuTrigger className={`nav-link font-medium hover:text-gc-gold text-sm xl:text-base flex items-center gap-1 ${
+                isCompanyLinkActive() ? "text-gc-gold" : "text-black"
+              }`}>
+                Company
+                <ChevronDown className="w-4 h-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="bg-white shadow-lg border rounded-md p-2 z-50">
+                <DropdownMenuItem asChild>
+                  <Link 
+                    to={getNavLink("/about-us")}
+                    className="w-full px-3 py-2 text-sm hover:bg-gray-100 rounded-md block"
+                  >
+                    About Us
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link 
+                    to="/gallery"
+                    className="w-full px-3 py-2 text-sm hover:bg-gray-100 rounded-md block"
+                  >
+                    Gallery
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link 
+                    to={getNavLink("/career")}
+                    className="w-full px-3 py-2 text-sm hover:bg-gray-100 rounded-md block"
+                  >
+                    Career
+                  </Link>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
             <Link
               to={getNavLink("/services")}
               className={`nav-link font-medium hover:text-gc-gold text-sm xl:text-base ${
@@ -102,14 +144,6 @@ const Navigation = () => {
               }`}
             >
               Blogs
-            </Link>
-            <Link
-              to="/gallery"
-              className={`nav-link font-medium hover:text-gc-gold text-sm xl:text-base ${
-                isActive("/gallery") ? "text-gc-gold" : "text-black"
-              }`}
-            >
-              Gallery
             </Link>
           </nav>
 
@@ -145,9 +179,10 @@ const Navigation = () => {
               {[
                 { label: "HOME", path: "/home" },
                 { label: "ABOUT US", path: "/about-us" },
+                { label: "GALLERY", path: "/gallery" },
+                { label: "CAREER", path: "/career" },
                 { label: "SERVICES", path: "/services" },
                 { label: "BLOGS", path: "/blog" },
-                { label: "GALLERY", path: "/gallery" },
                 { label: "CONTACT", path: "/contact" },
               ].map((item) => (
                 <Link

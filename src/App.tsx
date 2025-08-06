@@ -15,6 +15,8 @@ import Contact from '@/pages/Contact';
 import Services from '@/pages/Services';
 import GlobalPresence from '@/pages/GlobalPresence';
 import AboutUs from '@/pages/aboutus';
+import Gallery from '@/pages/Gallery';
+import Career from '@/pages/Career';
 import Login from '@/pages/Login';
 import Signup from '@/pages/Signup';
 import ForgotPassword from '@/pages/ForgotPassword';
@@ -24,6 +26,7 @@ import AdminLogin from '@/pages/AdminLogin';
 import BlogAdmin from '@/pages/BlogAdmin';
 import BlogEditor from '@/pages/BlogEditor';
 import Blog from '@/pages/Blog';
+import BlogDetail from '@/components/BlogDetail';
 import NewsDetailPage from '@/pages/NewsDetailPage';
 import NewsOverviewPage from '@/pages/NewsOverviewPage';
 import Projects from '@/pages/Projects';
@@ -88,7 +91,7 @@ const serviceRoutes: ServiceRoute[] = [
   { path: 'liner-agency', component: LinerAgency },
 ];
 
-// Country prefixes (✅ Updated to include "singapore")
+// Country prefixes
 const countries = ['singapore', 'sri-lanka', 'myanmar', 'bangladesh', 'pakistan', 'home'];
 
 const App: React.FC = () => {
@@ -112,9 +115,11 @@ const App: React.FC = () => {
               <Route path="/services" element={<Services />} />
               <Route path="/global-presence" element={<GlobalPresence />} />
               <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/career" element={<Career />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blogs" element={<Blog />} />
-              <Route path="/blog/:slug" element={<NewsDetailPage />} />
+              <Route path="/blog/:slug" element={<BlogDetail />} />
               <Route path="/news" element={<NewsOverviewPage />} />
               <Route path="/projects" element={<Projects />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
@@ -130,10 +135,12 @@ const App: React.FC = () => {
                 <React.Fragment key={country}>
                   <Route path={`/${country}/contact`} element={<Contact />} />
                   <Route path={`/${country}/about-us`} element={<AboutUs />} />
+                  <Route path={`/${country}/gallery`} element={<Gallery />} />
+                  <Route path={`/${country}/career`} element={<Career />} />
                   <Route path={`/${country}/services`} element={<Services />} />
                   <Route path={`/${country}/blog`} element={<Blog />} />
                   <Route path={`/${country}/blogs`} element={<Blog />} />
-                  <Route path={`/${country}/blog/:slug`} element={<NewsDetailPage />} />
+                  <Route path={`/${country}/blog/:slug`} element={<BlogDetail />} />
                   <Route path={`/${country}/global-presence`} element={<GlobalPresence />} />
                   <Route path={`/${country}/projects`} element={<Projects />} />
                 </React.Fragment>

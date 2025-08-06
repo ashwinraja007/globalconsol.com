@@ -1,11 +1,13 @@
 
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { supabase } from '@/integrations/supabase/client';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Image as ImageIcon } from 'lucide-react';
+import { getCurrentCountryFromPath } from '@/services/countryDetection';
 
 interface GalleryImage {
   id: string;
@@ -26,7 +28,21 @@ const countries = [
 ];
 
 const Gallery = () => {
-  const [selectedCountry, setSelectedCountry] = useState("singapore");
+  const location = useLocation();
+  const currentCountry = getCurrentCountryFromPath(location.pathname);
+  
+  // Set initial country based on URL path
+  const getInitialCountry = () => {
+    switch (currentCountry.code) {
+      case 'MM': return 'myanmar';
+      case 'BD': return 'bangladesh';
+      case 'PK': return 'pakistan';
+      case 'LK': return 'srilanka';
+      default: return 'singapore';
+    }
+  };
+
+  const [selectedCountry, setSelectedCountry] = useState(getInitialCountry());
   const [images, setImages] = useState<GalleryImage[]>([]);
   const [loading, setLoading] = useState(false);
 
