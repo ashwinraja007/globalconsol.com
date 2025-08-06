@@ -1,11 +1,10 @@
-
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Toaster } from '@/components/ui/sonner';
 import CountryRedirect from '@/components/CountryRedirect';
 
-// Import pages
+// Page imports
 import Index from '@/pages/Index';
 import SriLankaHome from '@/pages/SriLankaHome';
 import MyanmarHome from '@/pages/MyanmarHome';
@@ -30,7 +29,7 @@ import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import TermsAndConditions from '@/pages/TermsAndConditions';
 import NotFound from '@/pages/NotFound';
 
-// Import service pages
+// Service pages
 import SeaFreight from '@/pages/services/SeaFreight';
 import AirFreight from '@/pages/services/AirFreight';
 import CustomsClearance from '@/pages/services/CustomsClearance';
@@ -68,8 +67,14 @@ const queryClient = new QueryClient({
   },
 });
 
-// Service route configurations for each country
-const serviceRoutes = [
+// Services array type
+type ServiceRoute = {
+  path: string;
+  component: React.ComponentType;
+};
+
+// All services
+const serviceRoutes: ServiceRoute[] = [
   { path: 'sea-freight', component: SeaFreight },
   { path: 'air-freight', component: AirFreight },
   { path: 'customs-clearance', component: CustomsClearance },
@@ -81,10 +86,10 @@ const serviceRoutes = [
   { path: 'liner-agency', component: LinerAgency },
 ];
 
-// Country prefixes
-const countries = ['sri-lanka', 'myanmar', 'bangladesh', 'pakistan'];
+// Country prefixes (✅ Updated to include "singapore")
+const countries = ['singapore', 'sri-lanka', 'myanmar', 'bangladesh', 'pakistan'];
 
-function App() {
+const App: React.FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <Router>
@@ -114,7 +119,7 @@ function App() {
               <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
 
               {/* Country-specific pages */}
-              {countries.map(country => (
+              {countries.map((country) => (
                 <React.Fragment key={country}>
                   <Route path={`/${country}/contact`} element={<Contact />} />
                   <Route path={`/${country}/about-us`} element={<AboutUs />} />
@@ -127,15 +132,18 @@ function App() {
                 </React.Fragment>
               ))}
 
-              {/* Service routes for all countries */}
-              {serviceRoutes.map(service => (
+              {/* Service detail pages for global and each country */}
+              {serviceRoutes.map((service) => (
                 <React.Fragment key={service.path}>
+                  {/* Global route */}
                   <Route path={`/services/${service.path}`} element={<service.component />} />
-                  {countries.map(country => (
-                    <Route 
+
+                  {/* Country-specific routes */}
+                  {countries.map((country) => (
+                    <Route
                       key={`${country}-${service.path}`}
-                      path={`/${country}/services/${service.path}`} 
-                      element={<service.component />} 
+                      path={`/${country}/services/${service.path}`}
+                      element={<service.component />}
                     />
                   ))}
                 </React.Fragment>
@@ -146,12 +154,15 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
 
-              {/* Dashboard routes */}
-              <Route path="/dashboard" element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              }>
+              {/* User Dashboard */}
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                }
+              >
                 <Route index element={<DashboardOverview />} />
                 <Route path="overview" element={<DashboardOverview />} />
                 <Route path="shipments" element={<DashboardShipments />} />
@@ -160,12 +171,15 @@ function App() {
                 <Route path="settings" element={<DashboardSettings />} />
               </Route>
 
-              {/* Admin routes */}
-              <Route path="/admin" element={
-                <AdminRoute>
-                  <AdminDashboard />
-                </AdminRoute>
-              }>
+              {/* Admin Dashboard */}
+              <Route
+                path="/admin"
+                element={
+                  <AdminRoute>
+                    <AdminDashboard />
+                  </AdminRoute>
+                }
+              >
                 <Route index element={<AdminOverview />} />
                 <Route path="overview" element={<AdminOverview />} />
                 <Route path="users" element={<AdminUsers />} />
@@ -176,7 +190,7 @@ function App() {
                 <Route path="blog/edit/:id?" element={<BlogEditor />} />
               </Route>
 
-              {/* Catch all route */}
+              {/* 404 Not Found */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </div>
@@ -185,6 +199,6 @@ function App() {
       </Router>
     </QueryClientProvider>
   );
-}
+};
 
 export default App;
