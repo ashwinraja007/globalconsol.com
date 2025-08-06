@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -27,45 +28,47 @@ const Navigation = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 w-full z-50 shadow-md bg-white transition-all duration-300">
-      {/* Top bar with social icons */}
-      <div className="bg-[#c99e65] text-white text-sm py-1 px-4 flex justify-end items-center gap-3">
+      {/* Top bar with social icons - Hidden on small screens */}
+      <div className="bg-[#c99e65] text-white text-xs sm:text-sm py-1 px-2 sm:px-4 flex justify-between sm:justify-end items-center gap-2 sm:gap-3">
         <span className="hidden sm:block">Stay connected</span>
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
-          <FaFacebookF className="hover:text-white text-sm" />
-        </a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-          <FaTwitter className="hover:text-white text-sm" />
-        </a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
-          <FaLinkedinIn className="hover:text-white text-sm" />
-        </a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-          <FaInstagram className="hover:text-white text-sm" />
-        </a>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors">
+            <FaFacebookF className="text-xs sm:text-sm" />
+          </a>
+          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors">
+            <FaTwitter className="text-xs sm:text-sm" />
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors">
+            <FaLinkedinIn className="text-xs sm:text-sm" />
+          </a>
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors">
+            <FaInstagram className="text-xs sm:text-sm" />
+          </a>
+        </div>
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 py-[19px]">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 py-2 sm:py-4 lg:py-[19px]">
         <div className="flex justify-between items-center">
-          {/* Logos */}
-          <div className="flex items-center gap-4">
+          {/* Logos - Responsive sizing */}
+          <div className="flex items-center gap-2 sm:gap-4">
             <img
               alt="GGL Logo"
               src="/logo.png"
-              className="h-20 w-auto cursor-pointer object-fill transition-all duration-300"
+              className="h-12 sm:h-16 lg:h-20 w-auto cursor-pointer object-contain transition-all duration-300"
             />
-            <div className="h-8 w-px bg-gray-500 hidden md:block"></div>
+            <div className="h-6 sm:h-8 w-px bg-gray-500 hidden sm:block"></div>
             <img
               alt="1 Global Enterprises Logo"
               src="/lovable-uploads/a2513c1d-2708-4143-a69b-fa65a1d4d1f2.png"
-              className="hidden md:block h-11 w-auto object-contain transition-all duration-300"
+              className="hidden sm:block h-8 sm:h-10 lg:h-11 w-auto object-contain transition-all duration-300"
             />
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-6">
             <Link
               to={getNavLink("/home")}
-              className={`nav-link font-medium hover:text-gc-gold ${
+              className={`nav-link font-medium hover:text-gc-gold text-sm xl:text-base ${
                 isActive(getNavLink("/home")) ||
                 (currentCountry.code === "SG" && isActive("/"))
                   ? "text-gc-gold"
@@ -76,7 +79,7 @@ const Navigation = () => {
             </Link>
             <Link
               to={getNavLink("/about-us")}
-              className={`nav-link font-medium hover:text-gc-gold ${
+              className={`nav-link font-medium hover:text-gc-gold text-sm xl:text-base ${
                 isActive(getNavLink("/about-us")) ? "text-gc-gold" : "text-black"
               }`}
             >
@@ -84,7 +87,7 @@ const Navigation = () => {
             </Link>
             <Link
               to={getNavLink("/services")}
-              className={`nav-link font-medium hover:text-gc-gold ${
+              className={`nav-link font-medium hover:text-gc-gold text-sm xl:text-base ${
                 isActive(getNavLink("/services")) ? "text-gc-gold" : "text-black"
               }`}
             >
@@ -92,7 +95,7 @@ const Navigation = () => {
             </Link>
             <Link
               to={getNavLink("/blog")}
-              className={`nav-link font-medium hover:text-gc-gold ${
+              className={`nav-link font-medium hover:text-gc-gold text-sm xl:text-base ${
                 isActive(getNavLink("/blog")) || isActive(getNavLink("/blogs"))
                   ? "text-gc-gold"
                   : "text-black"
@@ -102,7 +105,7 @@ const Navigation = () => {
             </Link>
             <Link
               to={getNavLink("/contact")}
-              className={`nav-link font-medium hover:text-gc-gold ${
+              className={`nav-link font-medium hover:text-gc-gold text-sm xl:text-base ${
                 isActive(getNavLink("/contact")) ? "text-gc-gold" : "text-black"
               }`}
             >
@@ -110,11 +113,11 @@ const Navigation = () => {
             </Link>
           </nav>
 
-          {/* Right section */}
-          <div className="hidden md:flex items-center gap-4">
+          {/* Right section - Responsive */}
+          <div className="hidden md:flex items-center gap-2 lg:gap-4">
             <CountrySelector />
             <Link to={`${getNavLink("/contact")}#contact-form`}>
-              <Button className="bg-gc-gold hover:bg-gc-bronze text-white rounded-md">
+              <Button className="bg-gc-gold hover:bg-gc-bronze text-white rounded-md text-xs sm:text-sm px-3 sm:px-4 py-2">
                 GET QUOTE
               </Button>
             </Link>
@@ -123,12 +126,12 @@ const Navigation = () => {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2"
+            className="lg:hidden p-2"
           >
             {isMenuOpen ? (
-              <X className="text-black" size={24} />
+              <X className="text-black" size={20} />
             ) : (
-              <Menu className="text-black" size={24} />
+              <Menu className="text-black" size={20} />
             )}
           </button>
         </div>
@@ -136,7 +139,7 @@ const Navigation = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white py-4 shadow-md animate-fade-in border-t">
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-white py-4 shadow-md animate-fade-in border-t max-h-[calc(100vh-80px)] overflow-y-auto">
           <div className="container mx-auto px-4">
             <nav className="flex flex-col space-y-4">
               {[
@@ -149,7 +152,7 @@ const Navigation = () => {
                 <Link
                   key={item.path}
                   to={getNavLink(item.path)}
-                  className={`font-medium hover:text-gc-gold ${
+                  className={`font-medium hover:text-gc-gold py-2 text-base ${
                     isActive(getNavLink(item.path)) ||
                     (item.path === "/home" &&
                       currentCountry.code === "SG" &&
@@ -163,15 +166,16 @@ const Navigation = () => {
                 </Link>
               ))}
 
-              <div className="pt-2">
+              <div className="pt-4 border-t border-gray-200">
                 <CountrySelector />
               </div>
 
               <Link
                 to={`${getNavLink("/contact")}#contact-form`}
                 onClick={() => setIsMenuOpen(false)}
+                className="pt-2"
               >
-                <Button className="bg-gc-gold hover:bg-gc-bronze text-white w-full rounded-md mt-4">
+                <Button className="bg-gc-gold hover:bg-gc-bronze text-white w-full rounded-md">
                   GET QUOTE
                 </Button>
               </Link>
