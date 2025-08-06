@@ -103,7 +103,14 @@ const Navigation = () => {
             >
               Blogs
             </Link>
-           
+            <Link
+              to="/gallery"
+              className={`nav-link font-medium hover:text-gc-gold text-sm xl:text-base ${
+                isActive("/gallery") ? "text-gc-gold" : "text-black"
+              }`}
+            >
+              Gallery
+            </Link>
           </nav>
 
           {/* Right section - Responsive */}
@@ -140,13 +147,14 @@ const Navigation = () => {
                 { label: "ABOUT US", path: "/about-us" },
                 { label: "SERVICES", path: "/services" },
                 { label: "BLOGS", path: "/blog" },
+                { label: "GALLERY", path: "/gallery" },
                 { label: "CONTACT", path: "/contact" },
               ].map((item) => (
                 <Link
                   key={item.path}
-                  to={getNavLink(item.path)}
+                  to={item.path === "/gallery" ? "/gallery" : getNavLink(item.path)}
                   className={`font-medium hover:text-gc-gold py-2 text-base ${
-                    isActive(getNavLink(item.path)) ||
+                    isActive(item.path === "/gallery" ? "/gallery" : getNavLink(item.path)) ||
                     (item.path === "/home" &&
                       currentCountry.code === "SG" &&
                       isActive("/"))

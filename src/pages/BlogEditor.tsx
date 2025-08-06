@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -8,7 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
-import { Trash2, Upload, FileText, Edit, X, Bold, Link, Italic, Underline, List, Image } from "lucide-react";
+import { LogOut, Trash2, Upload, FileText, Edit, X, Bold, Link, Italic, Underline, List, Image } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 
@@ -51,12 +52,15 @@ const countries = [
 ];
 
 const BlogEditor = () => {
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [activeView, setActiveView] = useState<ActiveView>("blog");
-  const [uploadLoading, setUploadLoading] = useState(false);
   const { toast } = useToast();
   const contentRef = useRef<HTMLTextAreaElement>(null);
+
+  const [articles, setArticles] = useState<Article[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [uploadLoading, setUploadLoading] = useState(false);
 
   // Blog form state
   const [title, setTitle] = useState('');
@@ -99,14 +103,26 @@ const BlogEditor = () => {
   const [linkText, setLinkText] = useState('');
 
   useEffect(() => {
-    fetchArticles();
-  }, []);
+    // Check if admin is logged in
+    const adminStatus = localStorage.getItem("isAdminLoggedIn");
+    if (adminStatus === "true") {
+      setIsLoggedIn(true);
+      fetchArticles();
+    } else {
+      navigate("/admin-login");
+    }
+  }, [navigate]);
 
   useEffect(() => {
-    if (activeView === "gallery") {
+    if (activeView === "gallery" && isLoggedIn) {
       fetchGalleryImages();
     }
-  }, [activeView, selectedCountry]);
+  }, [activeView, selectedCountry, isLoggedIn]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("isAdminLoggedIn");
+    navigate("/admin-login");
+  };
 
   const fetchArticles = async () => {
     setLoading(true);
@@ -236,17 +252,11 @@ const BlogEditor = () => {
     }, 0);
   };
 
-  const handleBold = () => {
-    insertTextAtCursor('**', '**');
-  };
-
-  const handleItalic = () => {
-    insertTextAtCursor('*', '*');
-  };
-
-  const handleUnderline = () => {
-    insertTextAtCursor('<u>', '</u>');
-  };
+  const handleBold = () => insertTextAtCursor('**', '**');
+  const handleItalic = () => insertTextAtCursor('*', '*');
+  const handleUnderline = () => insertTextAtCursor('<u>', '</u>');
+  const handleBulletList = () => insertTextAtCursor('\n- ');
+  const handleNumberedList = () => insertTextAtCursor('\n1. ');
 
   const handleLink = () => {
     const textarea = contentRef.current;
@@ -290,14 +300,6 @@ const BlogEditor = () => {
     setShowLinkDialog(false);
     setLinkUrl('');
     setLinkText('');
-  };
-
-  const handleBulletList = () => {
-    insertTextAtCursor('\n- ');
-  };
-
-  const handleNumberedList = () => {
-    insertTextAtCursor('\n1. ');
   };
 
   const uploadImage = async (file: File): Promise<string> => {
@@ -751,7 +753,6 @@ const BlogEditor = () => {
             <div>
               <Label htmlFor="content">Content *</Label>
               
-              {/* Rich Text Toolbar */}
               <div className="border rounded-t-md bg-gray-50 p-2 flex flex-wrap gap-1 mb-0">
                 <Button
                   type="button"
@@ -825,12 +826,7 @@ const BlogEditor = () => {
                 rows={12}
                 required
                 className="rounded-t-none border-t-0"
-                placeholder="Write your article content here. Use the toolbar above for formatting:
-- **bold text**
-- *italic text*
-- <u>underlined text</u>
-- [link text](https://example.com)
-- Bullet lists and numbered lists"
+                placeholder="Write your article content here. Use the toolbar above for formatting"
               />
               
               <div className="text-xs text-gray-500 mt-2">
@@ -883,7 +879,6 @@ const BlogEditor = () => {
         </CardContent>
       </Card>
 
-      {/* Link Dialog */}
       {showLinkDialog && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <Card className="w-full max-w-md">
@@ -986,7 +981,6 @@ const BlogEditor = () => {
 
   const renderGalleryEditor = () => (
     <div className="space-y-6">
-      {/* Country Selection */}
       <Card>
         <CardHeader>
           <CardTitle>Select Country</CardTitle>
@@ -1007,7 +1001,6 @@ const BlogEditor = () => {
         </CardContent>
       </Card>
 
-      {/* Upload Form */}
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
@@ -1083,7 +1076,6 @@ const BlogEditor = () => {
         </CardContent>
       </Card>
 
-      {/* Images Grid */}
       <Card>
         <CardHeader>
           <CardTitle>
@@ -1148,7 +1140,6 @@ const BlogEditor = () => {
         </CardContent>
       </Card>
 
-      {/* Edit Modal */}
       {editingImage && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <Card className="w-full max-w-md">
@@ -1199,35 +1190,60 @@ const BlogEditor = () => {
     </div>
   );
 
+  if (!isLoggedIn) {
+    return null; // Will redirect to login
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />
-      <div className="container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h2 className="text-2xl font-bold mb-4">Content Management</h2>
-          
-          <div className="flex gap-4 mb-6">
-            <Button
-              variant={activeView === "blog" ? "default" : "outline"}
-              onClick={() => handleViewChange("blog")}
-              className="flex items-center gap-2"
-            >
-              <FileText className="h-4 w-4" />
-              Blog Editor
-            </Button>
-            <Button
-              variant={activeView === "gallery" ? "default" : "outline"}
-              onClick={() => handleViewChange("gallery")}
-              className="flex items-center gap-2"
-            >
-              <Image className="h-4 w-4" />
-              Gallery Editor
-            </Button>
+      
+      {/* Add padding top to account for fixed navigation */}
+      <div className="pt-32">
+        <div className="bg-white shadow-sm border-b">
+          <div className="container mx-auto px-4 py-4">
+            <div className="flex justify-between items-center">
+              <h1 className="text-2xl font-bold">Blog & Gallery Editor</h1>
+              <Button 
+                variant="outline" 
+                onClick={handleLogout}
+                className="flex items-center gap-2"
+              >
+                <LogOut className="h-4 w-4" />
+                Logout
+              </Button>
+            </div>
           </div>
         </div>
 
-        {activeView === "blog" ? renderBlogEditor() : renderGalleryEditor()}
+        <div className="container mx-auto px-4 py-8">
+          <div className="mb-8">
+            <h2 className="text-2xl font-bold mb-4">Content Management</h2>
+            
+            <div className="flex gap-4 mb-6">
+              <Button
+                variant={activeView === "blog" ? "default" : "outline"}
+                onClick={() => handleViewChange("blog")}
+                className="flex items-center gap-2"
+              >
+                <FileText className="h-4 w-4" />
+                Blog Editor
+              </Button>
+              <Button
+                variant={activeView === "gallery" ? "default" : "outline"}
+                onClick={() => handleViewChange("gallery")}
+                className="flex items-center gap-2"
+              >
+                <Image className="h-4 w-4" />
+                Gallery Editor
+              </Button>
+            </div>
+          </div>
+
+          {activeView === "blog" ? renderBlogEditor() : renderGalleryEditor()}
+        </div>
       </div>
+      
       <Footer />
     </div>
   );
