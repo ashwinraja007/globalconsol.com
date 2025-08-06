@@ -51,7 +51,7 @@ const GlobalPresence = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className={`flex flex-1 relative overflow-hidden mx-0 ${isMobile ? 'pt-[120px] pb-10' : 'pt-[120px] pb-10'}`}
+        className={`flex flex-1 relative overflow-hidden mx-0 ${isMobile ? 'pt-[140px] pb-10' : 'pt-[120px] pb-10'}`}
       >
         {/* Map Section */}
         {(!isMobile || (isMobile && showMap)) && (
