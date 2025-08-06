@@ -23,48 +23,49 @@ interface CountryData {
 }
 
 const countries: CountryData[] = [
-  { country: "SINGAPORE", company: "GC", website: "https://www.globalconsol.com", priority: 1, flag: "/sg.svg", route: "/" },
-  { country: "SRI LANKA", company: "GC", website: "https://www.globalconsol.com", priority: 2, flag: "/lk.svg", route: "/sri-lanka/home" },
-  { country: "MYANMAR", company: "GC", website: "https://www.globalconsol.com", priority: 3, flag: "/mm.svg", route: "/myanmar/home" },
-  { country: "BANGLADESH", company: "GC", website: "https://www.globalconsol.com", priority: 4, flag: "/bd.svg", route: "/bangladesh/home" },
-  { country: "PAKISTAN", company: "GC", website: "https://www.globalconsol.com", priority: 5, flag: "/pk.svg", route: "/pakistan/home" },
+  { country: "SINGAPORE", company: "GC", website: "https://www.globalconsol.com", priority: 1, flag: "/sg.svg"},
+  { country: "SRI LANKA", company: "GC", website: "https://www.globalconsol.com/sri-lanka", priority: 2, flag: "/lk.svg" },
+  { country: "MYANMAR", company: "GC", website: "https://www.globalconsol.com/myanmar", priority: 3, flag: "/mm.svg" },
+  { country: "BANGLADESH", company: "GC", website: "https://www.globalconsol.com/bangladesh", priority: 4, flag: "/bd.svg", visibilityByCountry: {BANGLADESH: false,} },
+  { country: "PAKISTAN", company: "GC", website: "https://www.globalconsol.com/pakistan", priority: 5, flag: "/pk.svg" },
 
   // Hidden only in Bangladesh and Myanmar
   {
     country: "MALAYSIA",
     company: "OECL",
-    website: "https://oecl.vercel.app/",
+    website: "https://oecl.vercel.app/malaysia",
     priority: 6,
     flag: "/my.svg",
-    route: "/malaysia/home",
     visibilityByCountry: {
       BANGLADESH: false,
-      MYANMAR: false,
     }
   },
   {
     country: "INDONESIA",
     company: "OECL",
-    website: "https://oecl.vercel.app/",
+    website: "https://oecl.vercel.app/indonesia",
     priority: 7,
     flag: "/id.svg",
-    route: "/indonesia/home",
     visibilityByCountry: {
       BANGLADESH: false,
-      MYANMAR: false,
     }
   },
   {
     country: "THAILAND",
     company: "OECL",
-    website: "https://oecl.vercel.app/",
+    website: "https://oecl.vercel.app/thailand",
     priority: 8,
     flag: "/th.svg",
-    route: "/thailand/home",
     visibilityByCountry: {
       BANGLADESH: false,
-      MYANMAR: false,
     }
+  },
+   {
+    country: "INDIA",
+    company: "OECL",
+    website: "https://oecl.vercel.app/india",
+    priority: 8,
+    flag: "/in.svg",
   },
 
   { country: "CHINA", company: "Haixun", website: "https://www.haixun.co/", priority: 9, flag: "/cn.svg" },
@@ -72,7 +73,7 @@ const countries: CountryData[] = [
   { country: "QATAR", company: "ONE GLOBAL", website: "https://oneglobalqatar.com/", priority: 11, flag: "/qa.svg" },
   { country: "SAUDI ARABIA", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 12, flag: "/sa.svg" },
   { country: "UAE", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 13, flag: "/ae.svg" },
-  { country: "USA", company: "GGL", website: "https://gglusa.us/", priority: 14, flag: "/us.svg" },
+  { country: "USA", company: "GGL", website: "https://gglusa.us/", priority: 14, flag: "/us.svg",visibilityByCountry: { MYANMAR: false,} },
   { country: "UK", company: "Moltech", website: "https://moltech.uk/", priority: 15, flag: "/gb.svg" }
 ];
 
