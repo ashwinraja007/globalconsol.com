@@ -147,7 +147,7 @@ const GlobalPresence = () => {
             >
               <Globe className="h-10 w-10 bg-transparent" />
             </motion.div>
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-950">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-950 mt-10">
               Global Presence
             </h2>
           </motion.div>
