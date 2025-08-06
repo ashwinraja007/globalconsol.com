@@ -11,7 +11,7 @@ const HeroSection = () => {
   });
   const sliderImages = [{
     url: "/h1.png",
-    title: "OECL",
+    title: "GLOBAL CONSOL",
     description: "Vital Link to Enhance Your Supply Chain.",
     gradient: ""
   }, {
