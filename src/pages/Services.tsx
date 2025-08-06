@@ -107,7 +107,7 @@ const Services: React.FC = () => {
     description: "Reliable sea freight for bulk and large-volume cargo with competitive rates and comprehensive coverage.",
     icon: Ship,
     image: "/oceanfreight.png",
-    slug: "ocean-freight"
+    slug: "sea-freight"
   }, {
     id: 3,
     title: "Warehousing",
@@ -135,7 +135,7 @@ const Services: React.FC = () => {
     description: "Third-party logistics for flexible supply chain solutions and operational efficiency.",
     icon: Cuboid,
     image: "/3pl.png",
-    slug: "3pl"
+    slug: "third-party-logistics"
   }];
   return <div className="min-h-screen flex flex-col bg-white">
       <ScrollToTop />
