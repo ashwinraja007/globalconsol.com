@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom'; // ✅ Fixed missing import
+import { useLocation } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import ContactMapContainer from '@/components/ContactMapContainer';
@@ -40,20 +40,20 @@ const GlobalPresence = () => {
       <ScrollToTop />
       <Navigation />
 
+      {/* Mobile fixed title */}
+      {isMobile && (
+        <div className="fixed top-20 left-0 right-0 z-30 bg-gradient-to-r from-amber-500 to-amber-400 p-3 text-white text-center shadow-md">
+          <h1 className="text-lg font-bold">Global Presence</h1>
+        </div>
+      )}
+
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="flex flex-1 relative overflow-hidden mx-0 my-[80px]"
+        className={`flex flex-1 relative overflow-hidden mx-0 ${isMobile ? 'pt-[120px] pb-10' : 'pt-[100px] pb-10'}`}
       >
-        {/* Page title for mobile */}
-        {isMobile && (
-          <div className="fixed top-20 left-0 right-0 z-30 bg-gradient-to-r from-amber-500 to-amber-400 p-3 text-white text-center shadow-md">
-            <h1 className="text-lg font-bold">Global Presence</h1>
-          </div>
-        )}
-
-        {/* Main content with map */}
+        {/* Map Section */}
         {(!isMobile || (isMobile && showMap)) && (
           <motion.main
             initial={isMobile ? { x: '100%' } : { opacity: 0 }}
@@ -70,7 +70,7 @@ const GlobalPresence = () => {
           </motion.main>
         )}
 
-        {/* Sidebar for locations */}
+        {/* Sidebar Section */}
         {(!isMobile || (isMobile && !showMap)) && (
           <motion.div
             initial={isMobile ? { x: '-100%' } : { opacity: 0 }}
@@ -86,8 +86,6 @@ const GlobalPresence = () => {
             <ContactSidebar isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
           </motion.div>
         )}
-
-        {/* Optional toggle buttons can go here if needed */}
       </motion.div>
 
       <Footer />
