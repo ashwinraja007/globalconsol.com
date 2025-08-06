@@ -89,7 +89,7 @@ const LocationsSection: React.FC = () => {
     <div className="px-4 py-8 max-w-7xl mx-auto">
       <div className="mb-6">
         <h2 className="text-3xl font-bold mb-4 text-center">Our Office Locations</h2>
-        <div className="text-center text-xl font-semibold py-2 px-4 bg-kargon-red-600 text-white rounded inline-block">
+        <div className="text-center text-xl font-semibold py-2 px-4 bg-red-600 text-white rounded inline-block">
           {selectedCountry}
         </div>
       </div>
@@ -122,7 +122,7 @@ const LocationsSection: React.FC = () => {
           </div>
 
           <div className="relative rounded-lg overflow-hidden h-[400px] shadow-lg">
-            <div className="absolute top-0 left-0 w-full text-white text-center py-2 bg-kargon-red-600 font-semibold z-10">
+            <div className="absolute top-0 left-0 w-full text-white text-center py-2 bg-red-600 font-semibold z-10">
              {selectedLocation}
             </div>
             <iframe
