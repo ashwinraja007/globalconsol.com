@@ -164,7 +164,7 @@ const App: React.FC = () => {
               ))}
 
               {/* Auth routes */}
-              <Route path="/login" element={<Login />} />
+              <Route path="/login" element={<AdminLogin />} />
               <Route path="/signup" element={<Signup />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
 
