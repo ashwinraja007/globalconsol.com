@@ -43,11 +43,11 @@ interface GalleryImage {
 type ActiveView = "blog" | "gallery";
 
 const countries = [
+  { value: "myanmar", label: "Myanmar" },
   { value: "singapore", label: "Singapore" },
-  { value: "india", label: "India" },
-  { value: "malaysia", label: "Malaysia" },
-  { value: "thailand", label: "Thailand" },
-  { value: "indonesia", label: "Indonesia" },
+  { value: "bangladesh", label: "Bangladesh" },
+  { value: "pakistan", label: "Pakistan" },
+  { value: "srilanka", label: "Sri Lanka" },
 ];
 
 const BlogEditor = () => {
