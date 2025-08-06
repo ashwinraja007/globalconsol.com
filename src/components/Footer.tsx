@@ -20,48 +20,126 @@ const Footer = () => {
       }
     }
   };
-  const keyAddresses = [{
+  const keyAddresses = [
+  {
     country: "Singapore",
-    offices: [{
-      name: "OECL (Singapore) Pte Ltd.",
-      address: "Blk 511 Kampong Bahru Road\n#03-01 Keppel Distripark\nSingapore - 099447",
-      phone: "+65 6224 1338",
-      fax: "+65 6224 1336",
-      email: "info@oecl.sg"
-    }]
-  }, {
+    offices: [
+      {
+        name: "OECL (Singapore) Pte Ltd.",
+        address:
+          "Blk 511 Kampong Bahru Road, #03-01 Keppel Distripark, Singapore 099447",
+        phone: "+65 6224 1338 / +65 6224 1336",
+        map: "https://www.google.com/maps/d/u/0/embed?mid=1U_72YwJ_4E6SQSrx2E6eWegoUTQesgo&ehbc=2E312F&noprof=1",
+      },
+    ],
+  },
+  {
     country: "India",
-    offices: [{
-      name: "Chennai Office",
-      address: "Roma Building, Door No. 10, 3rd Floor\nG.S.T. Road, Alandur\nChennai-600 016",
-      phone: "+91 44 4689 4646"
-    }, {
-      name: "Mumbai Office",
-      address: "Town Center - 2, Office No.607, 6th Floor\nMarol, Andheri Kurla Road\nAndheri East, Mumbai - 400059",
-      phone: "+91 8879756838"
-    }]
-  }, {
+    offices: [
+      {
+        name: "Chennai Office",
+        address:
+          "Roma Building, Door No. 10, 3rd Floor\nG.S.T. Road, Alandur\nChennai-600 016",
+        phone: "+91 44 4689 4646",
+      },
+      {
+        name: "Mumbai Office",
+        address:
+          "Town Center - 2, Office No.607, 6th Floor\nMarol, Andheri Kurla Road\nAndheri East, Mumbai - 400059",
+        phone: "+91 8879756838",
+      },
+    ],
+  },
+  {
     country: "Malaysia",
-    offices: [{
-      name: "Port Klang Office",
-      address: "2, 3A-5 Jalan Batu Nilam 16\nThe Landmark (Behind AEON Mall)\nBandar Bukit Tinggi 2\n41200, Klang, Selangor",
-      phone: "+603 - 3319 2778"
-    }]
-  }, {
+    offices: [
+      {
+        name: "Port Klang Office",
+        address:
+          "2, 3A-5 Jalan Batu Nilam 16\nThe Landmark (Behind AEON Mall)\nBandar Bukit Tinggi 2\n41200, Klang, Selangor",
+        phone: "+603 - 3319 2778",
+      },
+    ],
+  },
+  {
     country: "Thailand",
-    offices: [{
-      name: "Bangkok Office",
-      address: "109 CCT Building, 3rd Floor\nSurawong Road, Suriyawongse\nBangrak, Bangkok 10500",
-      phone: "+662-634-3240"
-    }]
-  }, {
+    offices: [
+      {
+        name: "Bangkok Office",
+        address:
+          "109 CCT Building, 3rd Floor\nSurawong Road, Suriyawongse\nBangrak, Bangkok 10500",
+        phone: "+662-634-3240",
+      },
+    ],
+  },
+  {
     country: "Indonesia",
-    offices: [{
-      name: "Jakarta Office",
-      address: "408, Lina Building\nJL.HR Rasuna Said kav B7\nJakarta",
-      phone: "+62 21 529 20292"
-    }]
-  }];
+    offices: [
+      {
+        name: "Jakarta Office",
+        address:
+          "408, Lina Building\nJL.HR Rasuna Said kav B7\nJakarta",
+        phone: "+62 21 529 20292",
+      },
+    ],
+  },
+  {
+    country: "Sri Lanka",
+    offices: [
+      {
+        name: "Colombo Office",
+        address:
+          "Ceylinco House, 9th Floor, No. 69, Janadhipathi Mawatha, Colombo 01, Sri Lanka",
+        phone: "+94 114477499 / +94 114477494",
+        map: "https://www.google.com/maps/d/u/0/embed?mid=1Nt9tx3aLmBNO-Sf6oJxm3WxfmbDIF0I&ehbc=2E312F&noprof=1",
+      },
+    ],
+  },
+  {
+    country: "Myanmar",
+    offices: [
+      {
+        name: "Yangon Office",
+        address:
+          "No.608, Room 8B, Bo Soon Pat Tower, Merchant Street, Pabedan Township, Yangon, Myanmar",
+        phone: "+951 243158 / +951 377985",
+        map: "https://www.google.com/maps/d/u/0/embed?mid=1S0BF3WzohAIQGBr9w6ryuexAnYj8AVc&ehbc=2E312F&noprof=1",
+      },
+    ],
+  },
+  {
+    country: "Bangladesh",
+    offices: [
+      {
+        name: "Dhaka Office",
+        address:
+          "ID #9-N (New), 9-M(Old-N), 9th floor, Tower 1, Police Plaza Concord No.2, Road # 144, Gulshan Model Town, Dhaka 1215, Bangladesh",
+        phone: "+880 1716 620989",
+        map: "https://www.google.com/maps/d/u/0/embed?mid=1X0GsrCFJRFoj6Q67PJztKAAzkDlKkXY&ehbc=2E312F&noprof=1",
+      },
+    ],
+  },
+  {
+    country: "Pakistan",
+    offices: [
+      {
+        name: "Karachi Office",
+        address:
+          "Suite No.301, 3rd Floor, Fortune Center, Shahrah-e-Faisal, Block 6, PECHS, Karachi, Pakistan",
+        phone: "+92-300-8282511 / +92-21-34302281-5",
+        map: "https://www.google.com/maps/d/u/0/embed?mid=1reXoq38Nt5GKCCpv-f_cb1UwG-Ko30o&ehbc=2E312F&noprof=1",
+      },
+      {
+        name: "Lahore Office",
+        address:
+          "Office # 301, 3rd Floor, Gulberg Arcade Main Market, Gulberg 2, Lahore, Pakistan",
+        phone: "+92 42-35782306/07/08",
+        map: "https://www.google.com/maps/d/u/0/embed?mid=1ObHyVRDeNaWR7qOyMHKqqvqWbqjsCVk&ehbc=2E312F&noprof=1",
+      },
+    ],
+  },
+];
+
 
   // Filter addresses based on current route
   const getFilteredAddresses = () => {
