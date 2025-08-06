@@ -12,7 +12,7 @@ const SeaFreight = () => {
       <Navigation />
 
       <section className="pt-28 pb-16 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-red-600/20 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-transparent"></div>
         <div className="container mx-auto px-4 relative">
           <motion.div initial={{
           opacity: 0,
@@ -24,11 +24,11 @@ const SeaFreight = () => {
           duration: 0.8
         }} className="text-center mb-16">
             <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full mb-6 mt-9 bg-blue-200">
-              <Ship className="w-6 h-6 text-red-500" />
-              <span className="text-red-500 font-semibold">SEA Freight</span>
+              <Ship className="w-6 h-6 text-blue-500" />
+              <span className="text-blue-500 font-semibold">SEA Freight</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              SEA <span className="text-red-500">Freight</span>
+              SEA <span className="text-blue-500">Freight</span>
             </h1>
           </motion.div>
 
@@ -58,7 +58,7 @@ const SeaFreight = () => {
             duration: 0.8,
             delay: 0.4
           }} className="space-y-6">
-              <h2 className="text-3xl font-bold text-red-500">SEA Freight Services</h2>
+              <h2 className="text-3xl font-bold text-blue-500">SEA Freight Services</h2>
               <p className="text-gray-700 text-lg leading-relaxed">
                 At GC, we possess our own fleet of containers, which includes specialized equipment designed to cater to the unique requirements of our customers. With our extensive expertise in sea freight operations, we excel in various trade lanes. Our professionals ensure frequent departures and offer flexible service options. By partnering with multiple carriers on all trade routes, we secure favorable rates and guarantee space, allocation, timing, pricing, and shipment frequency.
               </p>
@@ -86,8 +86,8 @@ const SeaFreight = () => {
               once: true
             }} className="space-y-6">
                 <div className="flex items-center gap-3 mb-4">
-                  <Container className="w-8 h-8 text-red-600" />
-                  <h3 className="text-2xl font-bold text-red-600">LCL Services</h3>
+                  <Container className="w-8 h-8 text-blue-600" />
+                  <h3 className="text-2xl font-bold text-blue-600">LCL Services</h3>
                 </div>
                 <p className="text-gray-700 text-lg leading-relaxed">
                   GC offers its own consolidation service on numerous trade routes, leveraging an extensive network of consolidators. This enables the company to deliver competitive pricing and a range of sailing options. By regularly providing consolidation boxes to key trade lanes, GC can effectively handle cargo that requires timely deliveries. In addition, GC ensures complete transparency in pricing, including origin, destination, and sea freight charges.
@@ -106,9 +106,9 @@ const SeaFreight = () => {
             }} viewport={{
               once: true
             }} className="relative">
-                <div className="bg-red-600/10 p-8 rounded-xl">
+                <div className="bg-blue-600/10 p-8 rounded-xl">
                   <div className="text-center">
-                    <div className="bg-red-600 text-white px-4 py-2 rounded-full text-2xl font-bold mb-4 mx-auto w-fit">
+                    <div className="bg-blue-600 text-white px-4 py-2 rounded-full text-2xl font-bold mb-4 mx-auto w-fit">
                       7584
                     </div>
                     <p className="text-gray-700 text-lg font-semibold">LCL Consolidation Routes</p>
@@ -129,10 +129,10 @@ const SeaFreight = () => {
           duration: 0.8
         }} viewport={{
           once: true
-        }} className="text-center bg-gradient-to-r from-red-600 to-red-700 text-white p-12 rounded-2xl">
+        }} className="text-center bg-gradient-to-r from-blue-600 to-blue-700 text-white p-12 rounded-2xl">
             <h3 className="text-2xl font-bold mb-4">Get a quick consultation and our experts are here to help you out</h3>
             <Link to="/contact">
-              <button className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
+              <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
                 Reach Us
               </button>
             </Link>
