@@ -73,7 +73,7 @@ const SeaFreight = () => {
 
           {/* LCL Services Section */}
           <div className="bg-gray-50 rounded-2xl p-8 mb-12">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div className="grid grid-cols-1 lg:grid-cols-1 gap-12 items-center">
               <motion.div initial={{
               opacity: 0,
               x: -50
@@ -94,27 +94,6 @@ const SeaFreight = () => {
                 </p>
               </motion.div>
               
-              <motion.div initial={{
-              opacity: 0,
-              x: 50
-            }} whileInView={{
-              opacity: 1,
-              x: 0
-            }} transition={{
-              duration: 0.8,
-              delay: 0.2
-            }} viewport={{
-              once: true
-            }} className="relative">
-                <div className="bg-blue-600/10 p-8 rounded-xl">
-                  <div className="text-center">
-                    <div className="bg-blue-600 text-white px-4 py-2 rounded-full text-2xl font-bold mb-4 mx-auto w-fit">
-                      7584
-                    </div>
-                    <p className="text-gray-700 text-lg font-semibold">LCL Consolidation Routes</p>
-                  </div>
-                </div>
-              </motion.div>
             </div>
           </div>
 
