@@ -48,7 +48,7 @@ const GlobalPresence = () => {
       >
         {/* Page title for mobile */}
         {isMobile && (
-          <div className="fixed top-20 left-0 right-0 z-30 bg-gradient-to-r from-amber-500 to-amber-400 p-3 text-white text-center shadow-md mt-9">
+          <div className="fixed top-20 left-0 right-0 z-30 bg-gradient-to-r from-amber-500 to-amber-400 p-3 text-white text-center shadow-md">
             <h1 className="text-lg font-bold">Global Presence</h1>
           </div>
         )}
