@@ -145,7 +145,7 @@ const Services: React.FC = () => {
         <section className="bg-gradient-to-r from-gc-dark-blue via-gc-blue to-gc-dark-blue text-white relative overflow-hidden">
           <div className="absolute inset-0 z-0">
             <img src="/lovable-uploads/gp.jpg" alt="Services" className="w-full h-full object-cover opacity-20" />
-            <div className="absolute inset-0 bg-gradient-to-r from-gc-dark-blue/90 to-gc-blue/90" />
+            <div className="absolute inset-0 bg-gradient-to-r from-gc-dark-blue/90 to-gc-blue/90 " />
           </div>
           <div className="container mx-auto px-4 py-16 relative z-10">
             <motion.div initial={{
@@ -157,7 +157,7 @@ const Services: React.FC = () => {
           }} transition={{
             duration: 0.5
           }} className="text-center max-w-4xl mx-auto">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
+              <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white mt-3">
                 Our Logistics Services
               </h1>
               <div className="w-20 h-1 bg-gc-gold mx-auto mb-6"></div>
