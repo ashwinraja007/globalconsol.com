@@ -62,6 +62,39 @@ export type Database = {
         }
         Relationships: []
       }
+      breaking_news: {
+        Row: {
+          content: string
+          created_at: string | null
+          date: string
+          id: number
+          image: string | null
+          is_active: boolean | null
+          title: string
+          updated_at: string | null
+        }
+        Insert: {
+          content: string
+          created_at?: string | null
+          date: string
+          id?: number
+          image?: string | null
+          is_active?: boolean | null
+          title: string
+          updated_at?: string | null
+        }
+        Update: {
+          content?: string
+          created_at?: string | null
+          date?: string
+          id?: number
+          image?: string | null
+          is_active?: boolean | null
+          title?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       gallery: {
         Row: {
           country: string
@@ -98,102 +131,132 @@ export type Database = {
         }
         Relationships: []
       }
-      payments: {
+      news: {
         Row: {
-          amount: number
+          alt_image_title: string | null
+          author: string | null
+          category: string | null
+          content: string | null
           created_at: string | null
-          id: string
-          payment_method: string
-          status: string | null
-          transaction_id: string | null
+          date: string
+          id: number
+          image: string | null
+          slug: string
+          summary: string | null
+          title: string
           updated_at: string | null
-          user_id: string | null
+          youtube_id: string | null
         }
         Insert: {
-          amount: number
+          alt_image_title?: string | null
+          author?: string | null
+          category?: string | null
+          content?: string | null
           created_at?: string | null
-          id?: string
-          payment_method: string
-          status?: string | null
-          transaction_id?: string | null
+          date: string
+          id?: number
+          image?: string | null
+          slug: string
+          summary?: string | null
+          title: string
           updated_at?: string | null
-          user_id?: string | null
+          youtube_id?: string | null
         }
         Update: {
-          amount?: number
+          alt_image_title?: string | null
+          author?: string | null
+          category?: string | null
+          content?: string | null
           created_at?: string | null
-          id?: string
-          payment_method?: string
-          status?: string | null
-          transaction_id?: string | null
+          date?: string
+          id?: number
+          image?: string | null
+          slug?: string
+          summary?: string | null
+          title?: string
           updated_at?: string | null
-          user_id?: string | null
+          youtube_id?: string | null
         }
         Relationships: []
       }
-      profiles: {
+      news_authors: {
         Row: {
-          created_at: string | null
-          email: string | null
-          first_name: string | null
-          id: string
-          last_name: string | null
-          role: string | null
-          status: string | null
-          updated_at: string | null
+          id: number
+          name: string
         }
         Insert: {
-          created_at?: string | null
-          email?: string | null
-          first_name?: string | null
-          id: string
-          last_name?: string | null
-          role?: string | null
-          status?: string | null
-          updated_at?: string | null
+          id?: number
+          name: string
         }
         Update: {
-          created_at?: string | null
-          email?: string | null
-          first_name?: string | null
-          id?: string
-          last_name?: string | null
-          role?: string | null
-          status?: string | null
-          updated_at?: string | null
+          id?: number
+          name?: string
         }
         Relationships: []
       }
-      shipments: {
+      products: {
         Row: {
+          category: string
           created_at: string | null
-          destination: string
-          id: string
-          origin: string
-          status: string | null
-          tracking_number: string
-          updated_at: string | null
-          user_id: string | null
+          discount: string | null
+          id: number
+          image: string
+          link: string
+          platform: string
+          price: number
+          title: string
         }
         Insert: {
+          category: string
           created_at?: string | null
-          destination: string
-          id?: string
-          origin: string
-          status?: string | null
-          tracking_number: string
-          updated_at?: string | null
-          user_id?: string | null
+          discount?: string | null
+          id?: number
+          image: string
+          link: string
+          platform: string
+          price: number
+          title: string
         }
         Update: {
+          category?: string
           created_at?: string | null
-          destination?: string
-          id?: string
-          origin?: string
-          status?: string | null
-          tracking_number?: string
-          updated_at?: string | null
-          user_id?: string | null
+          discount?: string | null
+          id?: number
+          image?: string
+          link?: string
+          platform?: string
+          price?: number
+          title?: string
+        }
+        Relationships: []
+      }
+      videos: {
+        Row: {
+          alt_image_title: string | null
+          category: string | null
+          created_at: string | null
+          description: string | null
+          id: number
+          title: string
+          youtube_id: string
+        }
+        Insert: {
+          alt_image_title?: string | null
+          category?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: number
+          title: string
+          youtube_id: string
+        }
+        Update: {
+          alt_image_title?: string | null
+          category?: string | null
+          created_at?: string | null
+          description?: string | null
+          id?: number
+          title?: string
+          youtube_id?: string
         }
         Relationships: []
       }
