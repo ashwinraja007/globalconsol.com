@@ -5,12 +5,10 @@ import { X, MapPin, Globe, ExternalLink, Phone, Mail, Home, ChevronRight } from 
 import { cn } from "@/lib/utils";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useIsMobile } from '@/hooks/use-mobile';
-
 interface ContactSidebarProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
 const countries = [{
   code: "in",
   name: "India",
@@ -28,7 +26,7 @@ const countries = [{
     lng: 77.0318,
     address: "Plot No. 15, 1st Floor,Block C, Pocket 8, Sector 17, Dwarka,New Delhi 110075",
     contacts: ["+91 11 41088871"]
-  },{
+  }, {
     name: "Chennai Warehouse",
     lat: 13.0231,
     lng: 79.9632,
@@ -46,13 +44,13 @@ const countries = [{
     lng: 76.2996,
     address: "CC 59/801A Elizabeth Memorial Building, Thevara Ferry Jn, Cochin 682013 , Kerala.",
     contacts: ["+91 484 4019192 / 93"]
-  },{
+  }, {
     name: "Hyderabad",
     lat: 17.4425,
     lng: 78.4735,
     address: "H.No. 1-8-450/1/A-7 Indian Airlines colony ,Opp Police Lines, BegumpetHyderabad-500016,Telangana",
     contacts: ["040-49559704"]
-  },{
+  }, {
     name: "Bangalore",
     lat: 13.0185,
     lng: 77.6419,
@@ -180,7 +178,7 @@ const countries = [{
     address: "Office # 301, 3rd Floor, Gulberg Arcade Main Market, Gulberg 2, Lahore, Pakistan",
     contacts: ["+92 42-35782306/07/08"]
   }]
-},  {
+}, {
   code: "us",
   name: "United States (USA)",
   lat: 41.8622,
@@ -235,14 +233,17 @@ const countries = [{
 
 // Sort countries alphabetically by name
 const sortedCountries = [...countries].sort((a, b) => a.name.localeCompare(b.name));
-
-const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
+const ContactSidebar: React.FC<ContactSidebarProps> = ({
+  isOpen,
+  onClose
+}) => {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const [expandedCountry, setExpandedCountry] = useState<string | null>(null);
   const [selectedLocation, setSelectedLocation] = useState<any | null>(null);
-  const [selectedCityIndexes, setSelectedCityIndexes] = useState<{ [countryName: string]: number }>({});
+  const [selectedCityIndexes, setSelectedCityIndexes] = useState<{
+    [countryName: string]: number;
+  }>({});
   const isMobile = useIsMobile();
-
   useEffect(() => {
     iframeRef.current = document.querySelector('iframe');
   }, []);
@@ -254,19 +255,20 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
       const firstCity = firstCountry.cities[0];
       setSelectedLocation(firstCity);
       setExpandedCountry(firstCountry.name);
-      
+
       // Initialize selected city indexes for all countries to 0 (first city)
-      const initialIndexes: { [countryName: string]: number } = {};
+      const initialIndexes: {
+        [countryName: string]: number;
+      } = {};
       sortedCountries.forEach(country => {
         initialIndexes[country.name] = 0;
       });
       setSelectedCityIndexes(initialIndexes);
-      
+
       // Navigate to the first location on map
       navigateToLocation(firstCity.lat, firstCity.lng, firstCity);
     }
   }, []);
-
   const navigateToLocation = (lat: number, lng: number, city: any = null) => {
     // Find the iframe in the ContactMapContainer
     const iframe = document.querySelector('iframe[title="Interactive Map"]') as HTMLIFrameElement;
@@ -285,44 +287,32 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
       }
     }
   };
-
   const handleCitySelection = (country: any, cityIndex: number) => {
     setSelectedCityIndexes(prev => ({
       ...prev,
       [country.name]: cityIndex
     }));
-    
     const selectedCity = country.cities[cityIndex];
     navigateToLocation(selectedCity.lat, selectedCity.lng, selectedCity);
   };
-
   const isSelectedCity = (countryName: string, cityIndex: number) => {
     return selectedCityIndexes[countryName] === cityIndex;
   };
-
-  return (
-    <>
+  return <>
       {/* Backdrop overlay for mobile */}
-      {isOpen && isMobile && (
-        <div 
-          className="fixed inset-0 bg-black/50 z-40 backdrop-blur-sm transition-opacity duration-300" 
-          onClick={onClose} 
-        />
-      )}
+      {isOpen && isMobile && <div className="fixed inset-0 bg-black/50 z-40 backdrop-blur-sm transition-opacity duration-300" onClick={onClose} />}
       
       {/* Sidebar container */}
       <div className={`my-3 w-full ${isMobile ? 'max-w-[95%]' : 'max-w-[520px]'} mx-auto px-2 md:px-0`}>
         {/* Header */}
-        <div className="flex justify-between items-center px-4 py-3 border-b bg-gradient-to-r from-red-600 to-red-700 text-white rounded-t-xl shadow-sm">
+        <div className="flex justify-between items-center px-4 py-3 border-b bg-gradient-to-r from-red-600 to-red-700 text-white rounded-t-xl shadow-sm  mt-12">
           <div className="flex items-center gap-2">
             <Globe className="h-5 w-5" />
             <h2 className="font-bold text-lg">Global Locations</h2>
           </div>
-          {isMobile && (
-            <Button variant="ghost" size="sm" onClick={onClose} className="text-white hover:bg-red-500/20">
+          {isMobile && <Button variant="ghost" size="sm" onClick={onClose} className="text-white hover:bg-red-500/20">
               <X className="h-4 w-4" />
-            </Button>
-          )}
+            </Button>}
         </div>
 
         {/* Content area */}
@@ -331,25 +321,13 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
             <div className="mt-4 space-y-3">
               <Accordion type="single" collapsible value={expandedCountry || ""} className="w-full space-y-3">
                 {sortedCountries.map(country => {
-                  return (
-                    <AccordionItem 
-                      key={country.name} 
-                      value={country.name} 
-                      className="border border-red-100 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all bg-white"
-                    >
-                      <AccordionTrigger 
-                        onClick={() => {
-                          setExpandedCountry(expandedCountry === country.name ? null : country.name);
-                          navigateToLocation(country.lat, country.lng);
-                        }}
-                        className="rounded-t-md hover:bg-amber-50 transition-colors px-3 py-2"
-                      >
+                return <AccordionItem key={country.name} value={country.name} className="border border-red-100 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all bg-white">
+                      <AccordionTrigger onClick={() => {
+                    setExpandedCountry(expandedCountry === country.name ? null : country.name);
+                    navigateToLocation(country.lat, country.lng);
+                  }} className="rounded-t-md hover:bg-amber-50 transition-colors px-3 py-2">
                         <div className="flex items-center gap-3">
-                          <img 
-                            src={`/${country.code}.svg`} 
-                            alt={`${country.name} flag`} 
-                            className="w-6 h-6 rounded-sm object-cover shadow-sm" 
-                          />
+                          <img src={`/${country.code}.svg`} alt={`${country.name} flag`} className="w-6 h-6 rounded-sm object-cover shadow-sm" />
                           <span className="font-medium">{country.name}</span>
                         </div>
                       </AccordionTrigger>
@@ -358,31 +336,22 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
                         <div className="space-y-2">
                           {/* All cities displayed as buttons */}
                           <div className="space-y-2">
-                            {country.cities.map((city: any, index: number) => (
-                              <div key={index} className="w-full">
-                                <Button 
-                                  variant="ghost" 
-                                  className={cn(
-                                    "w-full justify-start text-sm p-2 h-auto rounded-md border transition-all shadow-sm",
-                                    isSelectedCity(country.name, index) 
-                                      ? "bg-red-100 hover:bg-red-150 border-red-300 text-red-800" 
-                                      : "bg-white hover:bg-red-50 border-gray-100 hover:border-red-200"
-                                  )}
-                                  onClick={() => {
-                                    handleCitySelection(country, index);
-                                    if (isMobile) {
-                                      setTimeout(() => setSelectedLocation({ ...city }), 50);
-                                    }
-                                  }}
-                                >
+                            {country.cities.map((city: any, index: number) => <div key={index} className="w-full">
+                                <Button variant="ghost" className={cn("w-full justify-start text-sm p-2 h-auto rounded-md border transition-all shadow-sm", isSelectedCity(country.name, index) ? "bg-red-100 hover:bg-red-150 border-red-300 text-red-800" : "bg-white hover:bg-red-50 border-gray-100 hover:border-red-200")} onClick={() => {
+                            handleCitySelection(country, index);
+                            if (isMobile) {
+                              setTimeout(() => setSelectedLocation({
+                                ...city
+                              }), 50);
+                            }
+                          }}>
                                   <MapPin className="w-4 h-4 mr-2 text-red-600 flex-shrink-0" />
                                   <span className="font-medium truncate">{city.name}</span>
                                   <ChevronRight className="w-4 h-4 ml-auto text-red-300" />
                                 </Button>
                                 
                                 {/* Show address details for selected city */}
-                                {isSelectedCity(country.name, index) && city.address && (
-                                  <div className="mt-2 p-3 bg-gradient-to-br from-red-50 to-white rounded-lg border border-red-200 shadow text-sm animate-in fade-in duration-300 w-full">
+                                {isSelectedCity(country.name, index) && city.address && <div className="mt-2 p-3 bg-gradient-to-br from-red-50 to-white rounded-lg border border-red-200 shadow text-sm animate-in fade-in duration-300 w-full">
                                     <h4 className="font-semibold text-red-700 mb-2 pb-1 border-b border-red-100 flex items-center">
                                       <span className="bg-gradient-to-r from-red-600 to-red-400 bg-clip-text text-transparent">{city.name} Office</span>
                                     </h4>
@@ -392,46 +361,32 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
                                       <p className="text-gray-700 group-hover:text-gray-900 transition-colors text-sm break-words w-full overflow-hidden">{city.address}</p>
                                     </div>
                                     
-                                    {city.contacts && city.contacts.length > 0 && (
-                                      <div className="flex items-start mb-2 group hover:bg-red-50/50 p-2 rounded-md transition-colors w-full">
+                                    {city.contacts && city.contacts.length > 0 && <div className="flex items-start mb-2 group hover:bg-red-50/50 p-2 rounded-md transition-colors w-full">
                                         <Phone className="w-4 h-4 mr-2 text-red-500 mt-1 flex-shrink-0 group-hover:text-red-600 transition-colors" />
                                         <div className="space-y-1 w-full overflow-hidden">
-                                          {city.contacts.map((contact: string, idx: number) => (
-                                            <p key={idx} className="text-gray-700 group-hover:text-gray-900 transition-colors text-sm break-words">{contact}</p>
-                                          ))}
+                                          {city.contacts.map((contact: string, idx: number) => <p key={idx} className="text-gray-700 group-hover:text-gray-900 transition-colors text-sm break-words">{contact}</p>)}
                                         </div>
-                                      </div>
-                                    )}
+                                      </div>}
                                     
-                                    {city.email && (
-                                      <div className="flex items-start group hover:bg-red-50/50 p-2 rounded-md transition-colors w-full">
+                                    {city.email && <div className="flex items-start group hover:bg-red-50/50 p-2 rounded-md transition-colors w-full">
                                         <Mail className="w-4 h-4 mr-2 text-red-500 mt-1 flex-shrink-0 group-hover:text-red-600 transition-colors" />
-                                        <a 
-                                          href={`mailto:${city.email}`} 
-                                          className="text-red-600 hover:text-red-800 hover:underline flex items-center text-sm break-words w-full overflow-hidden"
-                                        >
+                                        <a href={`mailto:${city.email}`} className="text-red-600 hover:text-red-800 hover:underline flex items-center text-sm break-words w-full overflow-hidden">
                                           {city.email}
                                           <ExternalLink className="ml-1 h-3 w-3" />
                                         </a>
-                                      </div>
-                                    )}
-                                  </div>
-                                )}
-                              </div>
-                            ))}
+                                      </div>}
+                                  </div>}
+                              </div>)}
                           </div>
                         </div>
                       </AccordionContent>
-                    </AccordionItem>
-                  );
-                })}
+                    </AccordionItem>;
+              })}
               </Accordion>
             </div>
           </div>
         </ScrollArea>
       </div>
-    </>
-  );
+    </>;
 };
-
 export default ContactSidebar;
