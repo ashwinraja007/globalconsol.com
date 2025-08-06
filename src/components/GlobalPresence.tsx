@@ -1,10 +1,16 @@
+
 import { motion } from 'framer-motion';
 import { Globe, ExternalLink } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { getCurrentCountryFromPath } from '@/services/countryDetection';
+
 const GOLD = "#cfae4c"; // Sampled from your logo
 const BLUE = "#2172c9"; // Sampled from your logo
 
 const GlobalPresence = () => {
+  const location = useLocation();
+  const currentCountry = getCurrentCountryFromPath(location.pathname);
+  
   const locations = [{
     id: 1,
     name: "Melbourne",
@@ -78,6 +84,7 @@ const GlobalPresence = () => {
     },
     country: "South Africa"
   }];
+
   const containerVariants = {
     hidden: {
       opacity: 0
@@ -89,83 +96,118 @@ const GlobalPresence = () => {
       }
     }
   };
-  return <motion.section initial="hidden" whileInView="visible" viewport={{
-    once: true,
-    amount: 0.2
-  }} variants={containerVariants} className="py-8 px-0" style={{
-    background: GOLD
-  }}>
+
+  const getGlobalPresenceLink = () => {
+    if (currentCountry.code === "SG") return "/global-presence";
+    return `/${currentCountry.name.toLowerCase().replace(" ", "-")}/global-presence`;
+  };
+
+  return (
+    <motion.section 
+      initial="hidden" 
+      whileInView="visible" 
+      viewport={{
+        once: true,
+        amount: 0.2
+      }} 
+      variants={containerVariants} 
+      className="py-8 px-0" 
+      style={{
+        background: GOLD
+      }}
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-8">
-          <motion.div initial={{
-          opacity: 0,
-          y: -20
-        }} whileInView={{
-          opacity: 1,
-          y: 0
-        }} transition={{
-          duration: 0.5
-        }} viewport={{
-          once: true
-        }} className="flex justify-center items-center gap-3 mb-2">
-            <motion.div animate={{
-            rotate: 360
-          }} transition={{
-            duration: 20,
-            repeat: Infinity,
-            ease: "linear"
-          }}>
-              <Globe style={{
-            }} className="h-10 w-10 bg-transparent" />
+          <motion.div 
+            initial={{
+              opacity: 0,
+              y: -20
+            }} 
+            whileInView={{
+              opacity: 1,
+              y: 0
+            }} 
+            transition={{
+              duration: 0.5
+            }} 
+            viewport={{
+              once: true
+            }} 
+            className="flex justify-center items-center gap-3 mb-2"
+          >
+            <motion.div 
+              animate={{
+                rotate: 360
+              }} 
+              transition={{
+                duration: 20,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+            >
+              <Globe className="h-10 w-10 bg-transparent" />
             </motion.div>
-            <h2 style={{
-          }} className="text-3xl md:text-4xl font-bold text-slate-950">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-950">
               Global Presence
             </h2>
           </motion.div>
           <div className="w-24 h-1 mx-auto mb-4" style={{
-          background: BLUE
-        }}></div>
-          <p style={{
-        }} className="max-w-2xl mx-auto text-lg md:text-xl text-gray-950">
+            background: BLUE
+          }}></div>
+          <p className="max-w-2xl mx-auto text-lg md:text-xl text-gray-950">
             Our logistics network spans across continents, enabling seamless global shipping solutions.
           </p>
         </div>
 
-        <motion.div initial={{
-        opacity: 0,
-        y: 20
-      }} whileInView={{
-        opacity: 1,
-        y: 0
-      }} transition={{
-        delay: 0.8
-      }} viewport={{
-        once: true
-      }} className="mt-10 text-center">
-            <Link to={`/${countrySlug}/global-presence`}>
-            <motion.button whileHover={{
-            scale: 1.05
-          }} whileTap={{
-            scale: 0.98
-          }} animate={{
-            opacity: [1, 0.5, 1]
-          }} transition={{
-            repeat: Infinity,
-            duration: 1.5
-          }} className="inline-flex items-center gap-2 font-bold rounded-lg shadow-lg transition-all duration-300 px-6 py-3" style={{
-            background: BLUE,
-            color: "#fff",
-            border: `2px solid ${GOLD}`,
-            fontSize: "1.25rem"
-          }}>
+        <motion.div 
+          initial={{
+            opacity: 0,
+            y: 20
+          }} 
+          whileInView={{
+            opacity: 1,
+            y: 0
+          }} 
+          transition={{
+            delay: 0.8
+          }} 
+          viewport={{
+            once: true
+          }} 
+          className="mt-10 text-center"
+        >
+          <Link to={getGlobalPresenceLink()}>
+            <motion.button 
+              whileHover={{
+                scale: 1.05
+              }} 
+              whileTap={{
+                scale: 0.98
+              }} 
+              animate={{
+                opacity: [1, 0.5, 1]
+              }} 
+              transition={{
+                repeat: Infinity,
+                duration: 1.5
+              }} 
+              className="inline-flex items-center gap-2 font-bold rounded-lg shadow-lg transition-all duration-300 px-6 py-3" 
+              style={{
+                background: BLUE,
+                color: "#fff",
+                border: `2px solid ${GOLD}`,
+                fontSize: "1.25rem"
+              }}
+            >
               Explore Our Global Network <ExternalLink size={20} style={{
-              color: GOLD
-            }} />
+                color: GOLD
+              }} />
             </motion.button>
           </Link>
         </motion.div>
       </div>
-    </motion.section>;
+    </motion.section>
+  );
 };
+
 export default GlobalPresence;
