@@ -32,16 +32,16 @@ const Navigation = () => {
       <div className="bg-[#c99e65] text-white text-xs sm:text-sm py-1 px-2 sm:px-4 flex justify-between sm:justify-end items-center gap-2 sm:gap-3">
         <span className="hidden sm:block">Stay connected</span>
         <div className="flex items-center gap-2 sm:gap-3">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors">
+          <a href="https://www.facebook.com/globalconsol/" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors">
             <FaFacebookF className="text-xs sm:text-sm" />
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors">
+          <a href="https://x.com/globalconsol/" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors">
             <FaTwitter className="text-xs sm:text-sm" />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors">
+          <a href="https://www.linkedin.com/company/global-consolidators/" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors">
             <FaLinkedinIn className="text-xs sm:text-sm" />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors">
+          <a href="https://www.instagram.com/globalconsolidators/" target="_blank" rel="noopener noreferrer" className="hover:text-white/80 transition-colors">
             <FaInstagram className="text-xs sm:text-sm" />
           </a>
         </div>
