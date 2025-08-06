@@ -23,17 +23,17 @@ interface CountryData {
 }
 
 const countries: CountryData[] = [
-  { country: "SINGAPORE", company: "GC", website: "https://www.globalconsol.com", priority: 1, flag: "/sg.svg"},
-  { country: "SRI LANKA", company: "GC", website: "https://www.globalconsol.com/sri-lanka", priority: 2, flag: "/lk.svg" },
-  { country: "MYANMAR", company: "GC", website: "https://www.globalconsol.com/myanmar", priority: 3, flag: "/mm.svg" },
-  { country: "BANGLADESH", company: "GC", website: "https://www.globalconsol.com/bangladesh", priority: 4, flag: "/bd.svg", visibilityByCountry: {BANGLADESH: false,} },
-  { country: "PAKISTAN", company: "GC", website: "https://www.globalconsol.com/pakistan", priority: 5, flag: "/pk.svg" },
+ { country: "SINGAPORE", company: "GC", website: "https://www.globalconsol.com", priority: 1, flag: "/sg.svg", route: "/" },
+  { country: "SRI LANKA", company: "GC", website: "https://www.globalconsol.com", priority: 2, flag: "/lk.svg", route: "/sri-lanka/home" },
+  { country: "MYANMAR", company: "GC", website: "https://www.globalconsol.com", priority: 3, flag: "/mm.svg", route: "/myanmar/home" },
+  { country: "BANGLADESH", company: "GC", website: "https://www.globalconsol.com", priority: 4, flag: "/bd.svg", route: "/bangladesh/home" },
+  { country: "PAKISTAN", company: "GC", website: "https://www.globalconsol.com", priority: 5, flag: "/pk.svg", route: "/pakistan/home" },
 
   // Hidden only in Bangladesh and Myanmar
   {
     country: "MALAYSIA",
     company: "OECL",
-    website: "https://oecl.vercel.app/malaysia",
+    website: "https://oecl.sg/malaysia",
     priority: 6,
     flag: "/my.svg",
     visibilityByCountry: {
@@ -43,7 +43,7 @@ const countries: CountryData[] = [
   {
     country: "INDONESIA",
     company: "OECL",
-    website: "https://oecl.vercel.app/indonesia",
+    website: "https://oecl.sg/indonesia",
     priority: 7,
     flag: "/id.svg",
     visibilityByCountry: {
@@ -53,7 +53,7 @@ const countries: CountryData[] = [
   {
     country: "THAILAND",
     company: "OECL",
-    website: "https://oecl.vercel.app/thailand",
+    website: "https://oecl.sg/thailand",
     priority: 8,
     flag: "/th.svg",
     visibilityByCountry: {
@@ -63,7 +63,7 @@ const countries: CountryData[] = [
    {
     country: "INDIA",
     company: "OECL",
-    website: "https://oecl.vercel.app/india",
+    website: "https://oecl.sg/india",
     priority: 8,
     flag: "/in.svg",
   },
