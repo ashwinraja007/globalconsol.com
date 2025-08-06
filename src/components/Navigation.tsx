@@ -5,7 +5,12 @@ import { Menu, X } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import CountrySelector from "@/components/CountrySelector";
 import { getCurrentCountryFromPath } from "@/services/countryDetection";
-import { FaFacebookF, FaXTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa6";
+import {
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+} from "react-icons/fa";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,27 +21,32 @@ const Navigation = () => {
   const isActive = (path: string) => location.pathname === path;
 
   const getNavLink = (basePath: string) => {
-    if (currentCountry.code === "SG") {
-      return basePath;
-    }
-    return `/${currentCountry.name.toLowerCase().replace(' ', '-')}${basePath}`;
+    if (currentCountry.code === "SG") return basePath;
+    return `/${currentCountry.name.toLowerCase().replace(" ", "-")}${basePath}`;
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 w-full z-50 shadow-md bg-white">
-      {/* Top bar with social handles */}
-      <div className="bg-[#C99F63] text-white text-sm py-1 px-4 flex justify-end items-center gap-3">
-        <span className="hidden md:inline">Stay connected</span>
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"><FaXTwitter /></a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer"><FaLinkedinIn /></a>
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+    <header className="fixed top-0 left-0 right-0 w-full z-50 shadow-md bg-white transition-all duration-300">
+      {/* Top bar with social icons */}
+      <div className="bg-[#c99e65] text-white text-sm py-1 px-4 flex justify-end items-center gap-3">
+        <span className="hidden sm:block">Stay connected</span>
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+          <FaFacebookF className="hover:text-white text-sm" />
+        </a>
+        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+          <FaTwitter className="hover:text-white text-sm" />
+        </a>
+        <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+          <FaLinkedinIn className="hover:text-white text-sm" />
+        </a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <FaInstagram className="hover:text-white text-sm" />
+        </a>
       </div>
 
-      {/* Main Nav */}
       <div className="container mx-auto px-4 md:px-6 py-[19px]">
         <div className="flex justify-between items-center">
-          {/* Logo Section */}
+          {/* Logos */}
           <div className="flex items-center gap-4">
             <img
               alt="GGL Logo"
@@ -55,49 +65,52 @@ const Navigation = () => {
           <nav className="hidden md:flex items-center gap-6">
             <Link
               to={getNavLink("/home")}
-              className={`nav-link font-medium text-black hover:text-gc-gold ${
-                isActive(getNavLink("/home")) || (currentCountry.code === "SG" && isActive("/"))
+              className={`nav-link font-medium hover:text-gc-gold ${
+                isActive(getNavLink("/home")) ||
+                (currentCountry.code === "SG" && isActive("/"))
                   ? "text-gc-gold"
-                  : ""
+                  : "text-black"
               }`}
             >
               HOME
             </Link>
             <Link
               to={getNavLink("/about-us")}
-              className={`nav-link font-medium text-black hover:text-gc-gold ${
-                isActive(getNavLink("/about-us")) ? "text-gc-gold" : ""
+              className={`nav-link font-medium hover:text-gc-gold ${
+                isActive(getNavLink("/about-us")) ? "text-gc-gold" : "text-black"
               }`}
             >
               ABOUT US
             </Link>
             <Link
               to={getNavLink("/services")}
-              className={`nav-link font-medium text-black hover:text-gc-gold ${
-                isActive(getNavLink("/services")) ? "text-gc-gold" : ""
+              className={`nav-link font-medium hover:text-gc-gold ${
+                isActive(getNavLink("/services")) ? "text-gc-gold" : "text-black"
               }`}
             >
               SERVICES
             </Link>
             <Link
               to={getNavLink("/blog")}
-              className={`nav-link font-medium text-black hover:text-gc-gold ${
-                isActive(getNavLink("/blog")) || isActive(getNavLink("/blogs")) ? "text-gc-gold" : ""
+              className={`nav-link font-medium hover:text-gc-gold ${
+                isActive(getNavLink("/blog")) || isActive(getNavLink("/blogs"))
+                  ? "text-gc-gold"
+                  : "text-black"
               }`}
             >
               BLOGS
             </Link>
             <Link
               to={getNavLink("/contact")}
-              className={`nav-link font-medium text-black hover:text-gc-gold ${
-                isActive(getNavLink("/contact")) ? "text-gc-gold" : ""
+              className={`nav-link font-medium hover:text-gc-gold ${
+                isActive(getNavLink("/contact")) ? "text-gc-gold" : "text-black"
               }`}
             >
               CONTACT
             </Link>
           </nav>
 
-          {/* Country Selector & Quote Button */}
+          {/* Right section */}
           <div className="hidden md:flex items-center gap-4">
             <CountrySelector />
             <Link to={`${getNavLink("/contact")}#contact-form`}>
@@ -126,53 +139,29 @@ const Navigation = () => {
         <div className="md:hidden absolute top-full left-0 right-0 bg-white py-4 shadow-md animate-fade-in border-t">
           <div className="container mx-auto px-4">
             <nav className="flex flex-col space-y-4">
-              <Link
-                to={getNavLink("/home")}
-                className={`font-medium text-black hover:text-gc-gold ${
-                  isActive(getNavLink("/home")) || (currentCountry.code === "SG" && isActive("/"))
-                    ? "text-gc-gold"
-                    : ""
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                HOME
-              </Link>
-              <Link
-                to={getNavLink("/about-us")}
-                className={`font-medium text-black hover:text-gc-gold ${
-                  isActive(getNavLink("/about-us")) ? "text-gc-gold" : ""
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                ABOUT US
-              </Link>
-              <Link
-                to={getNavLink("/services")}
-                className={`font-medium text-black hover:text-gc-gold ${
-                  isActive(getNavLink("/services")) ? "text-gc-gold" : ""
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                SERVICES
-              </Link>
-              <Link
-                to={getNavLink("/blog")}
-                className={`font-medium text-black hover:text-gc-gold ${
-                  isActive(getNavLink("/blog")) || isActive(getNavLink("/blogs")) ? "text-gc-gold" : ""
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                BLOGS
-              </Link>
-              <Link
-                to={getNavLink("/contact")}
-                className={`font-medium text-black hover:text-gc-gold ${
-                  isActive(getNavLink("/contact")) ? "text-gc-gold" : ""
-                }`}
-                onClick={() => setIsMenuOpen(false)}
-              >
-                CONTACT
-              </Link>
+              {[
+                { label: "HOME", path: "/home" },
+                { label: "ABOUT US", path: "/about-us" },
+                { label: "SERVICES", path: "/services" },
+                { label: "BLOGS", path: "/blog" },
+                { label: "CONTACT", path: "/contact" },
+              ].map((item) => (
+                <Link
+                  key={item.path}
+                  to={getNavLink(item.path)}
+                  className={`font-medium hover:text-gc-gold ${
+                    isActive(getNavLink(item.path)) ||
+                    (item.path === "/home" &&
+                      currentCountry.code === "SG" &&
+                      isActive("/"))
+                      ? "text-gc-gold"
+                      : "text-black"
+                  }`}
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
 
               <div className="pt-2">
                 <CountrySelector />
