@@ -106,9 +106,7 @@ const ContactForm = () => {
       }} className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{
           color: BRAND.blue
-        }}>
-            Get In Touch
-          </h2>
+        }}>Ready to streamline your logistics? Contact us today for a customized solution.</h2>
           <div className="w-24 h-1 mx-auto mb-4" style={{
           background: BRAND.gold
         }} />
