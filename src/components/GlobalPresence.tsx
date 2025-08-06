@@ -143,7 +143,7 @@ const GlobalPresence = () => {
       }} viewport={{
         once: true
       }} className="mt-10 text-center">
-          <Link to="/global-presence">
+            <Link to={`/${countrySlug}/global-presence`}>
             <motion.button whileHover={{
             scale: 1.05
           }} whileTap={{
