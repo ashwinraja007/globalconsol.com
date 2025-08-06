@@ -44,7 +44,7 @@ const AboutSection = () => {
                 alt="GC Logistics Operations" 
                 className="rounded-lg shadow-lg w-full object-cover" 
                 style={{ height: '400px' }} 
-                src="/lovable-uploads/14af4f37-de1e-4e64-b5d7-b6a53ec592d7.png" 
+                src="/aboutus2.png" 
               />
             </ScrollAnimation>
           </div>
