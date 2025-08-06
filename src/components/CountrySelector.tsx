@@ -19,6 +19,7 @@ interface CountryData {
   priority: number;
   flag?: string;
   route?: string;
+  visibilityByCountry?: Record<string, boolean>; // New
 }
 
 const countries: CountryData[] = [
@@ -27,13 +28,52 @@ const countries: CountryData[] = [
   { country: "MYANMAR", company: "GC", website: "https://www.globalconsol.com", priority: 3, flag: "/mm.svg", route: "/myanmar/home" },
   { country: "BANGLADESH", company: "GC", website: "https://www.globalconsol.com", priority: 4, flag: "/bd.svg", route: "/bangladesh/home" },
   { country: "PAKISTAN", company: "GC", website: "https://www.globalconsol.com", priority: 5, flag: "/pk.svg", route: "/pakistan/home" },
-  { country: "CHINA", company: "Haixun", website: "https://www.haixun.co/", priority: 6, flag: "/cn.svg" },
-  { country: "AUSTRALIA", company: "GGL", website: "https://www.gglaustralia.com/", priority: 7, flag: "/au.svg" },
-  { country: "QATAR", company: "ONE GLOBAL", website: "https://oneglobalqatar.com/", priority: 8, flag: "/qa.svg" },
-  { country: "SAUDI ARABIA", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 9, flag: "/sa.svg" },
-  { country: "UAE", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 10, flag: "/ae.svg" },
-  { country: "USA", company: "GGL", website: "https://gglusa.us/", priority: 11, flag: "/us.svg" },
-  { country: "UK", company: "Moltech", website: "https://moltech.uk/", priority: 12, flag: "/gb.svg" }
+
+  // Hidden only in Bangladesh and Myanmar
+  {
+    country: "MALAYSIA",
+    company: "OECL",
+    website: "https://oecl.vercel.app/",
+    priority: 6,
+    flag: "/my.svg",
+    route: "/malaysia/home",
+    visibilityByCountry: {
+      BANGLADESH: false,
+      MYANMAR: false,
+    }
+  },
+  {
+    country: "INDONESIA",
+    company: "OECL",
+    website: "https://oecl.vercel.app/",
+    priority: 7,
+    flag: "/id.svg",
+    route: "/indonesia/home",
+    visibilityByCountry: {
+      BANGLADESH: false,
+      MYANMAR: false,
+    }
+  },
+  {
+    country: "THAILAND",
+    company: "OECL",
+    website: "https://oecl.vercel.app/",
+    priority: 8,
+    flag: "/th.svg",
+    route: "/thailand/home",
+    visibilityByCountry: {
+      BANGLADESH: false,
+      MYANMAR: false,
+    }
+  },
+
+  { country: "CHINA", company: "Haixun", website: "https://www.haixun.co/", priority: 9, flag: "/cn.svg" },
+  { country: "AUSTRALIA", company: "GGL", website: "https://www.gglaustralia.com/", priority: 10, flag: "/au.svg" },
+  { country: "QATAR", company: "ONE GLOBAL", website: "https://oneglobalqatar.com/", priority: 11, flag: "/qa.svg" },
+  { country: "SAUDI ARABIA", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 12, flag: "/sa.svg" },
+  { country: "UAE", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 13, flag: "/ae.svg" },
+  { country: "USA", company: "GGL", website: "https://gglusa.us/", priority: 14, flag: "/us.svg" },
+  { country: "UK", company: "Moltech", website: "https://moltech.uk/", priority: 15, flag: "/gb.svg" }
 ];
 
 const CountrySelector = () => {
@@ -42,45 +82,40 @@ const CountrySelector = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const currentCountry = getCurrentCountryFromPath(location.pathname);
+  const currentCountryName = currentCountry.name?.toUpperCase();
 
-  // Detect country by IP on mount or load from localStorage
+  // Detect by IP or load from localStorage
   useEffect(() => {
     const detect = async () => {
       try {
         const saved = localStorage.getItem("preferredCountry");
         if (saved) {
-          const parsed = JSON.parse(saved);
-          setIpCountry(parsed);
-          console.log("Loaded preferred country from storage:", parsed);
+          setIpCountry(JSON.parse(saved));
           return;
         }
-
         const c = await detectCountryByIP();
-        console.log("Detected IP Country:", c);
         setIpCountry(c);
-      } catch (error) {
-        console.warn("Could not detect country from IP.");
+      } catch {
         setIpCountry(null);
       }
     };
     detect();
   }, []);
 
-  // Country to display in the dropdown button
   const displayCountry =
-    countries.find(c =>
-      ipCountry &&
-      (
-        c.country.toUpperCase() === ipCountry.name?.toUpperCase() ||
-        c.flag?.toLowerCase().includes(ipCountry.code?.toLowerCase())
-      )
-    ) ||
     countries.find(
-      c => c.country.toUpperCase() === currentCountry.name.toUpperCase()
-    );
+      c =>
+        ipCountry &&
+        (
+          c.country.toUpperCase() === ipCountry.name?.toUpperCase() ||
+          c.flag?.toLowerCase().includes(ipCountry.code?.toLowerCase())
+        )
+    ) ||
+    countries.find(c => c.country.toUpperCase() === currentCountryName);
 
-  const availableCountries = countries.filter(
-    country => country.country.toUpperCase() !== currentCountry.name.toUpperCase()
+  const availableCountries = countries.filter(c =>
+    c.country.toUpperCase() !== currentCountryName &&
+    (!c.visibilityByCountry || c.visibilityByCountry[currentCountryName] !== false)
   );
 
   const sortedCountries = [...availableCountries].sort((a, b) => a.priority - b.priority);
