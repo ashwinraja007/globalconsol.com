@@ -22,6 +22,7 @@ import AdminDashboard from '@/pages/AdminDashboard';
 import BlogAdmin from '@/pages/BlogAdmin';
 import BlogEditor from '@/pages/BlogEditor';
 import Blog from '@/pages/Blog';
+import Gallery from '@/pages/Gallery';
 import NewsDetailPage from '@/pages/NewsDetailPage';
 import NewsOverviewPage from '@/pages/NewsOverviewPage';
 import Projects from '@/pages/Projects';
@@ -117,6 +118,8 @@ const App: React.FC = () => {
               <Route path="/projects" element={<Projects />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/gallery/:country" element={<Gallery />} />
 
               {/* Country-specific pages */}
               {countries.map((country) => (
@@ -129,6 +132,7 @@ const App: React.FC = () => {
                   <Route path={`/${country}/blog/:slug`} element={<NewsDetailPage />} />
                   <Route path={`/${country}/global-presence`} element={<GlobalPresence />} />
                   <Route path={`/${country}/projects`} element={<Projects />} />
+                  <Route path={`/${country}/gallery`} element={<Gallery />} />
                 </React.Fragment>
               ))}
 
