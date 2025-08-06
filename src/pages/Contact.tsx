@@ -58,7 +58,7 @@ const Contact: React.FC = () => {
         }} transition={{
           delay: 0.2,
           duration: 0.8
-        }} className="text-center px-4 relative z-10 mt-10">
+        }} className="text-center px-4 relative z-10">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-5">Get in Touch</h1>
             <p className="text-lg text-white/90 max-w-2xl mx-auto font-light">
               We're here to help and answer any questions you might have.
@@ -122,7 +122,7 @@ const Contact: React.FC = () => {
                       <Input name="Email" required type="email" placeholder="Enter your email" />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-gray-700">Phone Number</label>
+                      <label className="text-sm font-medium text-gray-700"></label>
                       <Input name="Phone" placeholder="Enter your phone number" />
                     </div>
                   </div>
