@@ -35,7 +35,7 @@ const HeroSection = ({
         description: "A cutting edge solutions with advanced WMS",
         gradient: ""
       }, {
-        url: "/11.png",
+        url: "/15.png",
         title: "LIQUID CARGO TRANSPORTATION",
         description: "Cost effective and safe transportation of liquid cargo",
         gradient: ""
@@ -58,7 +58,7 @@ const HeroSection = ({
         description: "A cutting edge solutions with advanced WMS.",
         gradient: ""
       }, {
-        url: "/liqtransport.png",
+        url: "/16.png",
         title: "LIQUID CARGO TRANSPORTATION",
         description: "Cost effective and safe transportation of liquid cargo",
         gradient: ""
@@ -81,7 +81,7 @@ const HeroSection = ({
         description: "A cutting edge solutions with advanced WMS.",
         gradient: ""
       }, {
-        url: "/11.png",
+        url: "/17.png",
         title: "LIQUID CARGO TRANSPORTATION",
         description: "Cost effective and safe transportation of liquid cargo",
         gradient: ""
@@ -104,7 +104,7 @@ const HeroSection = ({
         description: "A cutting edge solutions with advanced WMS .",
         gradient: ""
       }, {
-        url: "/10.png",
+        url: "/18.png",
         title: "LIQUID CARGO TRANSPORTATION",
         description: "Cost effective and safe transportation of liquid cargo",
         gradient: ""
