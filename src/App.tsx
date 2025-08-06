@@ -188,6 +188,7 @@ const App: React.FC = () => {
                 <Route path="settings" element={<AdminSystemSettings />} />
                 <Route path="blog" element={<BlogAdmin />} />
                 <Route path="blog/edit/:id?" element={<BlogEditor />} />
+                <Route path="dashboard" element={<BlogEditor />} />
               </Route>
 
               {/* 404 Not Found */}
