@@ -28,11 +28,12 @@ const Gallery = () => {
   const getCurrentCountry = () => {
     const path = location.pathname.toLowerCase();
     
-    // Check for country-specific routes
-    if (path.includes('/sri-lanka')) return 'srilanka';
-    if (path.includes('/myanmar')) return 'myanmar';
-    if (path.includes('/bangladesh')) return 'bangladesh';
-    if (path.includes('/pakistan')) return 'pakistan';
+    // Check for country-specific routes in the path
+    if (path.includes('/sri-lanka/')) return 'srilanka';
+    if (path.includes('/myanmar/')) return 'myanmar';
+    if (path.includes('/bangladesh/')) return 'bangladesh';
+    if (path.includes('/pakistan/')) return 'pakistan';
+    if (path.includes('/singapore/')) return 'singapore';
     
     // Check URL params
     if (country) {
@@ -41,7 +42,7 @@ const Gallery = () => {
       return countryLower;
     }
     
-    // Default to singapore
+    // If it's just /gallery (no country prefix), default to singapore
     return 'singapore';
   };
 
