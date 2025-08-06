@@ -102,6 +102,7 @@ const Navigation = () => {
               }`}
             >
               Blogs
+            </Link>
            
           </nav>
 
