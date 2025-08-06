@@ -23,7 +23,7 @@ const Warehousing = () => {
         }} transition={{
           duration: 0.8
         }} className="text-center mb-16">
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full mb-6 mt-3 bg-blue-100 mt-12">
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full mb-6 mt-3 bg-blue-100 mt-9">
               <Box className="w-6 h-6 text-blue-500" />
               <span className="text-blue-500 font-semibold">Warehousing Services</span>
             </div>
