@@ -109,27 +109,9 @@ const Footer = () => {
         }} variants={footerAnimation} className="flex flex-col items-start">
             <div className="mb-4">
               <img src="/logo.png" alt="GC Logo" className="h-16 w-auto object-contain mb-2" loading="lazy" />
-              <img src="/lovable-uploads/a2513c1d-2708-4143-a69b-fa65a1d4d1f2.png" alt="OECL Logo" className="h-12 w-auto object-contain" loading="lazy" />
             </div>
             <p className="text-sm md:text-base text-white/80 max-w-xs text-left leading-relaxed">15 Years Excellence in Logistics Industry GC, a Singapore-based global freight forwarding and logistics solutions provider, establishes its presence in the region with a reliable network of experienced agents spanning the globe. Backed by a highly</p>
-            <div className="flex space-x-3 mt-6">
-              <motion.a href="https://www.facebook.com/oeclglobal" target="_blank" className="bg-gc-gold text-gc-dark-blue p-2 rounded-full hover:bg-gc-light-gold transition-colors duration-300" whileHover={{
-              y: -3,
-              scale: 1.1
-            }} whileTap={{
-              scale: 0.95
-            }}>
-                <Facebook size={18} />
-              </motion.a>
-              <motion.a href="https://www.linkedin.com/company/oeclglobal" target="_blank" className="bg-gc-gold text-gc-dark-blue p-2 rounded-full hover:bg-gc-light-gold transition-colors duration-300" whileHover={{
-              y: -3,
-              scale: 1.1
-            }} whileTap={{
-              scale: 0.95
-            }}>
-                <Linkedin size={18} />
-              </motion.a>
-            </div>
+            
           </motion.div>
 
           {/* Column 2: Navigation */}
