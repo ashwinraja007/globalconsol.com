@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -33,11 +32,10 @@ const Navigation = () => {
     return `/${currentCountry.name.toLowerCase().replace(" ", "-")}${basePath}`;
   };
 
-  const isCompanyLinkActive = () => {
-    return isActive(getNavLink("/about-us")) || 
-           isActive(getNavLink("/gallery") || 
-           isActive(getNavLink("/career"));
-  };
+  const isCompanyLinkActive = () =>
+    isActive(getNavLink("/about-us")) ||
+    isActive(getNavLink("/gallery")) ||
+    isActive(getNavLink("/career"));
 
   return (
     <header className="fixed top-0 left-0 right-0 w-full z-50 shadow-md bg-white transition-all duration-300">
@@ -62,7 +60,7 @@ const Navigation = () => {
 
       <div className="container mx-auto px-3 sm:px-4 md:px-6 py-2 sm:py-4 lg:py-[19px]">
         <div className="flex justify-between items-center">
-          {/* Logos - Responsive sizing */}
+          {/* Logos */}
           <div className="flex items-center gap-2 sm:gap-4">
             <img
               alt="GGL Logo"
@@ -147,7 +145,7 @@ const Navigation = () => {
             </Link>
           </nav>
 
-          {/* Right section - Responsive */}
+          {/* Right side */}
           <div className="hidden md:flex items-center gap-2 lg:gap-4">
             <CountrySelector />
             <Link to={`${getNavLink("/contact")}#contact-form`}>
@@ -157,7 +155,7 @@ const Navigation = () => {
             </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Toggle */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden p-2"
@@ -176,7 +174,7 @@ const Navigation = () => {
         <div className="lg:hidden absolute top-full left-0 right-0 bg-white py-4 shadow-md animate-fade-in border-t max-h-[calc(100vh-80px)] overflow-y-auto">
           <div className="container mx-auto px-4">
             <nav className="flex flex-col space-y-4">
-              {[
+              {[ 
                 { label: "HOME", path: "/home" },
                 { label: "ABOUT US", path: "/about-us" },
                 { label: "GALLERY", path: "/gallery" },
