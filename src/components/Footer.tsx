@@ -208,7 +208,7 @@ const Footer = () => {
 
         {/* Bottom Line */}
         <div className="text-center text-white/70 mt-12 pt-8 border-t border-gc-gold/20 text-sm">
-          &copy; {new Date().getFullYear()} OECL Global Enterprises. All Rights Reserved.
+          &copy; {new Date().getFullYear()} 2024 Site Powered by Global Consolidators Pte Ltd,. All right reserved.
         </div>
       </div>
     </footer>;
