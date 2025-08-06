@@ -1,16 +1,17 @@
+
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Home from "./pages/Home";
-import AboutUs from "./pages/AboutUs";
+import AboutUs from "./pages/aboutus";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import News from "./pages/News";
 import Gallery from "./pages/Gallery";
 import Login from "./pages/Login";
 import ForgotPassword from "./pages/ForgotPassword";
-import SignUp from "./pages/SignUp";
+import SignUp from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import ResetPassword from "./pages/ResetPassword";
 import Profile from "./pages/Profile";
@@ -39,10 +40,10 @@ import ThirdPartyLogistics from "./pages/services/ThirdPartyLogistics";
 import LiquidTransportation from "./pages/services/LiquidTransportation";
 
 // Country Pages
-import SriLankaHome from "./pages/sri-lanka/Home";
-import MyanmarHome from "./pages/myanmar/Home";
-import BangladeshHome from "./pages/bangladesh/Home";
-import PakistanHome from "./pages/pakistan/Home";
+import SriLankaHome from "./pages/SriLankaHome";
+import MyanmarHome from "./pages/MyanmarHome";
+import BangladeshHome from "./pages/BangladeshHome";
+import PakistanHome from "./pages/PakistanHome";
 
 const queryClient = new QueryClient();
 
