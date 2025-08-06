@@ -87,7 +87,7 @@ const serviceRoutes: ServiceRoute[] = [
 ];
 
 // Country prefixes (✅ Updated to include "singapore")
-const countries = ['singapore', 'sri-lanka', 'myanmar', 'bangladesh', 'pakistan'];
+const countries = ['singapore', 'sri-lanka', 'myanmar', 'bangladesh', 'pakistan', 'home'];
 
 const App: React.FC = () => {
   return (
