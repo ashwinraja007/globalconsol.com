@@ -1,18 +1,49 @@
 
-import React from 'react';
-import Navigation from '@/components/Navigation';
-import Footer from '@/components/Footer';
+import { useEffect } from "react";
+import Navigation from "@/components/Navigation";
+import CountryHeroSection from "@/components/CountryHeroSection";
+import TrackOrder from "@/components/TrackOrder";
+import AboutSection from "@/components/AboutSection";
+import ServicesSection from "@/components/ServicesSection";
+import StatsSection from "@/components/StatsSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import GlobalPresence from "@/components/GlobalPresence";
+import ContactForm from "@/components/ContactForm";
+import Footer from "@/components/Footer";
+import { useScrollToTop } from "@/hooks/useScrollToTop";
 
 const SriLankaHome = () => {
+  useScrollToTop();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollAnimElements = document.querySelectorAll('.scroll-animate');
+      scrollAnimElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (elementTop < windowHeight * 0.9) {
+          element.classList.add('appear');
+        }
+      });
+    };
+
+    setTimeout(handleScroll, 100);
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="bg-white">
       <Navigation />
-      <div className="pt-24 pb-16">
-        <div className="container mx-auto px-4">
-          <h1 className="text-3xl font-bold text-center mb-8">Sri Lanka Operations</h1>
-          <p className="text-center text-gray-600">Welcome to our Sri Lanka operations page.</p>
-        </div>
-      </div>
+      <CountryHeroSection country="sri-lanka" />
+      <TrackOrder />
+      <AboutSection />
+      <ServicesSection />
+      <GlobalPresence />
+      <ContactForm />
       <Footer />
     </div>
   );
