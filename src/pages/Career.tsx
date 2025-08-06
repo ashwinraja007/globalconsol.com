@@ -7,41 +7,7 @@ import { MapPin, Clock, Briefcase, Users, Award, TrendingUp } from 'lucide-react
 
 const Career = () => {
   const jobOpenings = [
-    {
-      title: "Senior Logistics Coordinator",
-      location: "Singapore",
-      type: "Full-time",
-      department: "Operations",
-      description: "Lead logistics operations and coordinate with international partners to ensure smooth freight forwarding services."
-    },
-    {
-      title: "Customer Service Representative",
-      location: "Myanmar",
-      type: "Full-time", 
-      department: "Customer Service",
-      description: "Provide excellent customer support and manage client relationships for our Myanmar operations."
-    },
-    {
-      title: "Warehouse Manager",
-      location: "Bangladesh",
-      type: "Full-time",
-      department: "Warehousing",
-      description: "Oversee warehouse operations, inventory management, and ensure compliance with safety standards."
-    },
-    {
-      title: "Sales Executive",
-      location: "Pakistan",
-      type: "Full-time",
-      department: "Sales",
-      description: "Drive business growth by acquiring new clients and maintaining relationships with existing customers."
-    },
-    {
-      title: "Documentation Officer",
-      location: "Sri Lanka",
-      type: "Full-time",
-      department: "Documentation",
-      description: "Handle customs documentation, regulatory compliance, and ensure accurate processing of shipping documents."
-    }
+    
   ];
 
   const benefits = [
