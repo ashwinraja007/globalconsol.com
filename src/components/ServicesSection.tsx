@@ -54,7 +54,7 @@ const allServices = [{
   description: "With our cutting-edge 3PL warehouse management system, you can optimize your business operations and implement advanced fulfill",
   icon: Box,
   image: "/3pl.png",
-  slug: "3pl",
+  slug: "third-party-logistics",
   delay: 0
 }, {
   id: 6,
@@ -62,7 +62,7 @@ const allServices = [{
   description: "GC specializes in delivering comprehensive expertise and services for the transportation of liquid cargoes through ISO Tanks, F",
   icon: Droplets,
   image: "/liquidtransportation.png",
-  slug: "liquid-transportation",
+  slug: "liquid-cargo",
   delay: 100
 }];
 const ServicesSection = () => {
