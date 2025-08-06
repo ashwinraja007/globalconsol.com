@@ -84,7 +84,7 @@ const Blog = () => {
       <Navigation />
       <div className="container mx-auto px-4 py-12 pt-24">
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">Our Blog</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground mt-14">Our Blog</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Stay updated with the latest insights, trends, and innovations in global logistics and supply chain management.
           </p>
