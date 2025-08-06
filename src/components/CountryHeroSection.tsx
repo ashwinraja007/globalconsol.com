@@ -232,50 +232,50 @@ const HeroSection = ({ country }: HeroSectionProps) => {
         <div className="absolute inset-0 bg-black/40 z-[2]" />
       </div>
 
-      {/* Main Content - Improved mobile responsiveness */}
-      <div className="relative z-20 flex items-center min-h-screen px-4 sm:px-6 lg:px-12">
-        <div className="max-w-4xl space-y-6 sm:space-y-8 px-0 py-0 mx-auto lg:mx-0 lg:ml-20 lg:text-left text-center w-full">
-          {/* Title - Responsive text sizing */}
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-tight">
+      {/* Main Content */}
+      <div className="relative z-20 flex items-center min-h-screen px-6 lg:px-12">
+        <div className="max-w-4xl space-y-8 px-0 py-0 mx-auto lg:mx-0 lg:ml-20 lg:text-left text-center w-full">
+          {/* Title */}
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
             {currentSlide.title.split(" ").map((word, i) => (
               <span 
                 key={i} 
                 style={{ animationDelay: `${i * 0.1}s` }} 
-                className="text-slate-50 font-bold block sm:inline"
+                className="text-slate-50 font-bold text-4xl"
               >
                 {word}{" "}
               </span>
             ))}
           </h1>
 
-          {/* Description - Responsive text sizing */}
-          <p className={`text-lg sm:text-xl md:text-2xl text-gray-200 max-w-2xl leading-relaxed transform transition-all duration-1000 delay-500 ${
+          {/* Description */}
+          <p className={`text-xl md:text-2xl text-gray-200 max-w-2xl leading-relaxed transform transition-all duration-1000 delay-500 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}>
             {currentSlide.description}
           </p>
 
-          {/* CTA Button - Responsive sizing */}
+          {/* CTA Button */}
           <div className={`flex flex-col sm:flex-row gap-4 transform transition-all duration-1000 delay-700 ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
           }`}>
-            <a href={getContactUrl()} className="group">
-              <button className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold flex items-center justify-center gap-3 shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-blue-500/30 border border-blue-500/30 bg-kargon-blue w-full sm:w-auto">
+            <a href={getContactUrl()} className="group hidden md:block">
+              <button className="relative overflow-hidden bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-xl px-8 py-4 text-lg font-semibold flex items-center gap-3 shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-blue-500/30 border border-blue-500/30 bg-kargon-blue">
                 <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
-                <Zap className="w-4 h-4 sm:w-5 sm:h-5" />
+                <Zap className="w-5 h-5" />
                 <span>GET STARTED</span>
-                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 transform group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" />
               </button>
             </a>
           </div>
 
           {/* Slide Indicators */}
-          <div className="flex justify-center lg:justify-start space-x-2 pt-4">
+          <div className="flex space-x-2 pt-4">
             {sliderImages.map((_, i) => (
               <button 
                 key={i} 
                 onClick={() => setActiveSlide(i)} 
-                className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
                   activeSlide === i 
                     ? "bg-blue-500 scale-125 shadow-lg shadow-blue-500/50" 
                     : "bg-white/30 hover:bg-white/50"
@@ -286,24 +286,24 @@ const HeroSection = ({ country }: HeroSectionProps) => {
         </div>
       </div>
 
-      {/* Enhanced Portal Buttons - Improved mobile responsiveness */}
-      <div className="absolute bottom-4 sm:bottom-6 left-0 right-0 z-30 px-2 sm:px-4">
+      {/* Enhanced Portal Buttons - Made smaller and responsive */}
+      <div className="absolute bottom-6 left-0 right-0 z-30 px-4">
         <div className={`max-w-7xl mx-auto transition-all duration-1000 delay-1000 ${
           isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
         }`}>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-1 sm:gap-2">
+          <div className="grid grid-cols-4 gap-1 sm:gap-2">
             {portalLinks.map((link, index) => {
               const ButtonContent = (
-                <div className="group relative overflow-hidden w-full h-12 sm:h-14 md:h-16 lg:h-18 flex flex-col gap-1 items-center justify-center text-xs transition-all duration-300 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 hover:-translate-y-1">
+                <div className="group relative overflow-hidden w-full h-14 sm:h-16 md:h-18 flex flex-col gap-1 items-center justify-center text-xs transition-all duration-300 rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 hover:-translate-y-1">
                   <div className={`absolute inset-0 bg-gradient-to-br ${link.color} opacity-90 group-hover:opacity-100 transition-opacity`} />
                   <div className={`absolute inset-0 bg-gradient-to-br ${link.hoverColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
                   <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
                   <div className="relative z-10 flex flex-col items-center gap-1">
                     <div className="p-1 bg-white/20 rounded group-hover:bg-white/30 transition-colors">
-                      {React.cloneElement(link.icon, { className: "w-3 h-3 sm:w-4 sm:h-4" })}
+                      {link.icon}
                     </div>
-                    <div className="text-center px-1">
-                      <div className="font-medium text-white leading-tight text-xs sm:text-xs lg:text-sm">{link.title}</div>
+                    <div className="text-center">
+                      <div className="font-medium text-white leading-tight text-xs">{link.title}</div>
                     </div>
                   </div>
                 </div>
@@ -333,35 +333,35 @@ const HeroSection = ({ country }: HeroSectionProps) => {
         </div>
       </div>
 
-      {/* Enhanced Modal - Improved mobile responsiveness */}
+      {/* Enhanced Modal - Fixed z-index issue */}
       {isCustomerPortalOpen && (
-        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4 animate-in fade-in duration-300">
-          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden shadow-2xl border border-gray-200 animate-in slide-in-from-bottom duration-500">
-            <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-4 sm:p-6">
+        <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-300">
+          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl border border-gray-200 animate-in slide-in-from-bottom duration-500">
+            <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-6">
               <div className="flex justify-between items-center">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="p-1.5 sm:p-2 bg-white/20 rounded-lg">
-                    <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-white/20 rounded-lg">
+                    <Users className="w-6 h-6 text-white" />
                   </div>
-                  <h2 className="text-lg sm:text-2xl font-bold text-white">Customer Portal</h2>
+                  <h2 className="text-2xl font-bold text-white">Customer Portal</h2>
                 </div>
                 <button 
                   onClick={() => setIsCustomerPortalOpen(false)} 
                   className="text-white/80 hover:text-white hover:bg-white/20 rounded-full p-2 transition-all duration-200"
                 >
-                  <span className="text-xl sm:text-2xl">×</span>
+                  <span className="text-2xl">×</span>
                 </button>
               </div>
             </div>
             
-            <div className="p-4 sm:p-6 overflow-y-auto max-h-[calc(95vh-100px)] sm:max-h-[calc(90vh-120px)]">
-              <div className="space-y-4 sm:space-y-6">
+            <div className="p-6 overflow-y-auto">
+              <div className="space-y-6">
                 <div className="flex items-center gap-2 mb-4">
-                  <Play className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Tutorial Videos</h3>
+                  <Play className="w-5 h-5 text-blue-600" />
+                  <h3 className="text-xl font-semibold text-gray-800">Tutorial Videos</h3>
                 </div>
                 
-                <div className="grid grid-cols-1 gap-4 sm:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {[{
                     src: "//OECl_Customer_Portal_Explainer.mp4",
                     label: "Getting Started",
@@ -385,11 +385,11 @@ const HeroSection = ({ country }: HeroSectionProps) => {
                           {video.duration}
                         </div>
                       </div>
-                      <div className="p-3 sm:p-4">
-                        <h4 className="font-semibold text-gray-800 group-hover:text-blue-600 transition-colors text-sm sm:text-base">
+                      <div className="p-4">
+                        <h4 className="font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
                           {video.label}
                         </h4>
-                        <p className="text-xs sm:text-sm text-gray-600 mt-1">
+                        <p className="text-sm text-gray-600 mt-1">
                           Learn how to use the portal effectively
                         </p>
                       </div>
@@ -398,15 +398,15 @@ const HeroSection = ({ country }: HeroSectionProps) => {
                 </div>
               </div>
               
-              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row justify-end gap-3 pt-4 sm:pt-6 border-t">
+              <div className="mt-8 flex flex-col sm:flex-row justify-end gap-3 pt-6 border-t">
                 <button 
                   onClick={() => setIsCustomerPortalOpen(false)} 
-                  className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors font-medium order-2 sm:order-1"
+                  className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors font-medium"
                 >
                   Close
                 </button>
-                <a href="https://consolmate.com/auth/login/1" target="_blank" rel="noopener noreferrer" className="order-1 sm:order-2">
-                  <button className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg font-medium flex items-center gap-2 justify-center transition-all duration-300 shadow-lg hover:shadow-xl">
+                <a href="https://consolmate.com/auth/login/1" target="_blank" rel="noopener noreferrer">
+                  <button className="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg font-medium flex items-center gap-2 justify-center transition-all duration-300 shadow-lg hover:shadow-xl">
                     <span>Login to Portal</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
