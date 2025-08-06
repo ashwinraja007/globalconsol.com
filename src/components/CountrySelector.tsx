@@ -1,6 +1,6 @@
+
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import Image from "next/image";
 
 interface CountryData {
   country: string;
@@ -31,14 +31,14 @@ const countries: CountryData[] = [
   { country: "UK", company: "MOLTECH", website: "https://moltech.uk/", priority: 16, flag: "/gb.svg" },
 ];
 
-const CountrySelector = ({ currentCountry }: { currentCountry: string }) => {
+const CountrySelector = ({ currentCountry = "" }: { currentCountry?: string }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
   const availableCountries = countries.filter(
     (c) =>
-      c.country.toUpperCase() !== currentCountry.toUpperCase() &&
-      (!c.visibilityByCountry || c.visibilityByCountry[currentCountry.toUpperCase()] !== false)
+      c.country.toUpperCase() !== (currentCountry || "").toUpperCase() &&
+      (!c.visibilityByCountry || c.visibilityByCountry[(currentCountry || "").toUpperCase()] !== false)
   );
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -48,7 +48,7 @@ const CountrySelector = ({ currentCountry }: { currentCountry: string }) => {
 
   return (
     <div className="country-selector">
-      <select onChange={handleChange} defaultValue="">
+      <select onChange={handleChange} defaultValue="" className="text-sm border rounded px-2 py-1">
         <option value="" disabled>Change Country</option>
         {availableCountries.sort((a, b) => a.priority - b.priority).map((country) => (
           <option key={country.country} value={country.country}>

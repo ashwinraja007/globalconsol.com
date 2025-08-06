@@ -115,7 +115,7 @@ const Navigation = () => {
 
           {/* Right section - Responsive */}
           <div className="hidden md:flex items-center gap-2 lg:gap-4">
-            <CountrySelector />
+            <CountrySelector currentCountry={currentCountry.name} />
             <Link to={`${getNavLink("/contact")}#contact-form`}>
               <Button className="bg-gc-gold hover:bg-gc-bronze text-white rounded-md text-xs sm:text-sm px-3 sm:px-4 py-2">
                 GET QUOTE
@@ -167,7 +167,7 @@ const Navigation = () => {
               ))}
 
               <div className="pt-4 border-t border-gray-200">
-                <CountrySelector />
+                <CountrySelector currentCountry={currentCountry.name} />
               </div>
 
               <Link
