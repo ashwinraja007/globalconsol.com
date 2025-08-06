@@ -16,37 +16,184 @@ export type Database = {
     Tables: {
       articles: {
         Row: {
+          alt_text: string | null
           content: string
           created_at: string
           excerpt: string | null
           featured_image: string | null
           id: string
+          meta_description: string | null
+          meta_title: string | null
           published_at: string | null
           slug: string
+          tags: string[] | null
           title: string
           updated_at: string
         }
         Insert: {
+          alt_text?: string | null
           content: string
           created_at?: string
           excerpt?: string | null
           featured_image?: string | null
           id?: string
+          meta_description?: string | null
+          meta_title?: string | null
           published_at?: string | null
           slug: string
+          tags?: string[] | null
           title: string
           updated_at?: string
         }
         Update: {
+          alt_text?: string | null
           content?: string
           created_at?: string
           excerpt?: string | null
           featured_image?: string | null
           id?: string
+          meta_description?: string | null
+          meta_title?: string | null
           published_at?: string | null
           slug?: string
+          tags?: string[] | null
           title?: string
           updated_at?: string
+        }
+        Relationships: []
+      }
+      gallery: {
+        Row: {
+          country: string
+          created_at: string
+          description: string | null
+          id: string
+          image_path: string
+          image_url: string
+          label: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          country: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_path: string
+          image_url: string
+          label?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          country?: string
+          created_at?: string
+          description?: string | null
+          id?: string
+          image_path?: string
+          image_url?: string
+          label?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      payments: {
+        Row: {
+          amount: number
+          created_at: string | null
+          id: string
+          payment_method: string
+          status: string | null
+          transaction_id: string | null
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          amount: number
+          created_at?: string | null
+          id?: string
+          payment_method: string
+          status?: string | null
+          transaction_id?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          amount?: number
+          created_at?: string | null
+          id?: string
+          payment_method?: string
+          status?: string | null
+          transaction_id?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string | null
+          email: string | null
+          first_name: string | null
+          id: string
+          last_name: string | null
+          role: string | null
+          status: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email?: string | null
+          first_name?: string | null
+          id: string
+          last_name?: string | null
+          role?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string | null
+          first_name?: string | null
+          id?: string
+          last_name?: string | null
+          role?: string | null
+          status?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      shipments: {
+        Row: {
+          created_at: string | null
+          destination: string
+          id: string
+          origin: string
+          status: string | null
+          tracking_number: string
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          destination: string
+          id?: string
+          origin: string
+          status?: string | null
+          tracking_number: string
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          destination?: string
+          id?: string
+          origin?: string
+          status?: string | null
+          tracking_number?: string
+          updated_at?: string | null
+          user_id?: string | null
         }
         Relationships: []
       }
