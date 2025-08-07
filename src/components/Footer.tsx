@@ -25,7 +25,7 @@ const Footer = () => {
     country: "Singapore",
     offices: [
       {
-        name: "Global Consolidators (Singapore)",
+        name: "Global Consolidators",
         address:
           "Blk 511 Kampong Bahru Road, #03-01 Keppel Distripark, Singapore 099447",
         phone: "+65 6224 1338 / +65 6224 1336",
