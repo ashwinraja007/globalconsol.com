@@ -239,7 +239,8 @@ const countries = [{
     lat: -37.7064,
     lng: 144.8503,
     address: "Suite 5, 7-9 Mallet Road, Tullamarine, Victoria, 3043",
-    contacts: ["Mob: +61 432254969", "Tel: +61 388205157"]
+    contacts: ["Mob: +61 432254969", "Tel: +61 388205157"],
+    email:"info@gglaustralia.com"
   }]
 }, {
   code: "qa",
