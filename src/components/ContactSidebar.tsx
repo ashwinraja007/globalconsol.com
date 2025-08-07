@@ -367,6 +367,19 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
     return selectedCityIndexes[countryName] === cityIndex;
   };
 
+  const handleAccordionToggle = (countryName: string) => {
+    console.log('Toggling country:', countryName);
+    const country = filteredCountries.find(c => c.name === countryName);
+    if (country) {
+      if (expandedCountry === countryName) {
+        setExpandedCountry(null);
+      } else {
+        setExpandedCountry(countryName);
+        navigateToLocation(country.lat, country.lng);
+      }
+    }
+  };
+
   return (
     <>
       {/* Backdrop overlay for mobile */}
@@ -396,7 +409,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
         <ScrollArea className={`h-[calc(100vh-10rem)] md:h-[calc(100vh-8rem)] bg-white rounded-b-xl shadow-md`}>
           <div className="p-4">
             <div className="mt-4 space-y-3">
-              <Accordion type="single" collapsible value={expandedCountry || ""} className="w-full space-y-3">
+              <Accordion type="single" collapsible value={expandedCountry || ""} onValueChange={setExpandedCountry} className="w-full space-y-3">
                 {filteredCountries.map(country => {
                   return (
                     <AccordionItem 
@@ -405,11 +418,11 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
                       className="border border-red-100 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all bg-white"
                     >
                       <AccordionTrigger 
-                        onClick={() => {
-                          setExpandedCountry(expandedCountry === country.name ? null : country.name);
-                          navigateToLocation(country.lat, country.lng);
+                        onClick={(e) => {
+                          e.preventDefault();
+                          handleAccordionToggle(country.name);
                         }}
-                        className="rounded-t-md hover:bg-amber-50 transition-colors px-3 py-2"
+                        className="rounded-t-md hover:bg-amber-50 transition-colors px-3 py-2 cursor-pointer"
                       >
                         <div className="flex items-center gap-3">
                           <img 
