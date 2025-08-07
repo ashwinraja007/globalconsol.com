@@ -142,21 +142,21 @@ const HeroSection = ({
   }, {
     icon: <UserCircle className="w-4 h-4" />,
     title: "Partner Portal",
-    url: "https://pp.onlinetracking.co/auth/login/2",
+    url: "https://pp.onlinetracking.co/auth/login/1",
     external: true,
     color: "from-blue-500 to-blue-700",
     hoverColor: "from-blue-600 to-blue-800"
   }, {
     icon: <SearchCode className="w-4 h-4" />,
     title: "Tracking",
-    url: "http://ec2-13-229-38-56.ap-southeast-1.compute.amazonaws.com:8081/ords/f?p=107:102:::::P0_GROUP_RID:55",
+    url: "http://ec2-13-229-38-56.ap-southeast-1.compute.amazonaws.com:8081/ords/f?p=107:102:::::P0_GROUP_RID:54",
     external: true,
     color: "from-blue-500 to-blue-700",
     hoverColor: "from-blue-600 to-blue-800"
   }, {
     icon: <Ship className="w-4 h-4" />,
     title: "Sailing Schedule",
-    url: "http://ec2-13-229-38-56.ap-southeast-1.compute.amazonaws.com:8081/ords/f?p=107:104:::::P0_GROUP_RID:55",
+    url: "http://ec2-13-229-38-56.ap-southeast-1.compute.amazonaws.com:8081/ords/f?p=107:104:::::P0_GROUP_RID:54",
     external: true,
     color: "from-blue-500 to-blue-700",
     hoverColor: "from-blue-600 to-blue-800"
@@ -312,11 +312,11 @@ const HeroSection = ({
                 
                 <div className="grid grid-cols-1 gap-4 sm:gap-6">
                   {[{
-                src: "//OECl_Customer_Portal_Explainer.mp4",
+                src: "/GC_demo_1.mp4",
                 label: "Getting Started",
                 duration: "5:32"
               }, {
-                src: "/OECL_ad.mp4",
+                src: "/GC_promo_2.mp4",
                 label: "Advanced Features",
                 duration: "7:45"
               }].map((video, i) => <div key={i} className="group border-2 border-gray-200 rounded-xl overflow-hidden bg-gray-50 hover:border-blue-300 transition-all duration-300 hover:shadow-lg">
@@ -345,7 +345,7 @@ const HeroSection = ({
                 <button onClick={() => setIsCustomerPortalOpen(false)} className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors font-medium order-2 sm:order-1">
                   Close
                 </button>
-                <a href="https://consolmate.com/auth/login/1" target="_blank" rel="noopener noreferrer" className="order-1 sm:order-2">
+                <a href="https://cp.onlinetracking.co/#/login/1" target="_blank" rel="noopener noreferrer" className="order-1 sm:order-2">
                   <button className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg font-medium flex items-center gap-2 justify-center transition-all duration-300 shadow-lg hover:shadow-xl">
                     <span>Login to Portal</span>
                     <ArrowRight className="w-4 h-4" />
