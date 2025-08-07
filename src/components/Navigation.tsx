@@ -145,6 +145,16 @@ const Navigation = () => {
             </Link>
           </nav>
 
+           <Link
+              to={getNavLink("/global-presence")}
+              className={`nav-link font-medium text-black hover:text-kargon-red ${
+                isActive(getNavLink("/global-presence")) ? "text-kargon-red" : ""
+              }`}
+            >
+              Global Presence
+            </Link>
+          </nav>
+
           {/* Right side */}
           <div className="hidden md:flex items-center gap-2 lg:gap-4">
             <CountrySelector />
