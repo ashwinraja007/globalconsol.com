@@ -28,7 +28,7 @@ const PrivacyPolicy = () => {
           
           <h2 className="text-2xl font-semibold mt-8 mb-4 text-black">Introduction</h2>
           <p className="mb-6 text-black">
-            Welcome to OECL (Singapore) Pte Ltd ["OECL (Singapore)", "we", "our", "us"]. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
+            Welcome to GC (Singapore) Pte Ltd ["GC (Singapore)", "we", "our", "us"]. We are committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
           </p>
           
           <p className="mb-6 text-black">
@@ -38,11 +38,11 @@ const PrivacyPolicy = () => {
           <h2 className="text-2xl font-semibold mt-8 mb-4 text-black">Our Commitment to Privacy:</h2>
           
           <p className="mb-4 text-black">
-            <strong>Limited Data Collection:</strong> At OECL (Singapore), we adhere to strict privacy principles by collecting only the essential information necessary for efficient communication. This streamlined approach simplifies user interactions and minimizes the exposure of personal details. Our commitment to minimal data collection reflects our dedication to user privacy and ensures robust security measures.
+            <strong>Limited Data Collection:</strong> At GC (Singapore), we adhere to strict privacy principles by collecting only the essential information necessary for efficient communication. This streamlined approach simplifies user interactions and minimizes the exposure of personal details. Our commitment to minimal data collection reflects our dedication to user privacy and ensures robust security measures.
           </p>
           
           <p className="mb-4 text-black">
-            <strong>Voluntary Disclosure:</strong> Users at OECL (Singapore) have full control over the information they choose to share. Our policy emphasizes voluntary data submission, empowering users to determine the extent of their engagement. We respect individual privacy preferences, acknowledging that each user may have distinct comfort levels regarding information disclosure.
+            <strong>Voluntary Disclosure:</strong> Users at GC (Singapore) have full control over the information they choose to share. Our policy emphasizes voluntary data submission, empowering users to determine the extent of their engagement. We respect individual privacy preferences, acknowledging that each user may have distinct comfort levels regarding information disclosure.
           </p>
           
           <p className="mb-4 text-black">
@@ -50,13 +50,13 @@ const PrivacyPolicy = () => {
           </p>
           
           <p className="mb-6 text-black">
-            <strong>User Empowerment:</strong> At OECL (Singapore), we prioritize user control over their personal information. Beyond allowing users to choose what information to share, we empower them to manage their privacy settings and preferences. This approach enables individuals to tailor their interactions with OECL (Singapore) according to their preferences, fostering trust and transparency in digital interactions.
+            <strong>User Empowerment:</strong> At GC (Singapore), we prioritize user control over their personal information. Beyond allowing users to choose what information to share, we empower them to manage their privacy settings and preferences. This approach enables individuals to tailor their interactions with GC (Singapore) according to their preferences, fostering trust and transparency in digital interactions.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4 text-black">What Constitutes Personal Information?</h2>
           
           <p className="mb-4 text-black">
-            <strong>Personal Information:</strong> At OECL (Singapore), "Personal Information" refers to any data related to an identified or identifiable natural person. This includes details that can directly or indirectly identify an individual, such as their name, address, contact information (telephone number, mobile number, email address), identification numbers, location data, online identifiers, and specific characteristics related to their physical, physiological, genetic, mental, economic, cultural, or social identity. Additionally, this encompasses any information collected through our services, such as user preferences and behavioural data, that can be linked to an individual.
+            <strong>Personal Information:</strong> At GC (Singapore), "Personal Information" refers to any data related to an identified or identifiable natural person. This includes details that can directly or indirectly identify an individual, such as their name, address, contact information (telephone number, mobile number, email address), identification numbers, location data, online identifiers, and specific characteristics related to their physical, physiological, genetic, mental, economic, cultural, or social identity. Additionally, this encompasses any information collected through our services, such as user preferences and behavioural data, that can be linked to an individual.
           </p>
           
           <p className="mb-6 text-black">
@@ -66,7 +66,7 @@ const PrivacyPolicy = () => {
           <h2 className="text-2xl font-semibold mt-8 mb-4 text-black">What Data Do We Gather and When?</h2>
           
           <p className="mb-4 text-black">
-            At OECL (Singapore), we prioritize minimal data collection to optimize user interactions and facilitate effective communication. The information we collect includes:
+            At GC (Singapore), we prioritize minimal data collection to optimize user interactions and facilitate effective communication. The information we collect includes:
           </p>
           
           <p className="mb-4 text-black">
@@ -88,19 +88,19 @@ const PrivacyPolicy = () => {
           <h2 className="text-2xl font-semibold mt-8 mb-4 text-black">User Choice and Control</h2>
           
           <p className="mb-4 text-black">
-            <strong>Opt-In Engagement:</strong> At OECL (Singapore), we emphasize user consent through active opt-in processes, where users provide their names and email addresses. This ensures that all interactions with us are consensual and align with user preferences.
+            <strong>Opt-In Engagement:</strong> At GC (Singapore), we emphasize user consent through active opt-in processes, where users provide their names and email addresses. This ensures that all interactions with us are consensual and align with user preferences.
           </p>
           
           <p className="mb-4 text-black">
-            <strong>Communication Preferences:</strong> Users at OECL (Singapore) have complete control over their communication preferences. They can manage the frequency and type of messages they receive, allowing them to tailor their interactions according to their needs and preferences.
+            <strong>Communication Preferences:</strong> Users at GC (Singapore) have complete control over their communication preferences. They can manage the frequency and type of messages they receive, allowing them to tailor their interactions according to their needs and preferences.
           </p>
           
           <p className="mb-6 text-black">
-            <strong>Data Collection Practices:</strong> OECL (Singapore) is committed to respecting user privacy while enabling effective communication. We implement strict security measures to protect the limited information we collect, ensuring a secure and positive user experience.
+            <strong>Data Collection Practices:</strong> GC (Singapore) is committed to respecting user privacy while enabling effective communication. We implement strict security measures to protect the limited information we collect, ensuring a secure and positive user experience.
           </p>
 
           <p className="mb-4 text-black">
-            <strong>Other Information Collection:</strong> When using our services, OECL (Singapore) collects various types of Other Information about user activities and usage patterns, including:
+            <strong>Other Information Collection:</strong> When using our services, GC (Singapore) collects various types of Other Information about user activities and usage patterns, including:
           </p>
           
           <p className="mb-4 text-black">
@@ -108,7 +108,7 @@ const PrivacyPolicy = () => {
           </p>
           
           <p className="mb-4 text-black">
-            <strong>Cookies:</strong> OECL (Singapore) uses cookies to identify users' login status and recognize repeat visitors. These cookies are essential for improving service quality. We utilize session cookies (which expire when the browser is closed) and persistent cookies (which remain until deleted). Users can manage or disable cookies through their browser settings, although this may affect certain service functionalities.
+            <strong>Cookies:</strong> GC (Singapore) uses cookies to identify users' login status and recognize repeat visitors. These cookies are essential for improving service quality. We utilize session cookies (which expire when the browser is closed) and persistent cookies (which remain until deleted). Users can manage or disable cookies through their browser settings, although this may affect certain service functionalities.
           </p>
           
           <p className="mb-4 text-black">
@@ -116,13 +116,13 @@ const PrivacyPolicy = () => {
           </p>
           
           <p className="mb-6 text-black">
-            <strong>Local Storage:</strong> OECL (Singapore) may store information locally on user devices, including Personal Information, using mechanisms like browser web storage and application data caches. This enhances the user experience by storing preferences and settings locally.
+            <strong>Local Storage:</strong> GC (Singapore) may store information locally on user devices, including Personal Information, using mechanisms like browser web storage and application data caches. This enhances the user experience by storing preferences and settings locally.
           </p>
 
           <h2 className="text-2xl font-semibold mt-8 mb-4 text-black">How We Utilize the Collected Information:</h2>
           
           <p className="mb-4 text-black">
-            At OECL (Singapore), we are committed to ensuring that the information we collect is used responsibly and transparently. The collected information is utilized in the following ways:
+            At GC (Singapore), we are committed to ensuring that the information we collect is used responsibly and transparently. The collected information is utilized in the following ways:
           </p>
           
           <p className="mb-4 text-black">
@@ -160,7 +160,7 @@ const PrivacyPolicy = () => {
           <h2 className="text-2xl font-semibold mt-8 mb-4 text-black">How We Share Information with Third Parties:</h2>
           
           <p className="mb-4 text-black">
-            At OECL (Singapore), we are committed to maintaining the privacy and security of our users' information. We only share information with third parties under specific circumstances and with strict guidelines to ensure user privacy is protected. Below are the ways in which we may share information with third parties:
+            At GC (Singapore), we are committed to maintaining the privacy and security of our users' information. We only share information with third parties under specific circumstances and with strict guidelines to ensure user privacy is protected. Below are the ways in which we may share information with third parties:
           </p>
           
           <p className="mb-4 text-black">
@@ -175,7 +175,7 @@ const PrivacyPolicy = () => {
           </ul>
           
           <p className="mb-4 text-black">
-            These providers are contractually obligated to use the information only for the purpose of providing services to OECL (Singapore) and are required to maintain the confidentiality and security of your information.
+            These providers are contractually obligated to use the information only for the purpose of providing services to GC (Singapore) and are required to maintain the confidentiality and security of your information.
           </p>
           
           <p className="mb-4 text-black">
@@ -188,7 +188,7 @@ const PrivacyPolicy = () => {
           <ul className="list-disc ml-6 mb-4 text-black">
             <li>Comply with applicable laws, regulations, legal processes, or governmental requests.</li>
             <li>Enforce our Terms of Use or other agreements and policies.</li>
-            <li>Protect the rights, property, or safety of OECL (Singapore), our users, or others. This includes exchanging information with other companies and organizations for fraud protection and credit risk reduction.</li>
+            <li>Protect the rights, property, or safety of GC (Singapore), our users, or others. This includes exchanging information with other companies and organizations for fraud protection and credit risk reduction.</li>
           </ul>
           
           <p className="mb-4 text-black">
@@ -218,7 +218,7 @@ const PrivacyPolicy = () => {
           <h2 className="text-2xl font-semibold mt-8 mb-4 text-black">What Steps Do We Take to Protect Your Information?</h2>
           
           <p className="mb-4 text-black">
-            At OECL (Singapore), the security and confidentiality of your information are our highest priorities. We implement comprehensive measures to protect your personal data from unauthorized access, disclosure, alteration, or destruction. Here are the steps we take to safeguard your information:
+            At GC (Singapore), the security and confidentiality of your information are our highest priorities. We implement comprehensive measures to protect your personal data from unauthorized access, disclosure, alteration, or destruction. Here are the steps we take to safeguard your information:
           </p>
           
           <p className="mb-4 text-black">
