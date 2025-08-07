@@ -236,12 +236,94 @@ const countries = [{
 
 // Country visibility matrix based on current URL
 const countryVisibilityMatrix: Record<string, string[]> = {
-  'singapore': ['Singapore', 'Malaysia', 'Indonesia', 'Thailand', 'Myanmar', 'China', 'Australia', 'India', 'Bangladesh', 'Sri Lanka', 'Pakistan', 'Qatar', 'Saudi Arabia', 'UAE', 'United States (USA)', 'United Kingdom (UK)'],
-  'bangladesh': ['Singapore', 'Myanmar', 'China', 'Australia', 'India', 'Bangladesh', 'Sri Lanka', 'Pakistan', 'Qatar', 'Saudi Arabia', 'UAE', 'United States (USA)', 'United Kingdom (UK)'],
-  'sri-lanka': ['Singapore', 'Malaysia', 'Indonesia', 'Thailand', 'Myanmar', 'China', 'Australia', 'India', 'Bangladesh', 'Sri Lanka', 'Pakistan', 'Qatar', 'Saudi Arabia', 'UAE', 'United States (USA)', 'United Kingdom (UK)'],
-  'pakistan': ['Singapore', 'Malaysia', 'Indonesia', 'Thailand', 'Myanmar', 'China', 'Australia', 'India', 'Bangladesh', 'Sri Lanka', 'Pakistan', 'Qatar', 'Saudi Arabia', 'UAE', 'United States (USA)', 'United Kingdom (UK)'],
-  'myanmar': ['Singapore', 'Malaysia', 'Indonesia', 'Thailand', 'Myanmar', 'China', 'Australia', 'India', 'Bangladesh', 'Sri Lanka', 'Pakistan', 'Qatar', 'Saudi Arabia', 'UAE', 'United Kingdom (UK)']
+  singapore: [
+    "Singapore",
+    "Malaysia",
+    "Indonesia",
+    "Thailand",
+    "Myanmar",
+    "China",
+    "Australia",
+    "India",
+    "Bangladesh",
+    "Sri Lanka",
+    "Pakistan",
+    "Qatar",
+    "Saudi Arabia",
+    "UAE",
+    "United States (USA)",
+    "United Kingdom (UK)"
+  ],
+  bangladesh: [
+    "Singapore",
+    "Myanmar",
+    "China",
+    "Australia",
+    "India",
+    "Bangladesh",
+    "Sri Lanka",
+    "Pakistan",
+    "Qatar",
+    "Saudi Arabia",
+    "UAE",
+    "United States (USA)",
+    "United Kingdom (UK)"
+  ],
+  "sri-lanka": [
+    "Singapore",
+    "Malaysia",
+    "Indonesia",
+    "Thailand",
+    "Myanmar",
+    "China",
+    "Australia",
+    "India",
+    "Bangladesh",
+    "Sri Lanka",
+    "Pakistan",
+    "Qatar",
+    "Saudi Arabia",
+    "UAE",
+    "United States (USA)",
+    "United Kingdom (UK)"
+  ],
+  pakistan: [
+    "Singapore",
+    "Malaysia",
+    "Indonesia",
+    "Thailand",
+    "Myanmar",
+    "China",
+    "Australia",
+    "India",
+    "Bangladesh",
+    "Sri Lanka",
+    "Pakistan",
+    "Qatar",
+    "Saudi Arabia",
+    "UAE",
+    "United States (USA)",
+    "United Kingdom (UK)"
+  ],
+  myanmar: [
+    "Singapore",
+    "Malaysia",
+    "Indonesia",
+    "Thailand",
+    "Myanmar",
+    "China",
+    "Australia",
+    "India",
+    "Bangladesh",
+    "Sri Lanka",
+    "Pakistan",
+    "Qatar",
+    "Saudi Arabia",
+    "UAE",
+    "United Kingdom (UK)" // ❌ USA excluded (shows "0")
+  ]
 };
+
 
 const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
   const location = useLocation();
