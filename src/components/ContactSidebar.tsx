@@ -1,3 +1,4 @@
+
 import React, { useRef, useEffect, useState } from 'react';
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
@@ -5,6 +6,7 @@ import { X, MapPin, Globe, ExternalLink, Phone, Mail, Home, ChevronRight } from 
 import { cn } from "@/lib/utils";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useIsMobile } from '@/hooks/use-mobile';
+import { useLocation } from 'react-router-dom';
 
 interface ContactSidebarProps {
   isOpen: boolean;
@@ -233,15 +235,42 @@ const countries = [{
   }]
 }];
 
-// Sort countries alphabetically by name
-const sortedCountries = [...countries].sort((a, b) => a.name.localeCompare(b.name));
+// Country visibility matrix based on current URL
+const countryVisibilityMatrix: Record<string, string[]> = {
+  'singapore': ['Singapore', 'Malaysia', 'Indonesia', 'Thailand', 'Myanmar', 'China', 'Australia', 'India', 'Bangladesh', 'Sri Lanka', 'Pakistan', 'Qatar', 'Saudi Arabia', 'UAE', 'United States (USA)', 'United Kingdom (UK)'],
+  'bangladesh': ['Singapore', 'Myanmar', 'China', 'Australia', 'India', 'Bangladesh', 'Sri Lanka', 'Pakistan', 'Qatar', 'Saudi Arabia', 'UAE', 'United States (USA)', 'United Kingdom (UK)'],
+  'sri-lanka': ['Singapore', 'Malaysia', 'Indonesia', 'Thailand', 'Myanmar', 'China', 'Australia', 'India', 'Bangladesh', 'Sri Lanka', 'Pakistan', 'Qatar', 'Saudi Arabia', 'UAE', 'United States (USA)', 'United Kingdom (UK)'],
+  'pakistan': ['Singapore', 'Malaysia', 'Indonesia', 'Thailand', 'Myanmar', 'China', 'Australia', 'India', 'Bangladesh', 'Sri Lanka', 'Pakistan', 'Qatar', 'Saudi Arabia', 'UAE', 'United States (USA)', 'United Kingdom (UK)'],
+  'myanmar': ['Singapore', 'Malaysia', 'Indonesia', 'Thailand', 'Myanmar', 'China', 'Australia', 'India', 'Bangladesh', 'Sri Lanka', 'Pakistan', 'Qatar', 'Saudi Arabia', 'UAE', 'United Kingdom (UK)']
+};
 
 const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
+  const location = useLocation();
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
-  const [expandedCountry, setExpandedCountry] = useState<string | null>(null);
   const [selectedLocation, setSelectedLocation] = useState<any | null>(null);
   const [selectedCityIndexes, setSelectedCityIndexes] = useState<{ [countryName: string]: number }>({});
   const isMobile = useIsMobile();
+
+  // Get current country context from URL
+  const getCurrentCountryContext = () => {
+    const pathname = location.pathname.toLowerCase();
+    if (pathname.includes('/bangladesh')) return 'bangladesh';
+    if (pathname.includes('/sri-lanka')) return 'sri-lanka';
+    if (pathname.includes('/pakistan')) return 'pakistan';
+    if (pathname.includes('/myanmar')) return 'myanmar';
+    return 'singapore'; // default
+  };
+
+  const currentContext = getCurrentCountryContext();
+  const allowedCountries = countryVisibilityMatrix[currentContext] || [];
+
+  // Filter countries based on current context
+  const filteredCountries = countries.filter(country => 
+    allowedCountries.includes(country.name)
+  );
+
+  // Sort filtered countries alphabetically by name
+  const sortedCountries = [...filteredCountries].sort((a, b) => a.name.localeCompare(b.name));
 
   useEffect(() => {
     iframeRef.current = document.querySelector('iframe');
@@ -253,7 +282,6 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
       const firstCountry = sortedCountries[0];
       const firstCity = firstCountry.cities[0];
       setSelectedLocation(firstCity);
-      setExpandedCountry(firstCountry.name);
       
       // Initialize selected city indexes for all countries to 0 (first city)
       const initialIndexes: { [countryName: string]: number } = {};
@@ -265,7 +293,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
       // Navigate to the first location on map
       navigateToLocation(firstCity.lat, firstCity.lng, firstCity);
     }
-  }, []);
+  }, [sortedCountries]);
 
   const navigateToLocation = (lat: number, lng: number, city: any = null) => {
     // Find the iframe in the ContactMapContainer
@@ -329,7 +357,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
         <ScrollArea className={`h-[calc(100vh-10rem)] md:h-[calc(100vh-8rem)] bg-white rounded-b-xl shadow-md`}>
           <div className="p-4">
             <div className="mt-4 space-y-3">
-              <Accordion type="single" collapsible value={expandedCountry || ""} className="w-full space-y-3">
+              <Accordion type="multiple" className="w-full space-y-3">
                 {sortedCountries.map(country => {
                   return (
                     <AccordionItem 
@@ -339,10 +367,9 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
                     >
                       <AccordionTrigger 
                         onClick={() => {
-                          setExpandedCountry(expandedCountry === country.name ? null : country.name);
                           navigateToLocation(country.lat, country.lng);
                         }}
-                        className="rounded-t-md hover:bg-amber-50 transition-colors px-3 py-2"
+                        className="rounded-t-md hover:bg-amber-50 transition-colors px-3 py-2 cursor-pointer"
                       >
                         <div className="flex items-center gap-3">
                           <img 
