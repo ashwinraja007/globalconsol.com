@@ -33,6 +33,7 @@ const Footer = () => {
           address:
             "Blk 511 Kampong Bahru Road, #03-01 Keppel Distripark, Singapore 099447",
           phone: "+65 6224 1338 / +65 6224 1336",
+          email: "buddhika@globalconsol.com",
           map: "https://www.google.com/maps/d/u/0/embed?mid=1U_72YwJ_4E6SQSrx2E6eWegoUTQesgo&ehbc=2E312F&noprof=1",
         },
       ],
@@ -45,6 +46,7 @@ const Footer = () => {
           address:
             "Ceylinco House, 9th Floor, No. 69, Janadhipathi Mawatha, Colombo 01, Sri Lanka",
           phone: "+94 114477499 / +94 114477494",
+          email: "thilanka.cmb@globalconsol.com",
           map: "https://www.google.com/maps/d/u/0/embed?mid=1Nt9tx3aLmBNO-Sf6oJxm3WxfmbDIF0I&ehbc=2E312F&noprof=1",
         },
       ],
@@ -57,6 +59,7 @@ const Footer = () => {
           address:
             "No.608, Room 8B, Bo Soon Pat Tower, Merchant Street, Pabedan Township, Yangon, Myanmar",
           phone: "+951 243158 / +951 377985",
+          email: "info@globalconsol.com",
           map: "https://www.google.com/maps/d/u/0/embed?mid=1S0BF3WzohAIQGBr9w6ryuexAnYj8AVc&ehbc=2E312F&noprof=1",
         },
       ],
@@ -69,6 +72,7 @@ const Footer = () => {
           address:
             "ID #9-N (New), 9-M(Old-N), 9th floor, Tower 1, Police Plaza Concord No.2, Road # 144, Gulshan Model Town, Dhaka 1215, Bangladesh",
           phone: "+880 1716 620989",
+           email: "info@globalconsol.com",
           map: "https://www.google.com/maps/d/u/0/embed?mid=1X0GsrCFJRFoj6Q67PJztKAAzkDlKkXY&ehbc=2E312F&noprof=1",
         },
       ],
@@ -81,6 +85,7 @@ const Footer = () => {
           address:
             "Suite No.301, 3rd Floor, Fortune Center, Shahrah-e-Faisal, Block 6, PECHS, Karachi, Pakistan",
           phone: "+92-300-8282511 / +92-21-34302281-5",
+           email: "khalid.pk@globalconsol.com",
           map: "https://www.google.com/maps/d/u/0/embed?mid=1reXoq38Nt5GKCCpv-f_cb1UwG-Ko30o&ehbc=2E312F&noprof=1",
         },
         {
@@ -88,6 +93,7 @@ const Footer = () => {
           address:
             "Office # 301, 3rd Floor, Gulberg Arcade Main Market, Gulberg 2, Lahore, Pakistan",
           phone: "+92 42-35782306/07/08",
+          email: "shazia.pklhe@globalconsol.com",
           map: "https://www.google.com/maps/d/u/0/embed?mid=1ObHyVRDeNaWR7qOyMHKqqvqWbqjsCVk&ehbc=2E312F&noprof=1",
         },
       ],
