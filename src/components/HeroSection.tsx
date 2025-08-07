@@ -39,21 +39,21 @@ const HeroSection = () => {
   }, {
     icon: <UserCircle className="w-4 h-4" />,
     title: "Partner Portal",
-    url: "https://pp.onlinetracking.co/auth/login/2",
+    url: "https://pp.onlinetracking.co/auth/login/1",
     external: true,
     color: "from-blue-500 to-blue-700",
     hoverColor: "from-blue-600 to-blue-800"
   }, {
     icon: <SearchCode className="w-4 h-4" />,
     title: "Tracking",
-    url: "http://ec2-13-229-38-56.ap-southeast-1.compute.amazonaws.com:8081/ords/f?p=107:102:::::P0_GROUP_RID:55",
+    url: "http://ec2-13-229-38-56.ap-southeast-1.compute.amazonaws.com:8081/ords/f?p=107:102:::::P0_GROUP_RID:54",
     external: true,
     color: "from-blue-500 to-blue-700",
     hoverColor: "from-blue-600 to-blue-800"
   }, {
     icon: <Ship className="w-4 h-4" />,
     title: "Sailing Schedule",
-    url: "http://ec2-13-229-38-56.ap-southeast-1.compute.amazonaws.com:8081/ords/f?p=107:104:::::P0_GROUP_RID:55",
+    url: "http://ec2-13-229-38-56.ap-southeast-1.compute.amazonaws.com:8081/ords/f?p=107:104:::::P0_GROUP_RID:54",
     external: true,
     color: "from-blue-500 to-blue-700",
     hoverColor: "from-blue-600 to-blue-800"
