@@ -34,56 +34,6 @@ const Footer = () => {
     ],
   },
   {
-    country: "India",
-    offices: [
-      {
-        name: "Chennai Office",
-        address:
-          "Roma Building, Door No. 10, 3rd Floor\nG.S.T. Road, Alandur\nChennai-600 016",
-        phone: "+91 44 4689 4646",
-      },
-      {
-        name: "Mumbai Office",
-        address:
-          "Town Center - 2, Office No.607, 6th Floor\nMarol, Andheri Kurla Road\nAndheri East, Mumbai - 400059",
-        phone: "+91 8879756838",
-      },
-    ],
-  },
-  {
-    country: "Malaysia",
-    offices: [
-      {
-        name: "Port Klang Office",
-        address:
-          "2, 3A-5 Jalan Batu Nilam 16\nThe Landmark (Behind AEON Mall)\nBandar Bukit Tinggi 2\n41200, Klang, Selangor",
-        phone: "+603 - 3319 2778",
-      },
-    ],
-  },
-  {
-    country: "Thailand",
-    offices: [
-      {
-        name: "Bangkok Office",
-        address:
-          "109 CCT Building, 3rd Floor\nSurawong Road, Suriyawongse\nBangrak, Bangkok 10500",
-        phone: "+662-634-3240",
-      },
-    ],
-  },
-  {
-    country: "Indonesia",
-    offices: [
-      {
-        name: "Jakarta Office",
-        address:
-          "408, Lina Building\nJL.HR Rasuna Said kav B7\nJakarta",
-        phone: "+62 21 529 20292",
-      },
-    ],
-  },
-  {
     country: "Sri Lanka",
     offices: [
       {
