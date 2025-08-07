@@ -78,7 +78,7 @@ const ServicesSection = () => {
       <div className="container mx-auto px-4">
         <ScrollAnimation className="text-center mb-16">
           
-          <p className="text-3xl font-bold mb-4 text-kargon-blue">Our Awesome Services</p>
+          <p className="text-3xl font-bold mb-4 text-kargon-blue">Our Services</p>
           <p className="mt-4 max-w-xl mx-auto text-lg text-slate-950">
             Comprehensive logistics solutions to move your world efficiently and safely.
           </p>
