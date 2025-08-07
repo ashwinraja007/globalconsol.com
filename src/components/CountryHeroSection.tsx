@@ -287,30 +287,30 @@ const HeroSection = ({
       </div>
 
       {/* Enhanced Modal - Improved mobile responsiveness */}
-      {isCustomerPortalOpen && <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-2 sm:p-4 animate-in fade-in duration-300">
-          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[95vh] sm:max-h-[90vh] overflow-hidden shadow-2xl border border-gray-200 animate-in slide-in-from-bottom duration-500">
-            <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-4 sm:p-6">
+       {isCustomerPortalOpen && <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-in fade-in duration-300">
+          <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl border border-gray-200 animate-in slide-in-from-bottom duration-500">
+            <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-6">
               <div className="flex justify-between items-center">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="p-1.5 sm:p-2 bg-white/20 rounded-lg">
-                    <Users className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-white/20 rounded-lg">
+                    <Users className="w-6 h-6 text-white" />
                   </div>
-                  <h2 className="text-lg sm:text-2xl font-bold text-white">Customer Portal</h2>
+                  <h2 className="text-2xl font-bold text-white">Customer Portal</h2>
                 </div>
                 <button onClick={() => setIsCustomerPortalOpen(false)} className="text-white/80 hover:text-white hover:bg-white/20 rounded-full p-2 transition-all duration-200">
-                  <span className="text-xl sm:text-2xl">×</span>
+                  <span className="text-2xl">×</span>
                 </button>
               </div>
             </div>
             
-            <div className="p-4 sm:p-6 overflow-y-auto max-h-[calc(95vh-100px)] sm:max-h-[calc(90vh-120px)]">
-              <div className="space-y-4 sm:space-y-6">
+            <div className="p-6 overflow-y-auto">
+              <div className="space-y-6">
                 <div className="flex items-center gap-2 mb-4">
-                  <Play className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" />
-                  <h3 className="text-lg sm:text-xl font-semibold text-gray-800">Tutorial Videos</h3>
+                  <Play className="w-5 h-5 text-blue-600" />
+                  <h3 className="text-xl font-semibold text-gray-800">Tutorial Videos</h3>
                 </div>
                 
-                <div className="grid grid-cols-1 gap-4 sm:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {[{
                 src: "/GC_demo_1.mp4",
                 label: "Getting Started",
@@ -329,11 +329,11 @@ const HeroSection = ({
                           {video.duration}
                         </div>
                       </div>
-                      <div className="p-3 sm:p-4">
-                        <h4 className="font-semibold text-gray-800 group-hover:text-blue-600 transition-colors text-sm sm:text-base">
+                      <div className="p-4">
+                        <h4 className="font-semibold text-gray-800 group-hover:text-blue-600 transition-colors">
                           {video.label}
                         </h4>
-                        <p className="text-xs sm:text-sm text-gray-600 mt-1">
+                        <p className="text-sm text-gray-600 mt-1">
                           Learn how to use the portal effectively
                         </p>
                       </div>
