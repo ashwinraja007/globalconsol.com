@@ -245,14 +245,21 @@ const Footer = () => {
                   </div>
                 </div>
                 
-                {currentOffice.phone && (
-                  <div className="flex items-center gap-2">
-                    <Phone size={18} className="text-gc-gold flex-shrink-0" />
-                    <p className="text-sm">{currentOffice.phone}</p>
-                  </div>
-                )}
-              </motion.div>
-            )}
+                 {currentOffice.phone && (
+      <div className="flex items-center gap-2">
+        <Phone size={18} className="text-gc-gold flex-shrink-0" />
+        <p className="text-sm">{currentOffice.phone}</p>
+      </div>
+    )}
+
+    {currentOffice.email && (
+      <div className="flex items-center gap-2">
+        <Mail size={18} className="text-gc-gold flex-shrink-0" />
+        <p className="text-sm">{currentOffice.email}</p>
+      </div>
+    )}
+  </motion.div>
+)}
             
             {allOffices.length > 1 && (
               <div className="flex justify-center mt-4 space-x-2">
