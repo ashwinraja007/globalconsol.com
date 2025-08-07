@@ -199,11 +199,11 @@ const HeroSection = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {[{
-                src: "/OECl_Customer_Portal_Explainer.mp4",
+                src: "/GC_demo_1.mp4",
                 label: "Getting Started",
                 duration: "5:32"
               }, {
-                src: "/OECL_ad.mp4",
+                src: "/GC_promo_2.mp4",
                 label: "Advanced Features",
                 duration: "7:45"
               }].map((video, i) => <div key={i} className="group border-2 border-gray-200 rounded-xl overflow-hidden bg-gray-50 hover:border-blue-300 transition-all duration-300 hover:shadow-lg">
