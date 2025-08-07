@@ -5,21 +5,11 @@ import { X, MapPin, Globe, ExternalLink, Phone, Mail, Home, ChevronRight } from 
 import { cn } from "@/lib/utils";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { useIsMobile } from '@/hooks/use-mobile';
-import { useLocation } from 'react-router-dom';
 
 interface ContactSidebarProps {
   isOpen: boolean;
   onClose: () => void;
 }
-
-// Country matrix mapping - countries with "0" will be filtered out based on URL context
-const countryMatrix = {
-  singapore: ["sg", "my", "id", "th", "mm", "au", "in", "lk", "pk", "qa", "sa", "ae", "us", "gb"],
-  bangladesh: ["sg", "th", "mm", "au", "in", "lk", "pk", "qa", "sa", "ae", "us", "gb"], // Indonesia excluded (0)
-  "sri-lanka": ["sg", "my", "id", "th", "mm", "au", "in", "lk", "pk", "qa", "sa", "ae", "us", "gb"],
-  pakistan: ["sg", "my", "id", "th", "mm", "au", "in", "lk", "pk", "qa", "sa", "ae", "us", "gb"],
-  myanmar: ["sg", "my", "id", "th", "mm", "au", "in", "lk", "pk", "qa", "sa", "ae", "us", "gb"]
-};
 
 const countries = [{
   code: "in",
@@ -239,76 +229,19 @@ const countries = [{
     lat: -37.7064,
     lng: 144.8503,
     address: "Suite 5, 7-9 Mallet Road, Tullamarine, Victoria, 3043",
-    contacts: ["Mob: +61 432254969", "Tel: +61 388205157"],
-    email:"info@gglaustralia.com"
-  }]
-}, {
-  code: "qa",
-  name: "Qatar",
-  lat: 25.3548,
-  lng: 51.1839,
-  cities: [{
-    name: "Doha",
-    lat: 25.3548,
-    lng: 51.1839,
-    address: "One Global Office, Doha, Qatar",
-    contacts: ["Contact via One Global"]
-  }]
-}, {
-  code: "sa",
-  name: "Saudi Arabia", 
-  lat: 23.8859,
-  lng: 45.0792,
-  cities: [{
-    name: "Riyadh",
-    lat: 23.8859,
-    lng: 45.0792,
-    address: "AMASS Office, Riyadh, Saudi Arabia",
-    contacts: ["Contact via AMASS"]
-  }]
-}, {
-  code: "ae",
-  name: "UAE",
-  lat: 23.4241,
-  lng: 53.8478,
-  cities: [{
-    name: "Dubai",
-    lat: 25.2048,
-    lng: 55.2708,
-    address: "AMASS Office, Dubai, UAE", 
-    contacts: ["Contact via AMASS"]
+    contacts: ["Mob: +61 432254969", "Tel: +61 388205157"]
   }]
 }];
 
+// Sort countries alphabetically by name
+const sortedCountries = [...countries].sort((a, b) => a.name.localeCompare(b.name));
+
 const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
-  const location = useLocation();
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const [expandedCountry, setExpandedCountry] = useState<string | null>(null);
   const [selectedLocation, setSelectedLocation] = useState<any | null>(null);
   const [selectedCityIndexes, setSelectedCityIndexes] = useState<{ [countryName: string]: number }>({});
   const isMobile = useIsMobile();
-
-  // Get current country from URL
-  const getCurrentCountry = () => {
-    const pathname = location.pathname.toLowerCase();
-    if (pathname.includes('/bangladesh')) return 'bangladesh';
-    if (pathname.includes('/sri-lanka')) return 'sri-lanka';
-    if (pathname.includes('/pakistan')) return 'pakistan';
-    if (pathname.includes('/myanmar')) return 'myanmar';
-    return 'singapore';
-  };
-
-  // Filter countries based on current URL context
-  const getFilteredCountries = () => {
-    const currentCountry = getCurrentCountry();
-    const allowedCountryCodes = countryMatrix[currentCountry] || countryMatrix.singapore;
-    
-    return countries.filter(country => 
-      allowedCountryCodes.includes(country.code)
-    ).sort((a, b) => a.name.localeCompare(b.name));
-  };
-
-  const filteredCountries = getFilteredCountries();
 
   useEffect(() => {
     iframeRef.current = document.querySelector('iframe');
@@ -316,15 +249,15 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
 
   // Set default selected location to the first city of the first country
   useEffect(() => {
-    if (filteredCountries.length > 0 && filteredCountries[0].cities.length > 0) {
-      const firstCountry = filteredCountries[0];
+    if (sortedCountries.length > 0 && sortedCountries[0].cities.length > 0) {
+      const firstCountry = sortedCountries[0];
       const firstCity = firstCountry.cities[0];
       setSelectedLocation(firstCity);
       setExpandedCountry(firstCountry.name);
       
       // Initialize selected city indexes for all countries to 0 (first city)
       const initialIndexes: { [countryName: string]: number } = {};
-      filteredCountries.forEach(country => {
+      sortedCountries.forEach(country => {
         initialIndexes[country.name] = 0;
       });
       setSelectedCityIndexes(initialIndexes);
@@ -332,7 +265,7 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
       // Navigate to the first location on map
       navigateToLocation(firstCity.lat, firstCity.lng, firstCity);
     }
-  }, [filteredCountries]);
+  }, []);
 
   const navigateToLocation = (lat: number, lng: number, city: any = null) => {
     // Find the iframe in the ContactMapContainer
@@ -367,18 +300,6 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
     return selectedCityIndexes[countryName] === cityIndex;
   };
 
-  const handleAccordionValueChange = (value: string) => {
-    console.log('Accordion value changed to:', value);
-    setExpandedCountry(value);
-    
-    if (value) {
-      const country = filteredCountries.find(c => c.name === value);
-      if (country) {
-        navigateToLocation(country.lat, country.lng);
-      }
-    }
-  };
-
   return (
     <>
       {/* Backdrop overlay for mobile */}
@@ -408,21 +329,21 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
         <ScrollArea className={`h-[calc(100vh-10rem)] md:h-[calc(100vh-8rem)] bg-white rounded-b-xl shadow-md`}>
           <div className="p-4">
             <div className="mt-4 space-y-3">
-              <Accordion 
-                type="single" 
-                collapsible 
-                value={expandedCountry || ""} 
-                onValueChange={handleAccordionValueChange}
-                className="w-full space-y-3"
-              >
-                {filteredCountries.map(country => {
+              <Accordion type="single" collapsible value={expandedCountry || ""} className="w-full space-y-3">
+                {sortedCountries.map(country => {
                   return (
                     <AccordionItem 
                       key={country.name} 
                       value={country.name} 
                       className="border border-red-100 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all bg-white"
                     >
-                      <AccordionTrigger className="rounded-t-md hover:bg-amber-50 transition-colors px-3 py-2">
+                      <AccordionTrigger 
+                        onClick={() => {
+                          setExpandedCountry(expandedCountry === country.name ? null : country.name);
+                          navigateToLocation(country.lat, country.lng);
+                        }}
+                        className="rounded-t-md hover:bg-amber-50 transition-colors px-3 py-2"
+                      >
                         <div className="flex items-center gap-3">
                           <img 
                             src={`/${country.code}.svg`} 
