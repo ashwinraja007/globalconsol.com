@@ -12,7 +12,7 @@ interface ContactSidebarProps {
 }
 
 const countries = [{
-  code: "in",
+code: "in",
   name: "India",
   lat: 9.9323,
   lng: 76.2996,
