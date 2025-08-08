@@ -12,7 +12,7 @@ interface ContactSidebarProps {
 }
 
 const countries = [{
-  code: "in",
+code: "in",
   name: "India",
   lat: 9.9323,
   lng: 76.2996,
@@ -52,6 +52,24 @@ const countries = [{
     lng: 88.4341,
     address: "Merlin Matrix, 3rd floor, Room No. 303 10,D. N. BLOCK, SECTOR - V SALT LAKE CITY, Kolkata – 700091",
     contacts: ["+91 33 46025458 / 59 / 60/ 61"]
+  }]
+}, {
+  code: "my",
+  name: "Malaysia",
+  lat: 1.4842,
+  lng: 103.7629,
+  cities: [{
+    name: "PASIRGUDANG",
+    lat: 1.4842,
+    lng: 103.7629,
+    address: "Unit 20-03A, Level 20 Menara Zurich, 15 Jalan Dato Abdullah Tahir, 80300 Johor Bahru",
+    contacts: ["+603-3319 2778 / 74 / 75, 79"]
+  }, {
+    name: "PORTKLANG",
+    lat: 2.9982,
+    lng: 101.3831,
+    address: "MTBBT 2, 3A-5, Jalan Batu Nilam 16, The Landmark (Behind AEON Mall), Bandar Bukit Tinggi 2, 41200, Klang, Selangor D.E",
+    contacts: ["+603 - 3319 2778 / 74 / 75"]
   }]
 }, {
   code: "ae",
@@ -139,7 +157,25 @@ const countries = [{
     contacts: ["+ 65 69080838"],
     email: "buddhika@globalconsol.com"
   }]
-},  {
+}, {
+  code: "id",
+  name: "Indonesia",
+  lat: -6.2088,
+  lng: 106.8456,
+  cities: [{
+    name: "Jakarta",
+    lat: -6.2088,
+    lng: 106.8456,
+    address: "408, Lina Building, JL.HR Rasuna Said kav B7, Jakarta",
+    contacts: ["+62 21 529 20292, 522 4887"]
+  }, {
+    name: "Surabaya",
+    lat: -7.2575,
+    lng: 112.7521,
+    address: "Japfa Indoland Center, Japfa Tower 1, Lantai 4/401-A JL Jend, Basuki Rahmat 129-137, Surabaya 60271",
+    contacts: ["+62 21 529 20292, 522 4887"]
+  }]
+}, {
   code: "lk",
   name: "Sri Lanka",
   lat: 6.9271,
@@ -152,7 +188,19 @@ const countries = [{
     contacts: ["+94 114477499", "+94 114477494 / 98"],
     email: "thilanka.cmb@globalconsol.com"
   }]
-},  {
+}, {
+  code: "th",
+  name: "Thailand",
+  lat: 13.72957,  
+  lng: 100.53095,
+  cities: [{
+    name: "Bangkok",
+    lat: 13.72957,  
+    lng: 100.53095,
+    address: "109 CCT Building, 3rd Floor, Rm.3, Surawong Road, Suriyawongse, Bangrak, Bangkok 10500 109",
+    contacts: ["+662-634-3240", "+662-634-3942"]
+  }]
+}, {
   code: "mm",
   name: "Myanmar",
   lat: 16.8409,
@@ -165,7 +213,20 @@ const countries = [{
     contacts: ["+951 243158", "+951 377985, 243101"],
     email: "info@globalconsol.com"
   }]
-},{
+}, {
+  code: "bd",
+  name: "Bangladesh",
+  lat: 23.8103,
+  lng: 90.4125,
+  cities: [{
+    name: "Dhaka",
+    lat: 23.8103,
+    lng: 90.4125,
+    address: "ID #9-N (New), 9-M(Old-N), 9th floor, Tower 1, Police Plaza Concord No.2, Road # 144, Gulshan Model Town, Dhaka 1215, Bangladesh",
+    contacts: ["+880 1716 620989"],
+    email: "info@globalconsol.com"
+  }]
+}, {
   code: "pk",
   name: "Pakistan",
   lat: 24.8608,
@@ -184,33 +245,6 @@ const countries = [{
     address: "Office # 301, 3rd Floor, Gulberg Arcade Main Market, Gulberg 2, Lahore, Pakistan",
     contacts: ["+92 42-35782306/07/08"],
     email: "shazia.pklhe@globalconsol.com"
-  }]
-},  {
-  code: "us",
-  name: "United States (USA)",
-  lat: 41.8622,
-  lng: -87.7209,
-  cities: [{
-    name: "Chicago",
-    lat: 41.8622,
-    lng: -87.7209,
-    address: "939 W. North Avenue, Suite 750, Chicago, IL 60642",
-    contacts: ["+1 847 254 7320"],
-    email: "info@gglusa.us"
-  }, {
-    name: "New York",
-    lat: 37.4545,
-    lng: -122.1818,
-    address: "New Jersey Branch, 33 Wood Avenue South Suite 600, Iselin, NJ 08830",
-    contacts: ["+1 732 456 6780"],
-    email: "info@gglusa.us"
-  }, {
-    name: "Los Angeles",
-    lat: 40.5330,
-    lng: -74.3481,
-    address: "2250 South Central Avenue Compton, CA 90220",
-    contacts: ["+1 310 928 3903"],
-    email: "info@gglusa.us"
   }]
 }, {
   code: "gb",
