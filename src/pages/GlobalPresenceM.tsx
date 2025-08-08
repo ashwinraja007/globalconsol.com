@@ -20,7 +20,7 @@ const ScrollToTop = () => {
   return null;
 };
 
-const GlobalPresence = () => {
+const GlobalPresenceM = () => {
   const isMobile = useIsMobile();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [showMap, setShowMap] = useState(true);
@@ -93,4 +93,4 @@ const GlobalPresence = () => {
   );
 };
 
-export default GlobalPresence;
+export default GlobalPresenceM;
