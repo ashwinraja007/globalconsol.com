@@ -53,25 +53,7 @@ code: "in",
     address: "Merlin Matrix, 3rd floor, Room No. 303 10,D. N. BLOCK, SECTOR - V SALT LAKE CITY, Kolkata – 700091",
     contacts: ["+91 33 46025458 / 59 / 60/ 61"]
   }]
-}, {
-  code: "my",
-  name: "Malaysia",
-  lat: 1.4842,
-  lng: 103.7629,
-  cities: [{
-    name: "PASIRGUDANG",
-    lat: 1.4842,
-    lng: 103.7629,
-    address: "Unit 20-03A, Level 20 Menara Zurich, 15 Jalan Dato Abdullah Tahir, 80300 Johor Bahru",
-    contacts: ["+603-3319 2778 / 74 / 75, 79"]
-  }, {
-    name: "PORTKLANG",
-    lat: 2.9982,
-    lng: 101.3831,
-    address: "MTBBT 2, 3A-5, Jalan Batu Nilam 16, The Landmark (Behind AEON Mall), Bandar Bukit Tinggi 2, 41200, Klang, Selangor D.E",
-    contacts: ["+603 - 3319 2778 / 74 / 75"]
-  }]
-}, {
+},  {
   code: "ae",
   name: "United Arab Emirates (UAE)",
     lat: 25.2048,
@@ -158,49 +140,6 @@ code: "in",
     email: "buddhika@globalconsol.com"
   }]
 }, {
-  code: "id",
-  name: "Indonesia",
-  lat: -6.2088,
-  lng: 106.8456,
-  cities: [{
-    name: "Jakarta",
-    lat: -6.2088,
-    lng: 106.8456,
-    address: "408, Lina Building, JL.HR Rasuna Said kav B7, Jakarta",
-    contacts: ["+62 21 529 20292, 522 4887"]
-  }, {
-    name: "Surabaya",
-    lat: -7.2575,
-    lng: 112.7521,
-    address: "Japfa Indoland Center, Japfa Tower 1, Lantai 4/401-A JL Jend, Basuki Rahmat 129-137, Surabaya 60271",
-    contacts: ["+62 21 529 20292, 522 4887"]
-  }]
-}, {
-  code: "lk",
-  name: "Sri Lanka",
-  lat: 6.9271,
-  lng: 79.8612,
-  cities: [{
-    name: "Colombo",
-    lat: 6.9271,
-    lng: 79.8612,
-    address: "Ceylinco House, 9th Floor, No. 69, Janadhipathi Mawatha, Colombo 01, Sri Lanka",
-    contacts: ["+94 114477499", "+94 114477494 / 98"],
-    email: "thilanka.cmb@globalconsol.com"
-  }]
-}, {
-  code: "th",
-  name: "Thailand",
-  lat: 13.72957,  
-  lng: 100.53095,
-  cities: [{
-    name: "Bangkok",
-    lat: 13.72957,  
-    lng: 100.53095,
-    address: "109 CCT Building, 3rd Floor, Rm.3, Surawong Road, Suriyawongse, Bangrak, Bangkok 10500 109",
-    contacts: ["+662-634-3240", "+662-634-3942"]
-  }]
-}, {
   code: "mm",
   name: "Myanmar",
   lat: 16.8409,
@@ -211,19 +150,6 @@ code: "in",
     lng: 96.1735,
     address: "No.608, Room 8B, Bo Soon Pat Tower, Merchant Street, Pabedan Township, Yangon, Myanmar",
     contacts: ["+951 243158", "+951 377985, 243101"],
-    email: "info@globalconsol.com"
-  }]
-}, {
-  code: "bd",
-  name: "Bangladesh",
-  lat: 23.8103,
-  lng: 90.4125,
-  cities: [{
-    name: "Dhaka",
-    lat: 23.8103,
-    lng: 90.4125,
-    address: "ID #9-N (New), 9-M(Old-N), 9th floor, Tower 1, Police Plaza Concord No.2, Road # 144, Gulshan Model Town, Dhaka 1215, Bangladesh",
-    contacts: ["+880 1716 620989"],
     email: "info@globalconsol.com"
   }]
 }, {
