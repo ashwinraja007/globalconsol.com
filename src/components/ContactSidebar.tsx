@@ -118,12 +118,12 @@ const countries = [{
 }, {
   code: "th",
   name: "Thailand",
-  lat: 15.8700,
-  lng: 100.9925,
+  lat: 13.72957,  
+  lng: 100.53095,
   cities: [{
     name: "Bangkok",
-    lat: 13.7563,
-    lng: 100.5018,
+    lat: 13.72957,  
+    lng: 100.53095,
     address: "109 CCT Building, 3rd Floor, Rm.3, Surawong Road, Suriyawongse, Bangrak, Bangkok 10500 109",
     contacts: ["+662-634-3240", "+662-634-3942"]
   }]
