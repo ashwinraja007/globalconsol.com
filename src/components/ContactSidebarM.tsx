@@ -29,7 +29,7 @@ const countries = [{
     address: "803 / 804, Shelton Cubix, Plot No. 87, Sector-15,CBD Belapur, Navi Mumbai, Maharastra - 400614.",
     contacts: ["022-35131688 / 35113475 / 35082586"]
   }, {
-    name: "Mumbai",
+    name: "Mumbai-Andheri",
     lat: 19.11303, 
     lng: 72.86848,
     address: "503, Midas, Sahar Plaza Complex,Sir M.V Road,Andheri East, Mumbai 400059",
