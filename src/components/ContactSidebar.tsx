@@ -14,8 +14,8 @@ interface ContactSidebarProps {
 const countries = [{
   code: "in",
   name: "India",
-  lat: 20.5937,
-  lng: 78.9629,
+  lat: 9.9323,
+  lng: 76.2996,
   cities: [{
     name: "Kerala",
     lat: 9.9323,
@@ -56,8 +56,8 @@ const countries = [{
 }, {
   code: "my",
   name: "Malaysia",
-  lat: 4.2105,
-  lng: 101.9758,
+  lat: 1.4842,
+  lng: 103.7629,
   cities: [{
     name: "PASIRGUDANG",
     lat: 1.4842,
@@ -87,8 +87,8 @@ const countries = [{
 }, {
   code: "id",
   name: "Indonesia",
-  lat: -4.4676,
-  lng: 112.3205,
+  lat: -6.2088,
+  lng: 106.8456,
   cities: [{
     name: "Jakarta",
     lat: -6.2088,
@@ -105,8 +105,8 @@ const countries = [{
 }, {
   code: "lk",
   name: "Sri Lanka",
-  lat: 7.8731,
-  lng: 80.7718,
+  lat: 6.9271,
+  lng: 79.8612,
   cities: [{
     name: "Colombo",
     lat: 6.9271,
@@ -130,8 +130,8 @@ const countries = [{
 }, {
   code: "mm",
   name: "Myanmar",
-  lat: 21.9162,
-  lng: 95.9560,
+  lat: 16.8409,
+  lng: 96.1735,
   cities: [{
     name: "Yangon",
     lat: 16.8409,
@@ -156,8 +156,8 @@ const countries = [{
 }, {
   code: "pk",
   name: "Pakistan",
-  lat: 30.3753,
-  lng: 69.3451,
+  lat: 24.8608,
+  lng: 67.0097,
   cities: [{
     name: "Karachi",
     lat: 24.8608,
