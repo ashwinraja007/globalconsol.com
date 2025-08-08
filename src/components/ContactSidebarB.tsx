@@ -169,7 +169,7 @@ const countries = [{
 // Sort countries alphabetically by name
 const sortedCountries = [...countries].sort((a, b) => a.name.localeCompare(b.name));
 
-const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
+const ContactSidebarM: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const [expandedCountry, setExpandedCountry] = useState<string | null>(null);
   const [selectedLocation, setSelectedLocation] = useState<any | null>(null);
@@ -367,4 +367,4 @@ const ContactSidebar: React.FC<ContactSidebarProps> = ({ isOpen, onClose }) => {
   );
 };
 
-export default ContactSidebar;
+export default ContactSidebarM;
