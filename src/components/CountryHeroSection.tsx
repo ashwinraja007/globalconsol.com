@@ -94,7 +94,7 @@ const HeroSection = ({
         description: "Your Trusted Logistics Partner in Pakistan",
         gradient: ""
       }, {
-        url: "/17.png",
+        url: "/air1.png",
         title: "AIR FREIGHT",
         description: "We deliver flexible, global airfreight solutions",
         gradient: ""
