@@ -14,6 +14,8 @@ import PakistanHome from '@/pages/PakistanHome';
 import Contact from '@/pages/Contact';
 import Services from '@/pages/Services';
 import GlobalPresence from '@/pages/GlobalPresence';
+import GlobalPresenceM from '@/pages/GlobalPresenceM';
+import GlobalPresenceB from '@/pages/GlobalPresenceB';
 import AboutUs from '@/pages/aboutus';
 import Gallery from '@/pages/Gallery';
 import Career from '@/pages/Career';
@@ -125,6 +127,11 @@ const App: React.FC = () => {
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
               <Route path="/blog-editor" element={<BlogEditor />} />
+              <Route path="/global-presence" element={<GlobalPresence />} />
+              <Route path="/sri-lanka/global-presence" element={<GlobalPresence />} />
+              <Route path="/pakistan/global-presence" element={<GlobalPresence />} />
+              <Route path="/myanmar/global-presence" element={<GlobalPresenceM />} />
+              <Route path="/bangladesh/global-presence" element={<GlobalPresenceB />} />
 
               {/* Simple Admin Routes */}
               <Route path="/admin-login" element={<AdminLogin />} />
@@ -141,7 +148,6 @@ const App: React.FC = () => {
                   <Route path={`/${country}/blog`} element={<Blog />} />
                   <Route path={`/${country}/blogs`} element={<Blog />} />
                   <Route path={`/${country}/blog/:slug`} element={<BlogDetail />} />
-                  <Route path={`/${country}/global-presence`} element={<GlobalPresence />} />
                   <Route path={`/${country}/projects`} element={<Projects />} />
                 </React.Fragment>
               ))}
