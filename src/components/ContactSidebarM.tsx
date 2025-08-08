@@ -72,6 +72,79 @@ code: "in",
     contacts: ["+603 - 3319 2778 / 74 / 75"]
   }]
 }, {
+  code: "ae",
+  name: "United Arab Emirates (UAE)",
+    lat: 25.2048,
+    lng: 55.2708,
+  cities: [{
+    name: "Dubai",
+    lat: 25.2048,
+    lng: 55.2708,
+    address: "Office # 509, Al Nazar Plaza, Oud Metha, Dubai, U.A.E",
+    contacts: ["+971 4 3433388"]
+  }, {
+    name: "JEBEL ALI",
+    lat: 24.9857,
+    lng: 55.1436,
+    address: "Warehouse# Zg06, Near Roundabout 13, North Zone, p. B No: 30821, jebel Ali, Dubai, U.A.E",
+    contacts: ["+971 4 8819787"]
+  }, {
+    name: "ABU DHABI",
+    lat: 24.4539,
+    lng: 54.3773,
+    address: "PB No: 30500, Office 3-1, Unit 101, 1st Floor, Al Jaber Jewellery Building, Al Khalidiya, Abu Dhabi, U.A.E",
+    contacts: ["+971 50 4337214"]
+  }]
+}, {
+  code: "qa",
+  name: "Qatar",
+    lat: 25.276987,
+    lng: 51.520008,
+  cities: [{
+    name: "Doha",
+    lat: 25.276987,
+    lng: 51.520008,
+    address: "Office no: 48, 2nd Floor, Al matar Centre, Old Airport Road Doha",
+    contacts: ["0974 33622555"]
+  }]
+},{
+  code: "cn",
+  name: "China",
+    lat: 22.54262,
+    lng: 114.11696,
+  cities: [{
+    name: "China",
+    lat: 22.54262,
+    lng: 114.11696,
+    address: "13C02, Block A, Zhaoxin Huijin Plaza 3085 Shennan East Road, Luohu, Shenzhen.",
+    contacts: ["+86 75582222447"],
+    email: "helen@haixun.co"
+  }]
+}, {
+  code: "sa",
+  name: "Saudi Arabia",
+  lat: 26.4207,
+    lng: 50.0888,
+  cities: [{
+    name: "Dammam",
+    lat: 26.4207,
+    lng: 50.0888,
+    address: "Building No.2817, Secondary No9403, King Faisal Road, Al Tubebayshi Dist, Dammam, KSA 32233",
+    contacts: ["+966 13 343 0003"]
+  }, {
+    name: "Riyadh",
+    lat: 24.7136,
+    lng: 46.6753,
+    address: "Room No. T18, Rail Business Centre, Bldg No. 3823, Omar Aimukhtar St, Thulaim, Riyadh 11332",
+    contacts: ["+966 11295 0020"]
+  }, {
+    name: "Jeddah",
+    lat: 21.4858,
+    lng: 39.1925,
+    address: "Al-Madinah Al-Munawarah Road, Al Sharafeyah, Jeddah 4542 -22234, Kingdom of Saudi Arabia",
+    contacts: ["+966 12 578 0874"]
+  }]
+},{
   code: "sg",
   name: "Singapore",
   lat: 1.3521,
