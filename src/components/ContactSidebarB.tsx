@@ -53,7 +53,47 @@ code: "in",
     address: "Merlin Matrix, 3rd floor, Room No. 303 10,D. N. BLOCK, SECTOR - V SALT LAKE CITY, Kolkata – 700091",
     contacts: ["+91 33 46025458 / 59 / 60/ 61"]
   }]
-},  {
+}, {
+  code: "lk",
+  name: "Sri Lanka",
+  lat: 6.9271,
+  lng: 79.8612,
+  cities: [{
+    name: "Colombo",
+    lat: 6.9271,
+    lng: 79.8612,
+    address: "Ceylinco House, 9th Floor, No. 69, Janadhipathi Mawatha, Colombo 01, Sri Lanka",
+    contacts: ["+94 114477499", "+94 114477494 / 98"],
+    email: "thilanka.cmb@globalconsol.com"
+  }]
+},{
+  code: "us",
+  name: "United States (USA)",
+  lat: 41.8622,
+  lng: -87.7209,
+  cities: [{
+    name: "Chicago",
+    lat: 41.8622,
+    lng: -87.7209,
+    address: "939 W. North Avenue, Suite 750, Chicago, IL 60642",
+    contacts: ["+1 847 254 7320"],
+    email: "info@gglusa.us"
+  }, {
+    name: "New York",
+    lat: 37.4545,
+    lng: -122.1818,
+    address: "New Jersey Branch, 33 Wood Avenue South Suite 600, Iselin, NJ 08830",
+    contacts: ["+1 732 456 6780"],
+    email: "info@gglusa.us"
+  }, {
+    name: "Los Angeles",
+    lat: 40.5330,
+    lng: -74.3481,
+    address: "2250 South Central Avenue Compton, CA 90220",
+    contacts: ["+1 310 928 3903"],
+    email: "info@gglusa.us"
+  }]
+}, {
   code: "ae",
   name: "United Arab Emirates (UAE)",
     lat: 25.2048,
