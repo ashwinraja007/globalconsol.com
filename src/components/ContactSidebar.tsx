@@ -18,28 +18,22 @@ const countries = [{
   lng: 78.9629,
   cities: [{
     name: "Mumbai",
-    lat: 19.1061,
-    lng: 72.8830,
-    address: "Town Center - 2,Office No.607,6th Floor, Marol,Andheri Kurla Road,Andheri East, Mumbai - 400059.",
-    contacts: ["+91 8879756838, 022-35131688 / 35113475 / 35082586"]
+    lat: 19.01123,
+    lng: 73.03715,
+    address: "803 / 804, Shelton Cubix, Plot No. 87, Sector-15,CBD Belapur, Navi Mumbai, Maharastra - 400614.",
+    contacts: ["022-35131688 / 35113475 / 35082586"]
   }, {
-    name: "Delhi",
-    lat: 28.5894,
-    lng: 77.0318,
-    address: "Plot No. 15, 1st Floor,Block C, Pocket 8, Sector 17, Dwarka,New Delhi 110075",
-    contacts: ["+91 11 41088871"]
+    name: "Mumbai",
+    lat: 19.11303, 
+    lng: 72.86848,
+    address: "503, Midas, Sahar Plaza Complex,Sir M.V Road,Andheri East, Mumbai 400059",
+    contacts: ["+91 8879756838"]
   },{
-    name: "Chennai Warehouse",
-    lat: 13.0231,
-    lng: 79.9632,
-    address: "Survey No.209/6A(Part)209/6B(Part), Mannur & Valarpuram Village, Perambakkam Road, Sriperumbudur Taluk, Kanchipuram District-602105",
-    contacts: ["+91 9994355523"]
-  }, {
-    name: "Chennai",
-    lat: 13.0068,
-    lng: 80.2048,
-    address: "Roma Building, Door No. 10, 3rd Floor, G.S.T. Road, Alandur, Chennai-600 016",
-    contacts: ["044 4689 4646"]
+    name: "Delhi",
+    lat: 28.62748,
+    lng: 77.2221,
+    address: "903, Surya Kiran Building K.G Marg,Connaught Place New Delhi - 110001",
+    contacts: ["+91 11 493224477 / 48 /49"]
   }, {
     name: "Kerala",
     lat: 9.9323,
@@ -47,23 +41,17 @@ const countries = [{
     address: "CC 59/801A Elizabeth Memorial Building, Thevara Ferry Jn, Cochin 682013 , Kerala.",
     contacts: ["+91 484 4019192 / 93"]
   },{
-    name: "Hyderabad",
-    lat: 17.4425,
-    lng: 78.4735,
-    address: "H.No. 1-8-450/1/A-7 Indian Airlines colony ,Opp Police Lines, BegumpetHyderabad-500016,Telangana",
-    contacts: ["040-49559704"]
-  },{
     name: "Bangalore",
-    lat: 13.0185,
-    lng: 77.6419,
+    lat: 13.01855,
+    lng: 77.64191,
     address: "3C-964 IIIrd Cross Street,HRBR LAYOUT 1st Block,Kalayan Nagar Bannaswadi,Bengaluru - 560043.",
     contacts: ["+91 9841676259"]
   }, {
     name: "Kolkata",
-    lat: 22.5745,
-    lng: 88.4353,
-    address: "Imagine Techpark, Unit No. 10,19th. Floor, Block DN 6, Sector - VSalt Lake City, Kolkata,West Bengal, India - 700091",
-    contacts: ["+91 33 4814 9162 / 63"]
+    lat: 22.5769, 
+    lng: 88.4341,
+    address: "Merlin Matrix, 3rd floor, Room No. 303 10,D. N. BLOCK, SECTOR - V SALT LAKE CITY, Kolkata – 700091",
+    contacts: ["+91 33 46025458 / 59 / 60/ 61"]
   }]
 }, {
   code: "my",
