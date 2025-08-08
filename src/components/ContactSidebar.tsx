@@ -82,7 +82,7 @@ const countries = [{
     lng: 103.8198,
     address: "Blk 511 Kampong Bahru Road, #03-01 Keppel Distripark, Singapore - 099447",
     contacts: ["+ 65 69080838"],
-    email: "june@ggl.sg"
+    email: "buddhika@globalconsol.com"
   }]
 }, {
   code: "id",
