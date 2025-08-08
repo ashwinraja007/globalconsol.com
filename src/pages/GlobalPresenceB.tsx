@@ -28,10 +28,10 @@ const GlobalPresenceB = () => {
   useEffect(() => {
     if (isMobile) {
       setShowMap(false);
-      setIsOpen(true);
+      setIsSidebarOpen(true);
     } else {
       setShowMap(true);
-      setIsOpen(true);
+      setIsSidebarOpen(true);
     }
   }, [isMobile]);
 
@@ -51,7 +51,9 @@ const GlobalPresenceB = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className={`flex flex-1 relative overflow-hidden mx-0 ${isMobile ? 'pt-[140px] pb-10' : 'pt-[160px] pb-10'}`}
+        className={`flex flex-1 relative overflow-hidden mx-0 ${
+          isMobile ? 'pt-[140px] pb-10' : 'pt-[160px] pb-10'
+        }`}
       >
         {/* Map Section */}
         {(!isMobile || (isMobile && showMap)) && (
@@ -64,13 +66,15 @@ const GlobalPresenceB = () => {
               stiffness: 300,
               damping: 30
             }}
-            className={`transition-all duration-300 ease-in-out ${isMobile ? 'w-full' : 'w-[60%]'}`}
+            className={`transition-all duration-300 ease-in-out ${
+              isMobile ? 'w-full' : 'w-[60%]'
+            }`}
           >
             <ContactMapContainer />
           </motion.main>
         )}
 
-        {/*  Section */}
+        {/* Sidebar Section */}
         {(!isMobile || (isMobile && !showMap)) && (
           <motion.div
             initial={isMobile ? { x: '-100%' } : { opacity: 0 }}
@@ -81,9 +85,14 @@ const GlobalPresenceB = () => {
               stiffness: 300,
               damping: 30
             }}
-            className={`transition-all duration-300 ease-in-out ${isMobile ? 'w-full pt-12' : 'w-[35%]'}`}
+            className={`transition-all duration-300 ease-in-out ${
+              isMobile ? 'w-full pt-12' : 'w-[35%]'
+            }`}
           >
-            <ContactSidebarB isOpen={isSidebarOpen} onClose={() => setIsSidebarOpen(false)} />
+            <ContactSidebarB
+              isOpen={isSidebarOpen}
+              onClose={() => setIsSidebarOpen(false)}
+            />
           </motion.div>
         )}
       </motion.div>
