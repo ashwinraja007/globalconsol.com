@@ -17,6 +17,12 @@ const countries = [{
   lat: 20.5937,
   lng: 78.9629,
   cities: [{
+    name: "Kerala",
+    lat: 9.9323,
+    lng: 76.2996,
+    address: "CC 59/801A Elizabeth Memorial Building, Thevara Ferry Jn, Cochin 682013 , Kerala.",
+    contacts: ["+91 484 4019192 / 93"]
+  },{
     name: "Mumbai",
     lat: 19.01123,
     lng: 73.03715,
@@ -35,12 +41,6 @@ const countries = [{
     address: "903, Surya Kiran Building K.G Marg,Connaught Place New Delhi - 110001",
     contacts: ["+91 11 493224477 / 48 /49"]
   }, {
-    name: "Kerala",
-    lat: 9.9323,
-    lng: 76.2996,
-    address: "CC 59/801A Elizabeth Memorial Building, Thevara Ferry Jn, Cochin 682013 , Kerala.",
-    contacts: ["+91 484 4019192 / 93"]
-  },{
     name: "Bangalore",
     lat: 13.01855,
     lng: 77.64191,
