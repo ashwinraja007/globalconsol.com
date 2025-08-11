@@ -103,16 +103,19 @@ const CountrySelector = () => {
     detect();
   }, []);
 
-  const displayCountry =
-    countries.find(
-      c =>
-        ipCountry &&
-        (
-          c.country.toUpperCase() === ipCountry.name?.toUpperCase() ||
-          c.flag?.toLowerCase().includes(ipCountry.code?.toLowerCase())
-        )
-    ) ||
-    countries.find(c => c.country.toUpperCase() === currentCountryName);
+ const singaporeCountry = countries.find(c => c.country === "SINGAPORE");
+
+const displayCountry =
+  countries.find(
+    c =>
+      ipCountry &&
+      (
+        c.country.toUpperCase() === ipCountry.name?.toUpperCase() ||
+        c.flag?.toLowerCase().includes(ipCountry.code?.toLowerCase())
+      )
+  ) ||
+  countries.find(c => c.country.toUpperCase() === currentCountryName) ||
+  singaporeCountry;
 
   const availableCountries = countries.filter(c =>
     c.country.toUpperCase() !== currentCountryName &&
