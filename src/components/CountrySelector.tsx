@@ -19,61 +19,25 @@ interface CountryData {
   priority: number;
   flag?: string;
   route?: string;
-  visibilityByCountry?: Record<string, boolean>; // New
+  visibilityByCountry?: Record<string, boolean>;
 }
 
 const countries: CountryData[] = [
- { country: "SINGAPORE", company: "GC", website: "https://www.globalconsol.com", priority: 1, flag: "/sg.svg", route: "/" },
+  { country: "SINGAPORE", company: "GC", website: "https://www.globalconsol.com", priority: 1, flag: "/sg.svg", route: "/" },
   { country: "SRI LANKA", company: "GC", website: "https://www.globalconsol.com", priority: 2, flag: "/lk.svg", route: "/sri-lanka/home" },
   { country: "MYANMAR", company: "GC", website: "https://www.globalconsol.com", priority: 3, flag: "/mm.svg", route: "/myanmar/home" },
   { country: "BANGLADESH", company: "GC", website: "https://www.globalconsol.com", priority: 4, flag: "/bd.svg", route: "/bangladesh/home" },
   { country: "PAKISTAN", company: "GC", website: "https://www.globalconsol.com", priority: 5, flag: "/pk.svg", route: "/pakistan/home" },
-
-  // Hidden only in Bangladesh and Myanmar
-  {
-    country: "MALAYSIA",
-    company: "OECL",
-    website: "https://oecl.sg/malaysia",
-    priority: 6,
-    flag: "/my.svg",
-    visibilityByCountry: {
-      BANGLADESH: false,
-    }
-  },
-  {
-    country: "INDONESIA",
-    company: "OECL",
-    website: "https://oecl.sg/indonesia",
-    priority: 7,
-    flag: "/id.svg",
-    visibilityByCountry: {
-      BANGLADESH: false,
-    }
-  },
-  {
-    country: "THAILAND",
-    company: "OECL",
-    website: "https://oecl.sg/thailand",
-    priority: 8,
-    flag: "/th.svg",
-    visibilityByCountry: {
-      BANGLADESH: false,
-    }
-  },
-   {
-    country: "INDIA",
-    company: "OECL",
-    website: "https://oecl.sg/india",
-    priority: 8,
-    flag: "/in.svg",
-  },
-
+  { country: "MALAYSIA", company: "OECL", website: "https://oecl.sg/malaysia", priority: 6, flag: "/my.svg", visibilityByCountry: { BANGLADESH: false } },
+  { country: "INDONESIA", company: "OECL", website: "https://oecl.sg/indonesia", priority: 7, flag: "/id.svg", visibilityByCountry: { BANGLADESH: false } },
+  { country: "THAILAND", company: "OECL", website: "https://oecl.sg/thailand", priority: 8, flag: "/th.svg", visibilityByCountry: { BANGLADESH: false } },
+  { country: "INDIA", company: "OECL", website: "https://oecl.sg/india", priority: 8, flag: "/in.svg" },
   { country: "CHINA", company: "Haixun", website: "https://www.haixun.co/", priority: 9, flag: "/cn.svg" },
   { country: "AUSTRALIA", company: "GGL", website: "https://www.gglaustralia.com/", priority: 10, flag: "/au.svg" },
   { country: "QATAR", company: "ONE GLOBAL", website: "https://oneglobalqatar.com/", priority: 11, flag: "/qa.svg" },
   { country: "SAUDI ARABIA", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 12, flag: "/sa.svg" },
   { country: "UAE", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 13, flag: "/ae.svg" },
-  { country: "USA", company: "GGL", website: "https://gglusa.us/", priority: 14, flag: "/us.svg",visibilityByCountry: { MYANMAR: false,} },
+  { country: "USA", company: "GGL", website: "https://gglusa.us/", priority: 14, flag: "/us.svg", visibilityByCountry: { MYANMAR: false } },
   { country: "UK", company: "Moltech", website: "https://moltech.uk/", priority: 15, flag: "/gb.svg" }
 ];
 
@@ -82,10 +46,14 @@ const CountrySelector = () => {
   const [ipCountry, setIpCountry] = useState<{ code: string; name: string } | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+
   const currentCountry = getCurrentCountryFromPath(location.pathname);
   const currentCountryName = currentCountry.name?.toUpperCase();
 
-  // Detect by IP or load from localStorage
+  // NEW: if URL has no country slug, force Singapore
+  const hasCountryInUrl = /\/(sri-lanka|myanmar|bangladesh|pakistan)\b/i.test(location.pathname);
+  const resolvedCurrentCountryName = hasCountryInUrl ? (currentCountryName || "SINGAPORE") : "SINGAPORE";
+
   useEffect(() => {
     const detect = async () => {
       try {
@@ -103,25 +71,18 @@ const CountrySelector = () => {
     detect();
   }, []);
 
- const singaporeCountry = countries.find(c => c.country === "SINGAPORE");
+  const singaporeCountry = countries.find(c => c.country === "SINGAPORE")!;
 
-const displayCountry =
-  countries.find(
-    c =>
-      ipCountry &&
-      (
-        c.country.toUpperCase() === ipCountry.name?.toUpperCase() ||
-        c.flag?.toLowerCase().includes(ipCountry.code?.toLowerCase())
-      )
-  ) ||
-  countries.find(c => c.country.toUpperCase() === currentCountryName) ||
-  singaporeCountry;
+  // Display: prefer URL; if none, ALWAYS show Singapore (ignore IP here)
+  const displayCountry =
+    countries.find(c => c.country.toUpperCase() === resolvedCurrentCountryName) ||
+    singaporeCountry;
 
+  // Menu list: hide the currently displayed country + respect visibility rules
   const availableCountries = countries.filter(c =>
-    c.country.toUpperCase() !== currentCountryName &&
-    (!c.visibilityByCountry || c.visibilityByCountry[currentCountryName] !== false)
+    c.country.toUpperCase() !== resolvedCurrentCountryName &&
+    (!c.visibilityByCountry || c.visibilityByCountry[resolvedCurrentCountryName] !== false)
   );
-
   const sortedCountries = [...availableCountries].sort((a, b) => a.priority - b.priority);
 
   const handleCountrySelect = (country: CountryData) => {
@@ -133,11 +94,10 @@ const displayCountry =
     const currentPath = location.pathname;
     let targetRoute = country.route;
 
+    const prefix = country.country === 'SINGAPORE' ? '' : `/${country.country.toLowerCase().replace(/\s+/g, '-')}`;
     if (currentPath.includes('/about-us')) {
-      const prefix = country.country === 'SINGAPORE' ? '' : `/${country.country.toLowerCase().replace(' ', '-')}`;
       targetRoute = `${prefix}/about-us`;
     } else if (currentPath.includes('/contact')) {
-      const prefix = country.country === 'SINGAPORE' ? '' : `/${country.country.toLowerCase().replace(' ', '-')}`;
       targetRoute = `${prefix}/contact`;
     }
 
@@ -146,7 +106,6 @@ const displayCountry =
     } else {
       window.open(country.website, '_blank', 'noopener,noreferrer');
     }
-
     setIsOpen(false);
   };
 
@@ -199,10 +158,7 @@ const displayCountry =
                   }}
                   className="cursor-pointer hover:bg-amber-50 py-4 px-3 min-h-[60px] rounded-md flex items-center gap-3 transition-all"
                 >
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    className="flex items-center w-full"
-                  >
+                  <motion.div whileHover={{ scale: 1.05 }} className="flex items-center w-full">
                     <div className="flex-shrink-0">
                       {country.flag ? (
                         <img
