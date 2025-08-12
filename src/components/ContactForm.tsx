@@ -75,7 +75,7 @@ const locationOptions = Object.keys(allOffices) as CountryKey[];
 // --- Country → recipient mapping for FormSubmit ---
 const countryRecipients: Record<CountryKey, string[]> = {
   Singapore: ["info.sg@globalconsol.com"],
-  "Sri Lanka": ["karthikjungleemara@gmail.com"],
+  "Sri Lanka": ["info.cmb@globalconsol.com"],
   Pakistan: ["info@globalconsol.com"],
   Myanmar: ["info@globalconsol.com"],
   Bangladesh: ["info@globalconsol.com"],
