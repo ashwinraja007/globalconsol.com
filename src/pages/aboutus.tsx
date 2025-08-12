@@ -153,7 +153,7 @@ const AboutUs = () => {
 
         {/* Text + ISO Image Right */}
         <div className="space-y-6">
-          <h2 className="text-3xl font-bold text-kargon-blue">Our Sri Lankan Operations</h2>
+          <h2 className="text-3xl font-bold text-kargon-blue">Certifications</h2>
           <p className="text-lg leading-relaxed text-gray-700">
             Proud recipient of the <strong>Sri Lanka Brand Leadership Award 2024</strong> and certified to the
             <strong> ISO 9001:2015</strong> standard, GC Sri Lanka has earned its place as one of the region’s most
