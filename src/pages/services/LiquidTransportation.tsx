@@ -1,15 +1,33 @@
-
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Droplets } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const LiquidTransportation = () => {
+  const location = useLocation();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Country-aware contact path; default to Singapore when no country slug is present
+  const contactPath = useMemo(() => {
+    const path = location.pathname.toLowerCase();
+
+    // Extend this list as you add more country routes
+    const countries = [
+      "/singapore",
+      "/sri-lanka",
+      "/myanmar",
+      "/bangladesh",
+      "/pakistan",
+    ];
+
+    const matched = countries.find((c) => path.startsWith(c + "/") || path === c);
+    return matched ? `${matched}/contact` : "/singapore/contact";
+  }, [location.pathname]);
 
   return (
     <div className="bg-white text-black min-h-screen">
@@ -41,7 +59,11 @@ const LiquidTransportation = () => {
               className="relative"
             >
               <div className="rounded-2xl overflow-hidden shadow-2xl">
-                <img src="/liquidtransportation.png" alt="Liquid Transportation" className="w-full h-96 object-cover" />
+                <img
+                  src="/liquidtransportation.png"
+                  alt="Liquid Transportation"
+                  className="w-full h-96 object-cover"
+                />
                 <div className="absolute top-4 left-4 bg-red-600 text-white px-3 py-1 rounded-full text-lg font-bold">
                   7584
                 </div>
@@ -56,7 +78,11 @@ const LiquidTransportation = () => {
             >
               <h2 className="text-3xl font-bold text-red-500">Liquid Transportation</h2>
               <p className="text-gray-700 text-lg leading-relaxed">
-                GC specializes in delivering comprehensive expertise and services for the transportation of liquid cargoes through ISO Tanks, Flexi Tanks, and IBCs (Inter Bulk Containers). Our priority at GC is to offer professional, cost-effective, and secure transportation solutions for liquid cargo. With a highly experienced and dedicated team, we ensure efficient logistics management for seamless door-to-door movements, providing complete visibility throughout the process.
+                GC specializes in delivering comprehensive expertise and services for the transportation of liquid
+                cargoes through ISO Tanks, Flexi Tanks, and IBCs (Inter Bulk Containers). Our priority at GC is to offer
+                professional, cost-effective, and secure transportation solutions for liquid cargo. With a highly
+                experienced and dedicated team, we ensure efficient logistics management for seamless door-to-door
+                movements, providing complete visibility throughout the process.
               </p>
             </motion.div>
           </div>
@@ -69,8 +95,11 @@ const LiquidTransportation = () => {
             viewport={{ once: true }}
             className="text-center bg-gradient-to-r from-red-600 to-red-700 text-white p-12 rounded-2xl"
           >
-            <h3 className="text-2xl font-bold mb-4">Get a quick consultation and our experts are here to help you out</h3>
-            <Link to="/contact">
+            <h3 className="text-2xl font-bold mb-4">
+              Get a quick consultation and our experts are here to help you out
+            </h3>
+            {/* Country-aware contact link; defaults to Singapore */}
+            <Link to={contactPath}>
               <button className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300">
                 Reach Us
               </button>
