@@ -172,7 +172,7 @@ const AboutUs = () => {
             <img
               alt="ISO 9001:2015 Certification"
               className="w-40 h-auto object-contain"
-              src="/iso1.png"
+              src="/iso.jpg"
             />
           </div>
         </div>
