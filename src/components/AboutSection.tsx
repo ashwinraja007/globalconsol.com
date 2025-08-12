@@ -69,14 +69,14 @@ const AboutSection = () => {
                     <img
                       alt="GC Sri Lanka ISO Certification"
                       className="rounded-lg shadow-lg w-40 h-auto object-contain"
-                      src="/aboutus2.png"
+                      src="/srilanka.jpg "
                     />
                   </ScrollAnimation>
                   <ScrollAnimation delay={400} className="relative flex justify-center">
                     <img
                       alt="GC Sri Lanka Brand Leadership Award 2024"
                       className="rounded-lg  w-56 h-auto object-contain"
-                      src="/srilanka.jpg" 
+                      src="/iso2.gif" 
                     />
                   </ScrollAnimation>
                 </div>
@@ -91,7 +91,7 @@ const AboutSection = () => {
                 alt="GC Logistics Operations"
                 className="rounded-lg shadow-lg w-full object-cover"
                 style={{ height: "400px" }}
-                src="/iso2.gif"
+                src="/aboutus2.png"
               />
             </ScrollAnimation>
           </div>
