@@ -111,6 +111,10 @@ const App: React.FC = () => {
               <Route path="/myanmar/home" element={<MyanmarHome />} />
               <Route path="/bangladesh/home" element={<BangladeshHome />} />
               <Route path="/pakistan/home" element={<PakistanHome />} />
+              <Route path="/sri-lanka" element={<SriLankaHome />} />
+              <Route path="/myanmar" element={<MyanmarHome />} />
+              <Route path="/bangladesh" element={<BangladeshHome />} />
+              <Route path="/pakistan" element={<PakistanHome />} />
 
               {/* Global pages */}
               <Route path="/contact" element={<Contact />} />
