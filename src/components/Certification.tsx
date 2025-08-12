@@ -62,7 +62,7 @@ const Certification: React.FC<CertificationProps> = ({
 
               <p className="text-gray-700 leading-relaxed mb-6 max-w-2xl mx-auto lg:mx-0">
                 Awarded at the <strong>Sri Lanka Brand Leadership Awards 2024</strong> by the
-                World Marketing &amp; Brand Congress, recognizing our excellence in logistics and brand growth.
+                World Marketing &amp; Brand Congress, recognizing our excellence in logistics and brand growth.We deliver comprehensive freight forwarding and logistics solutions that combine deep local expertise with an extensive global network, ensuring smooth and reliable operations for diverse industries.
               </p>
 
               {/* Mobile-friendly bullets with proper spacing */}
