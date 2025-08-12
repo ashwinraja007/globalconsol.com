@@ -13,8 +13,6 @@ const Certification: React.FC<CertificationProps> = ({
 }) => {
   const location = useLocation();
   const detected = getCurrentCountryFromPath(location.pathname);
-
-  // Fallback to Singapore if none detected
   const country = detected?.code ? detected : { code: "SG", name: "Singapore" };
 
   const getNavLink = (basePath: string) => {
@@ -28,23 +26,24 @@ const Certification: React.FC<CertificationProps> = ({
       <div className="container mx-auto px-4 md:px-6">
         {/* Image LEFT, Content RIGHT */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          
           {/* Left: Certificate image with ISO badge on top */}
           <div className="order-1 flex justify-center">
-            <div className="relative inline-block">
+            {/* Make container full-width on mobile so image can scale */}
+            <div className="relative w-full max-w-[760px] sm:max-w-[820px] lg:max-w-[720px]">
               <img
-                src="/srilanka.jpg"
+                src={certificateUrl || "/srilanka.jpg"}
                 alt="Brand Leadership Award 2024"
-                className="max-h-[420px] w-auto object-contain rounded-xl shadow-xl border border-slate-200"
                 loading="lazy"
+                /* Full-width on mobile; cap size on larger screens; keep aspect ratio */
+                className="w-full h-auto object-contain rounded-xl shadow-xl border border-slate-200"
               />
 
-              {/* ISO badge overlay (bigger) */}
-              <div className="absolute top-4 right-4">
+              {/* ISO badge overlay (responsive sizes) */}
+              <div className="absolute top-3 right-3 sm:top-4 sm:right-4">
                 <span className="absolute inset-0 rounded-full bg-gc-gold/30 animate-ping" />
-                <span className="relative inline-flex h-20 w-20 rounded-full ring-4 ring-white shadow-lg overflow-hidden animate-pulse">
+                <span className="relative inline-flex h-16 w-16 sm:h-20 sm:w-20 lg:h-24 lg:w-24 rounded-full ring-4 ring-white shadow-lg overflow-hidden animate-pulse">
                   <img
-                    src="/iso.jpg"
+                    src={isoLogoUrl || "/iso.jpg"}
                     alt="ISO Certified"
                     className="h-full w-full object-cover"
                     loading="lazy"
