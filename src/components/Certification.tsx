@@ -3,7 +3,6 @@ import ScrollAnimation from "./ScrollAnimation";
 import { getCurrentCountryFromPath } from "@/services/countryDetection";
 
 type CertificationProps = {
-  /** Public image URLs (e.g. /srilanka.jpg, /iso2.gif) */
   certificateUrl: string;
   isoLogoUrl: string;
 };
@@ -15,7 +14,7 @@ const Certification: React.FC<CertificationProps> = ({
   const location = useLocation();
   const detected = getCurrentCountryFromPath(location.pathname);
 
-  // Fallback to Singapore if nothing detected
+  // Fallback to Singapore if none detected
   const country = detected?.code ? detected : { code: "SG", name: "Singapore" };
 
   const getNavLink = (basePath: string) => {
@@ -28,23 +27,24 @@ const Certification: React.FC<CertificationProps> = ({
     <section className="bg-white py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
         {/* Image LEFT, Content RIGHT */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
-          {/* Left: Image (smaller, visible) with ISO badge */}
-          <div className="order-1">
-            <div className="relative w-full flex justify-start items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          
+          {/* Left: Certificate image with ISO badge on top */}
+          <div className="order-1 flex justify-center">
+            <div className="relative inline-block">
               <img
-                src="/srilanka.jpg"
+                src={certificateUrl}
                 alt="Brand Leadership Award 2024"
-                className="max-h-[420px] max-w-[520px] w-auto object-contain rounded-xl shadow-xl border border-slate-200"
+                className="max-h-[420px] w-auto object-contain rounded-xl shadow-xl border border-slate-200"
                 loading="lazy"
               />
 
-              {/* ISO badge (rounded & blinkable) pinned top-right of the image box */}
-              <div className="absolute -top-4 right-0 sm:-right-4">
+              {/* ISO badge overlay (bigger) */}
+              <div className="absolute top-4 right-4">
                 <span className="absolute inset-0 rounded-full bg-gc-gold/30 animate-ping" />
-                <span className="relative inline-flex h-14 w-14 sm:h-16 sm:w-16 rounded-full ring-4 ring-white shadow-lg overflow-hidden animate-pulse">
+                <span className="relative inline-flex h-20 w-20 rounded-full ring-4 ring-white shadow-lg overflow-hidden animate-pulse">
                   <img
-                    src="/iso.jpg"
+                    src={isoLogoUrl}
                     alt="ISO Certified"
                     className="h-full w-full object-cover"
                     loading="lazy"
@@ -54,7 +54,7 @@ const Certification: React.FC<CertificationProps> = ({
             </div>
           </div>
 
-          {/* Right: Content */}
+          {/* Right: Text */}
           <div className="order-2">
             <ScrollAnimation>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
@@ -78,7 +78,7 @@ const Certification: React.FC<CertificationProps> = ({
                 </li>
                 <li className="flex items-start">
                   <span className="mt-1 mr-3 inline-block h-2.5 w-2.5 rounded-full bg-gc-gold" />
-                  Backed by <strong>ISO‑certified</strong> processes
+                  Backed by <strong>ISO-certified</strong> processes
                 </li>
               </ul>
 
