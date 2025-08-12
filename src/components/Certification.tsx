@@ -68,15 +68,15 @@ const Certification: React.FC<CertificationProps> = ({
               <ul className="space-y-3 mb-8 max-w-lg mx-auto lg:mx-0 text-left">
                 <li className="flex items-start">
                   <span className="mt-1 mr-3 inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-gc-gold" />
-                  Industry recognition for <strong>brand leadership</strong>
+                  Industry recognition for <strong> Brand leadership </strong>
                 </li>
                 <li className="flex items-start">
                   <span className="mt-1 mr-3 inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-gc-gold" />
-                  Awarded on <strong>5th September 2024</strong> at Taj Samudra, Colombo
+                  Awarded on <strong> 5th September 2024 </strong> at Taj Samudra, Colombo
                 </li>
                 <li className="flex items-start">
                   <span className="mt-1 mr-3 inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full bg-gc-gold" />
-                  Backed by <strong>ISO-certified</strong> processes
+                  Backed by <strong> ISO-certified </strong> processes
                 </li>
               </ul>
 
