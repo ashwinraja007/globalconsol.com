@@ -83,8 +83,7 @@ const countryRecipients: Record<CountryKey, string[]> = {
 
 // Fallback recipients if slug not matched (or for redundancy)
 const fallbackRecipients: string[] = [
-  "karthikjungleemara@gmail.com",
-  "karthiktrendsandtactics@gmail.com",
+  "info@globalconsol.com",
 ];
 
 // Utility: turn emails into FormSubmit AJAX endpoints
