@@ -87,13 +87,13 @@ const AirFreight = () => {
           }} className="space-y-6">
               <h2 className="text-4xl font-bold text-gc-dark-blue">Leading Air Freight Solutions</h2>
               <p className="text-gray-700 text-lg leading-relaxed">
-                As a leading air freight company, OECL excels in offering enhanced flexibility and global choice by collaborating with a diverse range of specialized carriers. These partners provide tailored schedules and solutions, ensuring our clients have more options to meet their specific needs.
+                As a leading air freight company, GC excels in offering enhanced flexibility and global choice by collaborating with a diverse range of specialized carriers. These partners provide tailored schedules and solutions, ensuring our clients have more options to meet their specific needs.
               </p>
               <p className="text-gray-700 text-lg leading-relaxed">
                 Our Directors and Managers actively engage with our team members, fostering a hands-on approach to deliver a seamlessly integrated and highly professional service. Through our extensive worldwide network, we have established a swift and efficient airfreight solution that enables the expedited and cost-effective movement of cargo to and from international markets.
               </p>
               <p className="text-gray-700 text-lg leading-relaxed">
-                OECL specializes in providing customized sea-air and air-sea options, tailored to meet our customers' deadlines while achieving significant cost savings. Leveraging our efficient global network, we efficiently handle air freight consolidation on numerous major routes.
+                GC specializes in providing customized sea-air and air-sea options, tailored to meet our customers' deadlines while achieving significant cost savings. Leveraging our efficient global network, we efficiently handle air freight consolidation on numerous major routes.
               </p>
             </motion.div>
           </div>
