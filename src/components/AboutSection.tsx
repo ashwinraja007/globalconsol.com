@@ -28,7 +28,10 @@ const AboutSection = () => {
 
               <div className="space-y-6 mb-8">
                 <div className="flex items-start">
-                  <CheckCircle className="text-gc-gold shrink-0 mr-3 mt-1" size={20} />
+                  <CheckCircle
+                    className="text-gc-gold shrink-0 mr-3 mt-1"
+                    size={20}
+                  />
                   <div>
                     <h3 className="font-semibold text-xl mb-3 text-gray-900">
                       15 Years Excellence in Logistics Industry
@@ -61,9 +64,10 @@ const AboutSection = () => {
                   </Button>
                 </Link>
               </div>
+            </ScrollAnimation>
+          </div>
 
-             
-
+          {/* Right Side could go here */}
         </div>
       </div>
     </section>
