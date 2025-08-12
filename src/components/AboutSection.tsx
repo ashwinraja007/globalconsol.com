@@ -49,36 +49,33 @@ const AboutSection = () => {
               </div>
               
               {/* Sri Lanka specific images */}
-              {isSriLanka && (
-                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <ScrollAnimation delay={300} className="relative">
-                    <img 
-                      alt="GC Sri Lanka Operations" 
-                      className="rounded-lg shadow-lg w-full object-cover h-48" 
-                      src="/iso.png" 
-                    />
-                  </ScrollAnimation>
-                  <ScrollAnimation delay={400} className="relative">
-                    <img 
-                      alt="GC Sri Lanka Services" 
-                      className="rounded-lg shadow-lg w-full object-cover h-48" 
-                      src="/srilanka.jpg" 
-                    />
-                  </ScrollAnimation>
-                </div>
-              )}
-            </ScrollAnimation>
-          </div>
-          <div className="order-1 lg:order-2">
-            <ScrollAnimation delay={200} className="relative">
-              <img 
-                alt="GC Logistics Operations" 
-                className="rounded-lg shadow-lg w-full object-cover" 
-                style={{ height: '400px' }} 
-                src="/aboutus2.png" 
-              />
-            </ScrollAnimation>
-          </div>
+              <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+  <ScrollAnimation delay={300} className="relative flex justify-center">
+    <img 
+      alt="GC Sri Lanka Operations" 
+      className="rounded-lg shadow-lg w-48 h-auto object-contain" 
+      src="/iso.png" 
+    />
+  </ScrollAnimation>
+  <ScrollAnimation delay={400} className="relative flex justify-center">
+    <img 
+      alt="GC Sri Lanka Services" 
+      className="rounded-lg shadow-lg w-64 h-auto object-contain" 
+      src="/srilanka.jpg" 
+    />
+  </ScrollAnimation>
+</div>
+
+<div className="order-1 lg:order-2 mt-6 flex justify-center">
+  <ScrollAnimation delay={200} className="relative">
+    <img 
+      alt="GC Logistics Operations" 
+      className="rounded-lg shadow-lg w-80 h-auto object-contain" 
+      src="/aboutus2.png" 
+    />
+  </ScrollAnimation>
+</div>
+
         </div>
       </div>
     </section>
