@@ -132,7 +132,8 @@ const AboutUs = () => {
         </section>
 
         {/* Sri Lanka specific content blocks */}
-       {isSriLanka && (
+       {/* Sri Lanka specific content blocks */}
+{isSriLanka && (
   <section className="py-20 bg-white">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <motion.div
@@ -142,12 +143,13 @@ const AboutUs = () => {
         viewport={{ once: true }}
         className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
       >
-        {/* Image Left */}
-        <div className="relative flex justify-center">
+        {/* Image Left (made a little smaller) */}
+        <div className="relative flex justify-center md:justify-start">
           <img
             alt="GC Sri Lanka Brand Leadership Award 2024"
-            className="w-full h-auto object-contain rounded-2xl shadow-lg"
-            src="/srilanka.jpg" // replace with your actual award image path
+            src="/srilanka.jpg"
+            className="w-full h-auto object-contain rounded-2xl shadow-lg
+                       max-w-[420px] sm:max-w-[500px] md:max-w-[520px] lg:max-w-[560px]"
           />
         </div>
 
@@ -167,19 +169,20 @@ const AboutUs = () => {
             innovation, excellence, and the trust our clients place in us.
           </p>
 
-          {/* ISO Image */}
+          {/* ISO Image (made a little bigger) */}
           <div className="pt-4">
             <img
               alt="ISO 9001:2015 Certification"
-              className="w-40 h-auto object-contain"
               src="/iso.jpg"
+              className="w-48 sm:w-56 lg:w-64 h-auto object-contain"
             />
           </div>
         </div>
-              </motion.div>
-            </div>
-          </section>
-        )}
+      </motion.div>
+    </div>
+  </section>
+)}
+
 
         {/* Stats Section */}
         <section className="py-20 bg-slate-50">
