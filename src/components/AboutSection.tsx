@@ -69,14 +69,14 @@ const AboutSection = () => {
                     <img
                       alt="GC Sri Lanka ISO Certification"
                       className="rounded-lg shadow-lg w-40 h-auto object-contain"
-                      src="/iso.png"
+                      src="/srilanka.jpg"
                     />
                   </ScrollAnimation>
                   <ScrollAnimation delay={400} className="relative flex justify-center">
                     <img
                       alt="GC Sri Lanka Brand Leadership Award 2024"
                       className="rounded-lg shadow-lg w-56 h-auto object-contain"
-                      src="/srilanka.jpg"
+                      src="/iso.jpg" 
                     />
                   </ScrollAnimation>
                 </div>
