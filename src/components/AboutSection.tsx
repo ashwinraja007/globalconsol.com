@@ -75,7 +75,7 @@ const AboutSection = () => {
                   <ScrollAnimation delay={400} className="relative flex justify-center">
                     <img
                       alt="GC Sri Lanka Brand Leadership Award 2024"
-                      className="rounded-lg shadow-lg w-56 h-auto object-contain"
+                      className="rounded-lg  w-56 h-auto object-contain"
                       src="/iso2.gif" 
                     />
                   </ScrollAnimation>
