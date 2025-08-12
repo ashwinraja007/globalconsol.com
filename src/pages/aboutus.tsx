@@ -143,9 +143,18 @@ const AboutUs = () => {
         viewport={{ once: true }}
         className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-20"
       >
-        {/* Text Content */}
+        {/* Image Left */}
+        <div className="relative flex justify-center">
+          <img
+            alt="GC Sri Lanka Brand Leadership Award 2024"
+            className="w-full h-auto object-contain rounded-2xl shadow-lg"
+            src="/srilanka.jpg" // replace with your actual award image path
+          />
+        </div>
+
+        {/* Text Right */}
         <div className="space-y-6">
-          <h2 className="text-3xl font-bold text-kargon-blue">Sri Lanka Brand Leadership Award 2024</h2>
+          <h2 className="text-3xl font-bold text-kargon-blue">Our Sri Lankan Operations</h2>
           <p className="text-lg leading-relaxed text-gray-700">
             Recognized with the <strong>Sri Lanka Brand Leadership Award 2024</strong>, GC Sri Lanka stands
             as a leading force in the logistics industry. We are proud to be a trusted partner, delivering
@@ -158,17 +167,8 @@ const AboutUs = () => {
             our commitment to innovation, excellence, and the trust our clients place in us.
           </p>
         </div>
-
-        {/* Image Content */}
-        <div className="relative flex justify-center">
-          <img
-            alt="GC Sri Lanka Brand Leadership Award 2024"
-            className="w-full h-auto object-contain rounded-2xl shadow-lg"
-            src="/srilanka-award.jpg" // replace with your actual award image path
-          />
-        </div>
       </motion.div>
-    
+   
 
               {/* Second content block */}
               <motion.div initial={{
