@@ -48,7 +48,7 @@ const AboutSection = () => {
                     alt="GC Logistics Operations 1"
                     className="rounded-lg shadow-lg w-full object-cover"
                     style={{ height: "190px" }}
-                    src="/aboutus2.png"
+                    src="/aboutus4.png"
                   />
                   <img
                     alt="GC Logistics Operations 2"
