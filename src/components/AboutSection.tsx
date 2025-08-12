@@ -25,7 +25,7 @@ const AboutSection = () => {
             <ScrollAnimation>
               <h2 className="text-3xl md:text-4xl font-bold mb-2 text-gray-900">About Us</h2>
               <div className="w-16 h-1 bg-gc-gold mb-6"></div>
-              
+
               <div className="space-y-6 mb-8">
                 <div className="flex items-start">
                   <CheckCircle className="text-gc-gold shrink-0 mr-3 mt-1" size={20} />
@@ -34,12 +34,12 @@ const AboutSection = () => {
                       15 Years Excellence in Logistics Industry
                     </h3>
                     <p className="text-gray-700 leading-relaxed">
-                      GC, a Singapore-based global freight forwarding and logistics solutions provider, 
-                      establishes its presence in the region with a reliable network of experienced agents 
-                      spanning the globe. Backed by a highly experienced team of logistics professionals with 
-                      over 30 years of industry expertise, GC has swiftly emerged as one of the fastest-growing 
-                      logistics and freight forwarding companies in South East Asia, the Indian subcontinent, 
-                      and the Middle East.
+                      GC, a Singapore-based global freight forwarding and logistics solutions provider,
+                      establishes its presence in the region with a reliable network of experienced agents
+                      spanning the globe. Backed by a highly experienced team of logistics professionals
+                      with over 30 years of industry expertise, GC has swiftly emerged as one of the
+                      fastest-growing logistics and freight forwarding companies in South East Asia,
+                      the Indian subcontinent, and the Middle East.
                     </p>
                   </div>
                 </div>
@@ -53,8 +53,8 @@ const AboutSection = () => {
                   </Button>
                 </Link>
                 <Link to={getNavLink("/contact")}>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     className="border-gc-gold text-gc-gold hover:bg-gc-gold hover:text-white rounded-md px-6 py-3"
                   >
                     Reach Us
@@ -66,17 +66,17 @@ const AboutSection = () => {
               {isSriLanka && (
                 <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
                   <ScrollAnimation delay={300} className="relative flex justify-center">
-                    <img 
-                      alt="GC Sri Lanka ISO Certification" 
-                      className="rounded-lg shadow-lg w-48 h-auto object-contain" 
-                      src="/iso.png" 
+                    <img
+                      alt="GC Sri Lanka ISO Certification"
+                      className="rounded-lg shadow-lg w-40 h-auto object-contain"
+                      src="/iso.png"
                     />
                   </ScrollAnimation>
                   <ScrollAnimation delay={400} className="relative flex justify-center">
-                    <img 
-                      alt="GC Sri Lanka Brand Leadership Award 2024" 
-                      className="rounded-lg shadow-lg w-64 h-auto object-contain" 
-                      src="/srilanka.jpg" 
+                    <img
+                      alt="GC Sri Lanka Brand Leadership Award 2024"
+                      className="rounded-lg shadow-lg w-56 h-auto object-contain"
+                      src="/srilanka.jpg"
                     />
                   </ScrollAnimation>
                 </div>
@@ -84,13 +84,14 @@ const AboutSection = () => {
             </ScrollAnimation>
           </div>
 
-          {/* Right Side - Main Image */}
+          {/* Right Side - Main Image (unchanged size) */}
           <div className="order-1 lg:order-2 flex justify-center">
             <ScrollAnimation delay={200} className="relative">
-              <img 
-                alt="GC Logistics Operations" 
-                className="rounded-lg shadow-lg w-80 h-auto object-contain" 
-                src="/aboutus2.png" 
+              <img
+                alt="GC Logistics Operations"
+                className="rounded-lg shadow-lg w-full object-cover"
+                style={{ height: "400px" }}
+                src="/aboutus2.png"
               />
             </ScrollAnimation>
           </div>
