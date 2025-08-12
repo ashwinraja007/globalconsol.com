@@ -42,6 +42,7 @@ const SriLankaHome = () => {
       <CountryHeroSection country="sri-lanka" />
       <TrackOrder />
       <AboutSection />
+      <Certification />
       <ServicesSection />
       <GlobalPresence />
       <ContactForm />
