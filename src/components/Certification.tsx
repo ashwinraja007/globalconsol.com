@@ -55,7 +55,7 @@ const Certification: React.FC<CertificationProps> = ({
           <div className="order-1 lg:order-2 relative">
             <div className="relative w-full flex justify-end items-start">
               <img
-                src={certificateUrl}
+                src="/srilanka.jpg"
                 alt="Brand Leadership Award 2024"
                 className="max-h-[620px] w-auto object-contain rounded-xl shadow-xl border border-slate-200"
               />
@@ -65,7 +65,7 @@ const Certification: React.FC<CertificationProps> = ({
                 <span className="absolute inset-0 rounded-full bg-gc-gold/30 animate-ping" />
                 <span className="relative inline-flex h-16 w-16 rounded-full ring-4 ring-white shadow-lg overflow-hidden animate-pulse">
                   <img
-                    src={isoLogoUrl}
+                    src="/iso2.gif"
                     alt="ISO Certified"
                     className="h-full w-full object-cover"
                   />
