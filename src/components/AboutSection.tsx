@@ -62,39 +62,7 @@ const AboutSection = () => {
                 </Link>
               </div>
 
-              {/* Sri Lanka specific images */}
-              {isSriLanka && (
-                <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <ScrollAnimation delay={300} className="relative flex justify-center">
-                    <img
-                      alt="GC Sri Lanka ISO Certification"
-                      className="rounded-lg shadow-lg w-40 h-auto object-contain"
-                      src="/srilanka.jpg "
-                    />
-                  </ScrollAnimation>
-                  <ScrollAnimation delay={400} className="relative flex justify-center">
-                    <img
-                      alt="GC Sri Lanka Brand Leadership Award 2024"
-                      className="rounded-lg  w-56 h-auto object-contain"
-                      src="/iso2.gif" 
-                    />
-                  </ScrollAnimation>
-                </div>
-              )}
-            </ScrollAnimation>
-          </div>
-
-          {/* Right Side - Main Image (unchanged size) */}
-          <div className="order-1 lg:order-2 flex justify-center">
-            <ScrollAnimation delay={200} className="relative">
-              <img
-                alt="GC Logistics Operations"
-                className="rounded-lg shadow-lg w-full object-cover"
-                style={{ height: "400px" }}
-                src="/aboutus2.png"
-              />
-            </ScrollAnimation>
-          </div>
+             
 
         </div>
       </div>
