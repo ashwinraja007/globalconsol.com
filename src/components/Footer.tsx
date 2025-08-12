@@ -21,7 +21,7 @@ const Footer = () => {
           name: "Global Consolidators",
           address: "Blk 511 Kampong Bahru Road, #03-01 Keppel Distripark, Singapore 099447",
           phone: "+65 6224 1338 / +65 6224 1336",
-          email: "buddhika@globalconsol.com",
+          email: "info.sg@globalconsol.com",
           map: "https://www.google.com/maps/d/u/0/embed?mid=1U_72YwJ_4E6SQSrx2E6eWegoUTQesgo&ehbc=2E312F&noprof=1",
         },
       ],
@@ -34,7 +34,7 @@ const Footer = () => {
           address:
             "Ceylinco House, 9th Floor, No. 69, Janadhipathi Mawatha, Colombo 01, Sri Lanka",
           phone: "+94 114477499 / +94 114477494",
-          email: "thilanka.cmb@globalconsol.com",
+          email: "info.cmb@globalconsol.com",
           map: "https://www.google.com/maps/d/u/0/embed?mid=1Nt9tx3aLmBNO-Sf6oJxm3WxfmbDIF0I&ehbc=2E312F&noprof=1",
         },
       ],
