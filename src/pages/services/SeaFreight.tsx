@@ -60,7 +60,7 @@ const SeaFreight = () => {
           }} className="space-y-6">
               <h2 className="text-3xl font-bold text-blue-500">SEA Freight Services</h2>
               <p className="text-gray-700 text-lg leading-relaxed">
-                At GC, we are cater to the unique requirements of our customers. With our extensive expertise in sea freight operations, we excel in various trade lanes. Our professionals ensure frequent departures and offer flexible service options. By partnering with multiple carriers on all trade routes, we secure favorable rates and guarantee space, allocation, timing, pricing, and shipment frequency.
+                At GC, we cater to the unique requirements of our customers. With our extensive expertise in sea freight operations, we excel in various trade lanes. Our professionals ensure frequent departures and offer flexible service options. By partnering with multiple carriers on all trade routes, we secure favorable rates and guarantee space, allocation, timing, pricing, and shipment frequency.
               </p>
               <p className="text-gray-700 text-lg leading-relaxed">
                 When it comes to container shipping, FCL (Full Container Load) is the most cost-effective and efficient option, considering the cargo's volume and weight. Throughout the entire process, we take meticulous care at every stage. This includes negotiating contract prices with carriers, reserving space, making bookings, retrieving empty containers from the depot, loading at the shipper's facility, transportation via truck or rail to the port, vessel loading, and closely monitoring the vessel schedule until the final delivery to the consignee.
