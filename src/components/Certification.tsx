@@ -55,14 +55,16 @@ const Certification: React.FC<CertificationProps> = ({
           {/* RIGHT (7 cols): Content */}
           <div className="order-2 lg:col-span-7 text-center lg:text-left">
             <ScrollAnimation>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mt-9">
                 Recognized for Brand Leadership
               </h2>
               <div className="w-16 h-1 bg-gc-gold mt-3 mb-6 mx-auto lg:mx-0" />
 
               <p className="text-gray-700 leading-relaxed mb-6 max-w-2xl mx-auto lg:mx-0">
                 Awarded at the <strong>Sri Lanka Brand Leadership Awards 2024</strong> by the
-                World Marketing &amp; Brand Congress, recognizing our excellence in logistics and brand growth.We deliver comprehensive freight forwarding and logistics solutions that combine deep local expertise with an extensive global network, ensuring smooth and reliable operations for diverse industries.
+                World Marketing &amp; Brand Congress, recognizing our excellence in logistics and brand growth. </p>
+<p className="text-gray-700 leading-relaxed mb-6 max-w-2xl mx-auto lg:mx-0">
+We deliver comprehensive freight forwarding and logistics solutions that combine deep local expertise with an extensive global network, ensuring smooth and reliable operations for diverse industries.
               </p>
 
               {/* Mobile-friendly bullets with proper spacing */}
