@@ -9,6 +9,7 @@ import StatsSection from "@/components/StatsSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import GlobalPresence from "@/components/GlobalPresence";
 import ContactForm from "@/components/ContactForm";
+import Certification from "@/components/Certification";
 import Footer from "@/components/Footer";
 import { useScrollToTop } from "@/hooks/useScrollToTop";
 
