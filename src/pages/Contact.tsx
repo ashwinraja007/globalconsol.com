@@ -31,15 +31,13 @@ const Contact: React.FC = () => {
 
   // Map of country to email addresses
   const emailMap: Record<string, string[]> = {
-    "SINGAPORE": ["https://formsubmit.co/ajax/karthikjungleemara@gmail.com"],
-    "SRI LANKA": ["https://formsubmit.co/ajax/karthiktrendsandtactics@gmail.com"],
-    "MYANMAR": ["https://formsubmit.co/ajax/myanmar@example.com"],
-    "BANGLADESH": ["https://formsubmit.co/ajax/bangladesh@example.com"],
-    "PAKISTAN": ["https://formsubmit.co/ajax/pakistan@example.com"],
-    "UK": ["https://formsubmit.co/ajax/uk@example.com"],
-    "USA": ["https://formsubmit.co/ajax/usa@example.com"],
+    "SINGAPORE": ["https://formsubmit.co/ajax/info.sg@globalconsol.com"],
+    "SRI LANKA": ["https://formsubmit.co/ajax/info.cmb@globalconsol.com"],
+    "MYANMAR": ["https://formsubmit.co/ajax/info@globalconsol.com"],
+    "BANGLADESH": ["https://formsubmit.co/ajax/info@globalconsol.com"],
+    "PAKISTAN": ["https://formsubmit.co/ajax/info@globalconsol.com"],
     "DEFAULT": [
-      "https://formsubmit.co/ajax/karthikjungleemara@gmail.com"
+      "https://formsubmit.co/ajax/info.sg@globalconsol.com"
     ]
   };
 
