@@ -13,8 +13,6 @@ const AboutSection = () => {
     return `/${currentCountry.name.toLowerCase().replace(" ", "-")}${basePath}`;
   };
 
-  const isSriLanka = currentCountry.code === "LK";
-
   return (
     <section className="bg-slate-100 py-[114px]">
       <div className="container mx-auto px-4 md:px-6">
@@ -28,10 +26,7 @@ const AboutSection = () => {
 
               <div className="space-y-6 mb-8">
                 <div className="flex items-start">
-                  <CheckCircle
-                    className="text-gc-gold shrink-0 mr-3 mt-1"
-                    size={20}
-                  />
+                  <CheckCircle className="text-gc-gold shrink-0 mr-3 mt-1" size={20} />
                   <div>
                     <h3 className="font-semibold text-xl mb-3 text-gray-900">
                       15 Years Excellence in Logistics Industry
@@ -67,7 +62,18 @@ const AboutSection = () => {
             </ScrollAnimation>
           </div>
 
-          {/* Right Side could go here */}
+          {/* Right Side - Main Image */}
+          <div className="order-1 lg:order-2 flex justify-center">
+            <ScrollAnimation delay={200} className="relative">
+              <img
+                alt="GC Logistics Operations"
+                className="rounded-lg shadow-lg w-full object-cover"
+                style={{ height: "400px" }}
+                src="/aboutus2.png"
+              />
+            </ScrollAnimation>
+          </div>
+
         </div>
       </div>
     </section>
