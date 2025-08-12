@@ -21,37 +21,43 @@ code: "in",
     lat: 9.9323,
     lng: 76.2996,
     address: "CC 59/801A Elizabeth Memorial Building, Thevara Ferry Jn, Cochin 682013 , Kerala.",
-    contacts: ["+91 484 4019192 / 93"]
+    contacts: ["+91 484 4019192 / 93"],
+    email: "info@oecl.sg"
   },{
     name: "Mumbai",
     lat: 19.01123,
     lng: 73.03715,
     address: "803 / 804, Shelton Cubix, Plot No. 87, Sector-15,CBD Belapur, Navi Mumbai, Maharastra - 400614.",
-    contacts: ["022-35131688 / 35113475 / 35082586"]
+    contacts: ["022-35131688 / 35113475 / 35082586"],
+    email: "info@oecl.sg"
   }, {
     name: "Mumbai-Andheri",
     lat: 19.11303, 
     lng: 72.86848,
     address: "503, Midas, Sahar Plaza Complex,Sir M.V Road,Andheri East, Mumbai 400059",
-    contacts: ["+91 8879756838"]
+    contacts: ["+91 8879756838"],
+    email: "info@oecl.sg"
   },{
     name: "Delhi",
     lat: 28.62748,
     lng: 77.2221,
     address: "903, Surya Kiran Building K.G Marg,Connaught Place New Delhi - 110001",
-    contacts: ["+91 11 493224477 / 48 /49"]
+    contacts: ["+91 11 493224477 / 48 /49"],
+    email: "info@oecl.sg"
   }, {
     name: "Bangalore",
     lat: 13.01855,
     lng: 77.64191,
     address: "3C-964 IIIrd Cross Street,HRBR LAYOUT 1st Block,Kalayan Nagar Bannaswadi,Bengaluru - 560043.",
-    contacts: ["+91 9841676259"]
+    contacts: ["+91 9841676259"],
+    email: "info@oecl.sg"
   }, {
     name: "Kolkata",
     lat: 22.5769, 
     lng: 88.4341,
     address: "Merlin Matrix, 3rd floor, Room No. 303 10,D. N. BLOCK, SECTOR - V SALT LAKE CITY, Kolkata – 700091",
-    contacts: ["+91 33 46025458 / 59 / 60/ 61"]
+    contacts: ["+91 33 46025458 / 59 / 60/ 61"],
+    email: "info@oecl.sg"
   }]
 }, {
   code: "lk",
@@ -64,7 +70,7 @@ code: "in",
     lng: 79.8612,
     address: "Ceylinco House, 9th Floor, No. 69, Janadhipathi Mawatha, Colombo 01, Sri Lanka",
     contacts: ["+94 114477499", "+94 114477494 / 98"],
-    email: "thilanka.cmb@globalconsol.com"
+    email: "info.cmb@globalconsol.com "
   }]
 },{
   code: "us",
@@ -177,7 +183,7 @@ code: "in",
     lng: 103.8198,
     address: "Blk 511 Kampong Bahru Road, #03-01 Keppel Distripark, Singapore - 099447",
     contacts: ["+ 65 69080838"],
-    email: "buddhika@globalconsol.com"
+    email: "info.sg@globalconsol.com"
   }]
 }, {
   code: "mm",
@@ -233,7 +239,7 @@ code: "in",
     name: "Melbourne",
     lat: -37.7064,
     lng: 144.8503,
-    address: "Suite 5, 7-9 Mallet Road, Tullamarine, Victoria, 3043",
+    address: "Suite 5, 7-9 let Road, Tullamarine, Victoria, 3043",
     contacts: ["Mob: +61 432254969", "Tel: +61 388205157"],
     email: "info@gglaustralia.com"
   }]
