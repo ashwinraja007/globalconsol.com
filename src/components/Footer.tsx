@@ -1,6 +1,5 @@
-
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, ArrowRight, Facebook, Linkedin, ChevronRight } from "lucide-react";
+import { MapPin, Phone, Mail, ArrowRight, ChevronRight } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -10,18 +9,8 @@ const Footer = () => {
   const [isAutoScrolling, setIsAutoScrolling] = useState(true);
 
   const footerAnimation = {
-    hidden: {
-      opacity: 0,
-      y: 20
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    }
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
   const keyAddresses = [
@@ -30,8 +19,7 @@ const Footer = () => {
       offices: [
         {
           name: "Global Consolidators",
-          address:
-            "Blk 511 Kampong Bahru Road, #03-01 Keppel Distripark, Singapore 099447",
+          address: "Blk 511 Kampong Bahru Road, #03-01 Keppel Distripark, Singapore 099447",
           phone: "+65 6224 1338 / +65 6224 1336",
           email: "buddhika@globalconsol.com",
           map: "https://www.google.com/maps/d/u/0/embed?mid=1U_72YwJ_4E6SQSrx2E6eWegoUTQesgo&ehbc=2E312F&noprof=1",
@@ -72,7 +60,7 @@ const Footer = () => {
           address:
             "ID #9-N (New), 9-M(Old-N), 9th floor, Tower 1, Police Plaza Concord No.2, Road # 144, Gulshan Model Town, Dhaka 1215, Bangladesh",
           phone: "+880 1716 620989",
-           email: "info@globalconsol.com",
+          email: "info@globalconsol.com",
           map: "https://www.google.com/maps/d/u/0/embed?mid=1X0GsrCFJRFoj6Q67PJztKAAzkDlKkXY&ehbc=2E312F&noprof=1",
         },
       ],
@@ -85,7 +73,7 @@ const Footer = () => {
           address:
             "Suite No.301, 3rd Floor, Fortune Center, Shahrah-e-Faisal, Block 6, PECHS, Karachi, Pakistan",
           phone: "+92-300-8282511 / +92-21-34302281-5",
-           email: "khalid.pk@globalconsol.com",
+          email: "khalid.pk@globalconsol.com",
           map: "https://www.google.com/maps/d/u/0/embed?mid=1reXoq38Nt5GKCCpv-f_cb1UwG-Ko30o&ehbc=2E312F&noprof=1",
         },
         {
@@ -100,47 +88,50 @@ const Footer = () => {
     },
   ];
 
-  // Get current country from URL slug
+  // Country detection from URL
   const getCurrentCountryFromUrl = () => {
     const pathname = location.pathname.toLowerCase();
-    
-    if (pathname.includes('/sri-lanka')) return 'Sri Lanka';
-    if (pathname.includes('/myanmar')) return 'Myanmar';
-    if (pathname.includes('/bangladesh')) return 'Bangladesh';
-    if (pathname.includes('/pakistan')) return 'Pakistan';
-    
-    // Default to Singapore
-    return 'Singapore';
+    if (pathname.includes("/sri-lanka")) return "Sri Lanka";
+    if (pathname.includes("/myanmar")) return "Myanmar";
+    if (pathname.includes("/bangladesh")) return "Bangladesh";
+    if (pathname.includes("/pakistan")) return "Pakistan";
+    return "Singapore"; // default
+  };
+
+  // Helpers for country-aware paths
+  const getCountrySlug = () => {
+    const c = getCurrentCountryFromUrl();
+    return c === "Singapore" ? "" : `/${c.toLowerCase().replace(/\s+/g, "-")}`;
+  };
+  const buildCountryPath = (path: string) => {
+    const base = getCountrySlug();
+    if (path === "/") return base || "/";
+    return (base + path).replace(/\/{2,}/g, "/");
   };
 
   // Filter addresses based on current route
   const getFilteredAddresses = () => {
     const currentCountry = getCurrentCountryFromUrl();
-    return keyAddresses.filter(addr => addr.country === currentCountry);
+    return keyAddresses.filter((addr) => addr.country === currentCountry);
   };
 
   const filteredAddresses = getFilteredAddresses();
-  const allOffices = filteredAddresses.flatMap(country => 
-    country.offices.map(office => ({
-      ...office,
-      country: country.country
-    }))
+  const allOffices = filteredAddresses.flatMap((country) =>
+    country.offices.map((office) => ({ ...office, country: country.country }))
   );
 
-  // Auto-scroll functionality
   useEffect(() => {
     if (isAutoScrolling && allOffices.length > 1) {
       const interval = setInterval(() => {
-        setCurrentAddressIndex(prev => (prev + 1) % allOffices.length);
-      }, 4000); // Change address every 4 seconds
-
+        setCurrentAddressIndex((prev) => (prev + 1) % allOffices.length);
+      }, 4000);
       return () => clearInterval(interval);
     }
   }, [isAutoScrolling, allOffices.length]);
 
   const handleNextAddress = () => {
     setIsAutoScrolling(false);
-    setCurrentAddressIndex(prev => (prev + 1) % allOffices.length);
+    setCurrentAddressIndex((prev) => (prev + 1) % allOffices.length);
   };
 
   const currentOffice = allOffices[currentAddressIndex];
@@ -160,19 +151,14 @@ const Footer = () => {
             className="flex flex-col items-start"
           >
             <div className="mb-4">
-              <img
-                src="/logo.png"
-                alt="GC Logo"
-                className="h-16 w-auto object-contain mb-2"
-                loading="lazy"
-              />
+              <img src="/logo.png" alt="GC Logo" className="h-16 w-auto object-contain mb-2" loading="lazy" />
             </div>
             <p className="text-sm md:text-base text-white/80 max-w-xs text-left leading-relaxed">
               15 Years Excellence in Logistics Industry GC, a Singapore-based global freight forwarding and logistics solutions provider, establishes its presence in the region with a reliable network of experienced agents spanning the globe. Backed by a highly
             </p>
           </motion.div>
 
-          {/* Column 2: Navigation */}
+          {/* Column 2: Navigation (country-aware) */}
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -193,7 +179,7 @@ const Footer = () => {
               ].map((link, index) => (
                 <Link
                   key={index}
-                  to={link.path}
+                  to={buildCountryPath(link.path)}
                   className="text-white/90 hover:text-gc-gold transition-colors duration-300 flex items-center gap-2"
                 >
                   <ArrowRight size={14} className="text-gc-gold" />
@@ -224,7 +210,7 @@ const Footer = () => {
                 </button>
               )}
             </div>
-            
+
             {currentOffice && (
               <motion.div
                 key={currentAddressIndex}
@@ -239,28 +225,26 @@ const Footer = () => {
                     <p className="font-semibold text-gc-gold mb-1">
                       {currentOffice.name} - {currentOffice.country}
                     </p>
-                    <p className="whitespace-pre-line text-sm leading-relaxed">
-                      {currentOffice.address}
-                    </p>
+                    <p className="whitespace-pre-line text-sm leading-relaxed">{currentOffice.address}</p>
                   </div>
                 </div>
-                
-                 {currentOffice.phone && (
-      <div className="flex items-center gap-2">
-        <Phone size={18} className="text-gc-gold flex-shrink-0" />
-        <p className="text-sm">{currentOffice.phone}</p>
-      </div>
-    )}
 
-    {currentOffice.email && (
-      <div className="flex items-center gap-2">
-        <Mail size={18} className="text-gc-gold flex-shrink-0" />
-        <p className="text-sm">{currentOffice.email}</p>
-      </div>
-    )}
-  </motion.div>
-)}
-            
+                {currentOffice.phone && (
+                  <div className="flex items-center gap-2">
+                    <Phone size={18} className="text-gc-gold flex-shrink-0" />
+                    <p className="text-sm">{currentOffice.phone}</p>
+                  </div>
+                )}
+
+                {currentOffice.email && (
+                  <div className="flex items-center gap-2">
+                    <Mail size={18} className="text-gc-gold flex-shrink-0" />
+                    <p className="text-sm">{currentOffice.email}</p>
+                  </div>
+                )}
+              </motion.div>
+            )}
+
             {allOffices.length > 1 && (
               <div className="flex justify-center mt-4 space-x-2">
                 {allOffices.map((_, index) => (
@@ -271,9 +255,7 @@ const Footer = () => {
                       setIsAutoScrolling(false);
                     }}
                     className={`w-2 h-2 rounded-full transition-colors ${
-                      index === currentAddressIndex
-                        ? 'bg-gc-gold'
-                        : 'bg-white/30 hover:bg-white/50'
+                      index === currentAddressIndex ? "bg-gc-gold" : "bg-white/30 hover:bg-white/50"
                     }`}
                   />
                 ))}
@@ -282,9 +264,8 @@ const Footer = () => {
           </motion.div>
         </div>
 
-        {/* Bottom Line */}
         <div className="text-center text-white/70 mt-12 pt-8 border-t border-gc-gold/20 text-sm">
-          &copy; {new Date().getFullYear()} Site Powered by Global Consolidators Pte Ltd,. All right reserved.
+          &copy; {new Date().getFullYear()} Site Powered by Global Consolidators Pte Ltd. All rights reserved.
         </div>
       </div>
     </footer>
