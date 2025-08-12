@@ -132,16 +132,15 @@ const AboutUs = () => {
         </section>
 
         {/* Sri Lanka specific content blocks */}
-        {isSriLanka && (
+       {isSriLanka && (
   <section className="py-20 bg-white">
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      {/* First content block */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-20"
+        className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center"
       >
         {/* Image Left */}
         <div className="relative flex justify-center">
@@ -152,51 +151,31 @@ const AboutUs = () => {
           />
         </div>
 
-        {/* Text Right */}
+        {/* Text + ISO Image Right */}
         <div className="space-y-6">
           <h2 className="text-3xl font-bold text-kargon-blue">Our Sri Lankan Operations</h2>
           <p className="text-lg leading-relaxed text-gray-700">
-            Recognized with the <strong>Sri Lanka Brand Leadership Award 2024</strong>, GC Sri Lanka stands
-            as a leading force in the logistics industry. We are proud to be a trusted partner, delivering
-            end-to-end freight forwarding and logistics solutions that blend local expertise with a truly
-            global network.
+            Proud recipient of the <strong>Sri Lanka Brand Leadership Award 2024</strong> and certified to the
+            <strong> ISO 9001:2015</strong> standard, GC Sri Lanka has earned its place as one of the region’s most
+            trusted logistics partners. We deliver comprehensive freight forwarding and logistics solutions that
+            combine deep local expertise with an extensive global network, ensuring smooth and reliable operations for
+            diverse industries.
           </p>
           <p className="text-lg leading-relaxed text-gray-700">
-            Our operations are powered by state-of-the-art facilities, advanced technology, and a highly
-            skilled team dedicated to efficiency, security, and reliability. Every shipment we handle reflects
-            our commitment to innovation, excellence, and the trust our clients place in us.
+            Our operations are powered by state-of-the-art facilities, advanced technology, and a highly skilled team
+            dedicated to efficiency, security, and reliability. Every shipment we handle reflects our commitment to
+            innovation, excellence, and the trust our clients place in us.
           </p>
+
+          {/* ISO Image */}
+          <div className="pt-4">
+            <img
+              alt="ISO 9001:2015 Certification"
+              className="w-40 h-auto object-contain"
+              src="/iso.png"
+            />
+          </div>
         </div>
-      </motion.div>
-   
-
-              {/* Second content block */}
-              <motion.div initial={{
-                opacity: 0,
-                y: 30
-              }} whileInView={{
-                opacity: 1,
-                y: 0
-              }} transition={{
-                duration: 0.8,
-                delay: 0.2
-              }} viewport={{
-                once: true
-              }} className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                <div className="order-2 md:order-1 relative">
-                  <img alt="GC Sri Lanka Sea Freight" className="w-full h-80 object-cover rounded-2xl shadow-lg" src="/iso.png" />
-                </div>
-                <div className="space-y-6">
-  <h2 className="text-3xl font-bold text-kargon-blue"></h2>
-  <p className="text-lg leading-relaxed text-gray-700">
-    Proud recipient of the <strong>Sri Lanka Brand Leadership Award 2024</strong> and certified to the 
-    <strong> ISO 9001:2015</strong> standard, GC Sri Lanka has earned its place as one of the region’s most trusted 
-    logistics partners. We deliver comprehensive freight forwarding and logistics solutions that combine deep local 
-    expertise with an extensive global network, ensuring smooth and reliable operations for diverse industries.
-  </p>
-  
-</div>
-
               </motion.div>
             </div>
           </section>
