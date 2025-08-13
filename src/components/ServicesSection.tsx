@@ -19,7 +19,7 @@ const getCurrentCountryFromPath = pathname => {
 const allServices = [{
   id: 1,
   title: "SEA Freight",
-  description: "At GC, we cater to the unique requirementof our customers. With our extensive expertise in sea freight operations...",
+  description: "At GC, we cater to the unique requirement of our customers. With our extensive expertise in sea freight operations...",
   icon: Ship,
   image: "/oceanfreight.png",
   slug: "sea-freight",
