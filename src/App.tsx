@@ -219,7 +219,7 @@ const App: React.FC = () => {
               </Route>
 
               {/* 404 Not Found */}
-              <Route path="*" element={<NotFound />} />
+              <Route path="/" element={<NotFound />} />
             </Routes>
           </div>
           <Toaster />
