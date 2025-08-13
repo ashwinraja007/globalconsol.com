@@ -19,7 +19,7 @@ const getCurrentCountryFromPath = pathname => {
 const allServices = [{
   id: 1,
   title: "SEA Freight",
-  description: "At GC, we possess our own fleet of containers, which includes specialized equipment designed to cater to the unique requirement",
+  description: "At GC, we cater to the unique requirementof our customers. With our extensive expertise in sea freight operations",
   icon: Ship,
   image: "/oceanfreight.png",
   slug: "sea-freight",
@@ -27,7 +27,7 @@ const allServices = [{
 }, {
   id: 2,
   title: "Air Freight",
-  description: "As a leading air freight company, we excel in offering enhanced flexibility and global choice by collaborating with a diverse r",
+  description: "As a leading air freight company, we excel in offering enhanced flexibility and global choice by collaborating with a diverse ",
   icon: Plane,
   image: "/airfreight.png",
   slug: "air-freight",
@@ -43,7 +43,7 @@ const allServices = [{
 }, {
   id: 4,
   title: "Project Cargo",
-  description: "We operate a specialized division focused on knowledge-based projects, staffed with highly skilled experts who have inherited t",
+  description: "We operate a specialized division focused on knowledge-based projects, staffed with highly skilled experts who have inherited ",
   icon: Container,
   image: "/projectcargo.png",
   slug: "project-cargo",
@@ -59,7 +59,7 @@ const allServices = [{
 }, {
   id: 6,
   title: "Liquid Transportation",
-  description: "GC specializes in delivering comprehensive expertise and services for the transportation of liquid cargoes through ISO Tanks, F",
+  description: "GC specializes in delivering comprehensive expertise and services for the transportation of liquid cargoes through ISO Tanks, ",
   icon: Droplets,
   image: "/liquidtransportation.png",
   slug: "liquid-cargo",
