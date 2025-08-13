@@ -24,9 +24,8 @@ const Certification: React.FC<CertificationProps> = ({
   return (
     <section className="bg-white py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
-        {/* 12-col grid: reduce center white space */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-10 lg:gap-y-0 lg:gap-x-6 xl:gap-x-10 items-start">
-          {/* LEFT (5 cols): Image fills column; actual img capped to medium */}
+          {/* LEFT */}
           <div className="order-1 lg:col-span-5 flex sm:justify-center lg:justify-start">
             <div className="relative w-full">
               <img
@@ -37,22 +36,10 @@ const Certification: React.FC<CertificationProps> = ({
                            max-w-[420px] md:max-w-[460px] lg:max-w-[480px] xl:max-w-[500px] 
                            mx-auto lg:mx-0"
               />
-              {/* ISO badge overlay */}
-              <div className="absolute top-3 right-[8%] sm:top-4 sm:right-[6%]">
-                <span className="absolute inset-0 rounded-full bg-gc-gold/30 animate-ping" />
-                <span className="relative inline-flex h-16 w-16 sm:h-18 sm:w-18 lg:h-20 lg:w-20 rounded-full ring-4 ring-white shadow-lg overflow-hidden animate-pulse">
-                  <img
-                    src={isoLogoUrl || "/iso.jpg"}
-                    alt="ISO Certified"
-                    className="h-full w-full object-cover"
-                    loading="lazy"
-                  />
-                </span>
-              </div>
             </div>
           </div>
 
-          {/* RIGHT (7 cols): Content */}
+          {/* RIGHT */}
           <div className="order-2 lg:col-span-7 text-center lg:text-left">
             <ScrollAnimation>
               <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mt-9">
@@ -62,15 +49,15 @@ const Certification: React.FC<CertificationProps> = ({
 
               <p className="text-gray-700 leading-relaxed mb-6 max-w-2xl mx-auto lg:mx-0">
                 Awarded at the <strong>Sri Lanka Brand Leadership Awards 2024</strong> by the
-                World Marketing &amp; Brand Congress, recognizing our excellence in logistics and brand growth. </p>
-<p className="text-gray-700 leading-relaxed mb-6 max-w-2xl mx-auto lg:mx-0">
-We deliver comprehensive freight forwarding and logistics solutions that combine deep local expertise with an extensive global network, ensuring smooth and reliable operations for diverse industries.
+                World Marketing &amp; Brand Congress, recognizing our excellence in logistics and brand growth.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-6 max-w-2xl mx-auto lg:mx-0">
+                We deliver comprehensive freight forwarding and logistics solutions that combine deep local expertise with an extensive global network, ensuring smooth and reliable operations for diverse industries.
               </p>
 
-              {/* Mobile-friendly bullets with proper spacing */}
               <ul className="list-disc marker:text-gc-gold pl-5 space-y-3 mb-8 max-w-2xl mx-auto lg:mx-0 text-left">
                 <li>Industry recognition for <strong>Brand leadership</strong></li>
-                <li>Aw arded on <strong>5th September 2024</strong> at Taj Samudra, Colombo</li>
+                <li>Awarded on <strong>5th September 2024</strong> at Taj Samudra, Colombo</li>
                 <li>Backed by <strong>ISO-certified</strong> processes</li>
               </ul>
 
@@ -80,6 +67,16 @@ We deliver comprehensive freight forwarding and logistics solutions that combine
               >
                 Explore Our Certifications
               </Link>
+
+              {/* ISO logo moved below the button and made bigger */}
+              <div className="mt-8 flex justify-center lg:justify-start">
+                <img
+                  src={isoLogoUrl || "/iso.jpg"}
+                  alt="ISO Certified"
+                  className="h-28 w-28 sm:h-32 sm:w-32 lg:h-36 lg:w-36 rounded-full ring-4 ring-white shadow-lg object-cover"
+                  loading="lazy"
+                />
+              </div>
             </ScrollAnimation>
           </div>
         </div>
