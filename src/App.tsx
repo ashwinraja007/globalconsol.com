@@ -118,7 +118,11 @@ const App: React.FC = () => {
 
               {/* Global pages */}
               <Route path="/contact" element={<Contact />} />
+              <Route path="/aboutus" element={<AboutUs />} />
+              <Route path="/contact-us" element={<Contact />} />
               <Route path="/services" element={<Services />} />
+              <Route path="/service/7" element={<Services />} />
+              <Route path="/where-we-are" element={<GlobalPresence />} />
               <Route path="/global-presence" element={<GlobalPresence />} />
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/gallery" element={<Gallery />} />
