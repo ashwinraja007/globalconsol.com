@@ -48,7 +48,7 @@ const Certification: React.FC<CertificationProps> = ({
               <div className="w-16 h-1 bg-gc-gold mt-3 mb-6 mx-auto lg:mx-0" />
 
               <p className="text-gray-700 leading-relaxed mb-6 max-w-2xl mx-auto lg:mx-0">
-                Awarded at the <strong>Sri Lanka Brand Leadership Awards 2024</strong> by the
+                Awarded the <strong>Sri Lanka Brand Leadership Awards 2024</strong> by the
                 World Marketing &amp; Brand Congress, recognizing our excellence in logistics and brand growth.
               </p>
               <p className="text-gray-700 leading-relaxed mb-6 max-w-2xl mx-auto lg:mx-0">
