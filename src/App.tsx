@@ -50,6 +50,7 @@ import LinerAgency from '@/pages/services/LinerAgency';
 import { AuthProvider } from '@/contexts/AuthContext';
 import ProtectedRoute from '@/components/ProtectedRoute';
 import AdminRoute from '@/components/AdminRoute';
+import Meta from '@/components/Meta';
 
 // Dashboard components
 import DashboardOverview from '@/pages/dashboard/Overview';
@@ -102,6 +103,7 @@ const App: React.FC = () => {
       <Router>
         <AuthProvider>
           <CountryRedirect />
+          <Meta />
           <div className="App">
             <Routes>
               {/* Home routes */}
