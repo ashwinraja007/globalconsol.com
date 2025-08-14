@@ -43,6 +43,7 @@ import CustomsClearance from '@/pages/services/CustomsClearance';
 import Warehousing from '@/pages/services/Warehousing';
 import Consolidation from '@/pages/services/Consolidation';
 import ProjectCargo from '@/pages/services/ProjectCargo';
+import Transhipment from '@/pages/services/Transhipment';
 import LiquidCargo from '@/pages/services/LiquidCargo';
 import ThirdPartyLogistics from '@/pages/services/ThirdPartyLogistics';
 import LinerAgency from '@/pages/services/LinerAgency';
@@ -89,6 +90,7 @@ const serviceRoutes: ServiceRoute[] = [
   { path: 'warehousing', component: Warehousing },
   { path: 'consolidation', component: Consolidation },
   { path: 'project-cargo', component: ProjectCargo },
+  { path: 'transhipment', component: Transhipment },
   { path: 'liquid-cargo', component: LiquidCargo },
   { path: 'third-party-logistics', component: ThirdPartyLogistics },
   { path: 'liner-agency', component: LinerAgency },
