@@ -62,7 +62,7 @@ const Transhipment = () => {
               <div className="rounded-2xl overflow-hidden shadow-2xl">
                 {/* replace with your actual asset */}
                 <img
-                  src="/transhipment.jpg"
+                  src="/transhipment.png"
                   alt="Transhipment Solutions"
                   className="w-full h-96 object-cover"
                 />
