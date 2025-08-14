@@ -84,28 +84,6 @@ const allServices = [
 ];
 
 // ➕ Sri Lanka–only extra cards
-const sriLankaExtras = [
-  {
-    id: 7,
-    title: "Transhipment",
-    description:
-      "GC’s dedicated transhipment team manages end-to-end transfers through major hubs with tight control on dwell times. We handle both LCL and FCL, and execute seamless Sea↔Air and Air↔Sea routings with proactive coordination across carriers, terminals and customs—keeping your cargo moving without a hitch.",
-    icon: Container, // using existing icon set
-    image: "/transhipment.jpg", // put your actual asset path
-    slug: "transhipment",
-    delay: 200,
-  },
-  {
-    id: 8,
-    title: "Customs House Brokerage",
-    description:
-      "Our in-house brokerage provides fast, compliant customs clearance for exports and imports by sea or air. We take care of documentation, duty/tax assessment and multi-Incoterm shipments (EXW, FCA, FOB, CIF, DAP, DDU/DDP), delivering timely updates and smooth handoffs.",
-    icon: Truck,
-    image: "/customs-brokerage.jpg", // put your actual asset path
-    slug: "customs-clearance",
-    delay: 300,
-  },
-];
 
 const ServicesSection = () => {
   const location = useLocation();
