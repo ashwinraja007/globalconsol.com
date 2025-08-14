@@ -91,7 +91,7 @@ const sriLankaExtras = [
     description:
       "GC offers seamless transhipment solutions for both LCL (Less than Container Load) and FCL (Full Container Load) cargo.",
     icon: Container, // using existing icon set
-    image: "/transhipment.jpg", // put your actual asset path
+    image: "/transhipment.png", // put your actual asset path
     slug: "transhipment",
     delay: 200,
   },
@@ -101,7 +101,7 @@ const sriLankaExtras = [
     description:
       "Our Customs House Brokerage Division delivers fast, reliable, and compliant customs clearance services for both imports and exports.",
     icon: Truck,
-    image: "/customs-brokerage.jpg", // put your actual asset path
+    image: "/customhousebrokerage.png", // put your actual asset path
     slug: "customs-clearance",
     delay: 300,
   },
