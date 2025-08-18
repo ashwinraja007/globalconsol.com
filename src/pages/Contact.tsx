@@ -35,7 +35,7 @@ const Contact: React.FC = () => {
     "SRI LANKA": ["https://formsubmit.co/ajax/info.cmb@globalconsol.com"],
     "MYANMAR": ["https://formsubmit.co/ajax/info@globalconsol.com"],
     "BANGLADESH": ["https://formsubmit.co/ajax/info@globalconsol.com"],
-    "PAKISTAN": ["https://formsubmit.co/ajax/info@globalconsol.com"],
+    "PAKISTAN": ["https://formsubmit.co/ajax/info.pk@globalconsol.com"],
     "DEFAULT": [
       "https://formsubmit.co/ajax/info.sg@globalconsol.com"
     ]
