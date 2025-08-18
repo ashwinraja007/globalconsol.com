@@ -39,14 +39,14 @@ const allOffices = {
       address:
         "Suite No.301, 3rd Floor, Fortune Center, Shahrah-e-Faisal, Block 6, PECHS, Karachi, Pakistan.",
       phones: ["+92-300-8282511", "+92-21-34302281-5"],
-      emails: ["khalid.pk@globalconsol.com"],
+      emails: ["info.pk@globalconsol.com"],
     },
     {
       name: "Lahore",
       address:
         "Office # 301, 3rd Floor, Gulberg Arcade Main Market, Gulberg 2, Lahore, Pakistan.",
       phones: ["+92 42-35782306", "+92 42-35782307", "+92 42-35782308"],
-      emails: ["shazia.pklhe@globalconsol.com"],
+      emails: ["info.pk@globalconsol.com"],
     },
   ],
   Myanmar: [
@@ -76,7 +76,7 @@ const locationOptions = Object.keys(allOffices) as CountryKey[];
 const countryRecipients: Record<CountryKey, string[]> = {
   Singapore: ["info.sg@globalconsol.com"],
   "Sri Lanka": ["info.cmb@globalconsol.com"],
-  Pakistan: ["info@globalconsol.com"],
+  Pakistan: ["info.pk@globalconsol.com"],
   Myanmar: ["info@globalconsol.com"],
   Bangladesh: ["info@globalconsol.com"],
 };
