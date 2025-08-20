@@ -145,7 +145,7 @@ const AboutUs = () => {
                     <img
                       alt="Sri Lanka Brand Leadership Award 2024 - Certificate 2"
                       src="/Certificatesr.jpg"
-                      className="w-full max-h-[560px] object-contain rounded-2xl shadow-2xl ring-1 ring-black/5 bg-white"
+                      className="w-full max-h-[700px] object-contain rounded-2xl shadow-2xl ring-1 ring-black/5 bg-white"
                       loading="lazy"
                     />
                   </div>
