@@ -42,7 +42,7 @@ const Certification: React.FC<CertificationProps> = ({
                 alt={`Brand Leadership Award 2024 - Certificate ${i + 1}`}
                 loading="lazy"
                 className="
-                  w-full max-w-[400px] md:max-w-[500px]
+                  w-full max-w-[300px] md:max-w-[400px]
                   rounded-2xl shadow-2xl ring-1 ring-black/5
                   object-contain bg-white
                 "
@@ -73,7 +73,7 @@ const Certification: React.FC<CertificationProps> = ({
             <img
               src={isoLogoUrl}
               alt="ISO Certified"
-              className="h-40 w-auto sm:h-44 object-contain ring-4 ring-white shadow-lg"
+              className="h-35 w-auto sm:h-44 object-contain ring-4 ring-white shadow-lg"
               loading="lazy"
             />
           </div>
