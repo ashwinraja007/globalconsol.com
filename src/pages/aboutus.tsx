@@ -157,23 +157,26 @@ const AboutUs = () => {
         <div className="space-y-6">
           <h2 className="text-3xl font-bold text-kargon-blue">Certifications</h2>
           <p className="text-lg leading-relaxed text-gray-700">
-            Proud recipient of the <strong>Sri Lanka Brand Leadership Award 2024</strong> and certified to the
-            <strong> ISO 9001:2015</strong> standard, GC Sri Lanka has earned its place as one of the region’s most
-            trusted logistics partners. We deliver comprehensive freight forwarding and logistics solutions that
-            combine deep local expertise with an extensive global network, ensuring smooth and reliable operations for
-            diverse industries.
-          </p>
-          <p className="text-lg leading-relaxed text-gray-700">
-            Our operations are powered by state-of-the-art facilities, advanced technology, and a highly skilled team
-            dedicated to efficiency, security, and reliability. Every shipment we handle reflects our commitment to
-            innovation, excellence, and the trust our clients place in us.
-          </p>
+  Proud recipient of the <strong>Sri Lanka Brand Leadership Award 2024</strong> and certified to the
+  <strong> ISO 9001:2015</strong> standard by <strong>TÜV NORD CERT GmbH (Germany)</strong>, GC Sri Lanka has earned
+  its place as one of the region’s most trusted logistics partners. This internationally recognized certification,
+  accredited by <strong>DAkkS (Germany’s National Accreditation Body)</strong>, demonstrates our commitment to global
+  quality standards and continuous improvement. We deliver comprehensive freight forwarding and logistics solutions
+  that combine deep local expertise with an extensive global network, ensuring smooth and reliable operations for
+  diverse industries.
+</p>
+<p className="text-lg leading-relaxed text-gray-700">
+  Our operations are powered by state-of-the-art facilities, advanced technology, and a highly skilled team dedicated
+  to efficiency, security, and reliability. Every shipment we handle reflects our commitment to innovation, excellence,
+  and the trust our clients place in us. With ISO 9001:2015 certification, our clients are assured that every process
+  is managed under stringent international quality standards.
+</p>
 
           {/* ISO Image (made a little bigger) */}
           <div className="pt-4">
             <img
               alt="ISO 9001:2015 Certification"
-              src="/iso.jp"
+              src="/iso1.jpg"
               className="w-48 sm:w-56 lg:w-64 h-auto object-contain"
             />
           </div>
