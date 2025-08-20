@@ -145,7 +145,7 @@ const AboutUs = () => {
                     <img
                       alt="Sri Lanka Brand Leadership Award 2024 - Certificate 2"
                       src="/Certificatesr.jpg"
-                      className="w-full max-h-[700px] object-contain rounded-2xl shadow-2xl ring-1 ring-black/5 bg-white"
+                      className="w-full max-h-[720px] object-contain rounded-2xl shadow-2xl ring-1 ring-black/5 bg-white"
                       loading="lazy"
                     />
                   </div>
@@ -161,12 +161,6 @@ const AboutUs = () => {
                     has earned its place as one of the region’s most trusted logistics partners. This internationally
                     recognized certification, accredited by <strong>DAkkS (Germany’s National Accreditation Body)</strong>,
                     demonstrates our commitment to global quality standards and continuous improvement.
-                  </p>
-                  <p className="text-lg leading-relaxed text-gray-700">
-                    We deliver comprehensive freight forwarding and logistics solutions that combine deep local expertise with
-                    an extensive global network, ensuring smooth and reliable operations for diverse industries. Our operations
-                    are powered by state-of-the-art facilities, advanced technology, and a highly skilled team dedicated to
-                    efficiency, security, and reliability.
                   </p>
 
                   <ul className="list-disc marker:text-gc-gold pl-5 space-y-2 text-gray-800">
