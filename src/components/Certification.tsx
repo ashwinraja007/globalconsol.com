@@ -71,9 +71,9 @@ const Certification: React.FC<CertificationProps> = ({
               {/* ISO logo moved below the button and made bigger */}
               <div className="mt-8 flex justify-center lg:justify-start">
                 <img
-                  src={isoLogoUrl || "/iso.jp"}
+                  src={isoLogoUrl || "/iso1.jpg"}
                   alt="ISO Certified"
-                  className="h-28 w-28 sm:h-32 sm:w-32 lg:h-36 lg:w-36 rounded-full ring-4 ring-white shadow-lg object-cover"
+                  className="h-30 w-30 sm:h-32 sm:w-32 lg:h-36 lg:w-36  ring-4 ring-white shadow-lg object-cover"
                   loading="lazy"
                 />
               </div>
