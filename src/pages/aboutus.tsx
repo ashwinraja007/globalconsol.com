@@ -157,7 +157,11 @@ const AboutUs = () => {
         <div className="space-y-6">
           <h2 className="text-3xl font-bold text-kargon-blue">Certifications</h2>
           <p className="text-lg leading-relaxed text-gray-700">
-            Proud recipient of the <strong>Sri Lanka Brand Leadership Award 2024</strong>, GC Sri Lanka has earned its place as one of the region’s most trusted logistics partners. We deliver comprehensive freight forwarding and logistics solutions that combine deep local expertise with an extensive global network, ensuring smooth and reliable operations for diverse industries
+            Proud recipient of the <strong>Sri Lanka Brand Leadership Award 2024</strong> and certified to the
+            <strong> ISO 9001:2015</strong> standard, GC Sri Lanka has earned its place as one of the region’s most
+            trusted logistics partners. We deliver comprehensive freight forwarding and logistics solutions that
+            combine deep local expertise with an extensive global network, ensuring smooth and reliable operations for
+            diverse industries.
           </p>
           <p className="text-lg leading-relaxed text-gray-700">
             Our operations are powered by state-of-the-art facilities, advanced technology, and a highly skilled team
@@ -166,7 +170,13 @@ const AboutUs = () => {
           </p>
 
           {/* ISO Image (made a little bigger) */}
-          
+          <div className="pt-4">
+            <img
+              alt="ISO 9001:2015 Certification"
+              src="/iso.jp"
+              className="w-48 sm:w-56 lg:w-64 h-auto object-contain"
+            />
+          </div>
         </div>
       </motion.div>
     </div>
