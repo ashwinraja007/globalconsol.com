@@ -40,7 +40,7 @@ const Certification: React.FC<CertificationProps> = ({
                     w-full
                     rounded-2xl shadow-2xl ring-1 ring-black/5
                     object-contain bg-white
-                    max-h-[600px]
+                    max-h-[660px]
                   "
                 />
               ))}
