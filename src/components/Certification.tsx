@@ -58,7 +58,7 @@ const Certification: React.FC<CertificationProps> = ({
               <ul className="list-disc marker:text-gc-gold pl-5 space-y-3 mb-8 max-w-2xl mx-auto lg:mx-0 text-left">
                 <li>Industry recognition for <strong>Brand leadership</strong></li>
                 <li>Awarded on <strong>5th September 2024</strong> at Taj Samudra, Colombo</li>
-                <li>Backed by <strong>ISO-certified</strong> processes</li>
+                <li> We are proud to be <strong>ISO 9001</strong> certified by <strong>TÜV NORD CERT GmbH (Germany)</strong>.</li>
               </ul>
 
               <Link
@@ -73,7 +73,7 @@ const Certification: React.FC<CertificationProps> = ({
                 <img
                   src={isoLogoUrl || "/iso1.jpg"}
                   alt="ISO Certified"
-                  className="h-30 w-30 sm:h-32 sm:w-32 lg:h-36 lg:w-36  ring-4 ring-white shadow-lg object-cover"
+                  className="h-32 w-32 sm:h-32 sm:w-32 lg:h-36 lg:w-36  ring-4 ring-white shadow-lg object-cover"
                   loading="lazy"
                 />
               </div>
