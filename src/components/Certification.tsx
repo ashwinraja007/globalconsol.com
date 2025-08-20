@@ -3,7 +3,7 @@ import ScrollAnimation from "./ScrollAnimation";
 import { getCurrentCountryFromPath } from "@/services/countryDetection";
 
 type CertificationProps = {
-  certificateUrls?: string[];   // NEW: support multiple certificates
+  certificateUrls?: string[];   // pass two URLs; falls back to two /srilanka.jpg
   isoLogoUrl?: string;
 };
 
@@ -21,34 +21,56 @@ const Certification: React.FC<CertificationProps> = ({
     return `/${slug}${basePath}`;
   };
 
-  // Fallback: show two copies of srilanka.jpg if not provided
+  // Fallback to two copies of the Sri Lanka certificate
   const certs = (certificateUrls?.length ? certificateUrls : ["/srilanka.jpg", "/srilanka.jpg"]).slice(0, 2);
 
   return (
     <section className="bg-white py-12 md:py-20">
       <div className="container mx-auto px-4 md:px-6 max-w-7xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-10 lg:gap-y-0 lg:gap-x-6 xl:gap-x-10 items-start">
-          {/* LEFT: two certificates */}
-          <div className="order-1 lg:col-span-5 flex sm:justify-center lg:justify-start">
-            <div className="w-full mx-auto lg:mx-0">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-[560px]">
-                {certs.map((src, i) => (
-                  <img
-                    key={i}
-                    src={src}
-                    alt={`Brand Leadership Award 2024 - Certificate ${i + 1}`}
-                    loading="lazy"
-                    className="w-full h-auto object-contain rounded-xl shadow-lg border border-slate-200"
-                  />
-                ))}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-10 lg:gap-y-0 lg:gap-x-8 xl:gap-x-12 items-start">
+          {/* LEFT: Bigger, overlapped certificates */}
+          <div className="order-1 lg:col-span-6 xl:col-span-7 flex sm:justify-center lg:justify-start">
+            <div className="relative w-full max-w-[780px] mx-auto lg:mx-0">
+              {/* Subtle glow backdrop */}
+              <div
+                aria-hidden
+                className="hidden sm:block absolute -inset-10 -z-10 rounded-[40px] bg-gradient-to-tr from-emerald-100/70 via-yellow-50/60 to-transparent blur-3xl"
+              />
+
+              <div className="relative flex flex-col items-center sm:block">
+                {/* First certificate */}
+                <img
+                  src={certs[0]}
+                  alt="Brand Leadership Award 2024 - Certificate 1"
+                  loading="lazy"
+                  className="
+                    w-[92%] sm:w-[72%]
+                    rounded-2xl shadow-2xl ring-1 ring-black/5
+                    sm:absolute sm:left-0 sm:top-0 sm:rotate-[-1.5deg]
+                  "
+                />
+                {/* Second certificate */}
+                <img
+                  src={certs[1]}
+                  alt="Brand Leadership Award 2024 - Certificate 2"
+                  loading="lazy"
+                  className="
+                    w-[92%] sm:w-[72%]
+                    mt-4 sm:mt-0
+                    rounded-2xl shadow-2xl ring-1 ring-black/5
+                    sm:absolute sm:right-0 sm:bottom-0 sm:rotate-[1.75deg] sm:translate-x-2 sm:translate-y-2
+                  "
+                />
+                {/* Maintain height when overlapped */}
+                <div className="sm:pb-[56%]" />
               </div>
             </div>
           </div>
 
-          {/* RIGHT */}
-          <div className="order-2 lg:col-span-7 text-center lg:text-left">
+          {/* RIGHT: Copy + CTA + ISO */}
+          <div className="order-2 lg:col-span-6 xl:col-span-5 text-center lg:text-left">
             <ScrollAnimation>
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 mt-9">
+              <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900">
                 Recognized for Brand Leadership
               </h2>
               <div className="w-16 h-1 bg-gc-gold mt-3 mb-6 mx-auto lg:mx-0" />
@@ -74,12 +96,11 @@ const Certification: React.FC<CertificationProps> = ({
                 Explore Our Certifications
               </Link>
 
-              {/* ISO logo */}
               <div className="mt-8 flex justify-center lg:justify-start">
                 <img
                   src={isoLogoUrl || "/iso1.jpg"}
                   alt="ISO Certified"
-                  className="h-32 w-32 sm:h-32 sm:w-32 lg:h-36 lg:w-36 ring-4 ring-white shadow-lg object-cover"
+                  className="h-36 w-auto lg:h-40 ring-4 ring-white shadow-lg object-contain"
                   loading="lazy"
                 />
               </div>
