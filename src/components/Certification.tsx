@@ -58,6 +58,7 @@ const Certification: React.FC<CertificationProps> = ({
               <ul className="list-disc marker:text-gc-gold pl-5 space-y-3 mb-8 max-w-2xl mx-auto lg:mx-0 text-left">
                 <li>Industry recognition for <strong>Brand leadership</strong></li>
                 <li>Awarded on <strong>5th September 2024</strong> at Taj Samudra, Colombo</li>
+                <li>Backed by <strong>ISO-certified</strong> processes</li>
               </ul>
 
               <Link
@@ -68,7 +69,14 @@ const Certification: React.FC<CertificationProps> = ({
               </Link>
 
               {/* ISO logo moved below the button and made bigger */}
-              
+              <div className="mt-8 flex justify-center lg:justify-start">
+                <img
+                  src={isoLogoUrl || "/iso.jp"}
+                  alt="ISO Certified"
+                  className="h-28 w-28 sm:h-32 sm:w-32 lg:h-36 lg:w-36 rounded-full ring-4 ring-white shadow-lg object-cover"
+                  loading="lazy"
+                />
+              </div>
             </ScrollAnimation>
           </div>
         </div>
