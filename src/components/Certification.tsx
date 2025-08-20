@@ -8,7 +8,7 @@ type CertificationProps = {
 };
 
 const Certification: React.FC<CertificationProps> = ({
-  certificateUrls = ["/srilanka.jpg", "/srilanka.jpg"],
+  certificateUrls = ["/srilanka.jpg", "/Certificatesr.jpg"],
   isoLogoUrl = "/iso1.jpg",
 }) => {
   const location = useLocation();
@@ -42,7 +42,7 @@ const Certification: React.FC<CertificationProps> = ({
                 alt={`Brand Leadership Award 2024 - Certificate ${i + 1}`}
                 loading="lazy"
                 className="
-                  w-full max-w-[420px] md:max-w-[520px]
+                  w-full max-w-[400px] md:max-w-[500px]
                   rounded-2xl shadow-2xl ring-1 ring-black/5
                   object-contain bg-white
                 "
@@ -67,6 +67,16 @@ const Certification: React.FC<CertificationProps> = ({
                 <strong>TÜV NORD CERT GmbH (Germany)</strong>.
               </li>
             </ul>
+             
+            {/* Logo (centered) */}
+          <div className="mt-8 flex justify-center">
+            <img
+              src={isoLogoUrl}
+              alt="ISO Certified"
+              className="h-40 w-auto sm:h-44 object-contain ring-4 ring-white shadow-lg"
+              loading="lazy"
+            />
+          </div>
 
             <div className="mt-6 flex justify-center">
               <Link
@@ -78,15 +88,7 @@ const Certification: React.FC<CertificationProps> = ({
             </div>
           </div>
 
-          {/* Logo (centered) */}
-          <div className="mt-8 flex justify-center">
-            <img
-              src={isoLogoUrl}
-              alt="ISO Certified"
-              className="h-40 w-auto sm:h-44 object-contain ring-4 ring-white shadow-lg"
-              loading="lazy"
-            />
-          </div>
+          
         </ScrollAnimation>
       </div>
     </section>
