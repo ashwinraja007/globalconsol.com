@@ -345,7 +345,7 @@ const HeroSection = ({
                 <button onClick={() => setIsCustomerPortalOpen(false)} className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition-colors font-medium order-2 sm:order-1">
                   Close
                 </button>
-                <a href="https://cp.onlinetracking.co/#/login/1" target="_blank" rel="noopener noreferrer" className="order-1 sm:order-2">
+                <a href="https://consolmate.com/auth/login/1" target="_blank" rel="noopener noreferrer" className="order-1 sm:order-2">
                   <button className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white rounded-lg font-medium flex items-center gap-2 justify-center transition-all duration-300 shadow-lg hover:shadow-xl">
                     <span>Login to Portal</span>
                     <ArrowRight className="w-4 h-4" />
