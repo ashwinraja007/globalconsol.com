@@ -135,7 +135,7 @@ const HeroSection = ({
   const sliderImages = country ? countryContent[country].images : defaultImages;
   const portalLinks = [{
     icon: <Users className="w-4 h-4" />,
-    title: "Customer Portal",
+    title: "Consolmate",
     onClick: () => setIsCustomerPortalOpen(true),
     color: "from-blue-500 to-blue-700",
     hoverColor: "from-blue-600 to-blue-800"
