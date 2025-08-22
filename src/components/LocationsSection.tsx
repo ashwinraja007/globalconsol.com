@@ -21,7 +21,7 @@ const allLocations: LocationsData = {
     Singapore: {
       map: "https://www.google.com/maps/d/u/0/embed?mid=1U_72YwJ_4E6SQSrx2E6eWegoUTQesgo&ehbc=2E312F&noprof=1",
       address: "Blk 511 Kampong Bahru Road, #03-01 Keppel Distripark, Singapore 099447",
-      phone: "+65 6224 1338 / +65 6224 1336",
+      phone: "++65 69080838 / +65 96272211",
     },
   },
   "Sri Lanka": {
