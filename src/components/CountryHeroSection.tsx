@@ -136,7 +136,8 @@ const HeroSection = ({
   const portalLinks = [{
     icon: <Users className="w-4 h-4" />,
     title: "Consolmate",
-    onClick: () => setIsCustomerPortalOpen(true),
+    url: "https://consolmate.com/auth/login/1",
+    external: true,
     color: "from-blue-500 to-blue-700",
     hoverColor: "from-blue-600 to-blue-800"
   }, {
