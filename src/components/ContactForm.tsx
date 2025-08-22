@@ -20,7 +20,7 @@ const allOffices = {
     {
       name: "Headquarters",
       address: "Blk 511 Kampong Bahru Road, #03-01 Keppel Distripark, Singapore 099447",
-      phones: ["+65 69080838", "+65 96272211"],
+      phones: ["+ 65 69084188"],
       emails: ["info.sg@globalconsol.com"],
     },
   ],
