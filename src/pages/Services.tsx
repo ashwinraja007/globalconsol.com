@@ -5,14 +5,11 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Truck, Plane, Ship, Box, Container, Cuboid } from "lucide-react";
 
-// Scroll to top on route change
+/* -------------------- Scroll to top on route change -------------------- */
 const ScrollToTop: React.FC = () => {
   const { pathname } = useLocation();
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pathname]);
   return null;
 };
@@ -30,6 +27,7 @@ interface ServiceCardProps extends Service {
   baseUrl: string;
 }
 
+/* -------------------- Service Card -------------------- */
 const ServiceCard: React.FC<ServiceCardProps> = ({
   title,
   description,
@@ -39,6 +37,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   baseUrl,
 }) => {
   const url = slug === "services" ? baseUrl : `${baseUrl}/${slug}`;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -47,19 +46,26 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       viewport={{ once: true }}
       className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group grid grid-cols-1 md:grid-cols-2"
     >
-      <div className="w-full h-48 md:h-64">
-        <img
-          src={image}
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-        />
+      {/* Image: consistent aspect ratio, smooth hover */}
+      <div className="w-full">
+        <div className="relative overflow-hidden aspect-[16/9] md:aspect-[4/3]">
+          <img
+            src={image}
+            alt={title}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            loading="lazy"
+          />
+        </div>
       </div>
+
+      {/* Content */}
       <div className="p-6 flex flex-col justify-center bg-gradient-to-br from-gc-light-gold/10 to-gc-gold/5 bg-stone-200">
         <div className="bg-blue-200 text-gc-dark-blue p-2 rounded-full inline-block mb-2 w-fit">
           <Icon className="w-5 h-5" />
         </div>
         <h3 className="text-xl font-semibold text-gc-dark-blue mb-3">{title}</h3>
         <p className="text-gray-600 text-sm mb-4 line-clamp-4">{description}</p>
+
         <Link
           to={url}
           className="text-gc-blue font-medium hover:text-gc-dark-blue inline-flex items-center text-sm transition-colors duration-300"
@@ -71,12 +77,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
             stroke="currentColor"
             viewBox="0 0 24 24"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </Link>
       </div>
@@ -84,7 +85,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   );
 };
 
-// Utility: Get country name from URL slug
+/* -------------------- Country from path -------------------- */
 const getCurrentCountryFromPath = (pathname: string) => {
   const segments = pathname.split("/").filter(Boolean);
   const countrySlug = segments[0]?.toLowerCase();
@@ -99,6 +100,7 @@ const getCurrentCountryFromPath = (pathname: string) => {
   return map[countrySlug] || "Singapore";
 };
 
+/* -------------------- Page -------------------- */
 const Services: React.FC = () => {
   const location = useLocation();
   const countryName = getCurrentCountryFromPath(location.pathname);
@@ -167,7 +169,6 @@ const Services: React.FC = () => {
     },
   ];
 
-  // Sri Lanka–specific services
   const sriLankaExtras: Service[] = [
     {
       id: 7,
@@ -189,50 +190,53 @@ const Services: React.FC = () => {
     },
   ];
 
-  // Append Sri Lanka extras only if country is Sri Lanka
   const displayedServices =
-    countryName === "Sri Lanka"
-      ? [...allServices, ...sriLankaExtras]
-      : allServices;
+    countryName === "Sri Lanka" ? [...allServices, ...sriLankaExtras] : allServices;
 
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <ScrollToTop />
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-gc-dark-blue via-gc-blue to-gc-dark-blue text-white relative overflow-hidden">
+      {/* Hero Section
+          - Added top padding to clear any fixed header
+          - Responsive vertical padding
+          - Responsive heading & paragraph sizes
+          - Min height on small screens to avoid clipping
+      */}
+      <section className="relative overflow-hidden text-white bg-gradient-to-r from-gc-dark-blue via-gc-blue to-gc-dark-blue">
+        {/* Background image + overlay */}
         <div className="absolute inset-0 z-0">
           <img
             src="/lovable-uploads/gp.jpg"
             alt="Services"
             className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-gc-dark-blue/90 to-gc-blue/90 " />
+          <div className="absolute inset-0 bg-gradient-to-r from-gc-dark-blue/90 to-gc-blue/90" />
         </div>
-        <div className="container mx-auto px-4 py-16 relative z-10">
+
+        <div className="container mx-auto px-4 pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-24 relative z-10 min-h-[46vh]">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white mt-7">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
               Our Logistics Services
             </h1>
-            <div className="w-20 h-1 bg-gc-gold mx-auto mb-6"></div>
-            <p className="text-xl text-white/90 leading-relaxed">
-              Comprehensive end-to-end global logistics solutions tailored to
-              your business needs
+            <div className="w-20 h-1 bg-gc-gold mx-auto mb-6" />
+            <p className="text-base sm:text-lg md:text-xl text-white/90 leading-relaxed">
+              Comprehensive end-to-end global logistics solutions tailored to your business needs
             </p>
           </motion.div>
         </div>
       </section>
 
       {/* Services Grid */}
-      <section className="py-20 bg-gradient-to-b from-white to-gc-light-gold/10">
+      <section className="py-16 sm:py-20 bg-gradient-to-b from-white to-gc-light-gold/10">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             {displayedServices.map((service) => (
               <ServiceCard key={service.id} {...service} baseUrl={baseUrl} />
             ))}
