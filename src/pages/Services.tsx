@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Navigation from "@/components/Navigation";
@@ -13,6 +13,42 @@ const ScrollToTop: React.FC = () => {
   }, [pathname]);
   return null;
 };
+
+/* -------------------- Hook: measure fixed header height -------------------- */
+function useHeaderOffset() {
+  const [offset, setOffset] = useState(96); // sensible default
+
+  useLayoutEffect(() => {
+    const selectHeader = () =>
+      (document.querySelector("#site-header") ||
+        document.querySelector("[data-nav-root]") ||
+        document.querySelector("header")) as HTMLElement | null;
+
+    const measure = () => {
+      const el = selectHeader();
+      if (el) setOffset(el.offsetHeight);
+    };
+
+    // measure now and on resize
+    requestAnimationFrame(measure);
+    window.addEventListener("resize", measure);
+
+    // also observe header size changes (mobile menu open/close)
+    const el = selectHeader();
+    let ro: ResizeObserver | null = null;
+    if (el && "ResizeObserver" in window) {
+      ro = new ResizeObserver(measure);
+      ro.observe(el);
+    }
+
+    return () => {
+      window.removeEventListener("resize", measure);
+      if (ro && el) ro.unobserve(el);
+    };
+  }, []);
+
+  return offset;
+}
 
 interface Service {
   id: number;
@@ -46,7 +82,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       viewport={{ once: true }}
       className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group grid grid-cols-1 md:grid-cols-2"
     >
-      {/* Image: consistent aspect ratio, smooth hover */}
+      {/* Image: consistent aspect ratio */}
       <div className="w-full">
         <div className="relative overflow-hidden aspect-[16/9] md:aspect-[4/3]">
           <img
@@ -103,6 +139,7 @@ const getCurrentCountryFromPath = (pathname: string) => {
 /* -------------------- Page -------------------- */
 const Services: React.FC = () => {
   const location = useLocation();
+  const headerOffset = useHeaderOffset(); // <— dynamic header height
   const countryName = getCurrentCountryFromPath(location.pathname);
 
   // Base URL for links
@@ -196,14 +233,10 @@ const Services: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <ScrollToTop />
+      {/* Ensure your Navigation root has id="site-header" or data-nav-root for best results */}
       <Navigation />
 
-      {/* Hero Section
-          - Added top padding to clear any fixed header
-          - Responsive vertical padding
-          - Responsive heading & paragraph sizes
-          - Min height on small screens to avoid clipping
-      */}
+      {/* Hero Section (uses dynamic padding-top = header height + spacing) */}
       <section className="relative overflow-hidden text-white bg-gradient-to-r from-gc-dark-blue via-gc-blue to-gc-dark-blue">
         {/* Background image + overlay */}
         <div className="absolute inset-0 z-0">
@@ -215,7 +248,10 @@ const Services: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-r from-gc-dark-blue/90 to-gc-blue/90" />
         </div>
 
-        <div className="container mx-auto px-4 pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-24 relative z-10 min-h-[46vh]">
+        <div
+          className="container mx-auto px-4 pb-16 sm:pb-20 md:pb-24 relative z-10 min-h-[46vh]"
+          style={{ paddingTop: headerOffset + 24 }} // 24px extra breathing room
+        >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
