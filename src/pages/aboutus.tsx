@@ -165,8 +165,6 @@ const AboutUs = () => {
 
                   <ul className="list-disc marker:text-gc-gold pl-5 space-y-2 text-gray-800">
                     <li>Industry recognition for <strong>Brand leadership</strong></li>
-                    <li>Awarded on <strong>5th September 2024</strong> at Taj Samudra, Colombo</li>
-                    <li>
                       ISO 9001:2015 certified by <strong>TÜV NORD CERT GmbH (Germany)</strong>, accredited by
                       <strong> DAkkS</strong>
                     </li>
