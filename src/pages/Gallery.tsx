@@ -15,7 +15,7 @@ interface GalleryImage {
   label: string | null;
   image_url: string;
   image_path: string;
-  folder: string | null;       // NEW: preferred grouping source
+  folder: string | null;       // preferred grouping source
   created_at: string;
 }
 
@@ -27,6 +27,15 @@ const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [selectedFolder, setSelectedFolder] = useState<string | null>(null);
   const { toast } = useToast();
+
+  // ---- Helper: display-only folder name (hide "-" and "_" + Title Case)
+  const formatFolderName = (name?: string | null) => {
+    const cleaned = (name ?? "")
+      .replace(/[-_]+/g, " ")     // replace hyphens/underscores with space
+      .replace(/\s+/g, " ")       // collapse multiple spaces
+      .trim();
+    return cleaned.replace(/\b\w/g, (c) => c.toUpperCase()); // Title Case
+  };
 
   // --- Country helpers ---
   const getCurrentCountry = () => {
@@ -178,11 +187,13 @@ const Gallery = () => {
                           type="button"
                           onClick={() => setSelectedFolder(folder)}
                           className="w-full bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer text-left"
+                          aria-label={`Open folder ${formatFolderName(folder)}`}
+                          title={formatFolderName(folder)}
                         >
                           <div className="aspect-square overflow-hidden">
                             <motion.img
                               src={folderImages[0].image_url}
-                              alt={folder}
+                              alt={formatFolderName(folder)}
                               className="w-full h-full object-cover"
                               draggable={false}
                               whileHover={{ scale: 1.05 }}
@@ -195,7 +206,7 @@ const Gallery = () => {
                           </div>
                           <div className="p-4">
                             <h3 className="font-semibold text-gray-900 mb-2 line-clamp-1">
-                              {folder}
+                              {formatFolderName(folder)}
                             </h3>
                             <p className="text-sm text-gray-600">
                               {folderImages.length} image
@@ -217,7 +228,7 @@ const Gallery = () => {
                     ← Back to folders
                   </button>
                   <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                    {selectedFolder}
+                    {formatFolderName(selectedFolder ?? "")}
                   </h2>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -229,11 +240,11 @@ const Gallery = () => {
                         transition={{ duration: 0.5, delay: index * 0.06 }}
                         className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-shadow duration-300 cursor-pointer"
                         onClick={(e) => {
-                          // Prevent any accidental navigation
                           e.preventDefault();
                           e.stopPropagation();
                           setSelectedImage(image);
                         }}
+                        title={image.title}
                       >
                         <div className="aspect-square overflow-hidden">
                           <motion.img
@@ -281,6 +292,8 @@ const Gallery = () => {
               type="button"
               onClick={() => setSelectedImage(null)}
               className="absolute top-4 right-4 text-white hover:text-gray-300 text-2xl font-bold z-10"
+              aria-label="Close image"
+              title="Close"
             >
               ×
             </button>
