@@ -59,14 +59,28 @@ const countries = [
 const slugify = (s: string) =>
   s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
+/** Folder normalizer that preserves Uppercase/lowercase, numbers, spaces, and most special chars.
+ * - Trims leading/trailing slashes & whitespace
+ * - Converts backslashes to forward slashes
+ * - Collapses duplicate slashes
+ * - Removes control characters
+ * - Blocks "." and ".." traversal segments
+ * - Preserves case and characters like (),&,@,#,+,.,_,-,~, spaces, etc.
+ */
 function slugifyFolder(input: string): string {
-  // Trim slashes; allow nested folders; sanitize parts
+  // Trim and strip surrounding slashes
   let s = input.trim().replace(/^\/+|\/+$/g, "");
-  return s
-    .split("/")
-    .map((p) => p.toLowerCase().replace(/[^a-z0-9-_]+/g, "-").replace(/^-+|-+$/g, ""))
-    .filter(Boolean)
-    .join("/");
+
+  // Normalize separators and collapse dupes
+  s = s.replace(/\\/g, "/").replace(/\/{2,}/g, "/");
+
+  // Remove control characters
+  s = s.replace(/[\u0000-\u001F\u007F]/g, "");
+
+  // Remove path traversal segments and empties
+  const parts = s.split("/").filter((p) => p !== "" && p !== "." && p !== "..");
+
+  return parts.join("/");
 }
 
 const BlogEditor = () => {
@@ -421,6 +435,7 @@ const BlogEditor = () => {
       return;
     }
 
+    // UPDATED: allow full character set via slugifyFolder normalizer
     let folderSafe = galleryUploadForm.folder ? slugifyFolder(galleryUploadForm.folder) : "";
     if (hasMultiple && !folderSafe) {
       toast({
@@ -859,7 +874,7 @@ const BlogEditor = () => {
               <Input
                 value={galleryUploadForm.folder}
                 onChange={(e) => setGalleryUploadForm({ ...galleryUploadForm, folder: e.target.value })}
-                placeholder="e.g., events/2025-q1"
+                placeholder="e.g., events/2025-Q1 or RAW+EDITS (will be kept as typed)"
               />
               <p className="text-xs text-gray-500 mt-1">All selected photos will be saved inside this folder.</p>
             </div>
@@ -911,7 +926,7 @@ const BlogEditor = () => {
           ) : selectedFolder === null ? (
             // Folder grid
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {Object.entries(groupedByFolder).map(([folder, folderImages], index) => (
+              {Object.entries(groupedByFolder).map(([folder, folderImages]) => (
                 <div key={folder}>
                   <button
                     type="button"
@@ -947,7 +962,7 @@ const BlogEditor = () => {
               <h3 className="text-xl font-semibold mb-4">{selectedFolder}</h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                {(groupedByFolder[selectedFolder] || []).map((image, index) => (
+                {(groupedByFolder[selectedFolder] || []).map((image) => (
                   <div
                     key={image.id}
                     className="bg-white rounded-lg border overflow-hidden hover:shadow-lg cursor-pointer"
