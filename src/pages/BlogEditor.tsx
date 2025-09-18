@@ -59,28 +59,18 @@ const countries = [
 const slugify = (s: string) =>
   s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
-/** Folder normalizer that preserves Uppercase/lowercase, numbers, spaces, and most special chars.
- * - Trims leading/trailing slashes & whitespace
- * - Converts backslashes to forward slashes
- * - Collapses duplicate slashes
- * - Removes control characters
- * - Blocks "." and ".." traversal segments
- * - Preserves case and characters like (),&,@,#,+,.,_,-,~, spaces, etc.
- */
+/** Folder normalizer (preserves case & most special chars) */
 function slugifyFolder(input: string): string {
-  // Trim and strip surrounding slashes
   let s = input.trim().replace(/^\/+|\/+$/g, "");
-
-  // Normalize separators and collapse dupes
   s = s.replace(/\\/g, "/").replace(/\/{2,}/g, "/");
-
-  // Remove control characters
   s = s.replace(/[\u0000-\u001F\u007F]/g, "");
-
-  // Remove path traversal segments and empties
   const parts = s.split("/").filter((p) => p !== "" && p !== "." && p !== "..");
-
   return parts.join("/");
+}
+
+/** UI-only: keep hyphens visible by using non-breaking hyphen (U+2011). */
+function formatFolderForDisplay(folder: string) {
+  return folder.replace(/-/g, "\u2011");
 }
 
 const BlogEditor = () => {
@@ -114,11 +104,9 @@ const BlogEditor = () => {
   const [loadingGallery, setLoadingGallery] = useState(false);
   const [uploadLoading, setUploadLoading] = useState(false);
 
-  // Drill-in UI
   const [selectedFolder, setSelectedFolder] = useState<string | null>(null);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
 
-  // Gallery upload form (multi-file + folder)
   const [galleryUploadForm, setGalleryUploadForm] = useState({
     title: "",
     description: "",
@@ -128,7 +116,6 @@ const BlogEditor = () => {
     files: [] as File[],
   });
 
-  // Gallery edit modal
   const [editingImage, setEditingImage] = useState<GalleryImage | null>(null);
   const [galleryEditForm, setGalleryEditForm] = useState({
     title: "",
@@ -136,7 +123,7 @@ const BlogEditor = () => {
     label: "",
   });
 
-  // Link dialog state
+  // Link dialog
   const [showLinkDialog, setShowLinkDialog] = useState(false);
   const [linkUrl, setLinkUrl] = useState('');
   const [linkText, setLinkText] = useState('');
@@ -150,14 +137,12 @@ const BlogEditor = () => {
     } else {
       navigate("/admin-login");
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigate]);
 
   useEffect(() => {
     if (activeView === "gallery" && isLoggedIn) {
       fetchGalleryImages();
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeView, selectedCountry, isLoggedIn]);
 
   const handleLogout = () => {
@@ -184,12 +169,10 @@ const BlogEditor = () => {
     }
   };
 
-  const generateSlug = (value: string) => slugify(value);
-
   const handleTitleChange = (value: string) => {
     setTitle(value);
     if (!editingId) {
-      const generatedSlug = generateSlug(value);
+      const generatedSlug = slugify(value);
       setSlug(generatedSlug);
       if (!metaTitle) setMetaTitle(value);
     }
@@ -435,7 +418,6 @@ const BlogEditor = () => {
       return;
     }
 
-    // UPDATED: allow full character set via slugifyFolder normalizer
     let folderSafe = galleryUploadForm.folder ? slugifyFolder(galleryUploadForm.folder) : "";
     if (hasMultiple && !folderSafe) {
       toast({
@@ -479,7 +461,6 @@ const BlogEditor = () => {
 
         if (dbError) throw dbError;
 
-        // small delay to preserve order visually
         await new Promise(r => setTimeout(r, 10));
       }
 
@@ -490,7 +471,6 @@ const BlogEditor = () => {
           : "Photo uploaded.",
       });
 
-      // reset form (keep chosen country)
       setGalleryUploadForm({
         title: "",
         description: "",
@@ -874,7 +854,7 @@ const BlogEditor = () => {
               <Input
                 value={galleryUploadForm.folder}
                 onChange={(e) => setGalleryUploadForm({ ...galleryUploadForm, folder: e.target.value })}
-                placeholder="e.g., events/2025-Q1 or RAW+EDITS (will be kept as typed)"
+                placeholder="e.g., events/2025-Q1 or RAW+EDITS"
               />
               <p className="text-xs text-gray-500 mt-1">All selected photos will be saved inside this folder.</p>
             </div>
@@ -943,7 +923,9 @@ const BlogEditor = () => {
                       />
                     </div>
                     <div className="p-4">
-                      <h3 className="font-semibold line-clamp-1">{folder}</h3>
+                      <h3 className="font-semibold line-clamp-1 break-words">
+                        {formatFolderForDisplay(folder)}
+                      </h3>
                       <p className="text-sm text-gray-600">{folderImages.length} image{folderImages.length !== 1 ? "s" : ""}</p>
                     </div>
                   </button>
@@ -959,7 +941,9 @@ const BlogEditor = () => {
               >
                 ← Back to folders
               </button>
-              <h3 className="text-xl font-semibold mb-4">{selectedFolder}</h3>
+              <h3 className="text-xl font-semibold mb-4 break-words">
+                {formatFolderForDisplay(selectedFolder)}
+              </h3>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {(groupedByFolder[selectedFolder] || []).map((image) => (
@@ -1089,7 +1073,6 @@ const BlogEditor = () => {
     <div className="min-h-screen bg-gray-50">
       <Navigation />
 
-      {/* Add padding top to account for fixed navigation */}
       <div className="pt-32">
         <div className="bg-white shadow-sm border-b">
           <div className="container mx-auto px-4 py-4">
