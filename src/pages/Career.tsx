@@ -139,7 +139,7 @@ const Career = () => {
               <Button className="bg-gc-gold hover:bg-gc-bronze text-white px-8 py-3">
                 Contact HR Team
               </Button>
-              <Button variant="outline" className="border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3">
+              <Button variant="outline" className="border-white text-black hover:bg-white hover:text-gray-900 px-8 py-3">
                 Learn More About Us
               </Button>
             </div>
