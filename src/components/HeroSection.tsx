@@ -12,7 +12,7 @@ const HeroSection = () => {
   const sliderImages = [{
     url: "/h1.png",
     title: "GLOBAL CONSOL",
-    description: "Global Consolidators (GC) is a Singapore-based NVOCC offering LCL consolidation services worldwide.",
+    description: "Global Consolidators (GC) is a Singapore-based global freight forwarding and logistics solutions provider.",
     gradient: ""
   }, {
     url: "/h2.png",
