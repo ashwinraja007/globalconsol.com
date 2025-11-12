@@ -87,7 +87,7 @@ const Navigation = () => {
             <div className="h-6 sm:h-8 w-px bg-gray-500 hidden sm:block" />
             {/* ✅ 1 Global Enterprises logo clickable */}
             <a
-              href="https://www.ggl.sg/"
+              href="https://www.1ge.sg/"
               target="_blank"
               rel="noopener noreferrer"
             >
