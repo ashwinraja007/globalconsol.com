@@ -43,16 +43,32 @@ const Navigation = () => {
       <div className="bg-[#c99e65] text-white text-xs sm:text-sm py-1 px-2 sm:px-4 flex justify-between sm:justify-end items-center gap-2 sm:gap-3">
         <span className="hidden sm:block">Stay connected</span>
         <div className="flex items-center gap-2 sm:gap-3">
-          <a href="https://www.facebook.com/globalconsol/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.facebook.com/globalconsol/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaFacebookF className="text-xs sm:text-sm hover:text-white/80" />
           </a>
-          <a href="https://x.com/globalconsol/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://x.com/globalconsol/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaTwitter className="text-xs sm:text-sm hover:text-white/80" />
           </a>
-          <a href="https://www.linkedin.com/company/global-consolidators/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.linkedin.com/company/global-consolidators/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaLinkedinIn className="text-xs sm:text-sm hover:text-white/80" />
           </a>
-          <a href="https://www.instagram.com/globalconsolidators/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://www.instagram.com/globalconsolidators/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FaInstagram className="text-xs sm:text-sm hover:text-white/80" />
           </a>
         </div>
@@ -63,13 +79,24 @@ const Navigation = () => {
         <div className="flex justify-between items-center">
           {/* Logos */}
           <div className="flex items-center gap-2 sm:gap-4">
-            <img src="/logo.png" alt="GGL Logo" className="h-12 sm:h-16 lg:h-20 w-auto object-contain" />
-            <div className="h-6 sm:h-8 w-px bg-gray-500 hidden sm:block" />
             <img
-              src="/lovable-uploads/a2513c1d-2708-4143-a69b-fa65a1d4d1f2.png"
-              alt="1 Global Enterprises Logo"
-              className="hidden sm:block h-8 sm:h-10 lg:h-11 w-auto object-contain"
+              src="/logo.png"
+              alt="GGL Logo"
+              className="h-12 sm:h-16 lg:h-20 w-auto object-contain"
             />
+            <div className="h-6 sm:h-8 w-px bg-gray-500 hidden sm:block" />
+            {/* ✅ 1 Global Enterprises logo clickable */}
+            <a
+              href="https://www.ggl.sg/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="/lovable-uploads/a2513c1d-2708-4143-a69b-fa65a1d4d1f2.png"
+                alt="1 Global Enterprises Logo"
+                className="hidden sm:block h-8 sm:h-10 lg:h-11 w-auto object-contain hover:opacity-90 transition-opacity"
+              />
+            </a>
           </div>
 
           {/* Desktop Navigation */}
@@ -77,7 +104,8 @@ const Navigation = () => {
             <Link
               to={getNavLink("/home")}
               className={`nav-link font-medium hover:text-gc-gold text-sm xl:text-base ${
-                isActive(getNavLink("/home")) || (currentCountry.code === "SG" && isActive("/"))
+                isActive(getNavLink("/home")) ||
+                (currentCountry.code === "SG" && isActive("/"))
                   ? "text-gc-gold"
                   : "text-black"
               }`}
@@ -86,7 +114,10 @@ const Navigation = () => {
             </Link>
 
             {/* Info Dropdown */}
-            <DropdownMenu open={isCompanyDropdownOpen} onOpenChange={setIsCompanyDropdownOpen}>
+            <DropdownMenu
+              open={isCompanyDropdownOpen}
+              onOpenChange={setIsCompanyDropdownOpen}
+            >
               <DropdownMenuTrigger
                 className={`nav-link font-medium hover:text-gc-gold text-sm xl:text-base flex items-center gap-1 ${
                   isCompanyLinkActive() ? "text-gc-gold" : "text-black"
@@ -96,17 +127,26 @@ const Navigation = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent className="bg-white shadow-lg border rounded-md p-2 z-50">
                 <DropdownMenuItem asChild>
-                  <Link to={getNavLink("/about-us")} className="w-full px-3 py-2 text-sm hover:bg-gray-100 rounded-md block">
+                  <Link
+                    to={getNavLink("/about-us")}
+                    className="w-full px-3 py-2 text-sm hover:bg-gray-100 rounded-md block"
+                  >
                     About Us
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to={getNavLink("/gallery")} className="w-full px-3 py-2 text-sm hover:bg-gray-100 rounded-md block">
+                  <Link
+                    to={getNavLink("/gallery")}
+                    className="w-full px-3 py-2 text-sm hover:bg-gray-100 rounded-md block"
+                  >
                     Gallery
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
-                  <Link to={getNavLink("/career")} className="w-full px-3 py-2 text-sm hover:bg-gray-100 rounded-md block">
+                  <Link
+                    to={getNavLink("/career")}
+                    className="w-full px-3 py-2 text-sm hover:bg-gray-100 rounded-md block"
+                  >
                     Career
                   </Link>
                 </DropdownMenuItem>
@@ -116,7 +156,9 @@ const Navigation = () => {
             <Link
               to={getNavLink("/services")}
               className={`nav-link font-medium hover:text-gc-gold text-sm xl:text-base ${
-                isActive(getNavLink("/services")) ? "text-gc-gold" : "text-black"
+                isActive(getNavLink("/services"))
+                  ? "text-gc-gold"
+                  : "text-black"
               }`}
             >
               Services
@@ -125,7 +167,10 @@ const Navigation = () => {
             <Link
               to={getNavLink("/blog")}
               className={`nav-link font-medium hover:text-gc-gold text-sm xl:text-base ${
-                isActive(getNavLink("/blog")) || isActive(getNavLink("/blogs")) ? "text-gc-gold" : "text-black"
+                isActive(getNavLink("/blog")) ||
+                isActive(getNavLink("/blogs"))
+                  ? "text-gc-gold"
+                  : "text-black"
               }`}
             >
               Blogs
@@ -134,7 +179,9 @@ const Navigation = () => {
             <Link
               to={getNavLink("/global-presence")}
               className={`nav-link font-medium text-black hover:text-kargon-red ${
-                isActive(getNavLink("/global-presence")) ? "text-kargon-red" : ""
+                isActive(getNavLink("/global-presence"))
+                  ? "text-kargon-red"
+                  : ""
               }`}
             >
               Global Presence
@@ -152,8 +199,15 @@ const Navigation = () => {
           </div>
 
           {/* Mobile Toggle */}
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="lg:hidden p-2">
-            {isMenuOpen ? <X className="text-black" size={20} /> : <Menu className="text-black" size={20} />}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden p-2"
+          >
+            {isMenuOpen ? (
+              <X className="text-black" size={20} />
+            ) : (
+              <Menu className="text-black" size={20} />
+            )}
           </button>
         </div>
       </div>
@@ -174,10 +228,20 @@ const Navigation = () => {
               ].map((item) => (
                 <Link
                   key={item.path}
-                  to={item.path === "/gallery" ? "/gallery" : getNavLink(item.path)}
+                  to={
+                    item.path === "/gallery"
+                      ? "/gallery"
+                      : getNavLink(item.path)
+                  }
                   className={`font-medium hover:text-gc-gold py-2 text-base ${
-                    isActive(item.path === "/gallery" ? "/gallery" : getNavLink(item.path)) ||
-                    (item.path === "/home" && currentCountry.code === "SG" && isActive("/"))
+                    isActive(
+                      item.path === "/gallery"
+                        ? "/gallery"
+                        : getNavLink(item.path)
+                    ) ||
+                    (item.path === "/home" &&
+                      currentCountry.code === "SG" &&
+                      isActive("/"))
                       ? "text-gc-gold"
                       : "text-black"
                   }`}
