@@ -47,12 +47,15 @@ const CountrySelector = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
+  const isMyanmarPath = location.pathname.startsWith("/myanmar");
+
   const currentCountry = getCurrentCountryFromPath(location.pathname);
   const currentCountryName = currentCountry.name?.toUpperCase();
 
-  // NEW: if URL has no country slug, force Singapore
   const hasCountryInUrl = /\/(sri-lanka|myanmar|bangladesh|pakistan)\b/i.test(location.pathname);
-  const resolvedCurrentCountryName = hasCountryInUrl ? (currentCountryName || "SINGAPORE") : "SINGAPORE";
+  const resolvedCurrentCountryName = hasCountryInUrl
+    ? (currentCountryName || "SINGAPORE")
+    : "SINGAPORE";
 
   useEffect(() => {
     const detect = async () => {
@@ -73,17 +76,23 @@ const CountrySelector = () => {
 
   const singaporeCountry = countries.find(c => c.country === "SINGAPORE")!;
 
-  // Display: prefer URL; if none, ALWAYS show Singapore (ignore IP here)
   const displayCountry =
     countries.find(c => c.country.toUpperCase() === resolvedCurrentCountryName) ||
     singaporeCountry;
 
-  // Menu list: hide the currently displayed country + respect visibility rules
   const availableCountries = countries.filter(c =>
     c.country.toUpperCase() !== resolvedCurrentCountryName &&
     (!c.visibilityByCountry || c.visibilityByCountry[resolvedCurrentCountryName] !== false)
   );
+
   const sortedCountries = [...availableCountries].sort((a, b) => a.priority - b.priority);
+
+  // ✅ Override company name for Myanmar path (title change)
+  const getCompanyName = (country: CountryData) => {
+    if (isMyanmarPath && country.country === "INDIA") return "GGL";
+    if (isMyanmarPath && country.country === "UAE") return "AMASS";
+    return country.company;
+  };
 
   const handleCountrySelect = (country: CountryData) => {
     localStorage.setItem("preferredCountry", JSON.stringify({
@@ -92,9 +101,26 @@ const CountrySelector = () => {
     }));
 
     const currentPath = location.pathname;
+
+    // ✅ Myanmar URL override
+    if (currentPath.startsWith("/myanmar")) {
+      if (country.country === "INDIA") {
+        window.location.href = "https://www.gglindia.com/";
+        return;
+      }
+
+      if (country.country === "UAE") {
+        window.location.href = "https://amassmiddleeast.com/";
+        return;
+      }
+    }
+
     let targetRoute = country.route;
 
-    const prefix = country.country === 'SINGAPORE' ? '' : `/${country.country.toLowerCase().replace(/\s+/g, '-')}`;
+    const prefix = country.country === 'SINGAPORE'
+      ? ''
+      : `/${country.country.toLowerCase().replace(/\s+/g, '-')}`;
+
     if (currentPath.includes('/about-us')) {
       targetRoute = `${prefix}/about-us`;
     } else if (currentPath.includes('/contact')) {
@@ -106,6 +132,7 @@ const CountrySelector = () => {
     } else {
       window.open(country.website, '_blank', 'noopener,noreferrer');
     }
+
     setIsOpen(false);
   };
 
@@ -174,7 +201,9 @@ const CountrySelector = () => {
                     </div>
                     <div className="ml-3 flex-1">
                       <div className="font-medium text-sm">{country.country}</div>
-                      <div className="text-xs text-gray-500">{country.company}</div>
+                      <div className="text-xs text-gray-500">
+                        {getCompanyName(country)}
+                      </div>
                     </div>
                   </motion.div>
                 </DropdownMenuItem>
