@@ -28,26 +28,30 @@ const countries: CountryData[] = [
   { country: "MYANMAR", company: "GC", website: "https://www.globalconsol.com", priority: 3, flag: "/mm.svg", route: "/myanmar/home" },
   { country: "BANGLADESH", company: "GC", website: "https://www.globalconsol.com", priority: 4, flag: "/bd.svg", route: "/bangladesh/home" },
   { country: "PAKISTAN", company: "GC", website: "https://www.globalconsol.com", priority: 5, flag: "/pk.svg", route: "/pakistan/home" },
-  { country: "MALAYSIA", company: "OECL", website: "https://oecl.sg/malaysia", priority: 6, flag: "/my.svg", visibilityByCountry: { BANGLADESH: false } },
-  { country: "INDONESIA", company: "OECL", website: "https://oecl.sg/indonesia", priority: 7, flag: "/id.svg", visibilityByCountry: { BANGLADESH: false } },
-  { country: "THAILAND", company: "OECL", website: "https://oecl.sg/thailand", priority: 8, flag: "/th.svg", visibilityByCountry: { BANGLADESH: false } },
+  { country: "MALAYSIA", company: "OECL", website: "https://oecl.sg/malaysia", priority: 6, flag: "/my.svg" },
+  { country: "INDONESIA", company: "OECL", website: "https://oecl.sg/indonesia", priority: 7, flag: "/id.svg" },
+  { country: "THAILAND", company: "OECL", website: "https://oecl.sg/thailand", priority: 8, flag: "/th.svg" },
   { country: "INDIA", company: "OECL", website: "https://oecl.sg/india", priority: 8, flag: "/in.svg" },
   { country: "CHINA", company: "Haixun", website: "https://www.haixun.co/", priority: 9, flag: "/cn.svg" },
   { country: "AUSTRALIA", company: "GGL", website: "https://www.gglaustralia.com/", priority: 10, flag: "/au.svg" },
   { country: "QATAR", company: "ONE GLOBAL", website: "https://oneglobalqatar.com/", priority: 11, flag: "/qa.svg" },
   { country: "SAUDI ARABIA", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 12, flag: "/sa.svg" },
   { country: "UAE", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 13, flag: "/ae.svg" },
-  { country: "USA", company: "GGL", website: "https://gglusa.us/", priority: 14, flag: "/us.svg", visibilityByCountry: { MYANMAR: false } },
+  { country: "USA", company: "GGL", website: "https://gglusa.us/", priority: 14, flag: "/us.svg" },
   { country: "UK", company: "GGL", website: "https://www.ggl.sg/uk", priority: 16, flag: "/gb.svg" }
 ];
 
 const CountrySelector = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [ipCountry, setIpCountry] = useState<{ code: string; name: string } | null>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
-  const isMyanmarPath = location.pathname.startsWith("/myanmar");
+  const path = location.pathname;
+  const isMyanmar = path.startsWith("/myanmar");
+  const isSouthAsia =
+    path.startsWith("/bangladesh") ||
+    path.startsWith("/sri-lanka") ||
+    path.startsWith("/pakistan");
 
   const currentCountry = getCurrentCountryFromPath(location.pathname);
   const currentCountryName = currentCountry.name?.toUpperCase();
@@ -57,94 +61,74 @@ const CountrySelector = () => {
     ? (currentCountryName || "SINGAPORE")
     : "SINGAPORE";
 
-  useEffect(() => {
-    const detect = async () => {
-      try {
-        const saved = localStorage.getItem("preferredCountry");
-        if (saved) {
-          setIpCountry(JSON.parse(saved));
-          return;
-        }
-        const c = await detectCountryByIP();
-        setIpCountry(c);
-      } catch {
-        setIpCountry(null);
-      }
-    };
-    detect();
-  }, []);
-
   const singaporeCountry = countries.find(c => c.country === "SINGAPORE")!;
 
   const displayCountry =
     countries.find(c => c.country.toUpperCase() === resolvedCurrentCountryName) ||
     singaporeCountry;
 
-  const availableCountries = countries.filter(c =>
-    c.country.toUpperCase() !== resolvedCurrentCountryName &&
-    (!c.visibilityByCountry || c.visibilityByCountry[resolvedCurrentCountryName] !== false)
+  const availableCountries = countries.filter(
+    c => c.country.toUpperCase() !== resolvedCurrentCountryName
   );
 
   const sortedCountries = [...availableCountries].sort((a, b) => a.priority - b.priority);
 
-  // ✅ Override company name for Myanmar path (title change)
+  /* ---------------- Company Name Overrides ---------------- */
+
   const getCompanyName = (country: CountryData) => {
-    if (isMyanmarPath && country.country === "INDIA") return "GGL";
-    if (isMyanmarPath && country.country === "UAE") return "AMASS";
+    if (isMyanmar && country.country === "INDIA") return "GGL";
+    if (isMyanmar && country.country === "UAE") return "AMASS";
+
+    if (isSouthAsia && country.country === "UAE") return "FNL";
+
     return country.company;
   };
 
-  const handleCountrySelect = (country: CountryData) => {
-    localStorage.setItem("preferredCountry", JSON.stringify({
-      name: country.country,
-      code: country.flag?.split('/')[1]?.split('.')[0] || ''
-    }));
+  /* ---------------- URL Overrides ---------------- */
 
+  const handleCountrySelect = (country: CountryData) => {
     const currentPath = location.pathname;
 
-    // ✅ Myanmar URL override
-    if (currentPath.startsWith("/myanmar")) {
+    /* Myanmar overrides */
+    if (isMyanmar) {
       if (country.country === "INDIA") {
         window.location.href = "https://www.gglindia.com/";
         return;
       }
-
       if (country.country === "UAE") {
         window.location.href = "https://amassmiddleeast.com/";
         return;
       }
     }
 
+    /* Bangladesh / Sri Lanka / Pakistan override */
+    if (isSouthAsia && country.country === "UAE") {
+      window.location.href = "https://www.futurenetlogistics.com/";
+      return;
+    }
+
+    /* Original Routing */
     let targetRoute = country.route;
 
-    const prefix = country.country === 'SINGAPORE'
-      ? ''
-      : `/${country.country.toLowerCase().replace(/\s+/g, '-')}`;
+    const prefix =
+      country.country === "SINGAPORE"
+        ? ""
+        : `/${country.country.toLowerCase().replace(/\s+/g, "-")}`;
 
-    if (currentPath.includes('/about-us')) {
+    if (currentPath.includes("/about-us")) {
       targetRoute = `${prefix}/about-us`;
-    } else if (currentPath.includes('/contact')) {
+    } else if (currentPath.includes("/contact")) {
       targetRoute = `${prefix}/contact`;
     }
 
     if (targetRoute) {
       window.location.href = targetRoute;
     } else {
-      window.open(country.website, '_blank', 'noopener,noreferrer');
+      window.open(country.website, "_blank", "noopener,noreferrer");
     }
 
     setIsOpen(false);
   };
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
 
   return (
     <div ref={dropdownRef} className="relative z-50 flex items-center gap-2">
@@ -153,62 +137,42 @@ const CountrySelector = () => {
           src={displayCountry.flag}
           alt={`${displayCountry.country} flag`}
           className="w-6 h-6 rounded shadow-sm object-cover"
-          title={displayCountry.country}
         />
       )}
 
       <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
         <DropdownMenuTrigger asChild>
-          <Button
-            variant="outline"
-            className="bg-black text-white border-black hover:bg-black/90 px-4 py-2 rounded-full flex items-center gap-2"
-          >
-            <Globe className="w-6 h-6 text-white" />
-            <span className="flex items-center gap-1">
-              Switch Country <ChevronDown className="h-3 w-3 ml-1 text-white" />
-            </span>
+          <Button className="bg-black text-white rounded-full flex items-center gap-2">
+            <Globe className="w-5 h-5" />
+            Switch Country <ChevronDown className="h-3 w-3" />
           </Button>
         </DropdownMenuTrigger>
 
-        <DropdownMenuContent
-          align="center"
-          className="w-[280px] max-h-screen h-[90vh] border border-amber-100 bg-white p-2 rounded-lg shadow-lg overflow-y-auto"
-        >
-          <ScrollArea className="h-full w-full pr-2 custom-scrollbar">
-            <div className="grid grid-cols-1 gap-1 p-1">
-              {sortedCountries.map((country) => (
-                <DropdownMenuItem
-                  key={country.country}
-                  onSelect={(e) => {
-                    e.preventDefault();
-                    handleCountrySelect(country);
-                  }}
-                  className="cursor-pointer hover:bg-amber-50 py-4 px-3 min-h-[60px] rounded-md flex items-center gap-3 transition-all"
-                >
-                  <motion.div whileHover={{ scale: 1.05 }} className="flex items-center w-full">
-                    <div className="flex-shrink-0">
-                      {country.flag ? (
-                        <img
-                          src={country.flag}
-                          alt={`${country.country} flag`}
-                          className="w-6 h-6 rounded-sm shadow-sm object-cover"
-                        />
-                      ) : (
-                        <div className="w-6 h-6 bg-gray-200 rounded-sm flex items-center justify-center">
-                          <Globe className="w-6 h-6 text-[#F6B100]" />
-                        </div>
-                      )}
+        <DropdownMenuContent className="w-[280px] h-[90vh] overflow-y-auto">
+          <ScrollArea className="h-full w-full">
+            {sortedCountries.map((country) => (
+              <DropdownMenuItem
+                key={country.country}
+                onSelect={(e) => {
+                  e.preventDefault();
+                  handleCountrySelect(country);
+                }}
+                className="py-4 flex items-center gap-3"
+              >
+                <motion.div whileHover={{ scale: 1.05 }} className="flex items-center w-full">
+                  <img
+                    src={country.flag}
+                    className="w-6 h-6 rounded-sm"
+                  />
+                  <div className="ml-3">
+                    <div className="font-medium text-sm">{country.country}</div>
+                    <div className="text-xs text-gray-500">
+                      {getCompanyName(country)}
                     </div>
-                    <div className="ml-3 flex-1">
-                      <div className="font-medium text-sm">{country.country}</div>
-                      <div className="text-xs text-gray-500">
-                        {getCompanyName(country)}
-                      </div>
-                    </div>
-                  </motion.div>
-                </DropdownMenuItem>
-              ))}
-            </div>
+                  </div>
+                </motion.div>
+              </DropdownMenuItem>
+            ))}
           </ScrollArea>
         </DropdownMenuContent>
       </DropdownMenu>
