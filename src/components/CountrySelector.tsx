@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { ChevronDown, Globe } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import {
@@ -10,7 +10,6 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-import { getCurrentCountryFromPath } from '@/services/countryDetection';
 
 interface CountryData {
   country: string;
@@ -41,32 +40,59 @@ const countries: CountryData[] = [
 ];
 
 const CountrySelector = () => {
+
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
-  const path = location.pathname;
+  const path = location.pathname.toLowerCase();
 
-  const currentCountry = getCurrentCountryFromPath(path);
-  const currentCountryName = currentCountry?.name?.toUpperCase() || "SINGAPORE";
+  /* -------- PATH FLAGS -------- */
 
-  const displayCountry =
-    countries.find(c => c.country === currentCountryName) || countries[0];
+  const isSingapore = path === "/";
+  const isMyanmar = path.startsWith("/myanmar");
+  const isSriLanka = path.startsWith("/sri-lanka");
+  const isBangladesh = path.startsWith("/bangladesh");
+  const isPakistan = path.startsWith("/pakistan");
 
-  const availableCountries = countries.filter(
+  /* -------- CURRENT COUNTRY -------- */
+
+  const detectCountry = () => {
+    if (isMyanmar) return "MYANMAR";
+    if (isSriLanka) return "SRI LANKA";
+    if (isBangladesh) return "BANGLADESH";
+    if (isPakistan) return "PAKISTAN";
+    return "SINGAPORE";
+  };
+
+  const currentCountryName = detectCountry();
+
+  /* -------- FILTER LOGIC -------- */
+
+  let availableCountries = countries.filter(
     c => c.country !== currentCountryName
   );
+
+  // Remove Malaysia, Indonesia, Thailand on Bangladesh
+  if (isBangladesh) {
+    availableCountries = availableCountries.filter(
+      c => !["MALAYSIA", "INDONESIA", "THAILAND"].includes(c.country)
+    );
+  }
+
+  // Remove USA on Myanmar
+  if (isMyanmar) {
+    availableCountries = availableCountries.filter(
+      c => c.country !== "USA"
+    );
+  }
 
   const sortedCountries = [...availableCountries].sort(
     (a, b) => a.priority - b.priority
   );
 
-  // ✅ Determine if India should switch to GGL
-  const useGGLForIndia =
-    path.startsWith("/myanmar") ||
-    path.startsWith("/indonesia") ||
-    path.startsWith("/thailand");
+  /* -------- INDIA LOGIC -------- */
 
-  /* -------- Company Name Logic -------- */
+  const useGGLForIndia =
+    isMyanmar || isSriLanka || isBangladesh || isPakistan;
 
   const getCompanyName = (country: CountryData) => {
     if (country.country === "INDIA" && useGGLForIndia) {
@@ -75,38 +101,42 @@ const CountrySelector = () => {
     return country.company;
   };
 
-  /* -------- Routing Logic -------- */
+  /* -------- ROUTING -------- */
 
   const handleCountrySelect = (country: CountryData) => {
 
-    // Special India behavior
+    // INDIA
     if (country.country === "INDIA") {
       if (useGGLForIndia) {
-        window.open("https://www.gglindia.com/", "_blank", "noopener,noreferrer");
+        window.open("https://www.gglindia.com/", "_blank");
       } else {
-        window.open("https://oecl.sg/india", "_blank", "noopener,noreferrer");
+        window.open("https://oecl.sg/india", "_blank");
       }
       return;
     }
 
+    // UAE
+    if (country.country === "UAE") {
+      if (isSingapore || isMyanmar) {
+        window.open("https://amassmiddleeast.com/", "_blank");
+      } else {
+        window.open("https://www.futurenetlogistics.com/", "_blank");
+      }
+      return;
+    }
+
+    // DEFAULT
     if (country.route) {
       window.location.href = country.route;
     } else {
-      window.open(country.website, "_blank", "noopener,noreferrer");
+      window.open(country.website, "_blank");
     }
 
     setIsOpen(false);
   };
 
   return (
-    <div ref={dropdownRef} className="relative z-50 flex items-center gap-2">
-      {displayCountry?.flag && (
-        <img
-          src={displayCountry.flag}
-          alt={displayCountry.country}
-          className="w-6 h-6 rounded shadow-sm object-cover"
-        />
-      )}
+    <div className="relative z-50 flex items-center gap-2">
 
       <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
         <DropdownMenuTrigger asChild>
@@ -127,10 +157,7 @@ const CountrySelector = () => {
                 }}
                 className="py-4 flex items-center gap-3"
               >
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  className="flex items-center"
-                >
+                <motion.div whileHover={{ scale: 1.05 }} className="flex items-center">
                   <img
                     src={country.flag}
                     alt={country.country}
@@ -150,6 +177,7 @@ const CountrySelector = () => {
           </ScrollArea>
         </DropdownMenuContent>
       </DropdownMenu>
+
     </div>
   );
 };
