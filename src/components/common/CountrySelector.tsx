@@ -60,9 +60,12 @@ const CountrySelector = () => {
     (a, b) => a.priority - b.priority
   );
 
-  // ✅ KEY LOGIC
-  // If NOT root "/", then use GGL for India
-  const useGGLForIndia = path !== "/";
+  // ✅ Detect Singapore root properly
+  const isSingapore =
+    path === "/" ||
+    path.startsWith("/singapore");
+
+  const useGGLForIndia = !isSingapore;
 
   /* -------- Company Name -------- */
 
