@@ -73,7 +73,7 @@ const CountrySelector = () => {
     // INDIA special rule
     if (
       country.country === "INDIA" &&
-      (isMyanmar || isIndonesia || isThailand)
+      (ismyanmar || isindonesia || isthailand)
     ) {
       return "GGL";
     }
