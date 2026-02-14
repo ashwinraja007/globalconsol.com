@@ -22,15 +22,15 @@ interface CountryData {
 }
 
 const countries: CountryData[] = [
-  { country: "SINGAPORE", company: "GC", website: "https://www.globalconsol.com", priority: 1, flag: "/sg.svg"},
-  { country: "SRI LANKA", company: "GC", website: "https://www.globalconsol.com/sri-lanka/home", priority: 2, flag: "/lk.svg" },
-  { country: "MYANMAR", company: "GC", website: "https://www.globalconsol.com/myanmar/home", priority: 3, flag: "/mm.svg" },
-  { country: "BANGLADESH", company: "GC", website: "https://www.globalconsol.com/bangladesh/home", priority: 4, flag: "/bd.svg" },
-  { country: "PAKISTAN", company: "GC", website: "https://www.globalconsol.com/pakistan/home", priority: 5, flag: "/pk.svg" },
+  { country: "SINGAPORE", company: "GC", website: "https://www.globalconsol.com", priority: 1, flag: "/sg.svg", route: "/" },
+  { country: "SRI LANKA", company: "GC", website: "https://www.globalconsol.com", priority: 2, flag: "/lk.svg", route: "/sri-lanka/home" },
+  { country: "MYANMAR", company: "GC", website: "https://www.globalconsol.com", priority: 3, flag: "/mm.svg", route: "/myanmar/home" },
+  { country: "BANGLADESH", company: "GC", website: "https://www.globalconsol.com", priority: 4, flag: "/bd.svg", route: "/bangladesh/home" },
+  { country: "PAKISTAN", company: "GC", website: "https://www.globalconsol.com", priority: 5, flag: "/pk.svg", route: "/pakistan/home" },
   { country: "MALAYSIA", company: "OECL", website: "https://oecl.sg/malaysia", priority: 6, flag: "/my.svg" },
   { country: "INDONESIA", company: "OECL", website: "https://oecl.sg/indonesia", priority: 7, flag: "/id.svg" },
   { country: "THAILAND", company: "OECL", website: "https://oecl.sg/thailand", priority: 8, flag: "/th.svg" },
-  { country: "INDIA", company: "OECL", website: "https://oecl.sg/india", priority: 9, flag: "/in.svg" },
+  { country: "INDIA", company: "OECL", website: "https://oecl.sg/india", priority: 9, flag: "/in.svg", route: "/india" },
   { country: "CHINA", company: "Haixun", website: "https://www.haixun.co/", priority: 10, flag: "/cn.svg" },
   { country: "AUSTRALIA", company: "GGL", website: "https://www.gglaustralia.com/", priority: 11, flag: "/au.svg" },
   { country: "QATAR", company: "ONE GLOBAL", website: "https://oneglobalqatar.com/", priority: 12, flag: "/qa.svg" },
@@ -49,6 +49,9 @@ const CountrySelector = () => {
 
   const isMyanmar = path.startsWith("/myanmar");
   const isBangladesh = path.startsWith("/bangladesh");
+  const isIndia = path.startsWith("/india");
+  const isIndiaSubPage = isIndia && path !== "/india" && path !== "/india/";
+
   const isSouthAsia =
     path.startsWith("/bangladesh") ||
     path.startsWith("/sri-lanka") ||
@@ -63,10 +66,8 @@ const CountrySelector = () => {
   /* -------- Filter Countries -------- */
 
   const availableCountries = countries.filter(c => {
-    // Remove USA when in Myanmar
     if (isMyanmar && c.country === "USA") return false;
 
-    // Remove Malaysia, Indonesia, Thailand when in Bangladesh
     if (
       isBangladesh &&
       ["MALAYSIA", "INDONESIA", "THAILAND"].includes(c.country)
@@ -85,13 +86,18 @@ const CountrySelector = () => {
     if (isMyanmar && country.country === "INDIA") return "GGL";
     if (isMyanmar && country.country === "UAE") return "AMASS";
     if (isSouthAsia && country.country === "UAE") return "FNL";
+
+    // India subpages → show GGL instead of OECL
+    if (isIndiaSubPage && country.country === "INDIA") return "GGL";
+
     return country.company;
   };
 
   /* -------- Routing -------- */
 
   const handleCountrySelect = (country: CountryData) => {
-    // Myanmar → Always open NEW window
+
+    // Myanmar → Always new window
     if (isMyanmar) {
       let url = country.website;
 
@@ -102,7 +108,13 @@ const CountrySelector = () => {
       return;
     }
 
-    // Bangladesh / Sri Lanka / Pakistan → UAE goes to FNL
+    // India subpages → Redirect to GGL
+    if (isIndiaSubPage && country.country === "INDIA") {
+      window.open("https://www.gglindia.com/", "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    // South Asia → UAE goes to FNL
     if (isSouthAsia && country.country === "UAE") {
       window.location.href = "https://www.futurenetlogistics.com/";
       return;
