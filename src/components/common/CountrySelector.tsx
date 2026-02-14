@@ -60,14 +60,13 @@ const CountrySelector = () => {
     (a, b) => a.priority - b.priority
   );
 
-  // ✅ Detect Singapore root properly
-  const isSingapore =
-    path === "/" ||
-    path.startsWith("/singapore");
+  // ✅ ONLY these paths use GGL for India
+  const useGGLForIndia =
+    path.startsWith("/sri-lanka") ||
+    path.startsWith("/myanmar") ||
+    path.startsWith("/bangladesh");
 
-  const useGGLForIndia = !isSingapore;
-
-  /* -------- Company Name -------- */
+  /* -------- Company Name Logic -------- */
 
   const getCompanyName = (country: CountryData) => {
     if (country.country === "INDIA" && useGGLForIndia) {
@@ -76,7 +75,7 @@ const CountrySelector = () => {
     return country.company;
   };
 
-  /* -------- Routing -------- */
+  /* -------- Routing Logic -------- */
 
   const handleCountrySelect = (country: CountryData) => {
 
