@@ -44,16 +44,16 @@ const CountrySelector = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
-
   const path = location.pathname;
 
-  const isMyanmar = path.startsWith("/myanmar");
-  const isIndonesia = path.startsWith("/indonesia");
-  const isThailand = path.startsWith("/thailand");
-  const isSingapore = path === "/" || path.startsWith("/singapore");
+  // Special condition paths
+  const useGGLForIndia =
+    path.startsWith("/myanmar") ||
+    path.startsWith("/indonesia") ||
+    path.startsWith("/thailand");
 
   const currentCountry = getCurrentCountryFromPath(path);
-  const currentCountryName = currentCountry.name?.toUpperCase() || "SINGAPORE";
+  const currentCountryName = currentCountry?.name?.toUpperCase() || "SINGAPORE";
 
   const displayCountry =
     countries.find(c => c.country === currentCountryName) || countries[0];
@@ -69,15 +69,9 @@ const CountrySelector = () => {
   /* -------- Company Override -------- */
 
   const getCompanyName = (country: CountryData) => {
-
-    // INDIA special rule
-    if (
-      country.country === "INDIA" &&
-      (ismyanmar || isindonesia || isthailand)
-    ) {
+    if (country.country === "INDIA" && useGGLForIndia) {
       return "GGL";
     }
-
     return country.company;
   };
 
@@ -85,11 +79,8 @@ const CountrySelector = () => {
 
   const handleCountrySelect = (country: CountryData) => {
 
-    // INDIA special redirect rule
-    if (
-      country.country === "INDIA" &&
-      (isMyanmar || isIndonesia || isThailand)
-    ) {
+    // Special India redirect
+    if (country.country === "INDIA" && useGGLForIndia) {
       window.open("https://www.gglindia.com/", "_blank", "noopener,noreferrer");
       return;
     }
