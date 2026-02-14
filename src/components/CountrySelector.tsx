@@ -46,12 +46,6 @@ const CountrySelector = () => {
   const location = useLocation();
   const path = location.pathname;
 
-  // Special condition paths
-  const useGGLForIndia =
-    path.startsWith("/myanmar") ||
-    path.startsWith("/indonesia") ||
-    path.startsWith("/thailand");
-
   const currentCountry = getCurrentCountryFromPath(path);
   const currentCountryName = currentCountry?.name?.toUpperCase() || "SINGAPORE";
 
@@ -66,7 +60,13 @@ const CountrySelector = () => {
     (a, b) => a.priority - b.priority
   );
 
-  /* -------- Company Override -------- */
+  // ✅ Determine if India should switch to GGL
+  const useGGLForIndia =
+    path.startsWith("/myanmar") ||
+    path.startsWith("/indonesia") ||
+    path.startsWith("/thailand");
+
+  /* -------- Company Name Logic -------- */
 
   const getCompanyName = (country: CountryData) => {
     if (country.country === "INDIA" && useGGLForIndia) {
@@ -75,13 +75,17 @@ const CountrySelector = () => {
     return country.company;
   };
 
-  /* -------- Routing -------- */
+  /* -------- Routing Logic -------- */
 
   const handleCountrySelect = (country: CountryData) => {
 
-    // Special India redirect
-    if (country.country === "INDIA" && useGGLForIndia) {
-      window.open("https://www.gglindia.com/", "_blank", "noopener,noreferrer");
+    // Special India behavior
+    if (country.country === "INDIA") {
+      if (useGGLForIndia) {
+        window.open("https://www.gglindia.com/", "_blank", "noopener,noreferrer");
+      } else {
+        window.open("https://oecl.sg/india", "_blank", "noopener,noreferrer");
+      }
       return;
     }
 
