@@ -10,7 +10,6 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { motion } from 'framer-motion';
 import { useLocation } from 'react-router-dom';
-import { getCurrentCountryFromPath } from '@/services/countryDetection';
 
 interface CountryData {
   country: string;
@@ -41,13 +40,22 @@ const countries: CountryData[] = [
 ];
 
 const CountrySelector = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const location = useLocation();
-  const path = location.pathname;
 
-  const currentCountry = getCurrentCountryFromPath(path);
-  const currentCountryName = currentCountry?.name?.toUpperCase() || "SINGAPORE";
+  const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+  const path = location.pathname.toLowerCase();
+
+  /* -------- Detect current country directly from URL -------- */
+
+  const detectCountryFromPath = () => {
+    if (path.startsWith("/sri-lanka")) return "SRI LANKA";
+    if (path.startsWith("/myanmar")) return "MYANMAR";
+    if (path.startsWith("/bangladesh")) return "BANGLADESH";
+    if (path.startsWith("/pakistan")) return "PAKISTAN";
+    return "SINGAPORE";
+  };
+
+  const currentCountryName = detectCountryFromPath();
 
   const displayCountry =
     countries.find(c => c.country === currentCountryName) || countries[0];
@@ -60,13 +68,14 @@ const CountrySelector = () => {
     (a, b) => a.priority - b.priority
   );
 
-  // ✅ ONLY these paths use GGL for India
+  /* -------- ONLY THESE PATHS USE GGL FOR INDIA -------- */
+
   const useGGLForIndia =
     path.startsWith("/sri-lanka") ||
     path.startsWith("/myanmar") ||
     path.startsWith("/bangladesh");
 
-  /* -------- Company Name Logic -------- */
+  /* -------- Company Label -------- */
 
   const getCompanyName = (country: CountryData) => {
     if (country.country === "INDIA" && useGGLForIndia) {
@@ -75,7 +84,7 @@ const CountrySelector = () => {
     return country.company;
   };
 
-  /* -------- Routing Logic -------- */
+  /* -------- Routing -------- */
 
   const handleCountrySelect = (country: CountryData) => {
 
@@ -98,7 +107,7 @@ const CountrySelector = () => {
   };
 
   return (
-    <div ref={dropdownRef} className="relative z-50 flex items-center gap-2">
+    <div className="relative z-50 flex items-center gap-2">
       {displayCountry?.flag && (
         <img
           src={displayCountry.flag}
