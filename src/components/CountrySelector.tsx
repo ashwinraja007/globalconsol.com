@@ -71,14 +71,12 @@ const CountrySelector = () => {
     c => c.country !== currentCountryName
   );
 
-  // Remove Malaysia, Indonesia, Thailand on Bangladesh
   if (isBangladesh) {
     availableCountries = availableCountries.filter(
       c => !["MALAYSIA", "INDONESIA", "THAILAND"].includes(c.country)
     );
   }
 
-  // Remove USA on Myanmar
   if (isMyanmar) {
     availableCountries = availableCountries.filter(
       c => c.country !== "USA"
@@ -95,9 +93,16 @@ const CountrySelector = () => {
     isMyanmar || isSriLanka || isBangladesh || isPakistan;
 
   const getCompanyName = (country: CountryData) => {
+
     if (country.country === "INDIA" && useGGLForIndia) {
       return "GGL";
     }
+
+    // UAE always display FNL
+    if (country.country === "UAE") {
+      return "FNL";
+    }
+
     return country.company;
   };
 
