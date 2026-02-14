@@ -30,7 +30,7 @@ const countries: CountryData[] = [
   { country: "MALAYSIA", company: "OECL", website: "https://oecl.sg/malaysia", priority: 6, flag: "/my.svg" },
   { country: "INDONESIA", company: "OECL", website: "https://oecl.sg/indonesia", priority: 7, flag: "/id.svg" },
   { country: "THAILAND", company: "OECL", website: "https://oecl.sg/thailand", priority: 8, flag: "/th.svg" },
-  { country: "INDIA", company: "OECL", website: "https://oecl.sg/india", priority: 9, flag: "/in.svg", route: "/india" },
+  { country: "INDIA", company: "OECL", website: "https://oecl.sg/india", priority: 9, flag: "/in.svg" },
   { country: "CHINA", company: "Haixun", website: "https://www.haixun.co/", priority: 10, flag: "/cn.svg" },
   { country: "AUSTRALIA", company: "GGL", website: "https://www.gglaustralia.com/", priority: 11, flag: "/au.svg" },
   { country: "QATAR", company: "ONE GLOBAL", website: "https://oneglobalqatar.com/", priority: 12, flag: "/qa.svg" },
@@ -48,14 +48,9 @@ const CountrySelector = () => {
   const path = location.pathname;
 
   const isMyanmar = path.startsWith("/myanmar");
-  const isBangladesh = path.startsWith("/bangladesh");
-  const isIndia = path.startsWith("/india");
-  const isIndiaSubPage = isIndia && path !== "/india" && path !== "/india/";
-
-  const isSouthAsia =
-    path.startsWith("/bangladesh") ||
-    path.startsWith("/sri-lanka") ||
-    path.startsWith("/pakistan");
+  const isIndonesia = path.startsWith("/indonesia");
+  const isThailand = path.startsWith("/thailand");
+  const isSingapore = path === "/" || path.startsWith("/singapore");
 
   const currentCountry = getCurrentCountryFromPath(path);
   const currentCountryName = currentCountry.name?.toUpperCase() || "SINGAPORE";
@@ -63,32 +58,25 @@ const CountrySelector = () => {
   const displayCountry =
     countries.find(c => c.country === currentCountryName) || countries[0];
 
-  /* -------- Filter Countries -------- */
-
-  const availableCountries = countries.filter(c => {
-    if (isMyanmar && c.country === "USA") return false;
-
-    if (
-      isBangladesh &&
-      ["MALAYSIA", "INDONESIA", "THAILAND"].includes(c.country)
-    ) return false;
-
-    return c.country !== currentCountryName;
-  });
+  const availableCountries = countries.filter(
+    c => c.country !== currentCountryName
+  );
 
   const sortedCountries = [...availableCountries].sort(
     (a, b) => a.priority - b.priority
   );
 
-  /* -------- Company Name Overrides -------- */
+  /* -------- Company Override -------- */
 
   const getCompanyName = (country: CountryData) => {
-    if (isMyanmar && country.country === "INDIA") return "GGL";
-    if (isMyanmar && country.country === "UAE") return "AMASS";
-    if (isSouthAsia && country.country === "UAE") return "FNL";
 
-    // India subpages → show GGL instead of OECL
-    if (isIndiaSubPage && country.country === "INDIA") return "GGL";
+    // INDIA special rule
+    if (
+      country.country === "INDIA" &&
+      (isMyanmar || isIndonesia || isThailand)
+    ) {
+      return "GGL";
+    }
 
     return country.company;
   };
@@ -97,45 +85,17 @@ const CountrySelector = () => {
 
   const handleCountrySelect = (country: CountryData) => {
 
-    // Myanmar → Always new window
-    if (isMyanmar) {
-      let url = country.website;
-
-      if (country.country === "INDIA") url = "https://www.gglindia.com/";
-      if (country.country === "UAE") url = "https://amassmiddleeast.com/";
-
-      window.open(url, "_blank", "noopener,noreferrer");
-      return;
-    }
-
-    // India subpages → Redirect to GGL
-    if (isIndiaSubPage && country.country === "INDIA") {
+    // INDIA special redirect rule
+    if (
+      country.country === "INDIA" &&
+      (isMyanmar || isIndonesia || isThailand)
+    ) {
       window.open("https://www.gglindia.com/", "_blank", "noopener,noreferrer");
       return;
     }
 
-    // South Asia → UAE goes to FNL
-    if (isSouthAsia && country.country === "UAE") {
-      window.location.href = "https://www.futurenetlogistics.com/";
-      return;
-    }
-
-    // Default routing
-    let targetRoute = country.route;
-
-    const prefix =
-      country.country === "SINGAPORE"
-        ? ""
-        : `/${country.country.toLowerCase().replace(/\s+/g, "-")}`;
-
-    if (path.includes("/about-us")) {
-      targetRoute = `${prefix}/about-us`;
-    } else if (path.includes("/contact")) {
-      targetRoute = `${prefix}/contact`;
-    }
-
-    if (targetRoute) {
-      window.location.href = targetRoute;
+    if (country.route) {
+      window.location.href = country.route;
     } else {
       window.open(country.website, "_blank", "noopener,noreferrer");
     }
