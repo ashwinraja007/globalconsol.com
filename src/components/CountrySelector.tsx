@@ -30,13 +30,13 @@ const countries: CountryData[] = [
   { country: "MALAYSIA", company: "OECL", website: "https://oecl.sg/malaysia", priority: 6, flag: "/my.svg" },
   { country: "INDONESIA", company: "OECL", website: "https://oecl.sg/indonesia", priority: 7, flag: "/id.svg" },
   { country: "THAILAND", company: "OECL", website: "https://oecl.sg/thailand", priority: 8, flag: "/th.svg" },
-  { country: "INDIA", company: "OECL", website: "https://oecl.sg/india", priority: 8, flag: "/in.svg" },
-  { country: "CHINA", company: "Haixun", website: "https://www.haixun.co/", priority: 9, flag: "/cn.svg" },
-  { country: "AUSTRALIA", company: "GGL", website: "https://www.gglaustralia.com/", priority: 10, flag: "/au.svg" },
-  { country: "QATAR", company: "ONE GLOBAL", website: "https://oneglobalqatar.com/", priority: 11, flag: "/qa.svg" },
-  { country: "SAUDI ARABIA", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 12, flag: "/sa.svg" },
-  { country: "UAE", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 13, flag: "/ae.svg" },
-  { country: "USA", company: "GGL", website: "https://gglusa.us/", priority: 14, flag: "/us.svg" },
+  { country: "INDIA", company: "OECL", website: "https://oecl.sg/india", priority: 9, flag: "/in.svg" },
+  { country: "CHINA", company: "Haixun", website: "https://www.haixun.co/", priority: 10, flag: "/cn.svg" },
+  { country: "AUSTRALIA", company: "GGL", website: "https://www.gglaustralia.com/", priority: 11, flag: "/au.svg" },
+  { country: "QATAR", company: "ONE GLOBAL", website: "https://oneglobalqatar.com/", priority: 12, flag: "/qa.svg" },
+  { country: "SAUDI ARABIA", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 13, flag: "/sa.svg" },
+  { country: "UAE", company: "AMASS", website: "https://amassmiddleeast.com/", priority: 14, flag: "/ae.svg" },
+  { country: "USA", company: "GGL", website: "https://gglusa.us/", priority: 15, flag: "/us.svg" },
   { country: "UK", company: "GGL", website: "https://www.ggl.sg/uk", priority: 16, flag: "/gb.svg" }
 ];
 
@@ -46,7 +46,9 @@ const CountrySelector = () => {
   const location = useLocation();
 
   const path = location.pathname;
+
   const isMyanmar = path.startsWith("/myanmar");
+  const isBangladesh = path.startsWith("/bangladesh");
   const isSouthAsia =
     path.startsWith("/bangladesh") ||
     path.startsWith("/sri-lanka") ||
@@ -58,13 +60,24 @@ const CountrySelector = () => {
   const displayCountry =
     countries.find(c => c.country === currentCountryName) || countries[0];
 
-  /* ✅ Remove USA when in Myanmar */
+  /* -------- Filter Countries -------- */
+
   const availableCountries = countries.filter(c => {
+    // Remove USA when in Myanmar
     if (isMyanmar && c.country === "USA") return false;
+
+    // Remove Malaysia, Indonesia, Thailand when in Bangladesh
+    if (
+      isBangladesh &&
+      ["MALAYSIA", "INDONESIA", "THAILAND"].includes(c.country)
+    ) return false;
+
     return c.country !== currentCountryName;
   });
 
-  const sortedCountries = [...availableCountries].sort((a, b) => a.priority - b.priority);
+  const sortedCountries = [...availableCountries].sort(
+    (a, b) => a.priority - b.priority
+  );
 
   /* -------- Company Name Overrides -------- */
 
@@ -78,8 +91,7 @@ const CountrySelector = () => {
   /* -------- Routing -------- */
 
   const handleCountrySelect = (country: CountryData) => {
-
-    /* ✅ Myanmar → Always open NEW window */
+    // Myanmar → Always open NEW window
     if (isMyanmar) {
       let url = country.website;
 
@@ -90,13 +102,13 @@ const CountrySelector = () => {
       return;
     }
 
-    /* Bangladesh / Sri Lanka / Pakistan UAE → FNL */
+    // Bangladesh / Sri Lanka / Pakistan → UAE goes to FNL
     if (isSouthAsia && country.country === "UAE") {
       window.location.href = "https://www.futurenetlogistics.com/";
       return;
     }
 
-    /* Default routing */
+    // Default routing
     let targetRoute = country.route;
 
     const prefix =
@@ -148,10 +160,19 @@ const CountrySelector = () => {
                 }}
                 className="py-4 flex items-center gap-3"
               >
-                <motion.div whileHover={{ scale: 1.05 }} className="flex items-center">
-                  <img src={country.flag} className="w-6 h-6 rounded-sm" />
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  className="flex items-center"
+                >
+                  <img
+                    src={country.flag}
+                    alt={country.country}
+                    className="w-6 h-6 rounded-sm"
+                  />
                   <div className="ml-3">
-                    <div className="text-sm font-medium">{country.country}</div>
+                    <div className="text-sm font-medium">
+                      {country.country}
+                    </div>
                     <div className="text-xs text-gray-500">
                       {getCompanyName(country)}
                     </div>
